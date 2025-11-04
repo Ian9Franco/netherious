@@ -1,13 +1,13 @@
 {
   "intro": {
     "title": "La Historia Comienza",
-   "paragraph1": "Bienvenido a Netherious: RPG Expansion, un mundo forjado con magia, acero y maquinaria. Cada estructura cuenta una historia, cada enemigo guarda un secreto, y cada jugador deja su huella en una tierra viva y en constante evolución.",
+    "paragraph1": "Bienvenido a Netherious: RPG Expansion, un mundo forjado con magia, acero y maquinaria. Cada estructura cuenta una historia, cada enemigo guarda un secreto, y cada jugador deja su huella en una tierra viva y en constante evolución.",
     "paragraph2": "Explora dimensiones antiguas, ciudades medievales y ruinas tecnológicas. Domina habilidades, enfréntate a jefes colosales y construye tu propio legado entre mundos conectados por portales, engranajes y runas olvidadas."
   },
   "about": {
     "title": "Sobre el Servidor",
     "paragraphs": [
-       "Netherious es una experiencia RPG multiversal desarrollada sobre **Forge 1.20.1**, que combina exploración, combate avanzado y progresión de personaje. Cada bioma, estructura y criatura ha sido cuidadosamente seleccionado para crear una sensación de descubrimiento constante.",
+      "Netherious es una experiencia RPG multiversal desarrollada sobre **Forge 1.20.1**, que combina exploración, combate avanzado y progresión de personaje. Cada bioma, estructura y criatura ha sido cuidadosamente seleccionado para crear una sensación de descubrimiento constante.",
       "El servidor equilibra lo clásico de Minecraft con sistemas modernos: desde ciudades medievales llenas de illagers hasta civilizaciones tecnológicas con máquinas steampunk y energía nuclear. Los aventureros pueden elegir su propio camino: ser magos, paladines, arqueros, ingenieros o simples exploradores del caos.",
       "Gracias a la integración de mods como *Create*, *Valoria*, *Cataclysm* y *Bosses Arise*, Netherious redefine el rol del jugador. No hay límites, solo desafíos que esperan ser conquistados."
     ]
@@ -17,7 +17,14 @@
       "id": "world_structures",
       "title": "Estructuras & Mazmorras Épicas",
       "description": "Construcciones avanzadas con enemigos, botines y ambientación inmersiva.",
-      "image": "/lore/dungeon.jpg",
+      "images": [
+        "/world_structures/image1.jpg",
+        "/world_structures/image2.jpg",
+        "/world_structures/image3.jpg",
+        "/world_structures/image4.jpg",
+        "/world_structures/image5.jpg",
+        "/world_structures/image6.jpg"
+      ],
       "details": [
         "Integrated Dungeons and Structures: Estructuras complejas con decoración y enemigos, integradas con otros mods.",
         "Trial Chambers Backport: Cámaras de prueba con jefes, loot y salas conectadas inspiradas en la 1.21.",
@@ -37,7 +44,14 @@
       "id": "bosses_and_combat",
       "title": "Jefes & Combate Avanzado",
       "description": "Mods que reinventan el combate, introduciendo jefes, enemigos y encuentros desafiantes.",
-      "image": "/lore/boss.jpg",
+      "images": [
+        "/bosses_and_combat/image1.jpg",
+        "/bosses_and_combat/image2.jpg",
+        "/bosses_and_combat/image3.jpg",
+        "/bosses_and_combat/image4.jpg",
+        "/bosses_and_combat/image5.jpg",
+        "/bosses_and_combat/image6.jpg"
+      ],
       "details": [
         "Bosses Arise: Cuatro jefes únicos con mecánicas especiales y recompensas poderosas.",
         "Dungeon Now Loading 2%: Mazmorras generadas automáticamente con enemigos, loot y jefes finales.",
@@ -45,7 +59,7 @@
         "L_Ender Cataclysm: Mazmorras temáticas con jefes como Leviathan y Netherite Monstrosity.",
         "Illage and Spillage: Nuevos tipos de illagers para raids más dinámicas.",
         "Ender Dragon Fight Remastered: Pelea final reimaginada con fases y ataques nuevos.",
-        "Wither’s Wrath: Combate mejorado contra el Wither con patrones avanzados.",
+        "Wither's Wrath: Combate mejorado contra el Wither con patrones avanzados.",
         "Opposing Force: Nuevos enemigos con habilidades únicas y drops especiales."
       ]
     },
@@ -53,7 +67,14 @@
       "id": "worlds_and_dimensions",
       "title": "Mundos & Dimensiones Alternas",
       "description": "Explora nuevas realidades, biomas exóticos y dimensiones ocultas.",
-      "image": "/lore/aldea.jpg",
+      "images": [
+        "/worlds_and_dimensions/image1.jpg",
+        "/worlds_and_dimensions/image2.jpg",
+        "/worlds_and_dimensions/image3.jpg",
+        "/worlds_and_dimensions/image4.jpg",
+        "/worlds_and_dimensions/image5.jpg",
+        "/worlds_and_dimensions/image6.jpg"
+      ],
       "details": [
         "Better Nether: Nuevos biomas, materiales y mecánicas en el Nether.",
         "Mofus Broken Constellation: Dimensión cósmica con historia, jefes y ruinas estelares.",
@@ -69,14 +90,21 @@
       "id": "vanilla_plus",
       "title": "Vanilla+ & Calidad de Vida",
       "description": "Mejoras al estilo clásico de Minecraft con sistemas balanceados y progresión natural.",
-      "image": "/lore/maquina.jpg",
+      "images": [
+        "/vanilla_plus/image1.jpg",
+        "/vanilla_plus/image2.jpg",
+        "/vanilla_plus/image3.jpg",
+        "/vanilla_plus/image4.jpg",
+        "/vanilla_plus/image5.jpg",
+        "/vanilla_plus/image6.jpg"
+      ],
       "details": [
         "Enchantment System Overhaul: Sistema de encantamientos basado en conocimiento.",
         "Quark: Mejoras Vanilla+ con estética y funcionalidad RPG-friendly.",
         "Tree Chop: Tala realista con progresión según tamaño del árbol.",
         "Farmers Delight: Cocina y agricultura ampliada con nuevos cultivos y recetas.",
         "Easy Anvil & Easy Workbench: Interacciones simplificadas sin gastar experiencia.",
-        "Tyz’ Skills: Sistema de habilidades pasivas personalizables.",
+        "Tyz' Skills: Sistema de habilidades pasivas personalizables.",
         "Cardiac: Mecánica de orbes de vida al derrotar enemigos.",
         "Sleep Tight: Sistema de sueño con efectos y eventos nocturnos."
       ]
@@ -85,7 +113,14 @@
       "id": "rpg_progression",
       "title": "RPG & Progresión de Personaje",
       "description": "Clases, habilidades, misiones y narrativa que transforman tu aventura.",
-      "image": "/lore/rpg.jpg",
+      "images": [
+        "/rpg_progression/image1.jpg",
+        "/rpg_progression/image2.jpg",
+        "/rpg_progression/image3.jpg",
+        "/rpg_progression/image4.jpg",
+        "/rpg_progression/image5.jpg",
+        "/rpg_progression/image6.jpg"
+      ],
       "details": [
         "Valoria: Mundo RPG con historia, clases, economía y progresión.",
         "Better Combat: Combate cuerpo a cuerpo con animaciones, combos y precisión mejorada.",
@@ -104,14 +139,22 @@
       "id": "wildlife_and_creatures",
       "title": "Criaturas & Fauna Salvaje",
       "description": "Una variedad inmensa de animales, aliados y enemigos únicos.",
-      "image": "/lore/loot.jpg",
+      "images": [
+        "/wildlife_and_creatures/image1.jpg",
+        "/wildlife_and_creatures/image2.jpg",
+        "/wildlife_and_creatures/image3.jpg",
+        "/wildlife_and_creatures/image4.jpg",
+        "/wildlife_and_creatures/image5.jpg",
+        "/wildlife_and_creatures/image6.jpg"
+
+      ],
       "details": [
         "Companions!: Mascotas personalizables con progresión y habilidades.",
         "Primal: Criaturas salvajes y prehistóricas para entornos hostiles.",
         "Wan Ancient Beasts: Bestias mitológicas con loot ancestral.",
         "Jurassic World Craft: Dinosaurios con biomas, fósiles y genética.",
         "Promenade: Animales decorativos como caracoles, patos y mariposas.",
-        "Alex’s Caves: Biomas subterráneos con fauna cavernosa.",
+        "Alex's Caves: Biomas subterráneos con fauna cavernosa.",
         "Ribbits: Ranas con variantes regionales y sonidos personalizados.",
         "Arthropocalypse: Insectos gigantes y arácnidos hostiles en enjambres.",
         "Fowl Play: Aves con comportamientos realistas y migratorios."
@@ -121,7 +164,14 @@
       "id": "hostile_mobs",
       "title": "Enemigos & Hostilidad",
       "description": "Criaturas agresivas con inteligencia, ambientación oscura y recompensas valiosas.",
-      "image": "/lore/loot.jpg",
+      "images": [
+        "/hostile_mobs/image1.jpg",
+        "/hostile_mobs/image2.jpg",
+        "/hostile_mobs/image3.jpg",
+        "/hostile_mobs/image4.jpg",
+        "/hostile_mobs/image5.jpg",
+        "/hostile_mobs/image6.jpg"
+      ],
       "details": [
         "Dweller Dweller: Mob aterrador con drop único y mecánica de amuleto repelente.",
         "Clanging Howl: Horror techno-orgánico con criaturas y armas alienígenas.",
@@ -136,7 +186,14 @@
       "id": "tools_and_systems",
       "title": "Herramientas & Tecnología",
       "description": "Tecnología avanzada, magia y maquinaria para aventureros expertos.",
-      "image": "/lore/maquina.jpg",
+      "images": [
+        "/tools_and_systems/image1.jpg",
+        "/tools_and_systems/image2.jpg",
+        "/tools_and_systems/image3.jpg",
+        "/tools_and_systems/image4.jpg",
+        "/tools_and_systems/image5.jpg",
+        "/tools_and_systems/image6.jpg"
+      ],
       "details": [
         "Immersive Aircraft: Aeronaves funcionales con combustible y controles realistas.",
         "Immersive Machinery: Maquinaria rústica y automatización agrícola.",
@@ -153,7 +210,14 @@
       "id": "create_expansions",
       "title": "Create & Expansiones",
       "description": "Extensiones del mod Create con energía, automatización y poder industrial.",
-      "image": "/lore/maquina.jpg",
+      "images": [
+        "/create_expansions/image1.jpg",
+        "/create_expansions/image2.jpg",
+        "/create_expansions/image3.jpg",
+        "/create_expansions/image4.jpg",
+        "/create_expansions/image5.jpg",
+        "/create_expansions/image6.jpg"
+      ],
       "details": [
         "Create: Base del sistema cinético con engranajes, correas y maquinaria.",
         "Create: New Age: Introduce electricidad y energía nuclear a Create.",
