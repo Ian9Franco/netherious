@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "Prepárate para tu próxima aventura en Minecraft",
+    "subtitle": "Forge 1.201 • Mods personalizados • Experiencia mejorada",
+    "cta": "Copiar IP del servidor"
+  },
+  "intro": {
+    "title": "Bienvenido a Netherious",
+    "paragraph": "Un servidor modded con una curaduría cuidadosa de mods que ofrecen exploración profunda, combate desafiante y secretos por descubrir. Únete a una comunidad dedicada a vivir la mejor experiencia de Minecraft."
+  },
+  "cards": [
+    {
+      "title": "Instalación Fácil",
+      "text": "Descarga Forge y todos los mods necesarios en un solo lugar",
+      "icon": "Download",
+      "color": "#3b82f6"
+    },
+    {
+      "title": "Mods Personalizados",
+      "text": "Curaduría meticulosa de mods para balance, rendimiento y experiencia épica",
+      "icon": "Sparkles",
+      "color": "#f59e0b"
+    },
+    {
+      "title": "Optimizado",
+      "text": "Configuración enfocada en el rendimiento sin comprometer gráficos",
+      "icon": "Zap",
+      "color": "#10b981"
+    }
+  ],
+  "features": [
+    {
+      "title": "Mundos Vivos",
+      "description": "Biomas únicos y estructuras generadas dinámicamente que cambian cada partida"
+    },
+    {
+      "title": "Combate Épico",
+      "description": "Jefes legendarios con mecánicas complejas y recompensas que transforman tu aventura"
+    },
+    {
+      "title": "Progresión Profunda",
+      "description": "Sistemas de habilidades, encantamientos revolucionarios y mecánicas de crafting avanzado"
+    }
+  ],
+  "cta": {
+    "title": "¿Listo para la Aventura?",
+    "description": "Descarga los mods, ajusta tu configuración y únete a Netherious hoy mismo.",
+    "button": "Ver Instrucciones de Instalación"
+  }
+}

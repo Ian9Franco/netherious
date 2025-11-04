@@ -1,0 +1,235 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* --- Root Variables --- */
+:root {
+  --background: #131313;
+  --foreground: #e6e6e6;
+  --card: #222222;
+  --card-foreground: #f2f2f2;
+  --popover: #252525;
+  --popover-foreground: #eaeaea;
+  --primary: #5b9bd5;
+  --primary-foreground: #ffffff;
+  --secondary: #2f2f2f;
+  --secondary-foreground: #d0d0d0;
+  --muted: #3b3b3b;
+  --muted-foreground: #a0a0a0;
+  --accent: #8fce00;
+  --accent-foreground: #131313;
+  --destructive: #dc3545;
+  --destructive-foreground: #ffffff;
+  --border: #383838;
+  --input: #2d2d2d;
+  --ring: #6fb1ff;
+
+  --chart-1: #8fce00;
+  --chart-2: #ff6b35;
+  --chart-3: #5b9bd5;
+  --chart-4: #a855f7;
+  --chart-5: #fbbf24;
+
+  --radius: 0rem;
+
+  /* Sidebar */
+  --sidebar: oklch(0.145 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+/* --- Fonts & Theme --- */
+@theme inline {
+  --font-sans: "Press Start 2P", "VT323", system-ui, sans-serif;
+  --font-mono: "Press Start 2P", monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* --- Base Pixel Styles --- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    image-rendering: pixelated;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* --- Glass Panels --- */
+.glass {
+  background: rgba(45, 45, 45, 0.95);
+  border: 4px solid var(--border);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.1),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.3),
+    4px 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* --- Buttons --- */
+.minecraft-button {
+  position: relative;
+  border: 4px solid var(--border);
+  background: var(--card);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.2),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.3),
+    4px 4px 0 rgba(0, 0, 0, 0.3);
+  transition: all 0.12s ease-out;
+}
+
+.minecraft-button:hover {
+  transform: translate(1px, 1px);
+  filter: brightness(1.25);
+  box-shadow:
+    inset 2px 2px 0 rgba(255, 255, 255, 0.3),
+    inset -2px -2px 0 rgba(0, 0, 0, 0.2),
+    0 0 12px var(--ring);
+}
+
+.minecraft-button:active {
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset 2px 2px 0 rgba(0, 0, 0, 0.3),
+    inset -2px -2px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-secondary border-border;
+  border: 2px solid;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-muted border-border;
+  border: 2px solid;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground;
+}
+
+/* --- Text Selection & Focus --- */
+::selection {
+  @apply bg-primary/50 text-primary-foreground;
+}
+:focus-visible {
+  @apply outline-4 outline-offset-0 outline-ring;
+  outline-style: solid;
+}
+
+/* --- Pixel Fonts --- */
+.pixel-text {
+  font-family: "Press Start 2P", monospace;
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+/* --- Borders & Glow --- */
+.pixel-border {
+  border-style: solid;
+  border-width: 4px;
+  image-rendering: pixelated;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.2), inset -2px -2px 0 rgba(0,0,0,0.3);
+}
+.pixel-glow {
+  box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+}
+
+/* --- Animations --- */
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes pixelDissolve {
+  0% { opacity: 0; filter: blur(4px); transform: scale(0.95); }
+  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+.pixel-dissolve { animation: pixelDissolve 0.4s ease-out; }
+
+@keyframes crtFlicker {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.95; }
+}
+.crt-flicker:hover { animation: crtFlicker 0.15s ease-in-out 2; }
+
+@keyframes pixelBounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+.pixel-bounce:hover { animation: pixelBounce 0.3s ease-in-out; }
+
+/* --- Optional Retro Scanlines --- */
+.scanlines::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    rgba(255,255,255,0.03) 0px,
+    rgba(0,0,0,0.03) 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* --- Pixel Titles Flicker --- */
+@keyframes pixelBlink {
+  0%,90%,100% { opacity:1; }
+  95% { opacity:0.7; }
+}
+.pixel-title { animation: pixelBlink 3s infinite; }

@@ -1,0 +1,138 @@
+{
+  "title": "Instalación Completa",
+  "subtitle": "Paso a paso para descargar y configurar Netherious en tu PC",
+  "intro": {
+    "title": "Guía de Instalación",
+    "steps": "Sigue estos pasos en orden para una experiencia sin problemas"
+  },
+  "sections": [
+    {
+      "id": "forge",
+      "title": "1. Forge 1.20.1",
+      "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
+      "icon": "Download",
+      "color": "#3b82f6",
+      "action": "Descargar Forge",
+      "instructions": [
+        "Descarga el instalador de Forge 1.20.1",
+        "Ejecuta el instalador con Java",
+        "Selecciona 'Install client'",
+        "Confirma la instalación"
+      ],
+      "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html"
+    },
+    {
+      "id": "required_mods",
+      "title": "2. Mods Requeridos",
+      "description": "Mods esenciales sin los cuales no podrás conectarte al servidor. Instala TODOS estos.",
+      "icon": "Package",
+      "color": "#10b981",
+      "action": "Descargar Mods Requeridos",
+      "count": "15+ mods",
+      "critical": true,
+      "link": "https://modrinth.com/collection/netherious-required"
+    },
+    {
+      "id": "optional_mods",
+      "title": "3. Mods Opcionales",
+      "description": "Mejoras visuales y de calidad de vida recomendadas. Opcionales pero mejoran la experiencia.",
+      "icon": "Sparkles",
+      "color": "#f59e0b",
+      "action": "Descargar Mods Opcionales",
+      "variant": "outline",
+      "count": "10+ mods",
+      "link": "https://modrinth.com/collection/netherious-optional"
+    },
+    {
+      "id": "textures",
+      "title": "4. Packs de Texturas",
+      "description": "Instala en este orden específico (de arriba hacia abajo) para mejor compatibilidad.",
+      "icon": "Palette",
+      "color": "#8b5cf6",
+      "action": "Descargar Packs de Texturas",
+      "items": [
+        "Faithful 64x - Base",
+        "Netherious Custom Pack - Overlay",
+        "Enchantments Plus",
+        "Better Mobs Textures",
+        "Custom Items Overhaul"
+      ],
+      "link": "https://modrinth.com/collection/netherious-textures"
+    },
+    {
+      "id": "shaders",
+      "title": "5. Shaders Recomendados",
+      "description": "Shaders opcionales para mejorar gráficos. Prueba diferentes hasta encontrar el mejor para tu PC.",
+      "icon": "Sparkles",
+      "color": "#ec4899",
+      "recommendation": "Selecciona según tu GPU",
+      "links": [
+        {
+          "name": "Visual Vibrance - Minecraft Shader (Recomendado)",
+          "url": "https://modrinth.com/shader/visual-vibrance",
+          "difficulty": "Media"
+        },
+        {
+          "name": "Complementary Shaders - Reimagined - Minecraft Shader",
+          "url": "https://modrinth.com/shader/complementary-reimagined",
+          "difficulty": "Alta"
+        },
+        {
+          "name": "Complementary Shaders - Unbound - Minecraft Shader",
+          "url": "https://modrinth.com/shader/complementary-unbound",
+          "difficulty": "Alta"
+        },
+        {
+          "name": "Super Duper Vanilla - Minecraft Shader",
+          "url": "https://modrinth.com/shader/super-duper-vanilla",
+          "difficulty": "Media"
+        },
+        {
+          "name": "FastPBR - Minecraft Shader",
+          "url": "https://modrinth.com/shader/fastpbr",
+          "difficulty": "Baja"
+        },
+        {
+          "name": "RedHat Shaders - Minecraft Shader",
+          "url": "https://modrinth.com/shader/redhat-shaders",
+          "difficulty": "Media"
+        },
+        {
+          "name": "Stereo’s Default+ - Minecraft Shader",
+          "url": "https://modrinth.com/shader/stereos-default-plus",
+          "difficulty": "Media"
+        },
+        {
+          "name": "Just Colored Lighting - Minecraft Shader",
+          "url": "https://modrinth.com/shader/just-colored-lighting",
+          "difficulty": "Baja"
+        },
+        {
+          "name": "DrDestens Minecraft Shaders - Minecraft Shader",
+          "url": "https://modrinth.com/shader/drdestens-minecraft-shaders",
+          "difficulty": "Media"
+        },
+        {
+          "name": "PixelCraft Shaders - Minecraft Shader",
+          "url": "https://modrinth.com/shader/pixelcraft-shaders",
+          "difficulty": "Baja"
+        },
+        { "name": "SEUS PTGI - Ultra",
+         "url": "https://www.sonicether.com/seus/", "difficulty": "Muy Alta" }
+      ]
+    },
+    {
+      "id": "config",
+      "title": "6. Configuración Final",
+      "description": "Ajusta la configuración para rendimiento óptimo en tu sistema.",
+      "icon": "Settings",
+      "color": "#06b6d4",
+      "checkpoints": [
+        "Asigna 8 GB de RAM mínimo en el launcher",
+        "Activa VSync en el cliente si tienes 60+ FPS",
+        "Ajusta distancia de renderizado según tu GPU",
+        "Prueba conectarte al servidor"
+      ]
+    }
+  ]
+}
