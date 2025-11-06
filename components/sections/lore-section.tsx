@@ -67,7 +67,7 @@ export function LoreSection() {
             className="relative flex-shrink-0"
           >
             <motion.img
-              src="/images/treasure-chest.gif"
+              src="/treasure-chest.gif"
               alt="Cofre Encantado"
               className="w-[200px] md:w-[260px] h-[200px] md:h-[260px] object-contain pixelated drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]"
               style={{ imageRendering: "pixelated" }}
