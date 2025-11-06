@@ -6,10 +6,10 @@ import { useEffect, useMemo, useState } from "react"
 
 // conjuntos de imágenes por sección
 const sectionBackgrounds = {
-  home: ["/images/bg-over.jpg", "/images/bg-cave.jpg"],
-  lore: ["/images/bg-end.jpg", "/images/bg-dunge.jpg"],
-  install: ["/images/bg-nether.jpg"],
-  server: ["/images/bg-mystic.jpg", "/images/bg-ocean.jpg"],
+  home: ["/bg-over.jpg", "/bg-cave.jpg"],
+  lore: ["/bg-end.jpg", "/bg-dunge.jpg"],
+  install: ["/bg-nether.jpg"],
+  server: ["/bg-mystic.jpg", "/bg-ocean.jpg"],
 }
 
 export function BackgroundScene() {
