@@ -4,23 +4,44 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useAppStore } from "@/lib/store"
 import { useEffect, useMemo, useState } from "react"
 
-const backgrounds = {
-  home: "/images/bg-lava.png",
-  install: "/images/bg-nether.jpg",
-  server: "/images/bg-ocean.jpg",
-  lore: "/images/bg-night.jpg",
+// conjuntos de imágenes por sección
+const sectionBackgrounds = {
+  home: ["/images/bg-over.jpg", "/images/bg-cave.jpg"],
+  lore: ["/images/bg-end.jpg", "/images/bg-dunge.jpg"],
+  install: ["/images/bg-nether.jpg"],
+  server: ["/images/bg-mystic.jpg", "/images/bg-ocean.jpg"],
 }
 
 export function BackgroundScene() {
   const { currentSection } = useAppStore()
-  const [currentBg, setCurrentBg] = useState(backgrounds.home)
+  const [currentBg, setCurrentBg] = useState(sectionBackgrounds.home[0])
   const [mouse, setMouse] = useState({ x: 0, y: 0 })
+  const [index, setIndex] = useState(0)
 
+  // cambiar fondo según sección
   useEffect(() => {
-    setCurrentBg(backgrounds[currentSection])
+    const images = sectionBackgrounds[currentSection] || sectionBackgrounds.home
+    setIndex(0)
+    setCurrentBg(images[0])
   }, [currentSection])
 
-  // Parallax horizontal con el mouse
+  // rotación automática dentro del set actual
+  useEffect(() => {
+    const images = sectionBackgrounds[currentSection] || sectionBackgrounds.home
+    if (images.length <= 1) return
+
+    const interval = setInterval(() => {
+      setIndex((prev) => {
+        const next = (prev + 1) % images.length
+        setCurrentBg(images[next])
+        return next
+      })
+    }, 25000) // cada 25 segundos cambia
+
+    return () => clearInterval(interval)
+  }, [currentSection])
+
+  // Parallax con mouse
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMouse({
@@ -56,7 +77,7 @@ export function BackgroundScene() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="absolute inset-0"
         >
-          {/* Imagen principal llena todo el ancho (cover) con blur leve y paneo vertical */}
+          {/* Imagen principal (sin tocar visualización original) */}
           <motion.div
             className="absolute inset-0 bg-cover bg-center"
             style={{
@@ -64,8 +85,8 @@ export function BackgroundScene() {
               filter: "blur(3px) brightness(1.05)",
             }}
             animate={{
-              y: ["0%", "-10%", "0%"], // paneo vertical suave para mostrar parte superior e inferior
-              x: [mouse.x * 0.5, mouse.x * 0.3, mouse.x * 0.5], // parallax horizontal
+              y: ["0%", "-10%", "0%"],
+              x: [mouse.x * 0.5, mouse.x * 0.3, mouse.x * 0.5],
             }}
             transition={{
               duration: 25,
