@@ -39,7 +39,7 @@ export function FloatingNav() {
           className="fixed left-4 top-4 z-50 flex items-center"
         >
           <Image
-            src="/logo/logo3.png"
+            src="/logo3.png"
             alt="Netherious Logo"
             width={160}
             height={120}
