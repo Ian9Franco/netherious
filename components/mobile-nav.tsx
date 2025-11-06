@@ -91,7 +91,7 @@ export function MobileNav() {
               {/* Logo at bottom */}
               <div className="flex justify-center mb-6">
                 <Image
-                  src="/logo/logo3.png"
+                  src="/logo3.png"
                    alt="Netherious RPG Logo"
                   width={160}
                   height={120}
