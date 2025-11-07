@@ -75,7 +75,7 @@ export function HomeSection() {
             className="flex justify-center animate-float"
           >
             <Image
-              src="/logo/logo3.png"
+              src="/logo/logo.png"
               alt="Netherious RPG Logo"
               width={800}
               height={400}

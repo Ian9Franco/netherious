@@ -12,6 +12,7 @@ const sectionBackgrounds = {
   server: ["/images/bg-mystic.jpg", "/images/bg-ocean.jpg"],
 }
 
+
 export function BackgroundScene() {
   const { currentSection } = useAppStore()
   const [currentBg, setCurrentBg] = useState(sectionBackgrounds.home[0])
