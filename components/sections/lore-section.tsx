@@ -196,7 +196,7 @@ export function LoreSection() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <div className="absolute bottom-0 left-0 right-0 p-2 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
               <p className="font-bold pixel-text text-xs" style={{ color: categoryColor }}>
-                Art {idx + 1}
+                Concept Art {idx + 1}
               </p>
             </div>
           </motion.div>

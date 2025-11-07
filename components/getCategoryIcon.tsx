@@ -1,27 +1,26 @@
 import {
   Castle,
-  Sword,
-  Flame,
-  Globe,
-  Pickaxe,
-  Cog,
-  PawPrint,
+  Swords,
+  Globe2,
+  Hammer,
   Sparkles,
+  FlaskConical,
+  PawPrint,
   Skull,
+  Cog,
   Scroll,
 } from "lucide-react"
 
-// 🎨 Colores translúcidos por categoría
 export const categoryColors: Record<string, string> = {
-  world_structures: "#9B5DE5",
-  bosses_and_combat: "#FF006E",
-  worlds_and_dimensions: "#3A86FF",
-  vanilla_plus: "#FFD60A",
-  rpg_progression: "#8338EC",
-  wildlife_and_creatures: "#00F5D4",
-  hostile_mobs: "#FB5607",
-  tools_and_systems: "#FFBE0B",
-  create_expansions: "#6A4C93",
+  world_structures: "#D4AF37",      // dorado majestuoso
+  bosses_and_combat: "#E63946",     // carmesí intenso
+  worlds_and_dimensions: "#4361EE", // azul cósmico
+  vanilla_plus: "#80ED99",          // verde esmeralda
+  rpg_progression: "#9D4EDD",       // púrpura mágico
+  wildlife_and_creatures: "#06D6A0",// verde hoja / turquesa
+  hostile_mobs: "#C1121F",          // rojo oscuro
+  tools_and_systems: "#A8A9AD",     // gris metálico
+  create_expansions: "#F77F00",     // naranja cobre
 }
 
 export const getCategoryIcon = (id: string, color?: string, size = 48) => {
@@ -31,21 +30,21 @@ export const getCategoryIcon = (id: string, color?: string, size = 48) => {
     case "world_structures":
       return <Castle color={c} size={size} />
     case "bosses_and_combat":
-      return <Flame color={c} size={size} />
+      return <Swords color={c} size={size} />
     case "worlds_and_dimensions":
-      return <Globe color={c} size={size} />
+      return <Globe2 color={c} size={size} />
     case "vanilla_plus":
       return <Sparkles color={c} size={size} />
     case "rpg_progression":
-      return <Sword color={c} size={size} />
+      return <FlaskConical color={c} size={size} />
     case "wildlife_and_creatures":
       return <PawPrint color={c} size={size} />
     case "hostile_mobs":
       return <Skull color={c} size={size} />
     case "tools_and_systems":
-      return <Cog color={c} size={size} />
+      return <Hammer color={c} size={size} />
     case "create_expansions":
-      return <Pickaxe color={c} size={size} />
+      return <Cog color={c} size={size} />
     default:
       return <Scroll color={c} size={size} />
   }
