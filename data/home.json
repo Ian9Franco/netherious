@@ -1,50 +1,50 @@
 {
   "hero": {
-    "title": "Prepárate para tu próxima aventura en Minecraft",
-    "subtitle": "Forge 1.201 • Mods personalizados • Experiencia mejorada",
+    "title": "Prepárate para tu próxima aventura",
+    "subtitle": "Forge 1.20.1 • Mods optimizados • Mundo RPG en constante evolución",
     "cta": "Copiar IP del servidor"
   },
   "intro": {
     "title": "Bienvenido a Netherious",
-    "paragraph": "Un servidor modded con una curaduría cuidadosa de mods que ofrecen exploración profunda, combate desafiante y secretos por descubrir. Únete a una comunidad dedicada a vivir la mejor experiencia de Minecraft."
+    "paragraph": "No es solo Minecraft modded: es una experiencia RPG con progresión, exploración y tecnología. Cada bioma, criatura y estructura fue elegida a mano para crear una aventura equilibrada, inmersiva y viva."
   },
   "cards": [
     {
-      "title": "Instalación Fácil",
-      "text": "Descarga Forge y todos los mods necesarios en un solo lugar",
+      "title": "Instalación Sencilla",
+      "text": "Descargá Forge y el pack completo con solo unos clics. Sin complicaciones, listo para jugar.",
       "icon": "Download",
-      "color": "#3b82f6"
+      "color": "#3B82F6"
     },
     {
-      "title": "Mods Personalizados",
-      "text": "Curaduría meticulosa de mods para balance, rendimiento y experiencia épica",
+      "title": "Mods Afinados",
+      "text": "Cada mod fue probado y ajustado para lograr equilibrio, fluidez y una experiencia única.",
       "icon": "Sparkles",
-      "color": "#f59e0b"
+      "color": "#A855F7"
     },
     {
-      "title": "Optimizado",
-      "text": "Configuración enfocada en el rendimiento sin comprometer gráficos",
+      "title": "Rendimiento Óptimo",
+      "text": "Configuraciones ajustadas para ofrecer gráficos nítidos y FPS estables, incluso en exploraciones largas.",
       "icon": "Zap",
-      "color": "#10b981"
+      "color": "#10B981"
     }
   ],
   "features": [
     {
       "title": "Mundos Vivos",
-      "description": "Biomas únicos y estructuras generadas dinámicamente que cambian cada partida"
+      "description": "Explorá biomas únicos, ruinas generadas dinámicamente y aldeas con historia propia."
     },
     {
-      "title": "Combate Épico",
-      "description": "Jefes legendarios con mecánicas complejas y recompensas que transforman tu aventura"
+      "title": "Combate Real",
+      "description": "Jefes, enemigos y habilidades especiales que exigen estrategia y reflejos."
     },
     {
-      "title": "Progresión Profunda",
-      "description": "Sistemas de habilidades, encantamientos revolucionarios y mecánicas de crafting avanzado"
+      "title": "Progresión RPG",
+      "description": "Desbloqueá clases, encantamientos avanzados y mejoras que cambian tu estilo de juego."
     }
   ],
   "cta": {
-    "title": "¿Listo para la Aventura?",
-    "description": "Descarga los mods, ajusta tu configuración y únete a Netherious hoy mismo.",
+    "title": "¿Listo para entrar a Netherious?",
+    "description": "Descargá el pack, prepará tu equipo y forjá tu historia en este mundo RPG.",
     "button": "Ver Instrucciones de Instalación"
   }
 }

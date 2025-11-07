@@ -1,15 +1,15 @@
 {
-  "intro": {
+   "intro": {
     "title": "La Historia Comienza",
-    "paragraph1": "Bienvenido a Netherious: RPG Expansion, un mundo forjado con magia, acero y maquinaria. Cada estructura cuenta una historia, cada enemigo guarda un secreto, y cada jugador deja su huella en una tierra viva y en constante evolución.",
-    "paragraph2": "Explora dimensiones antiguas, ciudades medievales y ruinas tecnológicas. Domina habilidades, enfréntate a jefes colosales y construye tu propio legado entre mundos conectados por portales, engranajes y runas olvidadas."
+    "paragraph1": "Bienvenido a Netherious: RPG Expansion — un mundo donde la magia se mezcla con la maquinaria y la aventura nunca se detiene. Cada estructura guarda secretos, cada bioma es un reto, y cada jugador forja su propio destino.",
+    "paragraph2": "Explora ruinas antiguas, fortalezas flotantes y fábricas movidas por vapor. Viaja entre dimensiones, mejora tus habilidades y enfréntate a criaturas que no pertenecen a este mundo. Todo está conectado por portales, engranajes y poder arcano."
   },
   "about": {
     "title": "Sobre el Servidor",
     "paragraphs": [
-      "Netherious es una experiencia RPG multiversal desarrollada sobre **Forge 1.20.1**, que combina exploración, combate avanzado y progresión de personaje. Cada bioma, estructura y criatura ha sido cuidadosamente seleccionado para crear una sensación de descubrimiento constante.",
-      "El servidor equilibra lo clásico de Minecraft con sistemas modernos: desde ciudades medievales llenas de illagers hasta civilizaciones tecnológicas con máquinas steampunk y energía nuclear. Los aventureros pueden elegir su propio camino: ser magos, paladines, arqueros, ingenieros o simples exploradores del caos.",
-      "Gracias a la integración de mods como *Create*, *Valoria*, *Cataclysm* y *Bosses Arise*, Netherious redefine el rol del jugador. No hay límites, solo desafíos que esperan ser conquistados."
+      "Netherious corre sobre **Forge 1.20.1** y combina lo mejor del RPG con la exploración y el progreso técnico. No es solo otro survival: es un mundo vivo con historias, facciones y secretos ocultos.",
+      "Vas a encontrar desde aldeas saqueadas por illagers hasta fortalezas mecánicas del mod *Create*. Los biomas cobran vida con criaturas únicas, y las mazmorras esconden tesoros y jefes que pondrán a prueba tus builds.",
+      "Podés ser un mago, un paladín, un ingeniero o un simple aventurero con hambre de gloria. En *Netherious*, cada pelea, máquina o portal puede cambiar el rumbo de tu historia."
     ]
   },
   "categories": [

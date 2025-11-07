@@ -7,6 +7,7 @@ import { Download, Sparkles, Zap } from "lucide-react"
 import { useSoundEffects } from "@/hooks/use-sound-effects"
 import Image from "next/image"
 import homeData from "@/data/home.json"
+import { Button } from "../ui/button"
 
 const SERVER_IP = "netherious.server.net"
 
@@ -164,11 +165,34 @@ export function HomeSection() {
           transition={{ delay: 0.3, duration: 0.6 }}
           className="p-6 md:p-8 bg-primary/10 border-2 border-primary/30 rounded-lg text-center space-y-4"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-primary pixel-text">{homeData.cta.title}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary pixel-text">
+            {homeData.cta.title}
+          </h2>
+
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-[family-name:var(--font-vt323)]">
             {homeData.cta.description}
           </p>
+
+          <Button
+            size="lg"
+            onClick={() => {
+              const section = document.getElementById("install")
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth", block: "start" })
+              } else {
+                console.warn("No se encontró la sección 'install'")
+              }
+            }}
+            className="mt-4 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/40 backdrop-blur-md transition-all"
+          >
+            {homeData.cta.button}
+          </Button>
+
+
+
+
         </motion.div>
+
       </motion.div>
     </SectionContainer>
   )
