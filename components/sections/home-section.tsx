@@ -168,7 +168,7 @@ export function HomeSection() {
 
           <div className="relative z-10 space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-[#5865F2] pixel-text drop-shadow-lg">
-              ¡unite a Nuestro SAS!
+              ¡unite a nuestro SAS!
             </h2>
             <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-[family-name:var(--font-vt323)] max-w-2xl mx-auto">
               Conéctate con el Mati, participa en el SAS y mantente al día con las últimas SAS en nuestro
@@ -184,7 +184,7 @@ export function HomeSection() {
               }}
               className="mt-6 bg-[#5865F2] hover:bg-[#4752C4] text-white border-4 border-[#4752C4] shadow-[0_0_20px_rgba(88,101,242,0.4)] hover:shadow-[0_0_30px_rgba(88,101,242,0.6)] transition-all text-lg md:text-xl px-8 py-6"
             >
-              <a href="https://discord.gg/nCaCK3pF" target="_blank" rel="noopener noreferrer">
+              <a href="#" target="_blank" rel="noopener noreferrer">
                 <Users className="w-6 h-6 mr-2 inline-block" />
                 Que sasle?
               </a>
