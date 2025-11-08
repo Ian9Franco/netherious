@@ -1,206 +1,208 @@
-# Netherious2 - Minecraft Server Launcher
+# 🎮 Netherious - Servidor Minecraft RPG
 
-A pixel art styled single-page web application for the Netherious2 private Minecraft server. Built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion with authentic Minecraft-inspired design.
+Una aplicación web moderna y estilizada para el servidor privado de Minecraft **Netherious2**, construida con Next.js 14, TypeScript, Tailwind CSS y Framer Motion. Diseño inspirado en el estilo pixel art de Minecraft con una experiencia de usuario inmersiva.
 
-## Features
+![Netherious Banner](https://via.placeholder.com/1200x400/1a1a1a/ff6b35?text=Netherious+RPG)
 
-- **Pixel Art Aesthetic** - Authentic Minecraft-inspired blocky design with chunky borders and retro fonts
-- **Interactive Sound System** - Minecraft-style UI sounds and optional ambient audio
-- **Four Main Sections** - Home, Install, Server Info, and Lore with seamless navigation
-- **Dynamic Backgrounds** - Atmospheric pixel art backgrounds that change per section
-- **Dark/Light Mode** - Full theme support with Minecraft-inspired color palettes
-- **Responsive Design** - Works beautifully on desktop, tablet, and mobile
-- **Floating Navigation** - Round pixel-style navigation buttons with hover effects
-- **Copy-to-Clipboard** - Easy server IP copying with sound feedback
-- **Download System** - NeoForge installer and modpack downloads
-- **Sound Toggle** - Master volume control with localStorage persistence
-- **Accessibility** - ARIA roles, keyboard navigation, and screen reader support
+## ✨ Características
 
-## Sound System
+- **🎨 Estética Pixel Art** - Diseño auténtico inspirado en Minecraft con bordes chunky y fuentes retro
+- **🔊 Sistema de Sonido Interactivo** - Efectos de sonido estilo Minecraft en toda la interfaz
+- **📱 Diseño Responsive** - Experiencia perfecta en desktop, tablet y móvil
+- **🎯 Cuatro Secciones Principales** - Home, Instalación, Info del Servidor y Lore con navegación fluida
+- **🌈 Fondos Dinámicos** - Fondos pixel art atmosféricos que cambian por sección
+- **🌓 Dark/Light Mode** - Soporte completo de temas con paletas inspiradas en Minecraft
+- **🎭 Navegación Flotante** - Botones de navegación pixel-style con efectos hover
+- **📋 Copy-to-Clipboard** - Copia fácil de IP del servidor con feedback sonoro
+- **⬇️ Sistema de Descargas** - Instalador de NeoForge y descargas de modpacks
+- **♿ Accesibilidad** - Roles ARIA, navegación por teclado y soporte para lectores de pantalla
+- **🎪 Indicador de Scroll** - Indicador animado que cambia de color según la sección
+- **💬 Integración Discord** - Invitación destacada a la comunidad de Discord
 
-The launcher includes a complete Minecraft-style audio experience:
-
-- **UI Sound Effects**:
-  - Hover sounds on buttons and navigation
-  - Click sounds for interactions
-  - Copy confirmation sound
-  - Transition sounds between sections
-  
-- **Ambient Audio**:
-  - Optional looping background music
-  - Smooth fade in/out transitions
-  - Separate toggle control
-  
-- **Sound Controls**:
-  - Master mute toggle in top-right corner
-  - Ambient music toggle
-  - Preferences saved to localStorage
-  - All sounds respect global mute setting
-
-### Customizing Sounds
-
-Replace the placeholder sound files in `/public/sounds/`:
-- `ui_hover.wav` - Button hover sound
-- `ui_click.wav` - Click/select sound
-- `ui_copy.wav` - Copy confirmation sound
-- `ui_transition.wav` - Section transition sound
-- `ambient_loop.mp3` - Background ambient music
-
-## Tech Stack
+## 🛠️ Stack Tecnológico
 
 - **Framework**: Next.js 14 (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS v4
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Fonts**: Press Start 2P (headings), VT323 (body)
-- **State Management**: Zustand
-- **Theme**: next-themes
-- **UI Components**: Radix UI primitives
+- **Lenguaje**: TypeScript
+- **Estilos**: Tailwind CSS v4
+- **Animaciones**: Framer Motion
+- **Iconos**: Lucide React
+- **Fuentes**: Press Start 2P (títulos), VT323 (cuerpo)
+- **Estado**: Zustand
+- **Tema**: next-themes
+- **Componentes UI**: Radix UI primitives
 
-## Getting Started
+## 🚀 Inicio Rápido
 
-### Prerequisites
+### Prerrequisitos
 
-- Node.js 18+ 
-- npm or yarn
+- Node.js 18+
+- npm, yarn o pnpm
 
-### Installation
+### Instalación
 
-1. Clone the repository
-2. Install dependencies:
+1. Clona el repositorio:
+\`\`\`bash
+git clone https://github.com/Ian9Franco/netherious-web.git
+cd netherious-web
+\`\`\`
 
+2. Instala las dependencias:
 \`\`\`bash
 npm install
 \`\`\`
 
-3. Run the development server:
-
+3. Ejecuta el servidor de desarrollo:
 \`\`\`bash
 npm run dev
 \`\`\`
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
+4. Abre [http://localhost:3000](http://localhost:3000) en tu navegador
 
-### Build for Production
+### Build para Producción
 
 \`\`\`bash
 npm run build
 npm start
 \`\`\`
 
-## Project Structure
+## 📁 Estructura del Proyecto
 
 \`\`\`
 ├── app/
-│   ├── layout.tsx          # Root layout with fonts and theme
-│   ├── page.tsx            # Main page with section routing
-│   └── globals.css         # Global styles and Minecraft theme tokens
+│   ├── layout.tsx          # Layout raíz con fuentes y tema
+│   ├── page.tsx            # Página principal con enrutamiento de secciones
+│   └── globals.css         # Estilos globales y tokens de tema Minecraft
 ├── components/
-│   ├── sections/           # Main content sections
+│   ├── sections/           # Secciones principales de contenido
 │   │   ├── home-section.tsx
 │   │   ├── install-section.tsx
 │   │   ├── server-section.tsx
 │   │   └── lore-section.tsx
-│   ├── ui/                 # Reusable UI components
+│   ├── ui/                 # Componentes UI reutilizables
 │   ├── background-scene.tsx
 │   ├── floating-nav.tsx
+│   ├── scroll-indicator.tsx
 │   ├── mobile-nav.tsx
-│   ├── glass-card.tsx      # Pixel-style card component
+│   ├── glass-card.tsx      # Componente de card pixel-style
 │   ├── loading-screen.tsx
-│   ├── theme-toggle.tsx
-│   └── sound-toggle.tsx    # Sound control component
+│   └── footer.tsx          # Footer con redes sociales
 ├── hooks/
 │   ├── use-copy-to-clipboard.ts
-│   ├── use-sound-effects.ts    # UI sound effects hook
-│   ├── use-ambient-audio.ts    # Ambient music hook
+│   ├── use-sound-effects.ts    # Hook de efectos de sonido UI
 │   └── use-toast.ts
 ├── lib/
-│   ├── store.ts            # Zustand state management
-│   └── utils.ts            # Utility functions
+│   ├── store.ts            # Gestión de estado Zustand
+│   └── utils.ts            # Funciones utilitarias
+├── data/
+│   ├── home.json           # Datos de la sección Home
+│   ├── server.json         # Información del servidor
+│   ├── install.json        # Guías de instalación
+│   └── lore.json           # Historia y lore del servidor
 └── public/
-    ├── images/             # Background images and assets
-    └── sounds/             # Audio files for UI and ambient
+    ├── images/             # Imágenes de fondo y assets
+    ├── logo/               # Logos del servidor
+    └── sounds/             # Archivos de audio para UI
 \`\`\`
 
-## Customization
+## 🎨 Personalización
 
-### Server Information
+### Información del Servidor
 
-Edit `components/sections/server-section.tsx` to update:
-- Server IP address (currently: `netherious2.server.net`)
-- Minecraft version
-- NeoForge version
-- Java requirements
+Edita `data/server.json` para actualizar:
+- Dirección IP del servidor
+- Versión de Minecraft
+- Versión de NeoForge
+- Requisitos de Java
+- Especificaciones del servidor
 
-### Install Packs
+### Paquetes de Instalación
 
-Edit `components/sections/install-section.tsx` to modify:
-- NeoForge installer link
-- Required mods list
-- Optional client-side mods
-- Texture pack order (Texture 1, 2, 3, etc.)
-- Shader recommendations with external links
+Edita `data/install.json` para modificar:
+- Link del instalador NeoForge
+- Lista de mods requeridos
+- Mods opcionales del lado del cliente
+- Orden de texture packs
+- Recomendaciones de shaders con links externos
 
-### Story & Lore
+### Historia y Lore
 
-Edit `components/sections/lore-section.tsx` to customize:
-- Server story and description
-- Feature highlights
-- Mission cards
+Edita `data/lore.json` para personalizar:
+- Historia y descripción del servidor
+- Características destacadas
+- Tarjetas de misiones
 
-### Colors & Theme
+### Colores y Tema
 
-Edit `app/globals.css` to adjust:
-- Light mode colors (dusty greys, soft sand, sky blue)
-- Dark mode colors (deep obsidian, cave stone, twilight blue)
-- Minecraft-inspired design tokens
-- Pixel borders and shadows
+Edita `app/globals.css` para ajustar:
+- Colores del modo claro (grises polvorientos, arena suave, azul cielo)
+- Colores del modo oscuro (obsidiana profunda, piedra de cueva, azul crepúsculo)
+- Tokens de diseño inspirados en Minecraft
+- Bordes y sombras pixel
 
-## Deployment
+## 🌐 Deployment
 
-Deploy to Vercel with one click:
+### Deploy en Vercel (Recomendado)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
-Or deploy manually:
+O manualmente:
 
 \`\`\`bash
 npm run build
 \`\`\`
 
-Upload the `.next` folder to your hosting provider.
+Sube la carpeta `.next` a tu proveedor de hosting.
 
-## Performance
+## 📊 Performance
 
-- Optimized images with pixel-perfect rendering
-- Lazy loading for heavy assets
-- GPU-accelerated animations
-- Preloaded sound effects
-- Fast page transitions
-- Minimal bundle size
+- Imágenes optimizadas con renderizado pixel-perfect
+- Lazy loading para assets pesados
+- Animaciones aceleradas por GPU
+- Efectos de sonido precargados
+- Transiciones de página rápidas
+- Bundle size mínimo
 
-## Accessibility
+## ♿ Accesibilidad
 
-- Semantic HTML elements
-- ARIA labels and roles
-- Keyboard navigation support
-- Screen reader friendly
-- Focus visible states
-- Proper heading hierarchy
-- Image alt text for all visuals
+- Elementos HTML semánticos
+- Labels y roles ARIA
+- Soporte para navegación por teclado
+- Amigable con lectores de pantalla
+- Estados de focus visibles
+- Jerarquía correcta de encabezados
+- Texto alt para todas las imágenes
 
-## Browser Support
+## 🌍 Soporte de Navegadores
 
-- Chrome/Edge (latest)
-- Firefox (latest)
-- Safari (latest)
-- Mobile browsers
+- Chrome/Edge (última versión)
+- Firefox (última versión)
+- Safari (última versión)
+- Navegadores móviles
 
-## License
+## 👨‍💻 Creador
 
-MIT License - feel free to use this for your own Minecraft server!
+**Ian Franco Collada Pontorno**
 
-## Credits
+- 📧 Email: [ian9franco@gmail.com](mailto:ian9franco@gmail.com)
+- 💼 LinkedIn: [Ian Franco Collada Pontorno](https://www.linkedin.com/in/ian-franco-collada-pontorno)
+- 🐱 GitHub: [@Ian9Franco](https://github.com/Ian9Franco)
+- 🌐 Portfolio: [ian-pontorno-portfolio.vercel.app](https://ian-pontorno-portfolio.vercel.app/)
+- 📷 Instagram: [@ian.franco._](https://www.instagram.com/ian.franco._/)
 
-Built for the Netherious2 private server community.
+## 🎮 Comunidad
+
+¡Únete a nuestra comunidad de Discord!
+
+**Discord**: [https://discord.gg/nCaCK3pF](https://discord.gg/nCaCK3pF)
+
+## 📝 Licencia
+
+MIT License - Siéntete libre de usar esto para tu propio servidor de Minecraft.
+
+## 🙏 Créditos
+
+Construido para la comunidad del servidor privado Netherious2.
+
+---
+
+⚡ **Hecho con ❤️ y muchos pixels** por Ian Pontorno

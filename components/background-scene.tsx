@@ -10,6 +10,7 @@ const sectionBackgrounds = {
   lore: ["/images/bg-end.jpg", "/images/bg-dunge.jpg"],
   install: ["/images/bg-cozy.jpg", "/images/bg-cave.jpg"],
   server: ["/images/bg-forest.jpg", "/images/bg-ocean.jpg"],
+  gallery:  ["/images/bg-forest.jpg", "/images/bg-ocean.jpg"], // <- nueva sección
 }
 
 

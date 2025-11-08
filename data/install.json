@@ -6,21 +6,31 @@
     "steps": "Sigue estos pasos en orden para una experiencia sin problemas"
   },
   "sections": [
-    {
-      "id": "forge",
-      "title": "1. Forge 1.20.1",
-      "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
-      "icon": "Download",
-      "color": "#3b82f6",
-      "action": "Descargar Forge",
-      "instructions": [
-        "Descarga el instalador de Forge 1.20.1",
-        "Ejecuta el instalador con Java",
-        "Selecciona 'Install client'",
-        "Confirma la instalación"
-      ],
-      "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html"
-    },
+        {
+        "id": "forge",
+        "title": "1. Forge 1.20.1",
+        "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
+        "icon": "Download",
+        "color": "#3b82f6",
+        "action": "Descargar Forge",
+        "instructions": [
+          "Abre la terminal o símbolo del sistema y ejecuta el comando: java -version",
+          "Verifica que tengas Java 8 o una versión superior instalada",
+          "Si no tienes Java, usa el botón de descarga de abajo para instalarlo",
+          "Descarga el instalador de Forge 1.20.1",
+          "Ejecuta el instalador con Java",
+          "Selecciona 'Install client'",
+          "Confirma la instalación"
+        ],
+        "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html",
+        "extraLinks": [
+          {
+            "label": "Descargar Java (si no lo tenes)",
+            "url": "https://download.oracle.com/java/21/archive/jdk-21.0.7_windows-x64_bin.exe",
+            "description": "Instalador directo de Java 21.0.7 para Windows x64"
+          }
+        ]
+      },
     {
       "id": "required_mods",
       "title": "2. Mods Requeridos",
@@ -28,9 +38,9 @@
       "icon": "Package",
       "color": "#10b981",
       "action": "Descargar Mods Requeridos",
-      "count": "15+ mods",
+      "count": "150+ mods",
       "critical": true,
-      "link": "https://modrinth.com/collection/netherious-required"
+      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/mods/mods.txt"
     },
     {
       "id": "optional_mods",
@@ -40,8 +50,8 @@
       "color": "#f59e0b",
       "action": "Descargar Mods Opcionales",
       "variant": "outline",
-      "count": "10+ mods",
-      "link": "https://modrinth.com/collection/netherious-optional"
+      "count": "50+ mods",
+      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/mods/los%20otros%20mods.txt"
     },
     {
       "id": "textures",
@@ -57,7 +67,7 @@
         "Better Mobs Textures",
         "Custom Items Overhaul"
       ],
-      "link": "https://modrinth.com/collection/netherious-textures"
+      "link": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/mods/las%20texturas.txt"
     },
     {
       "id": "shaders",
@@ -117,8 +127,11 @@
           "url": "https://modrinth.com/shader/pixelcraft-shaders",
           "difficulty": "Baja"
         },
-        { "name": "SEUS PTGI - Ultra",
-         "url": "https://www.sonicether.com/seus/", "difficulty": "Muy Alta" }
+        {
+          "name": "SEUS PTGI - Ultra",
+          "url": "https://www.sonicether.com/seus/",
+          "difficulty": "Muy Alta"
+        }
       ]
     },
     {
@@ -131,7 +144,7 @@
         "Asigna 8 GB de RAM mínimo en el launcher",
         "Activa VSync en el cliente si tienes 60+ FPS",
         "Ajusta distancia de renderizado según tu GPU",
-        "Prueba conectarte al servidor"
+        "Proba conectarte al servidor"
       ]
     }
   ]

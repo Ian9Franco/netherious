@@ -1,6 +1,6 @@
 import { create } from "zustand"
 
-type Section = "home" | "install" | "server" | "lore"
+type Section = "home" | "install" | "server" | "lore" | "gallery";
 
 interface AppState {
   currentSection: Section

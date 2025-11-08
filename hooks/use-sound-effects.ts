@@ -1,77 +1,74 @@
 "use client"
 
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useRef, useEffect } from "react"
 
-export type SoundType = "hover" | "click" | "copy" | "transition"
-
-interface UseSoundEffectsReturn {
-  playSound: (type: SoundType) => void
-  isMuted: boolean
-  toggleMute: () => void
-}
-
-export function useSoundEffects(): UseSoundEffectsReturn {
-  const soundsRef = useRef<Record<SoundType, HTMLAudioElement | null>>({
-    hover: null,
-    click: null,
-    copy: null,
-    transition: null,
-  })
-  const isMutedRef = useRef(false)
+export function useSoundEffects() {
+  const audioContextRef = useRef<AudioContext | null>(null)
+  const buttonSoundRef = useRef<HTMLAudioElement | null>(null)
+  const orbSoundRef = useRef<HTMLAudioElement | null>(null)
+  const endermanSoundRef = useRef<HTMLAudioElement | null>(null)
 
   useEffect(() => {
-    // Load mute preference from localStorage
-    const savedMute = localStorage.getItem("soundMuted")
-    isMutedRef.current = savedMute === "true"
+    // Inicializar AudioContext solo en el cliente
+    if (typeof window !== "undefined") {
+      audioContextRef.current = new (window.AudioContext || (window as any).webkitAudioContext)()
+      buttonSoundRef.current = new Audio("/sounds/button.mp3")
+      orbSoundRef.current = new Audio("/sounds/orb.mp3")
+      endermanSoundRef.current = new Audio("/sounds/enderman.mp3")
 
-    // Preload all sound effects
-    soundsRef.current = {
-      hover: new Audio("/sounds/ui_hover.wav"),
-      click: new Audio("/sounds/ui_click.wav"),
-      copy: new Audio("/sounds/ui_copy.wav"),
-      transition: new Audio("/sounds/ui_transition.wav"),
+      // Precargar los sonidos
+      buttonSoundRef.current.load()
+      orbSoundRef.current.load()
+      endermanSoundRef.current.load()
     }
-
-    // Set volume for each sound
-    Object.values(soundsRef.current).forEach((audio) => {
-      if (audio) {
-        audio.volume = 0.3
-        audio.preload = "auto"
-      }
-    })
 
     return () => {
       // Cleanup
-      Object.values(soundsRef.current).forEach((audio) => {
-        if (audio) {
-          audio.pause()
-          audio.src = ""
+      if (audioContextRef.current) {
+        audioContextRef.current.close()
+      }
+      if (buttonSoundRef.current) {
+        buttonSoundRef.current.pause()
+        buttonSoundRef.current = null
+      }
+      if (orbSoundRef.current) {
+        orbSoundRef.current.pause()
+        orbSoundRef.current = null
+      }
+      if (endermanSoundRef.current) {
+        endermanSoundRef.current.pause()
+        endermanSoundRef.current = null
+      }
+    }
+  }, [])
+
+  const playSound = useCallback((type: "click" | "hover" | "transition" | "copy" | "download" | "redirect") => {
+    if (!audioContextRef.current) return
+
+    try {
+      if (type === "download") {
+        if (orbSoundRef.current) {
+          orbSoundRef.current.currentTime = 0
+          orbSoundRef.current.volume = 0.5
+          orbSoundRef.current.play()
         }
-      })
+      } else if (type === "redirect") {
+        if (endermanSoundRef.current) {
+          endermanSoundRef.current.currentTime = 0
+          endermanSoundRef.current.volume = 0.6
+          endermanSoundRef.current.play()
+        }
+      } else {
+        if (buttonSoundRef.current) {
+          buttonSoundRef.current.currentTime = 0
+          buttonSoundRef.current.volume = type === "hover" ? 0.3 : 0.5
+          buttonSoundRef.current.play()
+        }
+      }
+    } catch (error) {
+      console.log("[Sound] Error playing sound:", error)
     }
   }, [])
 
-  const playSound = useCallback((type: SoundType) => {
-    if (isMutedRef.current) return
-
-    const audio = soundsRef.current[type]
-    if (audio) {
-      audio.currentTime = 0
-      audio.play().catch(() => {
-        // Ignore errors (e.g., user hasn't interacted with page yet)
-      })
-    }
-  }, [])
-
-  const toggleMute = useCallback(() => {
-    isMutedRef.current = !isMutedRef.current
-    localStorage.setItem("soundMuted", String(isMutedRef.current))
-    window.dispatchEvent(new CustomEvent("soundMuteToggle", { detail: isMutedRef.current }))
-  }, [])
-
-  return {
-    playSound,
-    isMuted: isMutedRef.current,
-    toggleMute,
-  }
+  return { playSound }
 }

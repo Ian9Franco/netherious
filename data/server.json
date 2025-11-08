@@ -1,32 +1,32 @@
 {
   "title": "Información del Servidor",
   "subtitle": "Todo lo que necesitas saber para conectarte a Netherious",
-  "ip": "netherious.server.net",
+  "ip": "netherious.serveeeeer1.net",
   "intro": {
     "title": "Netherious: RPG Expansion",
-    "description": "Servidor privado de Minecraft con mods personalizados en NeoForge 1.21.1, diseñado para aventureros que buscan experiencias épicas con exploración profunda, combate desafiante y secretos escondidos bajo tierra."
+    "description": "Servidor privado de Minecraft con mods personalizados en Forge 1.20.1, diseñado para aventureros que buscan experiencias épicas con exploración profunda, combate desafiante y secretos escondidos bajo tierra."
   },
   "requirements": [
     {
       "label": "Versión de Minecraft",
-      "value": "1.21.1",
+      "value": "1.20.1",
       "icon": "Server",
       "color": "#3b82f6",
       "description": "Versión específica requerida para compatibilidad total"
     },
     {
       "label": "Cargador de Mods",
-      "value": "NeoForge 1.21.1",
+      "value": "Forge 1.20.1",
       "icon": "Cpu",
       "color": "#f59e0b",
       "description": "Mod loader necesario para cargar todos los mods del servidor"
     },
     {
       "label": "Versión de Java",
-      "value": "Java 21+",
+      "value": "Java 8+",
       "icon": "Coffee",
       "color": "#10b981",
-      "description": "Requiere Java 21 o superior para rendimiento óptimo"
+      "description": "Compatible desde Java 8, pero se recomienda Java 21 para mejor estabilidad y rendimiento"
     }
   ],
   "specs": [
@@ -37,12 +37,12 @@
     },
     {
       "label": "GPU",
-      "value": "2GB VRAM",
+      "value": "2GB VRAM (solo si usas shaders)",
       "icon": "Sparkles"
     },
     {
       "label": "Almacenamiento",
-      "value": "50GB+",
+      "value": "13GB máximo con todos los mods, shaders y texturas",
       "icon": "HardDrive"
     }
   ]

@@ -3,13 +3,11 @@
 import { motion, type Variants, easeOut } from "framer-motion"
 import { SectionContainer } from "@/components/section-container"
 import { GlassCard } from "@/components/glass-card"
-import { Download, Sparkles, Zap } from "lucide-react"
+import { Download, Sparkles, Zap, Users } from "lucide-react"
 import { useSoundEffects } from "@/hooks/use-sound-effects"
 import Image from "next/image"
 import homeData from "@/data/home.json"
 import { Button } from "../ui/button"
-
-const SERVER_IP = "netherious.server.net"
 
 // Variants
 const containerVariant: Variants = {
@@ -46,15 +44,11 @@ const iconMap: Record<string, any> = {
   Download,
   Sparkles,
   Zap,
+  Users, // Agregado ícono de Discord
 }
 
 export function HomeSection() {
   const { playSound } = useSoundEffects()
-
-  const handleCopy = () => {
-    playSound("copy")
-    navigator.clipboard.writeText(SERVER_IP)
-  }
 
   const pixelText = "pixel-font text-lg md:text-2xl leading-relaxed text-foreground"
   const pixelSubText = "pixel-font text-base md:text-lg leading-relaxed text-muted-foreground"
@@ -93,15 +87,6 @@ export function HomeSection() {
               {homeData.hero.subtitle}
             </motion.p>
           </motion.div>
-
-          <motion.button
-            onClick={handleCopy}
-            onMouseEnter={() => playSound("hover")}
-            className="h-12 px-8 text-sm font-bold pixel-border minecraft-button crt-flicker pixel-glow"
-            whileTap={{ scale: 0.95 }}
-          >
-            <motion.div className="flex items-center justify-center">{homeData.hero.cta}</motion.div>
-          </motion.button>
         </motion.div>
 
         {/* Intro */}
@@ -143,31 +128,78 @@ export function HomeSection() {
           })}
         </motion.div>
 
-        {/* Features */}
-        <div className="space-y-6">
-          <h2 className="text-3xl md:text-4xl font-bold pixel-text text-center">¿Por qué Netherious?</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {homeData.features.map((feature, idx) => (
-              <GlassCard key={idx} delay={0.8 + idx * 0.1} className="space-y-5 p-6 md:p-10 crt-flicker">
-                <h3 className="text-lg md:text-2xl font-bold pixel-text">{feature.title}</h3>
-                <p className="text-2xl md:text-3xl text-muted-foreground leading-relaxed font-[family-name:var(--font-vt323)]">
-                  {feature.description}
-                </p>
-              </GlassCard>
+
+        {/* Discord Card with Sound Redirect */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
+          className="relative p-8 md:p-12 bg-gradient-to-br from-[#5865F2]/20 to-[#5865F2]/5 border-4 border-[#5865F2]/40 rounded-lg text-center space-y-6 overflow-hidden"
+        >
+          {/* Decorative particles */}
+          <div className="absolute inset-0 pointer-events-none">
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={i}
+                className="absolute w-2 h-2 bg-[#5865F2] rounded-sm"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  opacity: [0.3, 0.8, 0.3],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: Math.random() * 2,
+                }}
+              />
             ))}
           </div>
-        </div>
 
-        {/* Final CTA */}
+          <motion.div
+            animate={{ rotate: [0, 5, -5, 0] }}
+            transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          >
+            <Users className="w-16 h-16 mx-auto text-[#5865F2] pixelated drop-shadow-[0_0_10px_rgba(88,101,242,0.5)]" />
+          </motion.div>
+
+          <div className="relative z-10 space-y-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#5865F2] pixel-text drop-shadow-lg">
+              ¡unite a Nuestro SAS!
+            </h2>
+            <p className="text-xl md:text-2xl text-foreground/90 leading-relaxed font-[family-name:var(--font-vt323)] max-w-2xl mx-auto">
+              Conéctate con el Mati, participa en el SAS y mantente al día con las últimas SAS en nuestro
+              servidor de Discord
+            </p>
+
+            <Button
+              size="lg"
+              variant="default"
+              asChild
+              onClick={() => {
+                playSound("redirect")
+              }}
+              className="mt-6 bg-[#5865F2] hover:bg-[#4752C4] text-white border-4 border-[#4752C4] shadow-[0_0_20px_rgba(88,101,242,0.4)] hover:shadow-[0_0_30px_rgba(88,101,242,0.6)] transition-all text-lg md:text-xl px-8 py-6"
+            >
+              <a href="https://discord.gg/nCaCK3pF" target="_blank" rel="noopener noreferrer">
+                <Users className="w-6 h-6 mr-2 inline-block" />
+                Que sasle?
+              </a>
+            </Button>
+          </div>
+        </motion.div>
+
+        {/* CTA with Navigation to Install Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="p-6 md:p-8 bg-primary/10 border-2 border-primary/30 rounded-lg text-center space-y-4"
+          className="p-6 md:p-8 bg-primary/10 border-4 border-primary/30 rounded-lg text-center space-y-4"
         >
-          <h2 className="text-2xl md:text-3xl font-bold text-primary pixel-text">
-            {homeData.cta.title}
-          </h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-primary pixel-text">{homeData.cta.title}</h2>
 
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed font-[family-name:var(--font-vt323)]">
             {homeData.cta.description}
@@ -175,24 +207,19 @@ export function HomeSection() {
 
           <Button
             size="lg"
+            variant="default"
             onClick={() => {
+              playSound("click")
               const section = document.getElementById("install")
               if (section) {
                 section.scrollIntoView({ behavior: "smooth", block: "start" })
-              } else {
-                console.warn("No se encontró la sección 'install'")
               }
             }}
-            className="mt-4 bg-primary/20 hover:bg-primary/30 text-primary border border-primary/40 backdrop-blur-md transition-all"
+            className="mt-4 bg-primary/20 hover:bg-primary/30 text-primary border-4 border-primary/40 backdrop-blur-md transition-all text-lg px-8 py-4"
           >
             {homeData.cta.button}
           </Button>
-
-
-
-
         </motion.div>
-
       </motion.div>
     </SectionContainer>
   )

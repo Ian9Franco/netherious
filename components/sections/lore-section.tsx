@@ -66,14 +66,17 @@ export function LoreSection() {
             transition={{ duration: 2.5, ease: "easeOut" }}
             className="relative flex-shrink-0"
           >
-            <motion.img
-              src="/images/treasure-chest.gif"
-              alt="Cofre Encantado"
-              className="w-[200px] md:w-[260px] h-[200px] md:h-[260px] object-contain pixelated drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]"
-              style={{ imageRendering: "pixelated" }}
-              animate={{ y: [0, -10, 0], scale: [1, 1.02, 1] }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-            />
+            <motion.video
+              src="/images/panda.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-[200px] md:w-[260px] h-[200px] md:h-[260px] object-contain pixelated drop-shadow-[0_0_12px_rgba(0,0,0,0.6)]"
+                style={{ imageRendering: "pixelated" }}
+                animate={{ y: [0, -10, 0], scale: [1, 1.02, 1] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              />
           </motion.div>
 
           <div className="text-center md:text-left space-y-5 max-w-2xl flex-1">

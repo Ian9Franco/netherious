@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 /* --- Root Variables --- */
 :root {
   --background: #131313;
@@ -108,10 +110,8 @@
 .glass {
   background: rgba(45, 45, 45, 0.95);
   border: 4px solid var(--border);
-  box-shadow:
-    inset 2px 2px 0 rgba(255, 255, 255, 0.1),
-    inset -2px -2px 0 rgba(0, 0, 0, 0.3),
-    4px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.1), inset -2px -2px 0 rgba(0, 0, 0, 0.3), 4px 4px 0
+    rgba(0, 0, 0, 0.3);
 }
 
 /* --- Buttons --- */
@@ -119,27 +119,20 @@
   position: relative;
   border: 4px solid var(--border);
   background: var(--card);
-  box-shadow:
-    inset 2px 2px 0 rgba(255, 255, 255, 0.2),
-    inset -2px -2px 0 rgba(0, 0, 0, 0.3),
-    4px 4px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.2), inset -2px -2px 0 rgba(0, 0, 0, 0.3), 4px 4px 0
+    rgba(0, 0, 0, 0.3);
   transition: all 0.12s ease-out;
 }
 
 .minecraft-button:hover {
   transform: translate(1px, 1px);
   filter: brightness(1.25);
-  box-shadow:
-    inset 2px 2px 0 rgba(255, 255, 255, 0.3),
-    inset -2px -2px 0 rgba(0, 0, 0, 0.2),
-    0 0 12px var(--ring);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.3), inset -2px -2px 0 rgba(0, 0, 0, 0.2), 0 0 12px var(--ring);
 }
 
 .minecraft-button:active {
   transform: translate(2px, 2px);
-  box-shadow:
-    inset 2px 2px 0 rgba(0, 0, 0, 0.3),
-    inset -2px -2px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: inset 2px 2px 0 rgba(0, 0, 0, 0.3), inset -2px -2px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* --- Scrollbar --- */
@@ -154,7 +147,7 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-muted border-border;
   border: 2px solid;
-  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.2);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.2);
 }
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-muted-foreground;
@@ -183,53 +176,138 @@
   border-style: solid;
   border-width: 4px;
   image-rendering: pixelated;
-  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.2), inset -2px -2px 0 rgba(0,0,0,0.3);
+  box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.2), inset -2px -2px 0 rgba(0, 0, 0, 0.3);
 }
 .pixel-glow {
   box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
 }
 
+.pixelated {
+  image-rendering: pixelated;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+
 /* --- Animations --- */
 @keyframes float {
-  0%,100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
-.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
 
 @keyframes pixelDissolve {
-  0% { opacity: 0; filter: blur(4px); transform: scale(0.95); }
-  100% { opacity: 1; filter: blur(0); transform: scale(1); }
+  0% {
+    opacity: 0;
+    filter: blur(4px);
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
 }
-.pixel-dissolve { animation: pixelDissolve 0.4s ease-out; }
+.pixel-dissolve {
+  animation: pixelDissolve 0.4s ease-out;
+}
 
 @keyframes crtFlicker {
-  0%,100% { opacity: 1; }
-  50% { opacity: 0.95; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
 }
-.crt-flicker:hover { animation: crtFlicker 0.15s ease-in-out 2; }
+.crt-flicker:hover {
+  animation: crtFlicker 0.15s ease-in-out 2;
+}
 
 @keyframes pixelBounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
-.pixel-bounce:hover { animation: pixelBounce 0.3s ease-in-out; }
+.pixel-bounce:hover {
+  animation: pixelBounce 0.3s ease-in-out;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px) scale(1.05);
+    opacity: 0.8;
+  }
+}
+.animate-scroll-pulse {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
 
 /* --- Optional Retro Scanlines --- */
 .scanlines::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: repeating-linear-gradient(
-    rgba(255,255,255,0.03) 0px,
-    rgba(0,0,0,0.03) 2px
-  );
+  background: repeating-linear-gradient(rgba(255, 255, 255, 0.03) 0px, rgba(0, 0, 0, 0.03) 2px);
   pointer-events: none;
   z-index: 9999;
 }
 
 /* --- Pixel Titles Flicker --- */
 @keyframes pixelBlink {
-  0%,90%,100% { opacity:1; }
-  95% { opacity:0.7; }
+  0%,
+  90%,
+  100% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.7;
+  }
 }
-.pixel-title { animation: pixelBlink 3s infinite; }
+.pixel-title {
+  animation: pixelBlink 3s infinite;
+}
+
+/* Custom Minecraft cursors per section with dual-state sprite */
+
+/* Custom Minecraft cursors - Updated to use server-cursor.png from public folder */
+
+/* Custom Minecraft cursors - Updated to use server-cursor.png from public folder */
+* {
+  image-rendering: pixelated;
+  cursor: url("/cursor/server-cursor.png") 0 0, auto;
+}
+
+/* Cursor hover state for interactive elements */
+button,
+a,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+select {
+  cursor: url("/cursor/server-cursor.png") 0 0, pointer;
+}
+
+button:hover,
+a:hover,
+[role="button"]:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+select:hover {
+  cursor: url("/cursor/server-cursor.png") 0 0, pointer;
+}
