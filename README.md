@@ -17,7 +17,8 @@ Una aplicación web moderna y estilizada para el servidor privado de Minecraft *
 - **⬇️ Sistema de Descargas** - Instalador de NeoForge y descargas de modpacks
 - **♿ Accesibilidad** - Roles ARIA, navegación por teclado y soporte para lectores de pantalla
 - **🎪 Indicador de Scroll** - Indicador animado que cambia de color según la sección
-- **💬 Integración Discord** - Invitación destacada a la comunidad de Discord
+- **⬇️ Sistema de Descargas** - Instalador de NeoForge y modpacks alojados en Cloudflare R2
+- **♿ Accesibilidad** - Roles ARIA, navegación por teclado y soporte para lectores de pantalla
 
 ## 🛠️ Stack Tecnológico
 
