@@ -54,9 +54,9 @@
       ],
       "details": [
         "Bosses Arise: Cuatro jefes únicos con mecánicas especiales y recompensas poderosas.",
-        "Dungeon Now Loading 2%: Agrega cientos de nuevas mazmorras generadas, cada una con su propio diseño y jefes únicos. Perfecto para exploradores que quieren descubrir desafíos constantemente y encontrar botín exclusivo.",
-        "Qliphoth Awakening: Jefes inspirados en el Árbol de la Vida, con arenas y condiciones únicas.",
-        "L_Ender Cataclysm: Mazmorras temáticas con jefes como Leviathan y Netherite Monstrosity.",
+        "Dungeon Now Loading 2%: El mod introduce una serie de nuevas mazmorras para explorar, con diversos tamaños y temáticas.",
+        "Qliphoth Awakening: Es un mod que se centra en añadir varios jefes, cada uno con su propio conjunto de ataques, mecánicas únicas y objetos que sueltan.",
+        "L_Ender Cataclysm: Cataclysm es un mod que añade mazmorras difíciles, desafiantes combates contra jefes y objetos poderosos.",
         "Illage and Spillage: Nuevos tipos de illagers para raids más dinámicas.",
         "Ender Dragon Fight Remastered: Pelea final reimaginada con fases y ataques nuevos.",
         "Wither's Wrath: Combate mejorado contra el Wither con patrones avanzados.",
@@ -77,7 +77,7 @@
       ],
       "details": [
         "Better Nether: Nuevos biomas, materiales y mecánicas en el Nether.",
-        "Mofus Broken Constellation: Dimensión cósmica con historia, jefes y ruinas estelares.",
+        "Mofus Broken Constellation: Expande el End y más allá con nuevos biomas, estructuras y una misteriosa segunda dimensión. Descubre una historia oculta, enfréntate a jefes únicos y forja el destino de un reino olvidado.",
         "Ad Astra: Exploración espacial con planetas, cohetes y estaciones orbitales.",
         "Windswept: Biomas fríos y montañosos con fauna y flora únicas.",
         "Unusual End: Expansión Vanilla+ del End con nuevos biomas y estructuras.",
@@ -103,7 +103,7 @@
         "Quark: Mejoras Vanilla+ con estética y funcionalidad RPG-friendly.",
         "Tree Chop: Tala realista con progresión según tamaño del árbol.",
         "Farmers Delight: Cocina y agricultura ampliada con nuevos cultivos y recetas.",
-        "Easy Anvil & Easy Workbench: Interacciones simplificadas sin gastar experiencia.",
+        "Easy Anvil & Visual Workbench: Makes working with anvils much more enjoyable, Items stay inside of crafting tables and are also rendered on top. It's really fancy!.",
         "Tyz' Skills: Sistema de habilidades pasivas personalizables.",
         "Cardiac: Mecánica de orbes de vida al derrotar enemigos.",
         "Sleep Tight: Sistema de sueño con efectos y eventos nocturnos."
@@ -149,12 +149,12 @@
 
       ],
       "details": [
-        "Companions!: Mascotas personalizables con progresión y habilidades.",
-        "Primal: Criaturas salvajes y prehistóricas para entornos hostiles.",
+        "Companions!: ¡Un mod que añade 10 nuevas criaturas domesticables llamadas COMPANIONS!",
+        "Primal: Primal es un mod que mejora la naturaleza salvaje de Minecraft, ¡haciendo que la supervivencia sea más inmersiva y emocionante!",
         "Wan Ancient Beasts: Bestias mitológicas con loot ancestral.",
         "Jurassic World Craft: Dinosaurios con biomas, fósiles y genética.",
         "Promenade: Animales decorativos como caracoles, patos y mariposas.",
-        "Alex's Caves: Biomas subterráneos con fauna cavernosa.",
+        "Alex's Caves: Explora seis nuevos y raros biomas de cuevas ocultos bajo la superficie del Mundo Superior.",
         "Ribbits: Ranas con variantes regionales y sonidos personalizados.",
         "Arthropocalypse: Insectos gigantes y arácnidos hostiles en enjambres.",
         "Fowl Play: Aves con comportamientos realistas y migratorios."
@@ -201,7 +201,7 @@
         "Wraith Waystones: Puntos de viaje rápido con activación personalizada.",
         "Travelers Backpack: Mochila funcional con almacenamiento expandido.",
         "Just Hammers: Martillos de minería en área con encantamientos únicos.",
-        "Tempad: Dispositivo de teletransporte basado en coordenadas temporales.",
+        "Tempad: Inspirado en Loki de Marvel, ofrece a los jugadores mecánicas de teletransportación inmersivas a través de diversos objetos intuitivos y temáticos.",
         "ST Drive: Vehículos personalizables con combustible y mejoras visuales.",
         "Gobber2: Herramientas mágicas y anillos con habilidades especiales."
       ]

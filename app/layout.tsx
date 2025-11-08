@@ -19,14 +19,14 @@ const vt323 = VT323({
 })
 
 export const metadata: Metadata = {
-  title: "Netherious2 - Minecraft Server Launcher",
+  title: "Netherious - Minecraft Server Modpack",
   description:
-    "Private Minecraft server launcher for Netherious2. Download NeoForge 1.21.1, modpacks, texture packs, and shader recommendations.",
+    "Private Minecraft server modpack for Netherious. Download Forge 1.20.1, modpacks, texture packs, and shader recommendations.",
   keywords: ["minecraft", "server", "neoforge", "modpack", "netherious2", "launcher"],
-  authors: [{ name: "Netherious2 Team" }],
+  authors: [{ name: "Netherious Team" }],
   openGraph: {
-    title: "Netherious2 - Minecraft Server Launcher",
-    description: "Join the Netherious2 Minecraft server with custom mods and shaders.",
+    title: "Netherious - Minecraft Server Modpack",
+    description: "Join the Netherious Minecraft server with custom mods and shaders.",
     type: "website",
   },
 icons: {

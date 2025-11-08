@@ -14,11 +14,11 @@
         "color": "#3b82f6",
         "action": "Descargar Forge",
         "instructions": [
-          "Abre la terminal o símbolo del sistema y ejecuta el comando: java -version",
+          "Abri la terminal o símbolo del sistema y ejecuta el comando: java -version",
           "Verifica que tengas Java 8 o una versión superior instalada",
-          "Si no tienes Java, usa el botón de descarga de abajo para instalarlo",
+          "Si no tenes Java, usa el botón de descarga de abajo para instalarlo",
           "Descarga el instalador de Forge 1.20.1",
-          "Ejecuta el instalador con Java",
+          "Ejecuta el instalador",
           "Selecciona 'Install client'",
           "Confirma la instalación"
         ],

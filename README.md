@@ -1,6 +1,6 @@
 # 🎮 Netherious - Servidor Minecraft RPG
 
-Una aplicación web moderna y estilizada para el servidor privado de Minecraft **Netherious2**, construida con Next.js 14, TypeScript, Tailwind CSS y Framer Motion. Diseño inspirado en el estilo pixel art de Minecraft con una experiencia de usuario inmersiva.
+Una aplicación web moderna y estilizada para el servidor privado de Minecraft **Netherious**, construida con Next.js 14, TypeScript, Tailwind CSS y Framer Motion. Diseño inspirado en el estilo pixel art de Minecraft con una experiencia de usuario inmersiva.
 
 ![Netherious Banner](https://via.placeholder.com/1200x400/1a1a1a/ff6b35?text=Netherious+RPG)
 
@@ -14,7 +14,7 @@ Una aplicación web moderna y estilizada para el servidor privado de Minecraft *
 - **🌓 Dark/Light Mode** - Soporte completo de temas con paletas inspiradas en Minecraft
 - **🎭 Navegación Flotante** - Botones de navegación pixel-style con efectos hover
 - **📋 Copy-to-Clipboard** - Copia fácil de IP del servidor con feedback sonoro
-- **⬇️ Sistema de Descargas** - Instalador de NeoForge y descargas de modpacks
+- **⬇️ Sistema de Descargas** - Instalador de Forge y descargas de modpacks
 - **♿ Accesibilidad** - Roles ARIA, navegación por teclado y soporte para lectores de pantalla
 - **🎪 Indicador de Scroll** - Indicador animado que cambia de color según la sección
 - **⬇️ Sistema de Descargas** - Instalador de NeoForge y modpacks alojados en Cloudflare R2
@@ -190,11 +190,6 @@ Sube la carpeta `.next` a tu proveedor de hosting.
 - 🌐 Portfolio: [ian-pontorno-portfolio.vercel.app](https://ian-pontorno-portfolio.vercel.app/)
 - 📷 Instagram: [@ian.franco._](https://www.instagram.com/ian.franco._/)
 
-## 🎮 Comunidad
-
-¡Únete a nuestra comunidad de Discord!
-
-**Discord**: [https://discord.gg/nCaCK3pF](https://discord.gg/nCaCK3pF)
 
 ## 📝 Licencia
 
@@ -202,8 +197,8 @@ MIT License - Siéntete libre de usar esto para tu propio servidor de Minecraft.
 
 ## 🙏 Créditos
 
-Construido para la comunidad del servidor privado Netherious2.
+Construido para la comunidad del servidor privado Netherious.
 
 ---
 
-⚡ **Hecho con ❤️ y muchos pixels** por Ian Pontorno
+⚡ **Hecho por** por Ian Pontorno
