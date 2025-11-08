@@ -97,39 +97,8 @@ export function HomeSection() {
           </p>
         </GlassCard>
 
-        {/* Cards */}
-        <motion.div className="grid md:grid-cols-3 gap-4 md:gap-6 justify-items-center">
-          {homeData.cards.map((item, i) => {
-            const Icon = iconMap[item.icon as keyof typeof iconMap]
-            return (
-              <GlassCard
-                key={i}
-                delay={0.6 + i * 0.1}
-                className="text-center space-y-3 md:space-y-4 p-4 md:p-6 crt-flicker min-h-[180px] max-w-xs md:max-w-sm animate-float"
-              >
-                <motion.div
-                  variants={cardVariant}
-                  initial="hidden"
-                  animate="show"
-                  whileHover="hover"
-                  className="w-16 h-16 mx-auto flex items-center justify-center border-4 rounded-lg"
-                  style={{ borderColor: item.color, backgroundColor: `${item.color}20` }}
-                >
-                  {Icon && <Icon className="w-8 h-8 pixelated" style={{ color: item.color }} />}
-                </motion.div>
-                <motion.h3 variants={fadeUpVariant} className="text-sm font-bold pixel-text">
-                  {item.title}
-                </motion.h3>
-                <motion.p variants={fadeUpVariant} className={pixelSubText}>
-                  {item.text}
-                </motion.p>
-              </GlassCard>
-            )
-          })}
-        </motion.div>
 
-
-        {/* Discord Card with Sound Redirect */}
+         {/* Discord Card with Sound Redirect */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -191,6 +160,40 @@ export function HomeSection() {
             </Button>
           </div>
         </motion.div>
+
+        {/* Cards */}
+        <motion.div className="grid md:grid-cols-3 gap-4 md:gap-6 justify-items-center">
+          {homeData.cards.map((item, i) => {
+            const Icon = iconMap[item.icon as keyof typeof iconMap]
+            return (
+              <GlassCard
+                key={i}
+                delay={0.6 + i * 0.1}
+                className="text-center space-y-3 md:space-y-4 p-4 md:p-6 crt-flicker min-h-[180px] max-w-xs md:max-w-sm animate-float"
+              >
+                <motion.div
+                  variants={cardVariant}
+                  initial="hidden"
+                  animate="show"
+                  whileHover="hover"
+                  className="w-16 h-16 mx-auto flex items-center justify-center border-4 rounded-lg"
+                  style={{ borderColor: item.color, backgroundColor: `${item.color}20` }}
+                >
+                  {Icon && <Icon className="w-8 h-8 pixelated" style={{ color: item.color }} />}
+                </motion.div>
+                <motion.h3 variants={fadeUpVariant} className="text-sm font-bold pixel-text">
+                  {item.title}
+                </motion.h3>
+                <motion.p variants={fadeUpVariant} className={pixelSubText}>
+                  {item.text}
+                </motion.p>
+              </GlassCard>
+            )
+          })}
+        </motion.div>
+
+
+       
 
         {/* CTA with Navigation to Install Section */}
         <motion.div
