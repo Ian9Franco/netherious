@@ -61,7 +61,7 @@ export function useSoundEffects() {
       } else {
         if (buttonSoundRef.current) {
           buttonSoundRef.current.currentTime = 0
-          buttonSoundRef.current.volume = type === "hover" ? 0.3 : 0.5
+          buttonSoundRef.current.volume = type === "hover" ? 0.1 : 0.15
           buttonSoundRef.current.play()
         }
       }

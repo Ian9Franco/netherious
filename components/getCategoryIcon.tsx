@@ -1,26 +1,15 @@
-import {
-  Castle,
-  Swords,
-  Globe2,
-  Hammer,
-  Sparkles,
-  FlaskConical,
-  PawPrint,
-  Skull,
-  Cog,
-  Scroll,
-} from "lucide-react"
+import { Castle, Swords, Globe2, Hammer, Sparkles, FlaskConical, PawPrint, Skull, Cog, Scroll } from "lucide-react"
 
 export const categoryColors: Record<string, string> = {
-  world_structures: "#D4AF37",      // dorado majestuoso
-  bosses_and_combat: "#E63946",     // carmesí intenso
+  world_structures: "#D4AF37", // dorado majestuoso
+  bosses_and_combat: "#E63946", // carmesí intenso
   worlds_and_dimensions: "#4361EE", // azul cósmico
-  vanilla_plus: "#80ED99",          // verde esmeralda
-  rpg_progression: "#9D4EDD",       // púrpura mágico
-  wildlife_and_creatures: "#06D6A0",// verde hoja / turquesa
-  hostile_mobs: "#C1121F",          // rojo oscuro
-  tools_and_systems: "#A8A9AD",     // gris metálico
-  create_expansions: "#F77F00",     // naranja cobre
+  vanilla_plus: "#80ED99", // verde esmeralda
+  rpg_progression: "#9D4EDD", // púrpura mágico
+  wildlife_and_creatures: "#06D6A0", // verde hoja / turquesa
+  hostile_mobs: "#C1121F", // rojo oscuro
+  tools_and_systems: "#A8A9AD", // gris metálico
+  create_expansions: "#F77F00", // naranja cobre
 }
 
 export const getCategoryIcon = (id: string, color?: string, size = 48) => {

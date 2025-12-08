@@ -9,6 +9,7 @@
     {
       "id": "forge",
       "title": "1. Forge 1.20.1",
+      "critical": true,     
       "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
       "icon": "Download",
       "color": "#3b82f6",
@@ -40,7 +41,7 @@
       "color": "#10b981",
       "action": "Descargar Netherious.zip",
       "critical": true,
-      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/netherious-core/netherious.zip",
+      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/core/netherious.zip",
       "recommendation": "Descarga este archivo después de instalar Forge",
       "instructions": [
         "Descarga el archivo netherious.zip desde el botón de abajo",

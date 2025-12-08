@@ -49,8 +49,11 @@ export function ScrollIndicator() {
             className="flex flex-col items-center gap-2"
           >
             <span
-              className="text-xs md:text-sm font-bold pixel-text drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
-              style={{ color: `${currentColor}CC` }}
+              className="text-xs md:text-sm font-bold pixel-text"
+              style={{
+                color: `${currentColor}CC`,
+                textShadow: "2px 2px 0px #000, -2px -2px 0px #000, 2px -2px 0px #000, -2px 2px 0px #000",
+              }}
             >
               SCROLL
             </span>
