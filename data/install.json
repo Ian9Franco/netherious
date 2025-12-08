@@ -6,137 +6,90 @@
     "steps": "Sigue estos pasos en orden para una experiencia sin problemas"
   },
   "sections": [
-        {
-        "id": "forge",
-        "title": "1. Forge 1.20.1",
-        "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
-        "icon": "Download",
-        "color": "#3b82f6",
-        "action": "Descargar Forge",
-        "instructions": [
-          "Abri la terminal o símbolo del sistema y ejecuta el comando: java -version",
-          "Verifica que tengas Java 8 o una versión superior instalada",
-          "Si no tenes Java, usa el botón de descarga de abajo para instalarlo",
-          "Descarga el instalador de Forge 1.20.1",
-          "Ejecuta el instalador",
-          "Selecciona 'Install client'",
-          "Confirma la instalación"
-        ],
-        "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html",
-        "extraLinks": [
-          {
-            "label": "Descargar Java (si no lo tenes)",
-            "url": "https://download.oracle.com/java/21/archive/jdk-21.0.7_windows-x64_bin.exe",
-            "description": "Instalador directo de Java 21.0.7 para Windows x64"
-          }
-        ]
-      },
     {
-      "id": "required_mods",
-      "title": "2. Mods Requeridos",
-      "description": "Mods esenciales sin los cuales no podrás conectarte al servidor. Instala TODOS estos.",
-      "icon": "Package",
-      "color": "#10b981",
-      "action": "Descargar Mods Requeridos",
-      "count": "150+ mods",
-      "critical": true,
-      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/mods/mods.txt"
-    },
-    {
-      "id": "optional_mods",
-      "title": "3. Mods Opcionales",
-      "description": "Mejoras visuales y de calidad de vida recomendadas. Opcionales pero mejoran la experiencia.",
-      "icon": "Sparkles",
-      "color": "#f59e0b",
-      "action": "Descargar Mods Opcionales",
-      "variant": "outline",
-      "count": "50+ mods",
-      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/mods/los%20otros%20mods.txt"
-    },
-    {
-      "id": "textures",
-      "title": "4. Packs de Texturas",
-      "description": "Instala en este orden específico (de arriba hacia abajo) para mejor compatibilidad.",
-      "icon": "Palette",
-      "color": "#8b5cf6",
-      "action": "Descargar Packs de Texturas",
-      "items": [
-        "Faithful 64x - Base",
-        "Netherious Custom Pack - Overlay",
-        "Enchantments Plus",
-        "Better Mobs Textures",
-        "Custom Items Overhaul"
+      "id": "forge",
+      "title": "1. Forge 1.20.1",
+      "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
+      "icon": "Download",
+      "color": "#3b82f6",
+      "action": "Descargar Forge",
+      "instructions": [
+        "Abri la terminal o símbolo del sistema y ejecuta el comando: java -version",
+        "Verifica que tengas Java 8 o una versión superior instalada",
+        "Si no tenes Java, usa el botón de descarga de abajo para instalarlo",
+        "Descarga el instalador de Forge 1.20.1",
+        "Ejecuta el instalador",
+        "Selecciona 'Install client'",
+        "Confirma la instalación"
       ],
-      "link": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/mods/las%20texturas.txt"
-    },
-    {
-      "id": "shaders",
-      "title": "5. Shaders Recomendados",
-      "description": "Shaders opcionales para mejorar gráficos. Prueba diferentes hasta encontrar el mejor para tu PC.",
-      "icon": "Sparkles",
-      "color": "#ec4899",
-      "recommendation": "Selecciona según tu GPU",
-      "links": [
+      "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html",
+      "recommendation": "Requiere Java instalado en tu sistema",
+      "extraLinks": [
         {
-          "name": "Visual Vibrance - Minecraft Shader (Recomendado)",
-          "url": "https://modrinth.com/shader/visual-vibrance",
-          "difficulty": "Media"
-        },
-        {
-          "name": "Complementary Shaders - Reimagined - Minecraft Shader",
-          "url": "https://modrinth.com/shader/complementary-reimagined",
-          "difficulty": "Alta"
-        },
-        {
-          "name": "Complementary Shaders - Unbound - Minecraft Shader",
-          "url": "https://modrinth.com/shader/complementary-unbound",
-          "difficulty": "Alta"
-        },
-        {
-          "name": "Super Duper Vanilla - Minecraft Shader",
-          "url": "https://modrinth.com/shader/super-duper-vanilla",
-          "difficulty": "Media"
-        },
-        {
-          "name": "FastPBR - Minecraft Shader",
-          "url": "https://modrinth.com/shader/fastpbr",
-          "difficulty": "Baja"
-        },
-        {
-          "name": "RedHat Shaders - Minecraft Shader",
-          "url": "https://modrinth.com/shader/redhat-shaders",
-          "difficulty": "Media"
-        },
-        {
-          "name": "Stereo’s Default+ - Minecraft Shader",
-          "url": "https://modrinth.com/shader/stereos-default-plus",
-          "difficulty": "Media"
-        },
-        {
-          "name": "Just Colored Lighting - Minecraft Shader",
-          "url": "https://modrinth.com/shader/just-colored-lighting",
-          "difficulty": "Baja"
-        },
-        {
-          "name": "DrDestens Minecraft Shaders - Minecraft Shader",
-          "url": "https://modrinth.com/shader/drdestens-minecraft-shaders",
-          "difficulty": "Media"
-        },
-        {
-          "name": "PixelCraft Shaders - Minecraft Shader",
-          "url": "https://modrinth.com/shader/pixelcraft-shaders",
-          "difficulty": "Baja"
-        },
-        {
-          "name": "SEUS PTGI - Ultra",
-          "url": "https://www.sonicether.com/seus/",
-          "difficulty": "Muy Alta"
+          "label": "Descargar Java (si no lo tenes)",
+          "url": "https://download.oracle.com/java/21/archive/jdk-21.0.7_windows-x64_bin.exe",
+          "description": "Instalador directo de Java 21.0.7 para Windows x64"
         }
       ]
     },
     {
+      "id": "server_core",
+      "title": "2. Descargar Netherious Core",
+      "description": "Descarga el paquete completo del servidor con todas las configuraciones, packs de recursos y mods esenciales.",
+      "icon": "Package",
+      "color": "#10b981",
+      "action": "Descargar Netherious.zip",
+      "critical": true,
+      "downloadUrl": "https://pub-6c1d3ea779bf41138c0c9aa36024340b.r2.dev/netherious-core/netherious.zip",
+      "recommendation": "Descarga este archivo después de instalar Forge",
+      "instructions": [
+        "Descarga el archivo netherious.zip desde el botón de abajo",
+        "Una vez descargado, descomprime el contenido en tu carpeta .minecraft",
+        "Acepta reemplazar archivos si se te solicita",
+        "¡Listo! Ya puedes conectarte al servidor"
+      ]
+    },
+    {
+      "id": "optional_mods",
+      "title": "3. Mods Opcionales",
+      "description": "Mods de partículas y animaciones solo para cliente local. Elimina cualquiera si experimentas problemas de rendimiento.",
+      "icon": "Sparkles",
+      "color": "#f59e0b",
+      "recommendation": "Usa solo si experimentas problemas de rendimiento",
+      "variant": "outline",
+      "optionalModsList": [
+        "A Good Place",
+        "Animation Overhaul",
+        "Biome Particle Weather",
+        "Citresewn",
+        "Cool Rain",
+        "Eating Animation",
+        "EG Particle Interactions",
+        "Euphoria Patcher",
+        "Explosive Enhancement",
+        "Falling Leaves",
+        "Fog",
+        "Fog Looks Modern Now",
+        "GML",
+        "HMI",
+        "Item Physic",
+        "Loot Beams",
+        "Particle Effects",
+        "Particular",
+        "Perception",
+        "Pommel Held Items",
+        "Pop",
+        "Pretty Rain",
+        "Temp Ad with Shaders",
+        "Wakes",
+        "Wavey Capes",
+        "Weapon Master YDM",
+        "Windy"
+      ]
+    },
+    {
       "id": "config",
-      "title": "6. Configuración Final",
+      "title": "4. Configuración Final",
       "description": "Ajusta la configuración para rendimiento óptimo en tu sistema.",
       "icon": "Settings",
       "color": "#06b6d4",
