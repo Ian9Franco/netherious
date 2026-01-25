@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "Eu! entra",
+    "subtitle": "Forge 1.20.1 • Mods optimizados • Mundo RPG en constante evolución",
+    "cta": "Copiar IP del servidor"
+  },
+  "intro": {
+    "title": "Bienvenido a Netherious",
+    "paragraph": "No es solo Minecraft modded: es una experiencia RPG con progresión, exploración y tecnología. Cada bioma, criatura y estructura fue elegida a mano para crear una aventura equilibrada, inmersiva y viva."
+  },
+  "cards": [
+    {
+      "title": "Instalación Sencilla",
+      "text": "Descargá Forge y el pack completo con solo unos clics. Sin cortocircuito.",
+      "icon": "Download",
+      "color": "#3B82F6"
+    },
+    {
+      "title": "Mods Afinados",
+      "text": "Cada mod fue probado y ajustado para lograr equilibrio, fluidez y una experiencia RE ZARPADA.",
+      "icon": "Sparkles",
+      "color": "#A855F7"
+    },
+    {
+      "title": "Rendimiento Óptimo",
+      "text": "Configuraciones ajustadas para ofrecer gráficos nítidos y FPS estables, incluso en exploraciones largas.",
+      "icon": "Zap",
+      "color": "#10B981"
+    }
+  ],
+  "features": [
+    {
+      "title": "Mundos Vivos",
+      "description": "Explorá biomas únicos, ruinas generadas dinámicamente y aldeas con historia propia."
+    },
+    {
+      "title": "Combate Real",
+      "description": "Jefes, enemigos y habilidades especiales que exigen estrategia y reflejos."
+    },
+    {
+      "title": "Progresión RPG",
+      "description": "Desbloqueá clases, encantamientos avanzados y mejoras que cambian tu estilo de juego."
+    }
+  ],
+  "cta": {
+    "title": "¿Listo para entrar a Netherious?",
+    "description": "Descargá el pack, prepará tu equipo y empezá tu aventura en este mundo RPG.",
+    "button": "Ver Instrucciones de Instalación"
+  }
+}

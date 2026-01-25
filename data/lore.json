@@ -1,0 +1,343 @@
+{
+  "intro": {
+    "title": "La Historia Comienza",
+    "paragraph1": "Bienvenido a Netherious: RPG Expansion — un mundo donde la magia se mezcla con la maquinaria y la aventura nunca se detiene. Cada estructura guarda secretos, cada bioma es un reto, y cada jugador forja su propio destino.",
+    "paragraph2": "Explora ruinas antiguas, fortalezas flotantes y fábricas movidas por vapor. Viaja entre dimensiones, mejora tus habilidades y enfréntate a criaturas que no pertenecen a este mundo. Todo está conectado por portales, engranajes y poder arcano."
+  },
+  "about": {
+    "title": "Sobre el Servidor",
+    "paragraphs": [
+      "Netherious corre sobre **Forge 1.20.1** y combina lo mejor del RPG con la exploración y el progreso técnico. No es solo otro survival: es un mundo vivo con historias, facciones y secretos ocultos.",
+      "Vas a encontrar desde aldeas saqueadas por illagers hasta fortalezas mecánicas del mod *Create*. Los biomas cobran vida con criaturas únicas, y las mazmorras esconden tesoros y jefes que pondrán a prueba tus builds.",
+      "Podés ser un mago, un paladín, un ingeniero o un simple aventurero con hambre de gloria. En *Netherious*, cada pelea, máquina o portal puede cambiar el rumbo de tu historia."
+    ]
+  },
+  "categories": [
+    {
+      "id": "world_structures",
+      "title": "Estructuras y Mazmorras Épicas",
+      "description": "Construcciones avanzadas con enemigos, botines y ambientación inmersiva.",
+      "images": [
+        "/world_structures/image1.jpg",
+        "/world_structures/image2.jpg",
+        "/world_structures/image3.jpg",
+        "/world_structures/image4.jpg",
+        "/world_structures/image5.jpg",
+        "/world_structures/image6.jpg"
+      ],
+      "details": [
+        "Armor of the Ages: Variedad de armaduras históricas y legendarias.",
+        "Ancient Structures: Templos olvidados y ruinas antiguas integradas orgánicamente.",
+        "Compat Structures: Mejora la integración entre diferentes mods de estructuras.",
+        "Dawn of Time Builder: Arquitectura histórica detallada.",
+        "Feur Dungeon Spawner: Desafíos progresivos centrados en spawners personalizados.",
+        "Forgotten Ruins: Estructuras erosionadas que refuerzan la sensación de un mundo antiguo.",
+        "Fusion: Motor de rendering para bloques y texturas de estructuras avanzadas.",
+        "IDAS (Integrated Dungeons and Structures): Mazmorras con decoración avanzada.",
+        "Integrated API: Base técnica para la integración fluida de estructuras.",
+        "Integrated Cataclysm: Mazmorras ligadas a los jefes más poderosos.",
+        "Integrated Stronghold: Strongholds rediseñados con trampas y puzzles complejos.",
+        "Structure Gel: API necesaria para la generación core de estructuras.",
+        "Dungeons Arise: Seven Seas: Galeones, corbetas y ruinas navales.",
+        "Epic Villages: Aldeas transformadas en ciudades medievales.",
+        "Epic Witch Huts: Cabañas de brujas reemplazadas por castillos.",
+        "Hopo Better Mineshaft: Minas abandonadas rediseñadas con mayor complejidad.",
+        "Structory: Ruinas y estructuras ambientales que enriquecen el mundo.",
+        "YUNG's Better End Island: Rediseño completo de la isla central del End.",
+        "YUNG's Better Jungle Temples: Templos de la jungla con nuevos desafíos.",
+        "YUNG's Better Nether Fortresses: Fortalezas del Nether con múltiples secciones.",
+        "Dungeons and Taverns: Ancient City Overhaul: Expansión y rediseño de las Ciudades Antiguas.",
+        "Dungeons and Taverns: Pillager Outpost Rework: Puestos de saqueadores más grandes.",
+        "Dungeons Enhanced: Más de 25 nuevas mazmorras medievales.",
+        "Lithostitched: Generación de mundo mejorada y compatible.",
+        "Luki's Woodland Mansions: Mansiones del bosque con nuevos layouts."
+      ]
+    },
+    {
+      "id": "bosses_and_combat",
+      "title": "Jefes & Combate Avanzado",
+      "description": "Jefes poderosos, enemigos avanzados y encuentros diseñados para poner a prueba al jugador.",
+      "images": [
+        "/bosses_and_combat/image1.jpg",
+        "/bosses_and_combat/image2.jpg",
+        "/bosses_and_combat/image3.jpg",
+        "/bosses_and_combat/image4.jpg",
+        "/bosses_and_combat/image5.jpg",
+        "/bosses_and_combat/image6.jpg"
+      ],
+      "details": [
+        "Dungeon Now Loading: Múltiples mazmorras con temáticas únicas.",
+        "L_Ender's Cataclysm: Combates con mecánicas complejas y arenas épicas.",
+        "Boss Checklist: Sistema de progreso para rastrear y planificar derrotas.",
+        "Bosses Rise: Nuevos encuentros de jefes distribuidos por todo el mundo.",
+        "Cinematic Cataclysm: Añade una experiencia visual cinematográfica.",
+        "Create: Cataclysm: Integración de mecánicas de Create en los jefes.",
+        "FD Bosses: Variedad de nuevos jefes y mini-jefes.",
+        "FD Lib: Librería necesaria para el funcionamiento de mods de jefes.",
+        "Illage and Spillage: Expansión de raids con nuevos illagers.",
+        "Lionfish API: Soporte técnico para las mecánicas avanzadas.",
+        "Wither Reincarnated: Reimagina la pelea del Wither con nuevas fases."
+      ]
+    },
+    {
+      "id": "worlds_and_dimensions",
+      "title": "Mundos & Dimensiones Alternas",
+      "description": "Explora biomas renovados, paisajes dinámicos y versiones expandidas de las dimensiones vanilla.",
+      "images": [
+        "/worlds_and_dimensions/image1.jpg",
+        "/worlds_and_dimensions/image2.jpg",
+        "/worlds_and_dimensions/image3.jpg",
+        "/worlds_and_dimensions/image4.jpg",
+        "/worlds_and_dimensions/image5.jpg",
+        "/worlds_and_dimensions/image6.jpg"
+      ],
+      "details": [
+        "Dynamic Trees: Árboles con crecimiento realista y animaciones de tala.",
+        "Dynamic Trees Plus: Expansión para biomas y tipos de árboles adicionales.",
+        "Dynamic Trees Quark: Compatibilidad entre Dynamic Trees y Quark.",
+        "Quark: Ajustes y mejoras al estilo vanilla para enriquecer el mundo.",
+        "Zeta: Base técnica necesaria para mods de la serie Quark.",
+        "BC Lib: Librería técnica para biomas y dimensiones.",
+        "Better Nether: Transformación completa del Nether con nuevos ecosistemas.",
+        "Blueprint: API esencial para la generación y compatibilidad de biomas.",
+        "Immersive Weathering: Bloques que reaccionan al clima y al tiempo de forma realista.",
+        "Phantasm: Expansión visual y mecánica para la dimensión del End.",
+        "Project Vibrant Journeys: Detalles ambientales que dan vida a los biomas.",
+        "Spelunkery: Mejora la exploración de cuevas con nuevos minerales y utilidades.",
+        "Unusual End: Biomas y estructuras que expanden la atmósfera del End.",
+        "Windswept: Biomas fríos y montañosos con una ambientación salvaje."
+      ]
+    },
+    {
+      "id": "vanilla_plus",
+      "title": "Vanilla+ & Calidad de Vida",
+      "description": "Mejoras al estilo clásico de Minecraft con sistemas balanceados, inmersión y progresión natural.",
+      "images": [
+        "/vanilla_plus/image1.jpg",
+        "/vanilla_plus/image2.jpg",
+        "/vanilla_plus/image3.jpg",
+        "/vanilla_plus/image4.jpg",
+        "/vanilla_plus/image5.jpg",
+        "/vanilla_plus/image6.jpg"
+      ],
+      "details": [
+        "Cardiac: Sistema de orbes de vida que recompensa el combate.",
+        "Easy Anvils: Uso mejorado de yunques con mecánicas amigables.",
+        "Easy Magic: Sistema de encantamientos optimizado.",
+        "Farmer's Delight: Expansión masiva de agricultura y cocina.",
+        "ParCool: Habilidades de parkour para mayor movilidad.",
+        "Ping Wheel: Sistema de pings visuales para coordinación multijugador.",
+        "Subtle Effects: Pequeños detalles visuales que enriquecen la inmersión.",
+        "Trading Post: Interfaz centralizada para comerciar con aldeanos.",
+        "TreeChop: Tala inteligente y realista de árboles.",
+        "Tyz's Skills: Sistema de habilidades para la progresión del personaje.",
+        "Visual Workbench: Los ítems permanecen en la mesa de crafteo.",
+        "Aleki's Nifty Ships: Embarcaciones personalizables para exploración.",
+        "Another Furniture: Mobiliario detallado y funcional.",
+        "Baguette Lib: Librería necesaria para mods de alimentación.",
+        "BC Particle: Mejora los efectos visuales de las partículas.",
+        "Better Combat: Combate fluido con animaciones de ataque.",
+        "Bigger Stacks: Aumenta la capacidad del inventario.",
+        "Blessfulled: Sistema de bendiciones temporales por exploración.",
+        "Butchery: Mecánicas inmersivas para el procesamiento de carne.",
+        "Corpse: Tus objetos permanecen seguros en un cadáver al morir.",
+        "Crate Delight: Almacenamiento integrado con Farmer's Delight.",
+        "ESO: Ajustes de balance finos para la experiencia vanilla.",
+        "Dungeons Delight: Loot y consumibles temáticos de mazmorras.",
+        "Bakery & Brewery: Sistemas para panadería y bebidas.",
+        "Farm & Charm: Mejora la vida rural con nuevos animales.",
+        "Lootr: Cofres con botín individual para cada jugador.",
+        "Supplementaries: Bloques animados y utilidades que expanden el juego.",
+        "Voice Chat: Chat de voz por proximidad esencial.",
+        "Wakes: Efectos de agua realistas con estelas dinámicas.",
+        "Trash Slot: Ranura rápida en el inventario para eliminar ítems."
+      ]
+    },
+    {
+      "id": "rpg_progression",
+      "title": "RPG & Progresión de Personaje",
+      "description": "Clases, habilidades, misiones y narrativa que transforman tu aventura.",
+      "images": [
+        "/rpg_progression/image1.jpg",
+        "/rpg_progression/image2.jpg",
+        "/rpg_progression/image3.jpg",
+        "/rpg_progression/image4.jpg",
+        "/rpg_progression/image5.jpg",
+        "/rpg_progression/image6.jpg"
+      ],
+      "details": [
+        "Fathomless Crimson: Una dimensión de pesadilla ligada a la progresión.",
+        "Nexus Layer: Capa técnica para la integración de sistemas RPG.",
+        "Shield API: Permite mecánicas avanzadas con escudos.",
+        "Archers: Clase de personaje especializada en arquería.",
+        "Archers Expansion: Nuevas flechas y arcos para la clase arquero.",
+        "As You Wish: Sistema de deseos y misiones personalizadas.",
+        "Azurelib Armor: Compatibilidad visual para armaduras RPG.",
+        "Caelus API: Habilita mecánicas de vuelo y planeo.",
+        "Class Selection: Permite elegir tu rol dentro del pack.",
+        "Dungeons and Combat: Estructuras con mini-jefes y atributos RPG.",
+        "Elemental Wizards: Expansión de la magia elemental.",
+        "Gazebo: API decorativa y estructural para entornos RPG.",
+        "Knight Quest: Sistema de misiones inspirado en la orden de caballeros.",
+        "LNE Archers & Wizards: Compatibilidad entre clases de combate y magia.",
+        "Loot n' Explore: Recompensas ligadas al descubrimiento del mundo.",
+        "Mining Master: Progresión en minería con gemas y mejoras.",
+        "More RPG Classes: Añade diversidad de roles al sistema de clases.",
+        "Paladins: Clase de soporte divino y protección.",
+        "Ranged Weapon API: Mejora las mecánicas de armas a distancia.",
+        "Rogues: Clases dedicadas al sigilo y la agilidad.",
+        "Runes: Sistema de mejoras mágicas mediante runas.",
+        "Spell Engine: Motor que potencia el sistema de hechizos.",
+        "Spell Power: Gestiona el escalado del daño mágico.",
+        "Terramity: El desafío definitivo de endgame con equipo poderoso."
+      ]
+    },
+    {
+      "id": "wildlife_and_creatures",
+      "title": "Criaturas & Fauna Salvaje",
+      "description": "Una enorme diversidad de animales, criaturas prehistóricas, aliados y amenazas.",
+      "images": [
+        "/wildlife_and_creatures/image1.jpg",
+        "/wildlife_and_creatures/image2.jpg",
+        "/wildlife_and_creatures/image3.jpg",
+        "/wildlife_and_creatures/image4.jpg",
+        "/wildlife_and_creatures/image5.jpg",
+        "/wildlife_and_creatures/image6.jpg"
+      ],
+      "details": [
+        "CNB (Creatures n' Beasts): Variedad de monstruos y animales fantásticos.",
+        "Unusual Prehistory: Dinosaurios y megafauna prehistórica.",
+        "Hamster Pets: Pequeños roedores domesticables como mascotas.",
+        "Animights: Criaturas nocturnas con comportamientos únicos.",
+        "Bookling Gear: Equipamiento obtenido de criaturas mágicas específicas.",
+        "Companions!: Criaturas pequeñas que puedes llevar contigo.",
+        "Ghosts: Entidades espectrales que añaden misterio a las noches.",
+        "Golem Overhaul: Nuevos tipos de gólems para defensa y utilidad.",
+        "Miner Villager: Aldeanos especializados en trabajos de minería.",
+        "Mpekka: Criaturas únicas con las que puedes interactuar.",
+        "Pet Cemetery: Permite honorar a tus mascotas caídas.",
+        "Primal: Mejora el ecosistema haciéndolo más reactivo.",
+        "Species: Sistema que profundiza en la diversidad animal.",
+        "The Dawn Era: Criaturas de eras antiguas en biomas específicos.",
+        "Valarian Conquest: Facciones de criaturas organizadas.",
+        "WAB (Ancient Beasts): Bestias mitológicas con botín ancestral.",
+        "Wondrous Sea: Expande la vida marina con especies exóticas."
+      ]
+    },
+    {
+      "id": "hostile_mobs",
+      "title": "Enemigos & Hostilidad",
+      "description": "Criaturas agresivas, mutaciones antinaturales y horrores que transforman la exploración.",
+      "images": [
+        "/hostile_mobs/image1.jpg",
+        "/hostile_mobs/image2.jpg",
+        "/hostile_mobs/image3.jpg",
+        "/hostile_mobs/image4.jpg",
+        "/hostile_mobs/image5.jpg",
+        "/hostile_mobs/image6.jpg"
+      ],
+      "details": [
+        "Creeping Woods: Horrores que acechan en los bosques densos.",
+        "Mutant Monsters: Versiones mutadas de mobs vanilla.",
+        "Undead Unleashed: Variantes peligrosas de los muertos vivientes.",
+        "Caravans: Encuentros hostiles con caravanas de saqueadores.",
+        "Clanging Howl: Encuentros intensos con señales sonoras.",
+        "Cryptic Foes: Enemigos misteriosos con ataques impredecibles.",
+        "Dweller Dweller: Entidad acechadora de horror psicológico.",
+        "Fragmentum: Criaturas rotas que emergen de las grietas.",
+        "From the Caves: Peligros que emergen de las profundidades.",
+        "Illager Blabber: Diálogos y personalidad para los saqueadores.",
+        "Myths and Legends: Criaturas basadas en leyendas oscuras.",
+        "Royal Variations: Enemigos con equipamiento de nivel élite.",
+        "Sculk Expansion: Profundiza en los horrores del Deep Dark.",
+        "Warden with Loot: Mejora la recompensa por enfrentar al Warden."
+      ]
+    },
+    {
+      "id": "herramientas",
+      "title": "Herramientas",
+      "description": "Herramientas avanzadas pensadas para aventureros expertos.",
+      "images": [
+        "/herramientas/image1.jpg",
+        "/herramientas/image2.jpg",
+        "/herramientas/image3.jpg",
+        "/herramientas/image4.jpg",
+        "/herramientas/image5.jpg",
+        "/herramientas/image6.jpg"
+      ],
+      "details": [
+        "Gobber 2: Armas y anillos con habilidades especiales únicas.",
+        "Hammer Animations: Animaciones realistas para herramientas pesadas.",
+        "Hammer Lib: Base técnica para el sistema de herramientas avanzadas.",
+        "Clockwork: Dispositivos mecánicos que usan energía cinética.",
+        "Immersive Aircraft: Aviones y dirigibles funcionales.",
+        "Immersive Machinery: Maquinaria pesada para industrialización.",
+        "Just Hammers: Herramientas de minería 3x3 eficientes.",
+        "Spears: Armas de largo alcance y arrojadizas.",
+        "ST Drive: Vehículos terrestres motorizados.",
+        "Tempad: Dispositivo de teletransportación portátil.",
+        "Traveler's Backpack: Mochilas con gran capacidad y utilidades.",
+        "Waystones: Puntos de teletransportación estáticos para tus bases."
+      ]
+    },
+    {
+      "id": "tecnologia",
+      "title": "Ingeniería y Automatización",
+      "description": "Maquinaria industrial, trenes y sistemas energéticos basados en el ecosistema de Create.",
+      "images": [
+        "/tecnologia/image1.jpg",
+        "/tecnologia/image2.jpg",
+        "/tecnologia/image3.jpg",
+        "/tecnologia/image4.jpg",
+        "/tecnologia/image5.jpg",
+        "/tecnologia/image6.jpg"
+      ],
+      "details": [
+        "Steam 'n' Rails: Sistema ferroviario avanzado con trenes personalizables.",
+        "Ad Astra: Carrera espacial con cohetes para viajar a otros planetas.",
+        "Bits 'n' Bobs: Componentes adicionales para mecanismos complejos.",
+        "Botarium: API de fluidos y energía necesaria para la industria.",
+        "CM Parallel Pipes: Tuberías paralelas para transporte eficiente.",
+        "Copycats: Bloques decorativos que imitan otras texturas mecánicas.",
+        "Create: El mod core de ingeniería mecánica y rotación.",
+        "Create Metalwork: Fundición y refinado de metales avanzado.",
+        "Create New Age: Generación de electricidad e inducción magnética.",
+        "Create Ad Astra Recipes: Integración entre Create y la tecnología espacial.",
+        "Create Connected: Expande las posibilidades de conexión de bloques.",
+        "Create Misc and Things: Utilidades variadas para el ecosistema Create.",
+        "Create Mobile Packages: Sistema de logística y embalaje móvil.",
+        "Create Radar: Detección remota de entidades y contraptions.",
+        "Create Ranged: Armas y sistemas de combate integrados a Create.",
+        "Create Ratatouille: Automatización culinaria a gran escala.",
+        "Create Vibrant Vaults: Almacenamiento seguro y visualmente mejorado.",
+        "Create Crafts & Additions: Motores eléctricos y alternadores.",
+        "Create Big Cannons: Artillería pesada funcional construida con Create.",
+        "Create Contraption Terminals: Interfaces para el control remoto.",
+        "Create Nuclear: Reactores y energía nuclear para el endgame.",
+        "Cyberspace: Una dimensión digital ligada al progreso tecnológico.",
+        "Ethium: Material de energía pura para tecnologías avanzadas.",
+        "The Factory Must Grow: Industrialización pesada con petroleo.",
+        "Tom's Simple Storage: Gestión de inventario simplificada.",
+        "Oil Well Yeeter: Facilita la extracción de crudo en procesos industriales."
+      ]
+    }
+  ],
+  "features": [
+    {
+      "title": "Mods Curados",
+      "description": "Una selección balanceada de mods para exploración, combate y rendimiento óptimo."
+    },
+    {
+      "title": "Aventuras Épicas",
+      "description": "Ruinas, biomas y desafíos con recompensas legendarias en cada expedición."
+    },
+    {
+      "title": "Desafíos Legendarios",
+      "description": "Combates y progresión con profundidad, dificultad y estrategia real."
+    }
+  ],
+  "outro": {
+    "title": "Tu Aventura Comienza Ahora",
+    "paragraph": "Únete a Netherious y vive la experiencia definitiva de Minecraft modded. Cada muerte te enseña, cada victoria te fortalece, y cada descubrimiento cambia tu mundo."
+  }
+}

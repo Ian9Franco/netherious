@@ -1,0 +1,49 @@
+{
+  "title": "Información del Servidor",
+  "subtitle": "Todo lo que necesitas saber para conectarte a Netherious",
+  "ip": "179.41.11.247:25591",
+  "intro": {
+    "title": "Netherious: RPG Expansion",
+    "description": "Servidor privado de Minecraft con mods personalizados en Forge 1.20.1, diseñado para aventureros que buscan experiencias épicas con exploración profunda, combate desafiante y secretos escondidos bajo tierra."
+  },
+  "requirements": [
+    {
+      "label": "Versión de Minecraft",
+      "value": "1.20.1",
+      "icon": "Server",
+      "color": "#3b82f6",
+      "description": "Versión específica requerida para compatibilidad total"
+    },
+    {
+      "label": "Cargador de Mods",
+      "value": "Forge 1.20.1",
+      "icon": "Cpu",
+      "color": "#f59e0b",
+      "description": "Mod loader necesario para cargar todos los mods del servidor"
+    },
+    {
+      "label": "Versión de Java",
+      "value": "Java 8+",
+      "icon": "Coffee",
+      "color": "#10b981",
+      "description": "Compatible desde Java 8, pero se recomienda Java 21 para mejor estabilidad y rendimiento"
+    }
+  ],
+  "specs": [
+    {
+      "label": "RAM Recomendada",
+      "value": "8GB+",
+      "icon": "Zap"
+    },
+    {
+      "label": "GPU",
+      "value": "2GB VRAM (solo si usas shaders)",
+      "icon": "Sparkles"
+    },
+    {
+      "label": "Almacenamiento",
+      "value": "13GB máximo con todos los mods, shaders y texturas",
+      "icon": "HardDrive"
+    }
+  ]
+}

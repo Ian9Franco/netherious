@@ -1,0 +1,105 @@
+{
+  "title": "Instalación Completa",
+  "subtitle": "Paso a paso para descargar y configurar Netherious en tu PC",
+  "intro": {
+    "title": "Guía de Instalación",
+    "steps": "Sigue estos pasos en orden para una experiencia sin problemas"
+  },
+  "sections": [
+    {
+      "id": "forge",
+      "title": "1. Forge 1.20.1",
+      "critical": true,
+      "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
+      "icon": "Download",
+      "color": "#3b82f6",
+      "action": "Descargar Forge",
+      "instructions": [
+        "Abri la terminal o símbolo del sistema y ejecuta el comando: java -version",
+        "Verifica que tengas Java 8 o una versión superior instalada",
+        "Si no tenes Java, usa el botón de descarga de abajo para instalarlo",
+        "Descarga el instalador de Forge 1.20.1",
+        "Ejecuta el instalador",
+        "Selecciona 'Install client'",
+        "Confirma la instalación"
+      ],
+      "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html",
+      "recommendation": "Requiere Java instalado en tu sistema",
+      "extraLinks": [
+        {
+          "label": "Descargar Java (si no lo tenes)",
+          "url": "https://download.oracle.com/java/21/archive/jdk-21.0.7_windows-x64_bin.exe",
+          "description": "Instalador directo de Java 21.0.7 para Windows x64"
+        }
+      ]
+    },
+    {
+      "id": "server_core",
+      "title": "2. Descargar Netherious Core",
+      "description": "Descarga el paquete completo del servidor con todas las configuraciones, packs de recursos y mods esenciales.",
+      "icon": "Package",
+      "color": "#10b981",
+      "action": "Descargar Netherious.zip",
+      "critical": true,
+      "downloadUrl": "https://drive.google.com/file/d/1jOBbQX_9aqNBw87ErDd8xmPwROFaAyIR/view?usp=sharing",
+      "recommendation": "Descarga este archivo después de instalar Forge",
+      "instructions": [
+        "Descarga el archivo netherious.zip desde el botón de abajo",
+        "Una vez descargado, descomprime el contenido en tu carpeta .minecraft",
+        "Acepta reemplazar archivos si se te solicita",
+        "¡Listo! Ya puedes conectarte al servidor"
+      ]
+    },
+    {
+      "id": "optional_mods",
+      "title": "3. Mods Opcionales",
+      "description": "Mods de partículas y animaciones solo para cliente local. Elimina cualquiera si experimentas problemas de rendimiento.",
+      "icon": "Sparkles",
+      "color": "#f59e0b",
+      "recommendation": "Usa solo si experimentas problemas de rendimiento",
+      "variant": "outline",
+      "optionalModsList": [
+        "A Good Place",
+        "Animation Overhaul",
+        "Biome Particle Weather",
+        "Citresewn",
+        "Cool Rain",
+        "Eating Animation",
+        "EG Particle Interactions",
+        "Euphoria Patcher",
+        "Explosive Enhancement",
+        "Falling Leaves",
+        "Fog",
+        "Fog Looks Modern Now",
+        "GML",
+        "HMI",
+        "Item Physic",
+        "Loot Beams",
+        "Particle Effects",
+        "Particular",
+        "Perception",
+        "Pommel Held Items",
+        "Pop",
+        "Pretty Rain",
+        "Temp Ad with Shaders",
+        "Wakes",
+        "Wavey Capes",
+        "Weapon Master YDM",
+        "Windy"
+      ]
+    },
+    {
+      "id": "config",
+      "title": "4. Configuración Final",
+      "description": "Ajusta la configuración para rendimiento óptimo en tu sistema.",
+      "icon": "Settings",
+      "color": "#06b6d4",
+      "checkpoints": [
+        "Asigna 8 GB de RAM mínimo en el launcher",
+        "Activa VSync en el cliente si tienes 60+ FPS",
+        "Ajusta distancia de renderizado según tu GPU",
+        "Proba conectarte al servidor"
+      ]
+    }
+  ]
+}
