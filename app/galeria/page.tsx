@@ -1,57 +1,126 @@
 'use client';
 import React from 'react';
-import { IconPhoto, IconSparkles, IconClock } from '@tabler/icons-react';
+import { IconPhoto, IconSparkles, IconClock, IconNotes } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 
 export default function GalleryPage() {
     return (
-        <motion.section
+        <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="section"
-            style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}
+            style={{
+                minHeight: '50vh',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                textAlign: 'center',
+                padding: '2rem',
+            }}
         >
+            {/* Header */}
+            <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.8rem',
+                marginBottom: '2rem',
+                color: 'var(--accent-gold)',
+            }}>
+                <IconNotes size={20} />
+                <span style={{
+                    fontSize: '0.75rem',
+                    letterSpacing: '3px',
+                    textTransform: 'uppercase',
+                }}>
+                    Colección Visual
+                </span>
+            </div>
+
+            {/* Animated icon */}
             <motion.div
                 animate={{
                     scale: [1, 1.1, 1],
-                    opacity: [0.5, 1, 0.5]
+                    rotate: [0, 5, -5, 0]
                 }}
-                transition={{ duration: 4, repeat: Infinity }}
-                style={{ color: 'var(--accent-secondary)', marginBottom: '3rem' }}
+                transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                style={{
+                    width: '120px',
+                    height: '120px',
+                    background: 'var(--color-light)',
+                    border: 'var(--px) solid var(--border-main)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'var(--color-dark)',
+                    marginBottom: '2.5rem',
+                    boxShadow: 'var(--shadow-pixel)',
+                }}
             >
-                <IconPhoto size={100} />
+                <IconPhoto size={60} />
             </motion.div>
 
-            <motion.h1
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                className="gradient-text"
-                style={{ fontSize: 'clamp(3rem, 8vw, 5rem)', marginBottom: '1.5rem' }}
-            >
-                Galería Netherious
-            </motion.h1>
+            {/* Text Panel */}
+            <div className="book-panel" style={{
+                maxWidth: '500px',
+                padding: '2rem',
+            }}>
+                <h1 style={{
+                    fontSize: '1.5rem',
+                    marginBottom: '1rem',
+                }}>
+                    PRÓXIMAMENTE
+                </h1>
 
-            <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-                className="glass"
-                style={{ padding: '3rem', maxWidth: '700px', display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}
-            >
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.3rem', lineHeight: '1.6' }}>
-                    Estamos curando las mejores capturas de nuestras mazmorras, máquinas industriales y momentos épicos.
+                <p style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '0.9rem',
+                    lineHeight: 1.6,
+                    marginBottom: '2rem',
+                }}>
+                    Estamos reuniendo los registros visuales más impactantes de la era actual.
+                    El archivo de Netherious estará disponible para su consulta en breve.
                 </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', color: 'var(--accent-primary)', fontWeight: 900, fontSize: '1.2rem', textTransform: 'uppercase', letterSpacing: '2px' }}>
-                    <IconClock size={24} /> Próximamente disponible
-                </div>
-                <p style={{ color: 'var(--accent-secondary)', fontWeight: 800 }}>No desesperes, lo bueno se hace esperar.</p>
 
-                <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                    {[1, 2, 3].map(i => (
-                        <div key={i} style={{ width: '40px', height: '4px', borderRadius: '10px', background: 'var(--glass-border)' }}></div>
-                    ))}
+                {/* Footer notes */}
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '2rem',
+                    color: 'var(--color-mid)',
+                    fontSize: '0.7rem',
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px',
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <IconSparkles size={14} /> 4K Capture
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                        <IconClock size={14} /> 1.20.1
+                    </div>
                 </div>
-            </motion.div>
-        </motion.section>
+            </div>
+
+            {/* Stamp decoration */}
+            <div
+                className="stamp"
+                style={{
+                    position: 'absolute',
+                    bottom: '2rem',
+                    right: '2rem',
+                    transform: 'rotate(10deg)',
+                    padding: '0.5rem 1rem',
+                    fontSize: '0.6rem',
+                    color: 'var(--accent-red)',
+                    fontWeight: 900,
+                    opacity: 0.6,
+                }}
+            >
+                RESERVED FOR ARCHIVE
+            </div>
+        </motion.div>
     );
 }

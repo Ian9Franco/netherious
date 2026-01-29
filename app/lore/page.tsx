@@ -1,220 +1,324 @@
 'use client';
 import React, { useState } from 'react';
-import loreData from '@/data/lore.json';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+    IconSparkles,
+    IconWorld,
+    IconSword,
+    IconSettings,
+    IconSkull,
+    IconPlus,
+    IconMinus,
+    IconArrowRight,
+    IconBook,
+    IconFeather,
+} from '@tabler/icons-react';
+import topModsData from '@/data/top_mods_data.json';
 import { Typewriter } from '@/components/Typewriter';
-import { IconSparkles, IconWorld, IconMap, IconSword, IconBuildingFortress, IconPlanet, IconHeart, IconTrendingUp, IconBug, IconSkull, IconTools, IconSettings } from '@tabler/icons-react';
-
-const categoryIcons: Record<string, React.ReactNode> = {
-    world_structures: <IconBuildingFortress size={18} />,
-    bosses_and_combat: <IconSword size={18} />,
-    worlds_and_dimensions: <IconPlanet size={18} />,
-    vanilla_plus: <IconHeart size={18} />,
-    rpg_progression: <IconTrendingUp size={18} />,
-    wildlife_and_creatures: <IconBug size={18} />,
-    hostile_mobs: <IconSkull size={18} />,
-    herramientas: <IconTools size={18} />,
-    tecnologia: <IconSettings size={18} />,
-};
+import { useSound } from '@/context/SoundContext';
 
 export default function LorePage() {
-    const [activeCategory, setActiveCategory] = useState(loreData.categories[0].id);
-    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const { playSwap } = useSound();
+    const [isNerdMode, setIsNerdMode] = useState(false);
 
-    const currentCategory = loreData.categories.find(c => c.id === activeCategory);
+    const experiences = [
+        {
+            icon: <IconWorld size={32} />,
+            title: "Exploración Irreverente",
+            subtitle: "Territorios que no perdonan",
+            description: "No es solo caminar. Es sobrevivir a biomas que reaccionan a tu presencia. Ruinas que guardan secretos de eras colapsadas y una atmósfera que te susurra que no perteneces aquí.",
+            number: "I",
+        },
+        {
+            icon: <IconSkull size={32} />,
+            title: "Enemigos Reales",
+            subtitle: "Miedo, no solo mobs",
+            description: "Olvida las piñatas de loot. Aquí los encuentros son cinematográficos. Criaturas mutantes con fases de combate que exigen estrategia, reflejos y un poco de suerte para salir vivo.",
+            number: "II",
+        },
+        {
+            icon: <IconSettings size={32} />,
+            title: "Ingeniería Cruda",
+            subtitle: "Energía y metal",
+            description: "De engranajes de madera a reactores nucleares. La automatización en Netherious es un arte. Construye fábricas que transforman el mundo, si logras controlar el riesgo de radiación.",
+            number: "III",
+        },
+        {
+            icon: <IconSparkles size={32} />,
+            title: "Poder Arcano",
+            subtitle: "Magia con precio",
+            description: "Crea tus propios hechizos. Encuentra reliquias que desafían la física. Pero recuerda: en Netherious, la magia es salvaje y la progresión se paga con sangre y curiosidad.",
+            number: "IV",
+        }
+    ];
 
-    if (!currentCategory) return null;
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: { y: 0, opacity: 1, transition: { duration: 0.4 } }
+    };
 
     return (
-        <motion.section
-            initial={false}
-            animate={{ opacity: 1 }}
-            className="section"
+        <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={containerVariants}
         >
-            {/* Lightbox remains same... */}
-            <AnimatePresence>
-                {selectedImage && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        onClick={() => setSelectedImage(null)}
-                        style={{
-                            position: 'fixed',
-                            inset: 0,
-                            zIndex: 1000,
-                            backgroundColor: 'rgba(0,0,0,0.9)',
-                            backdropFilter: 'blur(10px)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            padding: '2rem',
-                            cursor: 'pointer'
-                        }}
-                    >
-                        <motion.div
-                            initial={{ scale: 0.9, opacity: 0 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.9, opacity: 0 }}
-                            className="glass"
-                            style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh', padding: '10px' }}
-                            onClick={(e) => e.stopPropagation()}
-                        >
-                            <img
-                                src={`/lore${selectedImage}`}
-                                alt="Lore Detail"
-                                style={{ maxWidth: '100%', maxHeight: '80vh', objectFit: 'contain', borderRadius: '4px' }}
-                                onError={(e) => { (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${selectedImage}/1280/720`; }}
-                            />
-                            <div
-                                style={{ position: 'absolute', top: '20px', right: '20px', color: 'white', fontWeight: 900, fontSize: '1.5rem' }}
-                                onClick={() => setSelectedImage(null)}
-                            >✕</div>
-                        </motion.div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-
-            {/* Intro remains same... */}
+            {/* CHRONICLE HEADER */}
             <motion.div
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                style={{ textAlign: 'center', marginBottom: '6rem' }}
+                variants={itemVariants}
+                style={{
+                    textAlign: 'center',
+                    padding: '2rem 0 3rem',
+                    borderBottom: '2px dashed var(--color-mid)',
+                    marginBottom: '3rem',
+                }}
             >
-                <h1 className="gradient-text" style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', marginBottom: '2rem' }}>
-                    <Typewriter text={loreData.intro.title} speed={25} />
-                </h1>
-                <div className="glass" style={{ padding: '3rem', maxWidth: '1000px', margin: '0 auto', background: 'rgba(255,255,255,0.01)' }}>
-                    <p style={{ marginBottom: '1.5rem', lineHeight: '2', fontSize: '1.2rem' }}>
-                        <Typewriter text={loreData.intro.paragraph1} speed={10} delay={0.5} />
-                    </p>
-                    <p style={{ color: 'var(--text-secondary)', lineHeight: '1.8', fontSize: '1.1rem' }}>
-                        <Typewriter text={loreData.intro.paragraph2} speed={10} delay={1.5} />
-                    </p>
+                {/* Chapter indicator */}
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    marginBottom: '1rem',
+                    color: 'var(--accent-gold)',
+                }}>
+                    <IconBook size={20} />
+                    <span style={{
+                        fontSize: '0.75rem',
+                        letterSpacing: '3px',
+                        textTransform: 'uppercase',
+                    }}>
+                        Crónicas de Netherious
+                    </span>
+                    <IconFeather size={20} />
                 </div>
+
+                <h1 style={{
+                    fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                    color: 'var(--ink-black)',
+                    marginBottom: '1rem',
+                    lineHeight: 1.1,
+                }}>
+                    ¿Qué se siente<br />
+                    <span style={{
+                        color: 'var(--accent-gold)',
+                        fontStyle: 'italic',
+                    }}>
+                        entrar?
+                    </span>
+                </h1>
+
+                <p style={{
+                    maxWidth: '500px',
+                    margin: '0 auto',
+                    color: 'var(--color-dark)',
+                    fontSize: '1rem',
+                    lineHeight: 1.6,
+                    fontStyle: 'italic',
+                    borderLeft: '3px solid var(--accent-gold)',
+                    paddingLeft: '1rem',
+                    textAlign: 'left',
+                }}>
+                    El Nether colapsó. La frontera entre lo salvaje y lo imposible se fundió.
+                    No vendemos historia... vendemos el latido acelerado cuando escuchas algo detrás de ti.
+                </p>
             </motion.div>
 
-            <div className="lore-layout" style={{
-                display: 'grid',
-                gridTemplateColumns: 'minmax(280px, 1fr) 3fr',
-                gap: '2.5rem',
-                alignItems: 'start'
-            }}>
-                <aside style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', position: 'sticky', top: '10rem' }}>
-                    <h4 style={{ paddingLeft: '1rem', marginBottom: '0.5rem', fontSize: '0.8rem', color: 'var(--accent-primary)', fontWeight: 900, textTransform: 'uppercase', letterSpacing: '2px' }}>
-                        Explorar Mundo
-                    </h4>
-                    {loreData.categories.map((cat: any) => (
-                        <motion.button
-                            key={cat.id}
-                            whileHover={{ x: 5 }}
-                            whileTap={{ scale: 0.98 }}
-                            onClick={() => setActiveCategory(cat.id)}
-                            className="glass"
-                            style={{
-                                textAlign: 'left',
-                                padding: '1.2rem 1.5rem',
-                                border: activeCategory === cat.id ? '1px solid var(--accent-primary)' : '1px solid var(--glass-border)',
-                                backgroundColor: activeCategory === cat.id ? 'rgba(99, 102, 241, 0.1)' : 'transparent',
-                                color: activeCategory === cat.id ? 'var(--accent-primary)' : 'var(--text-secondary)',
-                                fontSize: '0.95rem',
-                                fontWeight: 700,
-                                transition: 'all 0.3s ease',
+            {/* EXPERIENCE ENTRIES - Journal style */}
+            <div style={{ marginBottom: '4rem' }}>
+                {experiences.map((exp, i) => (
+                    <motion.div
+                        key={i}
+                        variants={itemVariants}
+                        style={{
+                            display: 'flex',
+                            gap: '1.5rem',
+                            padding: '2rem 0',
+                            borderBottom: i < experiences.length - 1 ? '1px dashed var(--color-mid)' : 'none',
+                        }}
+                    >
+                        {/* Roman numeral */}
+                        <div style={{
+                            fontSize: '2rem',
+                            fontWeight: 700,
+                            color: 'var(--color-mid)',
+                            minWidth: '50px',
+                            textAlign: 'center',
+                        }}>
+                            {exp.number}
+                        </div>
+
+                        {/* Content */}
+                        <div style={{ flex: 1 }}>
+                            <div style={{
                                 display: 'flex',
                                 alignItems: 'center',
-                                gap: '1rem',
-                                width: '100%'
-                            }}
-                        >
-                            <div style={{ padding: '0.4rem', borderRadius: '8px', background: activeCategory === cat.id ? 'var(--accent-primary)' : 'var(--glass-border)', color: activeCategory === cat.id ? 'white' : 'inherit' }}>
-                                {categoryIcons[cat.id] || <IconMap size={18} />}
-                            </div>
-                            <Typewriter text={cat.title} speed={20} />
-                        </motion.button>
-                    ))}
-                </aside>
-
-                <AnimatePresence mode="wait" initial={false}>
-                    <motion.main
-                        key={activeCategory}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.4 }}
-                        className="glass"
-                        style={{ padding: 'clamp(2rem, 5vw, 4rem)', minHeight: '600px' }}
-                    >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '2.5rem', gap: '2rem', flexWrap: 'wrap' }}>
-                            <div style={{ flex: 1, minWidth: '300px' }}>
-                                <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-                                    <Typewriter key={`title-${activeCategory}`} text={currentCategory.title} speed={30} />
+                                gap: '0.8rem',
+                                marginBottom: '0.5rem',
+                            }}>
+                                <span style={{ color: 'var(--accent-gold)' }}>
+                                    {exp.icon}
+                                </span>
+                                <h2 style={{
+                                    fontSize: '1.3rem',
+                                    color: 'var(--text-main)',
+                                    margin: 0,
+                                }}>
+                                    {exp.title}
                                 </h2>
-                                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8' }}>
-                                    <Typewriter key={`desc-${activeCategory}`} text={currentCategory.description} speed={10} delay={0.5} />
-                                </p>
                             </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-secondary)', fontWeight: 800 }}>
-                                <IconWorld size={20} /> <span style={{ fontSize: '0.9rem' }}>DESCUBRIMIENTO</span>
-                            </div>
+                            <h3 style={{
+                                fontSize: '0.85rem',
+                                color: 'var(--accent-red)',
+                                textTransform: 'uppercase',
+                                letterSpacing: '2px',
+                                marginBottom: '0.8rem',
+                            }}>
+                                {exp.subtitle}
+                            </h3>
+                            <p style={{
+                                color: 'var(--text-muted)',
+                                fontSize: '0.95rem',
+                                lineHeight: 1.7,
+                            }}>
+                                {exp.description}
+                            </p>
                         </div>
-
-                        <div style={{
-                            display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
-                            gap: '1.2rem',
-                            marginBottom: '4rem'
-                        }}>
-                            {currentCategory.images.map((img: string, i: number) => (
-                                <motion.div
-                                    key={i}
-                                    whileHover={{ scale: 1.05, rotate: 1 }}
-                                    onClick={() => setSelectedImage(img)}
-                                    className="glass"
-                                    style={{ height: '160px', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.05)', cursor: 'pointer' }}
-                                >
-                                    <img
-                                        src={`/lore${img}`}
-                                        alt="Preview"
-                                        style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
-                                        onError={(e) => { (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${img}/400/300`; }}
-                                    />
-                                </motion.div>
-                            ))}
-                        </div>
-
-                        <div style={{ padding: '3rem', background: 'rgba(0,0,0,0.2)', borderRadius: '24px', border: '1px solid var(--glass-border)' }}>
-                            <h4 style={{ marginBottom: '2rem', color: 'var(--accent-primary)', display: 'flex', alignItems: 'center', gap: '0.8rem', fontSize: '1.1rem', fontWeight: 900 }}>
-                                <IconSparkles size={20} /> MODS QUE TRANSFORMAN EL JUEGO
-                            </h4>
-                            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
-                                {currentCategory.details.map((detail: string, i: number) => (
-                                    <motion.div
-                                        key={`${activeCategory}-detail-${i}`}
-                                        whileHover={{ x: 5, color: 'white' }}
-                                        style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', display: 'flex', gap: '0.8rem', alignItems: 'flex-start', padding: '0.4rem' }}
-                                    >
-                                        <span style={{ color: 'var(--accent-primary)', fontSize: '1.2rem', lineHeight: 1 }}>•</span>
-                                        <Typewriter text={detail} speed={10} delay={0.5 + i * 0.1} />
-                                    </motion.div>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.main>
-                </AnimatePresence>
+                    </motion.div>
+                ))}
             </div>
 
-            <style jsx>{`
-        @media (max-width: 1100px) {
-          .lore-layout {
-            grid-template-columns: 1fr !important;
-          }
-          aside {
-            position: relative !important;
-            top: 0 !important;
-            margin-bottom: 3rem;
-          }
-        }
-      `}</style>
-        </motion.section>
+            {/* NERD MODE SECTION - Technical Appendix */}
+            <motion.div
+                variants={itemVariants}
+                className="slot"
+                style={{
+                    margin: '0 -1.5rem',
+                    padding: '2rem',
+                }}
+            >
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    marginBottom: isNerdMode ? '2rem' : 0,
+                    flexWrap: 'wrap',
+                    gap: '1rem',
+                }}>
+                    <div>
+                        <span style={{
+                            fontSize: '0.7rem',
+                            color: 'var(--accent-gold)',
+                            textTransform: 'uppercase',
+                            letterSpacing: '2px',
+                        }}>
+                            Apéndice Técnico
+                        </span>
+                        <h2 style={{
+                            fontSize: '1.5rem',
+                            color: 'var(--text-main)',
+                            margin: 0,
+                        }}>
+                            Debajo del capó
+                        </h2>
+                    </div>
+                    <button
+                        onClick={() => { setIsNerdMode(!isNerdMode); playSwap(); }}
+                        className="btn"
+                    >
+                        {isNerdMode ? 'Ocultar' : 'Modo Nerd'}
+                        {isNerdMode ? <IconMinus size={16} /> : <IconPlus size={16} />}
+                    </button>
+                </div>
+
+                <AnimatePresence>
+                    {isNerdMode && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                gap: '2rem',
+                            }}
+                        >
+                            {topModsData.map((cat, i) => (
+                                <div key={i}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '0.5rem',
+                                        marginBottom: '1rem',
+                                    }}>
+                                        <span style={{
+                                            fontSize: '1.5rem',
+                                            fontWeight: 900,
+                                            color: 'var(--color-mid)',
+                                        }}>
+                                            {String(i + 1).padStart(2, '0')}
+                                        </span>
+                                        <h4 style={{
+                                            fontSize: '0.8rem',
+                                            color: 'var(--text-main)',
+                                            textTransform: 'uppercase',
+                                            letterSpacing: '1px',
+                                            borderBottom: '2px solid var(--accent-gold)',
+                                            paddingBottom: '0.2rem',
+                                            margin: 0,
+                                        }}>
+                                            {cat.category}
+                                        </h4>
+                                    </div>
+                                    <ul style={{
+                                        listStyle: 'none',
+                                        padding: 0,
+                                        margin: 0,
+                                    }}>
+                                        {cat.mods.map((mod, j) => (
+                                            <li
+                                                key={j}
+                                                style={{
+                                                    padding: '0.4rem 0',
+                                                    borderBottom: '1px dotted var(--color-mid)',
+                                                }}
+                                            >
+                                                <div style={{
+                                                    fontSize: '0.85rem',
+                                                    fontWeight: 700,
+                                                    color: 'var(--text-main)',
+                                                }}>
+                                                    {mod.name}
+                                                    {mod.highlight && (
+                                                        <span style={{
+                                                            color: 'var(--accent-gold)',
+                                                            marginLeft: '0.3rem',
+                                                        }}>★</span>
+                                                    )}
+                                                </div>
+                                                <div style={{
+                                                    fontSize: '0.7rem',
+                                                    color: 'var(--text-muted)',
+                                                }}>
+                                                    {mod.tagline}
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </motion.div>
+        </motion.div>
     );
 }

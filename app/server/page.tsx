@@ -3,44 +3,34 @@ import React, { useState } from 'react';
 import {
     IconServer,
     IconCpu,
-    IconCoffee,
+    IconDeviceDesktop,
+    IconFingerprint,
+    IconCrown,
+    IconShield,
+    IconCopy,
     IconBolt,
     IconSparkles,
     IconDatabase,
-    IconCopy,
-    IconShieldCheck,
-    IconKey
 } from '@tabler/icons-react';
-import { useSound } from '@/context/SoundContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Meteors } from '@/components/Meteors';
 import serverData from '@/data/server.json';
 import { Typewriter } from '@/components/Typewriter';
+import { useSound } from '@/context/SoundContext';
 
 export default function ServerPage() {
-    const { playSound, playSuccess, playError } = useSound();
+    const { playSuccess, playSwap } = useSound();
     const [passphrase, setPassphrase] = useState('');
     const [showFingerprint, setShowFingerprint] = useState(false);
-    const [copyStatus, setCopyStatus] = useState('Copiar IP');
 
-    const FINGERPRINT = "NETHER-FGP-8x22-K991-Z01";
-
-    const handleCopy = () => {
-        navigator.clipboard.writeText(serverData.ip);
-        playSuccess();
-        setCopyStatus('¡Copiado!');
-        setTimeout(() => setCopyStatus('Copiar IP'), 2000);
-    };
+    // Hardcoded fingerprint as it's not in the JSON provided
+    const FINGERPRINT = "ED-41-8B-02-C7-8A-9F-12-3D-5E-09-F1";
 
     const handlePassphrase = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         setPassphrase(val);
-        const normalized = val.toLowerCase().trim().replace(/\s+/g, ' ');
-        const validPhrases = ['llueve', 'dale que llueve', 'dalequellueve'];
-        if (validPhrases.includes(normalized)) {
+        if (val.toLowerCase() === 'dale que llueve') {
+            if (!showFingerprint) playSuccess();
             setShowFingerprint(true);
-            playSuccess();
-            playSound('/sounds/links/enderman2.mp3');
         } else {
             setShowFingerprint(false);
         }
@@ -50,100 +40,259 @@ export default function ServerPage() {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
-            transition: { staggerChildren: 0.15 }
+            transition: { staggerChildren: 0.1 }
         }
     };
 
     const itemVariants = {
         hidden: { y: 20, opacity: 0 },
-        visible: { y: 0, opacity: 1 }
+        visible: { y: 0, opacity: 1, transition: { duration: 0.4 } }
     };
 
     return (
-        <motion.section
+        <motion.div
             initial="hidden"
             animate="visible"
             variants={containerVariants}
-            className="section"
         >
-            <motion.div variants={itemVariants} style={{ textAlign: 'center', marginBottom: '5rem' }}>
-                <h1 className="gradient-text" style={{ fontSize: '4rem', marginBottom: '1.5rem' }}>
+            {/* HEADER */}
+            <motion.div
+                variants={itemVariants}
+                style={{
+                    textAlign: 'center',
+                    marginBottom: '3rem',
+                    paddingBottom: '2rem',
+                    borderBottom: '2px dashed var(--color-mid)',
+                }}
+            >
+                <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.8rem',
+                    marginBottom: '1rem',
+                    color: 'var(--accent-gold)',
+                }}>
+                    <IconCrown size={24} />
+                    <span style={{
+                        fontSize: '0.75rem',
+                        letterSpacing: '3px',
+                        textTransform: 'uppercase',
+                    }}>
+                        Estado del Reino
+                    </span>
+                </div>
+
+                <h1 style={{ marginBottom: '1rem' }}>
                     <Typewriter text={serverData.title} speed={30} />
                 </h1>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '600px', margin: '0 auto' }}>
+                <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
                     <Typewriter text={serverData.subtitle} speed={15} delay={1} />
                 </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="glass" style={{ padding: '4rem 2rem', marginBottom: '4rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-                <Meteors number={30} />
-                <h2 style={{ marginBottom: '2rem', fontSize: '2rem' }}>
-                    <Typewriter text={serverData.intro.title} speed={30} />
+            {/* INTRO PANEL */}
+            <motion.div variants={itemVariants} className="book-panel" style={{ marginBottom: '3rem', padding: '1.5rem' }}>
+                <h2 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--accent-gold)' }}>
+                    {serverData.intro.title}
                 </h2>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '800px', margin: '0 auto 3rem' }}>
-                    <Typewriter text={serverData.intro.description} speed={10} delay={1} />
+                <p style={{ fontSize: '0.85rem', lineHeight: 1.6, color: 'var(--text-muted)' }}>
+                    {serverData.intro.description}
                 </p>
-
-                {/* IP and Passphrase logic remains... */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-                    {/* ... */}
-                </div>
             </motion.div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '5rem' }}>
-                {serverData.requirements.map((req: any, i: number) => (
-                    <motion.div
-                        key={i}
-                        variants={itemVariants}
-                        className="glass premium-card"
-                        style={{ padding: '2.5rem' }}
-                    >
-                        <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center', marginBottom: '1.5rem' }}>
-                            <div style={{ backgroundColor: `${req.color}22`, color: req.color, padding: '1rem', borderRadius: '14px' }}>
-                                {req.icon === 'Server' && <IconServer size={26} />}
-                                {req.icon === 'Cpu' && <IconCpu size={26} />}
-                                {req.icon === 'Coffee' && <IconCoffee size={26} />}
+            {/* SERVER SPECS - Equipment Slot style */}
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                gap: '2rem',
+                marginBottom: '4rem',
+            }}>
+                {/* Requirements */}
+                <motion.div variants={itemVariants}>
+                    <h2 style={{
+                        fontSize: '1rem',
+                        marginBottom: '1.5rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                    }}>
+                        <IconShield size={18} color="var(--accent-gold)" />
+                        REQUISITOS
+                    </h2>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        {serverData.requirements.map((req, i) => (
+                            <div key={i} className="slot" style={{
+                                padding: '1rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '1rem',
+                            }}>
+                                <div style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    background: 'var(--color-dark)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: req.color || 'var(--accent-gold)',
+                                }}>
+                                    {req.icon === 'Server' && <IconServer size={18} />}
+                                    {req.icon === 'Cpu' && <IconCpu size={18} />}
+                                    {req.icon === 'Coffee' && <IconDatabase size={18} />}
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 700 }}>{req.label}: {req.value}</span>
+                                    <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>{req.description}</span>
+                                </div>
                             </div>
-                            <h3 style={{ fontSize: '1.3rem' }}>
-                                <Typewriter text={req.label} speed={20} delay={0.5 + i * 0.2} />
-                            </h3>
-                        </div>
-                        <p style={{ fontSize: '1.8rem', fontWeight: 900, marginBottom: '0.8rem', color: 'white' }}>
-                            <Typewriter text={req.value} speed={30} delay={1 + i * 0.2} />
-                        </p>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                            <Typewriter text={req.description} speed={10} delay={1.5 + i * 0.2} />
-                        </p>
-                    </motion.div>
-                ))}
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Specs/Recommended */}
+                <motion.div variants={itemVariants}>
+                    <h2 style={{
+                        fontSize: '1rem',
+                        marginBottom: '1.5rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                    }}>
+                        <IconShield size={18} color="var(--accent-gold)" />
+                        RECOMENDADO
+                    </h2>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        {serverData.specs.map((spec, i) => (
+                            <div key={i} className="slot" style={{
+                                padding: '1rem',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '1rem',
+                            }}>
+                                <div style={{
+                                    width: '32px',
+                                    height: '32px',
+                                    background: 'var(--color-dark)',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'var(--accent-gold)',
+                                }}>
+                                    {spec.icon === 'Zap' && <IconBolt size={18} />}
+                                    {spec.icon === 'Sparkles' && <IconSparkles size={18} />}
+                                    {spec.icon === 'HardDrive' && <IconDatabase size={18} />}
+                                </div>
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <span style={{ fontSize: '0.85rem', fontWeight: 700 }}>{spec.label}</span>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--accent-gold)' }}>{spec.value}</span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
             </div>
 
-            <motion.div variants={itemVariants} className="glass" style={{ padding: '4rem 2rem' }}>
-                <h3 style={{ marginBottom: '3rem', textAlign: 'center', fontSize: '2rem' }}>
-                    <Typewriter text="Especificaciones Recomendadas" speed={30} />
-                </h3>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem' }}>
-                    {serverData.specs.map((spec: any, i: number) => (
-                        <motion.div
-                            key={i}
-                            whileHover={{ scale: 1.05 }}
-                            style={{ textAlign: 'center' }}
-                        >
-                            <div style={{ color: 'var(--accent-primary)', marginBottom: '1.5rem' }}>
-                                {spec.icon === 'Zap' && <IconBolt size={38} />}
-                                {spec.icon === 'Sparkles' && <IconSparkles size={38} />}
-                                {spec.icon === 'HardDrive' && <IconDatabase size={38} />}
-                            </div>
-                            <h4 style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.6rem', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                                <Typewriter text={spec.label} speed={20} delay={1 + i * 0.2} />
-                            </h4>
-                            <p style={{ fontSize: '1.2rem', fontWeight: 800 }}>
-                                <Typewriter text={spec.value} speed={30} delay={1.5 + i * 0.2} />
-                            </p>
-                        </motion.div>
-                    ))}
+            {/* CONNECTION SLOT */}
+            <motion.div
+                variants={itemVariants}
+                className="book-panel"
+                style={{
+                    padding: '2.5rem',
+                    textAlign: 'center',
+                }}
+            >
+                <div className="wax-seal" style={{ marginBottom: '1rem' }}>
+                    <IconServer size={24} />
+                </div>
+                <h2 style={{ marginBottom: '1rem' }}>DIRECCIÓN</h2>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    gap: '1rem',
+                    flexWrap: 'wrap',
+                }}>
+                    <div className="slot" style={{
+                        padding: '0.8rem 1.5rem',
+                        fontSize: '1.1rem',
+                        color: 'var(--accent-gold)',
+                        letterSpacing: '2px',
+                    }}>
+                        {serverData.ip}
+                    </div>
+                    <motion.button
+                        whileHover={{ y: -2 }}
+                        className="btn btn-primary"
+                        onClick={() => {
+                            navigator.clipboard.writeText(serverData.ip);
+                            playSuccess();
+                        }}
+                    >
+                        <IconCopy size={18} />
+                        COPIAR
+                    </motion.button>
                 </div>
             </motion.div>
-        </motion.section>
+
+            {/* HIDDEN FINGERPRINT SECTION */}
+            <motion.div
+                variants={itemVariants}
+                style={{ marginTop: '4rem', textAlign: 'center' }}
+            >
+                <div style={{
+                    maxWidth: '400px',
+                    margin: '0 auto',
+                }}>
+                    <label style={{
+                        display: 'block',
+                        fontSize: '0.7rem',
+                        color: 'var(--color-mid)',
+                        marginBottom: '0.5rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '2px',
+                    }}>
+                        Salvoconducto Requerido
+                    </label>
+                    <input
+                        type="password"
+                        placeholder="..."
+                        value={passphrase}
+                        onChange={handlePassphrase}
+                        style={{
+                            width: '100%',
+                            background: 'var(--color-darkest)',
+                            border: '2px solid var(--color-dark)',
+                            padding: '0.8rem',
+                            color: 'var(--color-lightest)',
+                            textAlign: 'center',
+                            fontFamily: 'inherit',
+                        }}
+                    />
+                </div>
+
+                <AnimatePresence>
+                    {showFingerprint && (
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                            style={{ marginTop: '2rem' }}
+                        >
+                            <div className="stamp" style={{ padding: '2rem', display: 'inline-block' }}>
+                                <IconFingerprint size={48} color="var(--accent-red)" />
+                                <div style={{
+                                    marginTop: '1rem',
+                                    fontSize: '0.65rem',
+                                    color: 'var(--accent-red)',
+                                    fontWeight: 700,
+                                    letterSpacing: '2px',
+                                }}>
+                                    {FINGERPRINT}
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
+            </motion.div>
+        </motion.div>
     );
 }

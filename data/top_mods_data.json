@@ -1,0 +1,32 @@
+[
+    {
+        "category": "Inmersión & Ambiente",
+        "mods": [
+            {
+                "name": "Presence Footsteps",
+                "tagline": "Sonidos de pasos ultra-realistas según la superficie.",
+                "highlight": true
+            },
+            {
+                "name": "AmbientSounds",
+                "tagline": "Naturaleza viva: pájaros, viento y eco en cuevas.",
+                "highlight": false
+            }
+        ]
+    },
+    {
+        "category": "Combate & RPG",
+        "mods": [
+            {
+                "name": "Better Combat",
+                "tagline": "Sistema de combate fluido con animaciones únicas.",
+                "highlight": true
+            },
+            {
+                "name": "Simply Swords",
+                "tagline": "Decenas de armas legendarias con habilidades.",
+                "highlight": true
+            }
+        ]
+    }
+]

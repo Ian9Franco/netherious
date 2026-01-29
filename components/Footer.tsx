@@ -1,82 +1,91 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { IconBrandInstagram, IconBrandLinkedin, IconBrandGithub, IconWorld } from '@tabler/icons-react';
+import { motion } from 'framer-motion';
 
-const SocialLink = ({ href, icon, hoverColor }: { href: string, icon: React.ReactNode, hoverColor: string }) => {
-    const [isHovered, setIsHovered] = useState(false);
-
+const SocialLink = ({ href, icon, label }: { href: string, icon: React.ReactNode, label: string }) => {
     return (
-        <a
+        <motion.a
             href={href}
             target="_blank"
             rel="noreferrer"
+            whileHover={{ y: -2 }}
             style={{
-                width: '46px',
-                height: '46px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: isHovered ? hoverColor : '#1a1a1a',
-                border: '3px solid #333',
-                color: isHovered ? 'white' : '#777',
-                borderRadius: '4px',
-                transition: 'all 0.15s ease',
-                boxShadow: isHovered ? `0 0 20px ${hoverColor}66` : 'none',
-                cursor: 'none',
+                width: '36px',
+                height: '36px',
+                background: 'var(--color-dark)',
+                border: '2px solid var(--color-mid)',
+                color: 'var(--color-light)',
+                transition: 'all 0.1s ease',
                 textDecoration: 'none',
-                position: 'relative',
-                zIndex: 150
             }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            title={label}
         >
             {icon}
-        </a>
+        </motion.a>
     );
 };
 
 export default function Footer() {
     return (
         <footer style={{
-            backgroundColor: '#050505', // Absolute solid black
-            padding: '2.5rem 2rem',
-            borderTop: '6px solid #1a1a1a',
+            background: 'var(--color-darkest)',
+            borderTop: '4px solid var(--color-dark)',
+            padding: '1rem 1.5rem',
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: '2rem',
-            position: 'relative',
-            zIndex: 10,
-            marginTop: 'auto'
+            gap: '1rem',
+            marginLeft: '120px', // Account for sidebar
         }}>
-            <div style={{ display: 'flex', gap: '1.2rem' }}>
+            {/* Social links */}
+            <div style={{ display: 'flex', gap: '0.5rem' }}>
                 <SocialLink
                     href="https://www.instagram.com/ian.franco._/"
-                    icon={<IconBrandInstagram size={24} />}
-                    hoverColor="#E1306C"
+                    icon={<IconBrandInstagram size={18} />}
+                    label="Instagram"
                 />
                 <SocialLink
                     href="https://www.linkedin.com/in/ian-franco-collada-pontorno/"
-                    icon={<IconBrandLinkedin size={24} />}
-                    hoverColor="#0077B5"
+                    icon={<IconBrandLinkedin size={18} />}
+                    label="LinkedIn"
                 />
                 <SocialLink
                     href="https://github.com/Ian9Franco"
-                    icon={<IconBrandGithub size={24} />}
-                    hoverColor="#333"
+                    icon={<IconBrandGithub size={18} />}
+                    label="GitHub"
                 />
                 <SocialLink
                     href="https://ian-pontorno-portfolio.vercel.app/"
-                    icon={<IconWorld size={24} />}
-                    hoverColor="#6366f1"
+                    icon={<IconWorld size={18} />}
+                    label="Website"
                 />
             </div>
 
-            <div style={{ textAlign: 'right', color: '#555', fontSize: '0.85rem', fontFamily: 'monospace' }}>
-                <div style={{ marginBottom: '0.4rem', color: '#999', fontWeight: 'bold' }}>ian9franco@gmail.com</div>
-                <div>© 2026 Ian Pontorno - Todos los derechos reservados.</div>
+            {/* Copyright */}
+            <div style={{
+                textAlign: 'right',
+            }}>
+                <div style={{
+                    color: 'var(--color-light)',
+                    fontSize: '0.7rem',
+                    fontWeight: 700,
+                    letterSpacing: '1px',
+                }}>
+                    ian9franco@gmail.com
+                </div>
+                <div style={{
+                    color: 'var(--color-mid)',
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.5px',
+                }}>
+                    © 2026 Ian Pontorno
+                </div>
             </div>
         </footer>
     );

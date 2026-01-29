@@ -1,178 +1,176 @@
 'use client';
 
-import React, { useRef } from "react";
-import {
-    motion,
-    useMotionValue,
-    useSpring,
-    useTransform,
-    MotionValue,
-} from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
     IconSword,
     IconHammer,
     IconShieldLock,
-    IconScript,
-    IconSparkles,
+    IconBook,
+    IconPhoto,
 } from "@tabler/icons-react";
 import { useSound } from "@/context/SoundContext";
 
 const Navbar = () => {
-    const { playSwap } = useSound(); // Removed playButton
+    const { playSwap } = useSound();
+    const pathname = usePathname();
 
     const items = [
-        {
-            title: "Comenzar",
-            icon: <IconSword className="h-full w-full" />,
-            href: "/",
-            onClick: () => { playSwap(); }, // Only swap sound
-        },
-        {
-            title: "Forjar",
-            icon: <IconHammer className="h-full w-full" />,
-            href: "/instalar",
-            onClick: () => { playSwap(); },
-        },
-        {
-            title: "Reino",
-            icon: <IconShieldLock className="h-full w-full" />,
-            href: "/server",
-            onClick: () => { playSwap(); },
-        },
-        {
-            title: "Crónicas",
-            icon: <IconScript className="h-full w-full" />,
-            href: "/lore",
-            onClick: () => { playSwap(); },
-        },
-        {
-            title: "Hallazgos",
-            icon: <IconSparkles className="h-full w-full" />,
-            href: "/galeria",
-            onClick: () => { playSwap(); },
-        },
+        { title: "Inicio", icon: <IconSword size={16} />, href: "/" },
+        { title: "Forjar", icon: <IconHammer size={16} />, href: "/instalar" },
+        { title: "Reino", icon: <IconShieldLock size={16} />, href: "/server" },
+        { title: "Lore", icon: <IconBook size={16} />, href: "/lore" },
+        { title: "Galeria", icon: <IconPhoto size={16} />, href: "/galeria" },
     ];
 
     return (
         <header>
-            {/* Logo Image - Fixed at Top-Left, explicitly small */}
+            {/* Book Title - Top bar style */}
             <div
-                className="fixed z-[120] pointer-events-none"
-                style={{ top: '1.5rem', left: '1.5rem' }}
+                style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '48px',
+                    background: 'var(--color-darkest)',
+                    borderBottom: '4px solid var(--color-dark)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0 1rem',
+                    zIndex: 100,
+                }}
             >
-                <img
-                    src="/logo/logo.png"
-                    alt="Netherious Logo"
-                    style={{
-                        height: '70px',
-                        width: 'auto',
-                        display: 'block',
-                        objectFit: 'contain',
-                        filter: 'drop-shadow(0 0 10px rgba(99, 102, 241, 0.4))'
-                    }}
-                />
-            </div>
-
-            {/* Navbar + Centered Title Container */}
-            <div
-                className="fixed z-[100] flex flex-col items-center pointer-events-none"
-                style={{ top: '1.5rem', left: '50%', transform: 'translateX(-50%)' }}
-            >
-                {/* Navbar Dock Container */}
-                <div className="pointer-events-auto">
-                    <FloatingDock items={items} />
-                </div>
-
-                {/* NETHERIOUS Title - Centered below Dock where the logo used to be */}
-                <div className="mt-5 flex flex-col items-center opacity-90">
-                    <span
-                        className="text-2xl md:text-4xl font-black tracking-[0.5em] text-white pixel-text uppercase"
-                        style={{ textShadow: '0 0 20px rgba(99, 102, 241, 1)' }}
-                    >
-                        NETHERIOUS
+                {/* Logo */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                    <img
+                        src="/logo/logo.png"
+                        alt="Logo"
+                        style={{
+                            height: '32px',
+                            width: 'auto',
+                            imageRendering: 'pixelated',
+                        }}
+                    />
+                    <span style={{
+                        color: 'var(--color-lightest)',
+                        fontSize: '1rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.2em',
+                        textTransform: 'uppercase',
+                    }}>
+                        Netherious
                     </span>
-                    <div className="h-1 w-24 bg-accent-primary mt-2 shadow-[0_0_15px_var(--accent-primary)]"></div>
                 </div>
+
+                {/* Decorative text */}
+                <span style={{
+                    color: 'var(--color-mid)',
+                    fontSize: '0.65rem',
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                }}>
+                    v1.20.1 • Compendium
+                </span>
             </div>
+
+            {/* Side Tabs - Like book index tabs */}
+            <nav
+                style={{
+                    position: 'fixed',
+                    left: 0,
+                    top: '48px',
+                    bottom: 0,
+                    width: '120px',
+                    background: 'var(--color-darkest)',
+                    borderRight: '4px solid var(--color-dark)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    padding: '1rem 0',
+                    gap: '2px',
+                    zIndex: 99,
+                }}
+            >
+                {items.map((item, index) => {
+                    const isActive = pathname === item.href;
+
+                    return (
+                        <Link
+                            key={item.title}
+                            href={item.href}
+                            onClick={() => playSwap()}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <motion.div
+                                initial={{ x: -20, opacity: 0 }}
+                                animate={{ x: 0, opacity: 1 }}
+                                transition={{ delay: index * 0.05 }}
+                                whileHover={{ x: 4 }}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    padding: '0.7rem 0.8rem',
+                                    marginRight: isActive ? '-4px' : '0',
+                                    background: isActive
+                                        ? 'var(--color-lightest)'
+                                        : 'transparent',
+                                    borderRight: isActive
+                                        ? '4px solid var(--color-lightest)'
+                                        : 'none',
+                                    color: isActive
+                                        ? 'var(--text-main)'
+                                        : 'var(--color-light)',
+                                    transition: 'all 0.1s ease',
+                                    position: 'relative',
+                                }}
+                            >
+                                {/* Tab number */}
+                                <span style={{
+                                    fontSize: '0.6rem',
+                                    opacity: 0.5,
+                                    width: '12px',
+                                }}>
+                                    {String(index + 1).padStart(2, '0')}
+                                </span>
+
+                                {/* Icon */}
+                                <span style={{ display: 'flex' }}>
+                                    {item.icon}
+                                </span>
+
+                                {/* Title */}
+                                <span style={{
+                                    fontSize: '0.7rem',
+                                    fontWeight: 700,
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.5px',
+                                }}>
+                                    {item.title}
+                                </span>
+                            </motion.div>
+                        </Link>
+                    );
+                })}
+
+                {/* Bottom decoration */}
+                <div style={{
+                    marginTop: 'auto',
+                    padding: '1rem 0.8rem',
+                    borderTop: '2px dashed var(--color-dark)',
+                    color: 'var(--color-mid)',
+                    fontSize: '0.55rem',
+                    textAlign: 'center',
+                    letterSpacing: '0.1em',
+                }}>
+                    ◆ SAS ◆
+                </div>
+            </nav>
         </header>
     );
 };
-
-const FloatingDock = ({
-    items,
-}: {
-    items: { title: string; icon: React.ReactNode; href: string; onClick?: () => void }[];
-}) => {
-    let mouseX = useMotionValue(Infinity);
-
-    return (
-        <motion.div
-            onMouseMove={(e) => mouseX.set(e.pageX)}
-            onMouseLeave={() => mouseX.set(Infinity)}
-            className="flex h-16 md:h-20 gap-3 md:gap-5 items-center rounded-2xl px-4 md:px-6"
-            style={{
-                border: '1px solid var(--glass-border)',
-                background: 'var(--glass)',
-                backdropFilter: 'blur(16px)',
-            }}
-        >
-            {items.map((item) => (
-                <IconContainer mouseX={mouseX} key={item.title} {...item} />
-            ))}
-        </motion.div>
-    );
-};
-
-function IconContainer({
-    mouseX,
-    icon,
-    href,
-    onClick
-}: {
-    mouseX: MotionValue;
-    title: string;
-    icon: React.ReactNode;
-    href: string;
-    onClick?: () => void;
-}) {
-    let ref = useRef<HTMLDivElement>(null);
-
-    let distance = useTransform(mouseX, (val: number) => {
-        let bounds = ref.current?.getBoundingClientRect() || { x: 0, width: 0 };
-        return val - bounds.x - bounds.width / 2;
-    });
-
-    // Responsive transforms - INCREASED SIZES
-    // Base size: 70px, Max magnification: 120px
-    let widthTransform = useTransform(distance, [-150, 0, 150], [70, 120, 70]);
-    let heightTransform = useTransform(distance, [-150, 0, 150], [70, 120, 70]);
-
-    let widthIconTransform = useTransform(distance, [-150, 0, 150], [42, 70, 42]);
-    let heightIconTransform = useTransform(distance, [-150, 0, 150], [42, 70, 42]);
-
-    let width = useSpring(widthTransform, { mass: 0.1, stiffness: 150, damping: 12 });
-    let height = useSpring(heightTransform, { mass: 0.1, stiffness: 150, damping: 12 });
-
-    let widthIcon = useSpring(widthIconTransform, { mass: 0.1, stiffness: 150, damping: 12 });
-    let heightIcon = useSpring(heightIconTransform, { mass: 0.1, stiffness: 150, damping: 12 });
-
-    return (
-        <Link href={href} onClick={onClick}>
-            <motion.div
-                ref={ref}
-                style={{ width, height }}
-                className="rounded-full flex items-center justify-center relative hover:bg-white/5 transition-colors aspect-square"
-            >
-                <motion.div
-                    style={{ width: widthIcon, height: heightIcon }}
-                    className="flex items-center justify-center text-neutral-300"
-                >
-                    {icon}
-                </motion.div>
-            </motion.div>
-        </Link>
-    );
-}
 
 export default Navbar;
