@@ -5,6 +5,8 @@ import BackgroundManager from '@/components/BackgroundManager';
 import { SoundProvider } from '@/context/SoundContext';
 import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
+import BookPage from '@/components/BookPage';
+import PageTransition from '@/components/PageTransition';
 
 const silkscreen = Silkscreen({
     weight: ['400', '700'],
@@ -26,20 +28,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <BackgroundManager />
                     <Navbar />
                     <div className="main-wrapper">
-                        {/* Main content area - offset for header and sidebar */}
+                        {/* Main content area - two-page book spread */}
                         <main style={{
                             marginTop: '48px',      // Header height
-                            marginLeft: '120px',    // Sidebar width
-                            padding: '1.5rem',
+                            marginLeft: '110px',    // Space for ribbon tabs
+                            marginRight: '110px',   // Symmetric margin on right
+                            padding: '1rem',
                             minHeight: 'calc(100vh - 48px)',
                         }}>
-                            {/* Book page container */}
-                            <div className="book-page" style={{
-                                minHeight: 'calc(100vh - 48px - 6rem)',
-                                padding: 'clamp(1rem, 3vw, 2rem)',
-                            }}>
-                                {children}
-                            </div>
+                            {/* Book page container with pixel art styling */}
+                            <BookPage 
+                                title="Netherious"
+                                showStamp={true}
+                            >
+                                <PageTransition>
+                                    {children}
+                                </PageTransition>
+                            </BookPage>
                         </main>
                         <Footer />
                     </div>
@@ -48,3 +53,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </html>
     );
 }
+

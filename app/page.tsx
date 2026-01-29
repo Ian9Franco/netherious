@@ -13,7 +13,6 @@ import { useSound } from '@/context/SoundContext';
 import { motion } from 'framer-motion';
 import homeData from '@/data/home.json';
 import { useRouter } from 'next/navigation';
-import { Typewriter } from '@/components/Typewriter';
 
 export default function HomePage() {
     const router = useRouter();
@@ -69,7 +68,7 @@ export default function HomePage() {
 
                 {/* Title */}
                 <h1 style={{ marginBottom: '0.8rem' }}>
-                    <Typewriter text={homeData.hero.title} speed={30} />
+                    {homeData.hero.title}
                 </h1>
 
                 {/* Subtitle */}
@@ -79,7 +78,7 @@ export default function HomePage() {
                     maxWidth: '500px',
                     marginInline: 'auto',
                 }}>
-                    <Typewriter text={homeData.hero.subtitle} speed={15} delay={0.5} />
+                    {homeData.hero.subtitle}
                 </p>
 
                 {/* CTA Buttons */}

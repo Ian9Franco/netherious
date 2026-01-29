@@ -1,24 +1,24 @@
 :root {
     /* ================================================
        PIXEL ART RETRO THEME - Netherious
-       Inspired by GameBoy / RPG inventory UIs
+       Inspired by RPG inventory / old book UIs
        ================================================ */
 
-    /* Base Monochrome Palette (GameBoy-inspired) */
-    --color-lightest: #c4b998;
-    /* Paper/parchment light */
-    --color-light: #a89f7c;
-    /* Paper mid */
-    --color-mid: #7c7557;
-    /* Shadows */
-    --color-dark: #4a4538;
-    /* Borders/text */
-    --color-darkest: #2d2a22;
-    /* Deep shadows */
+    /* Base Parchment Palette (matching inspiration image) */
+    --color-lightest: #d4c4a0;
+    /* Parchment base - warm beige */
+    --color-light: #c4b590;
+    /* Parchment mid */
+    --color-mid: #8b7355;
+    /* Page edges / shadows */
+    --color-dark: #4a3228;
+    /* Borders - reddish brown */
+    --color-darkest: #352318;
+    /* Deep shadows - dark chocolate */
 
-    /* Accent Colors (subtle) */
-    --accent-gold: #8b7f5c;
-    /* Muted gold */
+    /* Accent Colors (muted, vintage) */
+    --accent-gold: #8b7355;
+    /* Muted gold/bronze */
     --accent-red: #7a5454;
     /* Muted red */
     --accent-blue: #54687a;
@@ -27,11 +27,11 @@
     /* Muted green */
 
     /* Functional colors */
-    --bg-main: #c4b998;
-    --bg-dark: #2d2a22;
-    --text-main: #2d2a22;
-    --text-muted: #5c5647;
-    --border-main: #4a4538;
+    --bg-main: #d4c4a0;
+    --bg-dark: #352318;
+    --text-main: #1a0f08;
+    --text-muted: #3d2a1a;
+    --border-main: #4a3228;
 
     /* Legacy aliases */
     --bg-primary: var(--bg-dark);
@@ -136,35 +136,36 @@ main {
 }
 
 /* ================================================
-   PANELS - Dotted border style
+   PANELS - Pixel RPG game menu style
    ================================================ */
 
 .book-panel {
-    border: 2px dashed var(--color-mid);
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 50%, #987852 100%);
+    border: 3px solid #4a3228;
     padding: 1rem;
-    background: rgba(255, 255, 255, 0.05);
     position: relative;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.2),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.15),
+        3px 3px 0 #2a1810;
 }
 
-/* Corner brackets */
+/* Inner border effect */
 .book-panel::before {
-    content: "◤";
+    content: "";
     position: absolute;
-    top: -8px;
-    left: -8px;
-    font-size: 16px;
-    color: var(--color-mid);
-    line-height: 1;
+    inset: 6px;
+    border: 2px solid rgba(74, 50, 40, 0.3);
+    pointer-events: none;
 }
 
+/* Remove old corner bracket */
 .book-panel::after {
-    content: "◢";
+    content: "";
     position: absolute;
-    bottom: -8px;
-    right: -8px;
-    font-size: 16px;
-    color: var(--color-mid);
-    line-height: 1;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 15%);
+    pointer-events: none;
 }
 
 /* ================================================
@@ -265,73 +266,216 @@ div {
 }
 
 /* ================================================
-   BUTTONS - Chunky pixel style
+   BUTTONS - Pixel RPG style (like game menu)
    ================================================ */
 
 button,
 .btn {
     font-family: inherit;
     font-weight: 700;
-    padding: 0.6rem 1.2rem;
-    border: var(--px) solid var(--border-main);
-    background: var(--color-light);
-    color: var(--text-main);
-    font-size: 0.8rem;
+    padding: 0.5rem 1.2rem;
+    background: linear-gradient(180deg, #c4a882 0%, #a08060 50%, #8b6b4a 100%);
+    color: #352318;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: var(--shadow-pixel-sm);
-    transition: all 0.1s ease;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     position: relative;
+    
+    /* Double border pixel effect */
+    border: 3px solid #5a4030;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.2),
+        3px 3px 0 #2a1810;
+    
+    transition: all 0.08s ease;
 }
 
 button:hover,
 .btn:hover {
-    background: var(--color-lightest);
+    background: linear-gradient(180deg, #d4b892 0%, #b09070 50%, #9b7b5a 100%);
     transform: translate(1px, 1px);
-    box-shadow: 2px 2px 0 var(--color-dark);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.15),
+        2px 2px 0 #2a1810;
 }
 
 button:active,
 .btn:active {
-    transform: translate(2px, 2px);
-    box-shadow: none;
+    transform: translate(3px, 3px);
+    box-shadow: 
+        inset 0 2px 0 rgba(0, 0, 0, 0.2),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .btn-primary {
-    background: var(--accent-gold);
-    color: var(--color-lightest);
+    background: linear-gradient(180deg, #8b7355 0%, #6b5340 50%, #4a3228 100%);
+    color: #e8dcc8;
+    border-color: #352318;
 }
 
 .btn-primary:hover {
-    background: var(--color-mid);
+    background: linear-gradient(180deg, #9b8365 0%, #7b6350 50%, #5a4238 100%);
 }
 
 .btn-outline {
     background: transparent;
+    border: 2px dashed var(--color-mid);
     box-shadow: none;
+    color: var(--text-main);
 }
 
 .btn-outline:hover {
-    background: var(--color-light);
+    background: rgba(139, 115, 85, 0.1);
+    border-style: solid;
+}
+
+/* Special button - for important CTAs (like inspiration image 2) */
+.btn-special {
+    background: linear-gradient(180deg, #e8d8b8 0%, #d4c4a0 30%, #c4b490 70%, #b4a480 100%);
+    border: 4px solid #4a3228;
+    padding: 0.8rem 2rem;
+    font-size: 0.85rem;
+    position: relative;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.5),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.1),
+        4px 4px 0 #2a1810,
+        5px 5px 0 #1a0808;
+}
+
+.btn-special::before,
+.btn-special::after {
+    content: "◆";
+    font-size: 0.6rem;
+    color: var(--color-dark);
 }
 
 /* ================================================
-   CARDS / SLOTS - RPG inventory style
+   CARDS / SLOTS - RPG game menu style
    ================================================ */
 
 .glass,
 .slot {
-    background: var(--color-light);
-    border: var(--px) solid var(--border-main);
-    box-shadow: var(--shadow-inset);
+    background: linear-gradient(180deg, #b8a080 0%, #9a8060 50%, #8b7050 100%);
+    border: 3px solid #4a3228;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.2),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.15),
+        3px 3px 0 #2a1810;
     overflow: hidden;
+    position: relative;
 }
 
 .slot:hover {
-    background: var(--color-lightest);
+    background: linear-gradient(180deg, #c8b090 0%, #aa9070 50%, #9b8060 100%);
+}
+
+/* Pixel container - like game options panel */
+.pixel-container {
+    background: linear-gradient(180deg, #a08868 0%, #8b7050 30%, #7a6040 100%);
+    border: 4px solid #4a3228;
+    padding: 1rem;
+    position: relative;
+    box-shadow: 
+        inset 3px 3px 0 rgba(255, 255, 255, 0.15),
+        inset -3px -3px 0 rgba(0, 0, 0, 0.2),
+        4px 4px 0 #2a1810;
+}
+
+/* Inner border effect */
+.pixel-container::before {
+    content: "";
+    position: absolute;
+    inset: 6px;
+    border: 2px solid rgba(74, 50, 40, 0.4);
+    pointer-events: none;
+}
+
+/* Corner decorations */
+.pixel-container::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+        linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 10%),
+        linear-gradient(-135deg, rgba(255,255,255,0.05) 0%, transparent 10%);
+    pointer-events: none;
+}
+
+/* Panel with header - like game menu sections */
+.pixel-panel {
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 50%, #987852 100%);
+    border: 3px solid #4a3228;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.25),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.15),
+        3px 3px 0 #2a1810;
+    overflow: hidden;
+}
+
+.pixel-panel-header {
+    background: linear-gradient(180deg, #6b5340 0%, #4a3228 100%);
+    color: #e8dcc8;
+    padding: 0.4rem 1rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #352318;
+}
+
+.pixel-panel-content {
+    padding: 1rem;
+}
+
+/* Special notification card - like inspiration image 2 */
+.pixel-card {
+    background: linear-gradient(180deg, #e8dcc8 0%, #d4c4a0 50%, #c4b490 100%);
+    border: 4px solid #4a3228;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.5),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.08),
+        4px 4px 0 #2a1810;
+}
+
+.pixel-card-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(180deg, #b8a080 0%, #9a8060 100%);
+    border: 3px solid #4a3228;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: inset 2px 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+.pixel-card-content {
+    flex: 1;
+}
+
+.pixel-card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1a0f08;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pixel-card-text {
+    font-size: 0.75rem;
+    color: #2d1a10;
 }
 
 .premium-card {
@@ -343,65 +487,166 @@ button:active,
 }
 
 /* ================================================
-   TABS - Side navigation
+   TABS - Game menu style like GAME|AUDIO|VIDEO
    ================================================ */
 
+.pixel-tabs {
+    display: flex;
+    gap: 2px;
+}
+
+.pixel-tab {
+    background: linear-gradient(180deg, #8b7050 0%, #6b5340 100%);
+    border: 2px solid #4a3228;
+    border-bottom: none;
+    padding: 0.4rem 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.65rem;
+    color: #d4c4a0;
+    position: relative;
+    box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1);
+}
+
+.pixel-tab:hover {
+    background: linear-gradient(180deg, #9b8060 0%, #7b6350 100%);
+}
+
+.pixel-tab.active {
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 100%);
+    color: #352318;
+    z-index: 1;
+    margin-bottom: -2px;
+    padding-bottom: calc(0.4rem + 2px);
+}
+
+/* Legacy book-tab styles */
 .book-tab {
-    background: var(--color-light);
-    border: var(--px) solid var(--border-main);
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 100%);
+    border: 3px solid #4a3228;
     padding: 0.6rem 1rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.7rem;
-    color: var(--text-main);
+    color: #352318;
     position: relative;
-    box-shadow: 2px 0 0 var(--color-dark);
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.2),
+        2px 0 0 #2a1810;
 }
 
 .book-tab:hover {
-    background: var(--color-lightest);
+    background: linear-gradient(180deg, #d4b892 0%, #b89872 100%);
 }
 
 .book-tab.active {
-    background: var(--color-lightest);
+    background: linear-gradient(180deg, #e8dcc8 0%, #d4c4a0 100%);
     box-shadow: none;
     z-index: 1;
 }
 
 /* ================================================
-   BADGES & LABELS
+   BADGES & LABELS - Pixel style
    ================================================ */
 
 .badge {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.65rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.6rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 2px solid var(--border-main);
-    background: var(--color-lightest);
+    background: linear-gradient(180deg, #e8dcc8 0%, #d4c4a0 100%);
+    border: 2px solid #4a3228;
+    color: #352318;
+    box-shadow: 2px 2px 0 #2a1810;
 }
 
 .badge-gold {
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 100%);
+    border-color: #5a4030;
+    color: #352318;
 }
 
 .badge-red {
-    border-color: var(--accent-red);
-    color: var(--accent-red);
+    background: linear-gradient(180deg, #a87070 0%, #8a5858 100%);
+    border-color: #5a3030;
+    color: #f8e8e8;
 }
 
-/* Stamp effect */
+/* Stamp effect - like wax seal */
 .stamp {
-    border: 3px dashed var(--color-mid);
-    padding: 0.5rem;
-    background: var(--color-lightest);
-    box-shadow: var(--shadow-inset);
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 50%, #987852 100%);
+    border: 3px solid #4a3228;
+    padding: 1rem;
+    box-shadow: 
+        inset 2px 2px 0 rgba(255, 255, 255, 0.2),
+        inset -2px -2px 0 rgba(0, 0, 0, 0.15),
+        3px 3px 0 #2a1810;
+}
+
+/* ================================================
+   FORM ELEMENTS - Pixel game style
+   ================================================ */
+
+/* Checkbox - like game checkmarks */
+.pixel-checkbox {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(180deg, #b8a080 0%, #9a8060 100%);
+    border: 3px solid #4a3228;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        inset 2px 2px 0 rgba(0, 0, 0, 0.2),
+        2px 2px 0 #2a1810;
+}
+
+.pixel-checkbox.checked {
+    background: linear-gradient(180deg, #c4a882 0%, #a88862 100%);
+}
+
+.pixel-checkbox.checked::after {
+    content: "✓";
+    color: #352318;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Dropdown/Select - like game resolution picker */
+.pixel-select {
+    background: linear-gradient(180deg, #8b7050 0%, #6b5340 100%);
+    border: 3px solid #4a3228;
+    padding: 0.4rem 1rem;
+    color: #d4c4a0;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 
+        inset 0 2px 0 rgba(255, 255, 255, 0.1),
+        2px 2px 0 #2a1810;
+}
+
+/* Text input */
+.pixel-input {
+    background: linear-gradient(180deg, #e8dcc8 0%, #d4c4a0 100%);
+    border: 3px solid #4a3228;
+    padding: 0.5rem 1rem;
+    color: #352318;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 
+        inset 2px 2px 0 rgba(0, 0, 0, 0.1),
+        2px 2px 0 #2a1810;
+}
+
+.pixel-input::placeholder {
+    color: #8b7355;
 }
 
 /* ================================================

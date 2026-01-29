@@ -10,10 +10,8 @@ import {
 } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import installData from '@/data/install.json';
-import { Typewriter } from '@/components/Typewriter';
 
 export default function InstallPage() {
-    // ... Variants remain the same
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -36,10 +34,10 @@ export default function InstallPage() {
         >
             <motion.div variants={itemVariants} style={{ marginBottom: '6rem', textAlign: 'center' }}>
                 <h1 className="gradient-text" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', marginBottom: '1.5rem' }}>
-                    <Typewriter text={installData.title} speed={30} />
+                    {installData.title}
                 </h1>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem' }}>
-                    <Typewriter text={installData.subtitle} speed={15} delay={1} />
+                    {installData.subtitle}
                 </p>
                 <motion.div
                     animate={{ y: [0, 10, 0] }}
@@ -80,7 +78,7 @@ export default function InstallPage() {
                             <div style={{ flex: 1, minWidth: '300px' }}>
                                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.8rem' }}>
                                     <h2 style={{ fontSize: '2.2rem' }}>
-                                        <Typewriter text={section.title} speed={30} />
+                                        {section.title}
                                     </h2>
                                     {section.critical && (
                                         <span style={{ backgroundColor: '#ef444422', color: '#ef4444', padding: '0.2rem 0.8rem', borderRadius: '100px', fontSize: '0.75rem', fontWeight: 800, border: '1px solid #ef444444' }}>
@@ -89,7 +87,7 @@ export default function InstallPage() {
                                     )}
                                 </div>
                                 <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
-                                    <Typewriter text={section.description} speed={10} delay={0.5} />
+                                    {section.description}
                                 </p>
                             </div>
                         </div>
@@ -101,7 +99,7 @@ export default function InstallPage() {
                         }}>
                             <div>
                                 <h4 style={{ marginBottom: '2rem', color: 'var(--accent-primary)', textTransform: 'uppercase', fontSize: '0.9rem', fontWeight: 900, letterSpacing: '2px' }}>
-                                    <Typewriter text="GUÍA PASO A PASO" speed={20} delay={1} />
+                                    GUÍA PASO A PASO
                                 </h4>
                                 <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                                     {(section.instructions || section.checkpoints || []).map((inst: string, i: number) => (
@@ -111,9 +109,7 @@ export default function InstallPage() {
                                             style={{ display: 'flex', gap: '1.2rem', alignItems: 'flex-start', color: 'var(--text-secondary)', fontSize: '1.05rem' }}
                                         >
                                             <IconCircleCheck size={22} style={{ color: 'var(--accent-success)', marginTop: '0.2rem', flexShrink: 0 }} />
-                                            <span>
-                                                <Typewriter text={inst} speed={10} delay={1.5 + i * 0.1} />
-                                            </span>
+                                            <span>{inst}</span>
                                         </motion.li>
                                     ))}
                                 </ul>

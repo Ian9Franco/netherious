@@ -14,7 +14,6 @@ import {
 } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import serverData from '@/data/server.json';
-import { Typewriter } from '@/components/Typewriter';
 import { useSound } from '@/context/SoundContext';
 
 export default function ServerPage() {
@@ -83,10 +82,10 @@ export default function ServerPage() {
                 </div>
 
                 <h1 style={{ marginBottom: '1rem' }}>
-                    <Typewriter text={serverData.title} speed={30} />
+                    {serverData.title}
                 </h1>
                 <p style={{ color: 'var(--text-muted)', fontSize: '1rem' }}>
-                    <Typewriter text={serverData.subtitle} speed={15} delay={1} />
+                    {serverData.subtitle}
                 </p>
             </motion.div>
 

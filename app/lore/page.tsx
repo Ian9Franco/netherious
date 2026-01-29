@@ -14,7 +14,6 @@ import {
     IconFeather,
 } from '@tabler/icons-react';
 import topModsData from '@/data/top_mods_data.json';
-import { Typewriter } from '@/components/Typewriter';
 import { useSound } from '@/context/SoundContext';
 
 export default function LorePage() {
