@@ -1,56 +1,61 @@
-import { Silkscreen } from 'next/font/google';
-import './globals.css';
-import Navbar from '@/components/Navbar';
-import BackgroundManager from '@/components/BackgroundManager';
-import { SoundProvider } from '@/context/SoundContext';
-import Footer from '@/components/Footer';
-import CustomCursor from '@/components/CustomCursor';
-import BookPage from '@/components/BookPage';
-import PageTransition from '@/components/PageTransition';
+import React from "react"
+import type { Metadata } from 'next'
+import { Press_Start_2P, VT323 } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
+import './globals.css'
+import { CustomCursor } from '@/components/custom-cursor'
+import { Footer } from '@/components/footer'
+import { Toaster } from '@/components/ui/toaster'
 
-const silkscreen = Silkscreen({
-    weight: ['400', '700'],
-    subsets: ['latin'],
-    display: 'swap',
+const pressStart2P = Press_Start_2P({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-pixel'
 });
 
-export const metadata = {
-    title: 'Netherious | RPG Expansion Minecraft Server',
-    description: 'Netherious es el mejor servidor de Minecraft RPG con mods. Mejor que Hypixel, mejor que todo. Entra si tenés lo que hay que tener.',
-};
+const vt323 = VT323({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-vt323'
+});
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-    return (
-        <html lang="es" style={{ cursor: 'none' }}>
-            <body className={silkscreen.className} style={{ cursor: 'none' }}>
-                <CustomCursor />
-                <SoundProvider>
-                    <BackgroundManager />
-                    <Navbar />
-                    <div className="main-wrapper">
-                        {/* Main content area - two-page book spread */}
-                        <main style={{
-                            marginTop: '48px',      // Header height
-                            marginLeft: '110px',    // Space for ribbon tabs
-                            marginRight: '110px',   // Symmetric margin on right
-                            padding: '1rem',
-                            minHeight: 'calc(100vh - 48px)',
-                        }}>
-                            {/* Book page container with pixel art styling */}
-                            <BookPage 
-                                title="Netherious"
-                                showStamp={true}
-                            >
-                                <PageTransition>
-                                    {children}
-                                </PageTransition>
-                            </BookPage>
-                        </main>
-                        <Footer />
-                    </div>
-                </SoundProvider>
-            </body>
-        </html>
-    );
+export const metadata: Metadata = {
+  title: 'Netherious • Servidor Minecraft',
+  description: 'Servidor Minecraft con modpack único. Explora el Nether como nunca antes.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
+  },
 }
 
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode
+}>) {
+  return (
+    <html lang="es">
+      <body className={`${pressStart2P.variable} ${vt323.variable} antialiased`}>
+        <CustomCursor />
+        {children}
+        <Footer />
+        <Toaster />
+        <Analytics />
+      </body>
+    </html>
+  )
+}

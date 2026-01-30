@@ -4,39 +4,39 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.15 0.01 40);
-  --foreground: oklch(0.85 0.03 75);
-  --card: oklch(0.20 0.02 45);
-  --card-foreground: oklch(0.88 0.03 75);
-  --popover: oklch(0.18 0.02 40);
-  --popover-foreground: oklch(0.88 0.03 75);
-  --primary: oklch(0.50 0.20 30);
-  --primary-foreground: oklch(0.95 0.02 75);
-  --secondary: oklch(0.25 0.03 280);
-  --secondary-foreground: oklch(0.88 0.03 75);
-  --muted: oklch(0.30 0.02 45);
-  --muted-foreground: oklch(0.60 0.02 75);
-  --accent: oklch(0.45 0.18 280);
-  --accent-foreground: oklch(0.95 0.02 75);
-  --destructive: oklch(0.50 0.20 30);
-  --destructive-foreground: oklch(0.95 0.02 75);
-  --border: oklch(0.35 0.04 40);
-  --input: oklch(0.25 0.02 45);
-  --ring: oklch(0.50 0.20 30);
-  --chart-1: oklch(0.50 0.20 30);
-  --chart-2: oklch(0.45 0.18 280);
-  --chart-3: oklch(0.55 0.15 60);
-  --chart-4: oklch(0.40 0.15 320);
-  --chart-5: oklch(0.60 0.12 80);
-  --radius: 0rem;
-  --sidebar: oklch(0.18 0.02 40);
-  --sidebar-foreground: oklch(0.85 0.03 75);
-  --sidebar-primary: oklch(0.50 0.20 30);
-  --sidebar-primary-foreground: oklch(0.95 0.02 75);
-  --sidebar-accent: oklch(0.25 0.03 280);
-  --sidebar-accent-foreground: oklch(0.88 0.03 75);
-  --sidebar-border: oklch(0.35 0.04 40);
-  --sidebar-ring: oklch(0.50 0.20 30);
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -75,8 +75,8 @@
 }
 
 @theme inline {
-  --font-sans: var(--font-pixel), monospace;
-  --font-mono: var(--font-pixel), monospace;
+  --font-sans: 'Geist', 'Geist Fallback';
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -118,25 +118,65 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    image-rendering: pixelated;
-    image-rendering: crisp-edges;
   }
+
+  /* Hide default cursor globally */
+  html,
+  body,
+  *,
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
+    cursor: none !important;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
-}
 
-@layer utilities {
-  .pixel-border {
-    box-shadow: 
-      0 0 0 2px var(--color-border),
-      0 0 0 4px var(--color-background);
+  /* Hide scrollbars globally */
+  ::-webkit-scrollbar {
+    display: none;
   }
-  
-  .pixel-shadow {
-    box-shadow: 
-      4px 0 0 0 rgba(0, 0, 0, 0.3),
-      0 4px 0 0 rgba(0, 0, 0, 0.3),
-      4px 4px 0 0 rgba(0, 0, 0, 0.5);
+
+  * {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Stretch text vertically for a taller pixel look */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  span,
+  a,
+  button,
+  li,
+  dl,
+  dt,
+  dd {
+    transform: scaleY(1.1);
+    transform-origin: left center;
+    display: inline-block;
+    /* Required for transform to work on inline elements, might need adjustment for flow */
+  }
+
+  /* Fix block-level text containers to not break layout with inline-block everywhere */
+  div>p,
+  div>h1,
+  div>h2,
+  div>h3,
+  div>h4,
+  div>h5,
+  div>h6 {
+    display: block;
+    transform-origin: top center;
   }
 }

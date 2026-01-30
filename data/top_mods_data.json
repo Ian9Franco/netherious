@@ -1,31 +1,331 @@
 [
     {
-        "category": "Inmersión & Ambiente",
+        "category": "Criaturas & Fauna Salvaje",
         "mods": [
             {
-                "name": "Presence Footsteps",
-                "tagline": "Sonidos de pasos ultra-realistas según la superficie.",
-                "highlight": true
+                "name": "Companions!",
+                "file": "companions-forge-1.20.1-1.2.1.jar",
+                "description": "Añade una variedad de criaturas domesticables con habilidades especiales, nuevos enemigos, armas y un sistema de progresión basado en esencias."
             },
             {
-                "name": "AmbientSounds",
-                "tagline": "Naturaleza viva: pájaros, viento y eco en cuevas.",
-                "highlight": false
+                "name": "Golem Overhaul",
+                "file": "golemoverhaul-forge-1.20.1-1.0.0.jar",
+                "description": "Rediseña y amplía los gólems de Minecraft, añadiendo nuevos tipos como el gólem de barril o de miel, con mecánicas y utilidades únicas."
+            },
+            {
+                "name": "Primal Stage",
+                "file": "primal-1.0.6+1.20.1.jar",
+                "description": "Dificulta el inicio del juego introduciendo mecánicas de supervivencia primitiva, como la necesidad de herramientas específicas para obtener madera."
+            },
+            {
+                "name": "The Dawn Era",
+                "file": "thedawnera-1.20.1-0.642.jar",
+                "description": "Añade fauna prehistórica al mundo, permitiendo cazar, domesticar y descubrir criaturas inspiradas en dinosaurios y especies extintas."
+            },
+            {
+                "name": "Valarian Conquest",
+                "file": "valarian_conquest 4.2-forge-1.20.1.jar",
+                "description": "Introduce facciones humanas y de fantasía, asentamientos, ciudadanos rescatables y combates medievales dinámicos en el Overworld."
+            },
+            {
+                "name": "Wan's Ancient Beasts (WAB)",
+                "file": "wab-1.20.1-1.3.2.jar",
+                "description": "Revive criaturas prehistóricas encontrando restos fósiles y trabajando con el paleontólogo, con una mecánica similar al Sniffer pero más avanzada."
+            },
+            {
+                "name": "Wonderous Sea",
+                "file": "wonderoussea-1.0.4-forge-1.20.1.jar",
+                "description": "Revitaliza los océanos y ríos añadiendo docenas de nuevas especies marinas y animales acuáticos para una vida submarina vibrante."
             }
         ]
     },
     {
-        "category": "Combate & RPG",
+        "category": "Enemigos & Hostilidad",
         "mods": [
             {
-                "name": "Better Combat",
-                "tagline": "Sistema de combate fluido con animaciones únicas.",
-                "highlight": true
+                "name": "Mutant Monsters",
+                "file": "MutantMonsters-v8.0.8-1.20.1-Forge.jar",
+                "description": "Transforma a los mobs clásicos en versiones mutantes aterradoras con ataques devastadores y recompensas legendarias al derrotarlos."
             },
             {
-                "name": "Simply Swords",
-                "tagline": "Decenas de armas legendarias con habilidades.",
-                "highlight": true
+                "name": "Dwellers",
+                "file": "dweller_dweller-3.13.1.jar",
+                "description": "Introduce entidades acechantes y aterradoras diseñadas para perseguir al jugador, creando una experiencia de horror constante en cuevas y bosques."
+            },
+            {
+                "name": "Myths and Legends",
+                "file": "mythsandlegends-0.0.8.5.jar",
+                "description": "Llena el mundo de criaturas de mitos y folklore, como gargolas e imps, añadiendo un aire de fantasía oscura y misterio."
+            },
+            {
+                "name": "Clanging Howl",
+                "file": "clanging-howl-[Forge]_1.20.1_1.0.4.jar",
+                "description": "Un mod de ciencia ficción y horror que introduce tecnologías alienígenas y criaturas de 'tecno-carne' infecciosas en biomas fríos."
+            }
+        ]
+    },
+    {
+        "category": "Estructuras & Mazmorras Épicas",
+        "mods": [
+            {
+                "name": "Integrated Dungeons and Structures (IDAS)",
+                "file": "idas_forge-1.12.1+1.20.1.jar",
+                "description": "Añade estructuras masivas y detalladas que integran mecánicas de otros mods como Create o Quark, ofreciendo retos y botín épico."
+            },
+            {
+                "name": "Integrated Stronghold",
+                "file": "integrated_stronghold-1.1.2+1.20.1-forge.jar",
+                "description": "Rediseña por completo las fortalezas del End, convirtiéndolas en mazmorras gigantescas con trampas, puzles y un diseño laberíntico."
+            }
+        ]
+    },
+    {
+        "category": "Herramientas & Vehiculos",
+        "mods": [
+            {
+                "name": "RPG Style More Weapons",
+                "file": "RPG_Style_More_Weapons_R_1.0.3_Forge_1.20.1.jar",
+                "description": "Añade un arsenal masivo de armas y armaduras vinculadas a clases de RPG, cada una con habilidades especiales y mecánicas de combate."
+            },
+            {
+                "name": "Mining Master",
+                "file": "miningmaster-1.20.1-4.1.3.jar",
+                "description": "Introduce gemas de encantamiento que se aplican en la mesa de herrería para obtener nuevos efectos como el aumento de salud o velocidad."
+            },
+            {
+                "name": "Traveler's Backpack",
+                "file": "travelersbackpack-forge-1.20.1-9.1.46.jar",
+                "description": "La mochila definitiva para aventureros, con almacenamiento masivo, tanques de líquidos, mesa de crafteo integrada y saco de dormir."
+            },
+            {
+                "name": "Waystones",
+                "file": "wraith-waystones-3.3.3+mc1.20.1.jar",
+                "description": "Permite crear una red de teletransporte rápido entre puntos descubiertos, usando pilares de piedra y pergaminos mágicos."
+            },
+            {
+                "name": "Immersive Machinery",
+                "file": "immersive_machinery-0.2.0+1.20.1-forge.jar",
+                "description": "Añade máquinas rústicas y funcionales como submarinos (Copperfin), excavadoras de túneles y drones de transporte (Bamboo Bee)."
+            },
+            {
+                "name": "Just Hammers",
+                "file": "justhammers-forge-20.1.5+mc1.20.1.jar",
+                "description": "Introduce martillos de minería que permiten excavar áreas desde 3x3 hasta 5x5, facilitando la recolección masiva de recursos."
+            },
+            {
+                "name": "Tempad",
+                "file": "tempad-forge-1.20.1-2.3.4.jar",
+                "description": "Inspirado en Loki (TVA), permite guardar ubicaciones y teletransportarse a ellas mediante portales temporales personalizables."
+            }
+        ]
+    },
+    {
+        "category": "Jefes & Combate Avanzado",
+        "mods": [
+            {
+                "name": "Dungeon Now Loading",
+                "file": "Dungeon Now Loading-forge-1.20.1-2.11.jar",
+                "description": "Añade mazmorras con diseños únicos y jefes finales desafiantes, centrados en ofrecer contenido de combate de alto nivel."
+            },
+            {
+                "name": "L-Enders Cataclysm",
+                "file": "L_Enders_Cataclysm-3.16.jar",
+                "description": "Introduce algunos de los jefes más memorables y difíciles del modding moderno, con biomas y estructuras dedicadas para enfrentarlos."
+            },
+            {
+                "name": "Village and Pillage Respillaged",
+                "file": "illageandspillagerespillaged-1.2.8.jar",
+                "description": "Expande significativamente las invasiones de los aldeanos e ilágicos, añadiendo nuevos tipos de enemigos y máquinas de guerra."
+            },
+            {
+                "name": "Legendary Monsters",
+                "file": "legendarymonsters-LM_DEV_09 MC 1.20.1.jar",
+                "description": "Trae monstruos legendarios con mecánicas de combate complejas que requieren estrategias específicas para ser derrotados."
+            },
+            {
+                "name": "Wither Reincarnated",
+                "file": "witherreincarnated-1.20.1-1.0.5.jar",
+                "description": "Rediseña la batalla final contra el Wither, añadiendo nuevas fases, ataques devastadores y una dificultad mucho más elevada."
+            }
+        ]
+    },
+    {
+        "category": "Mundos & Dimensiones Alternas",
+        "mods": [
+            {
+                "name": "Oh The Biomes We've Gone",
+                "file": "Oh-The-Biomes-Weve-Gone-Forge-1.7.4.jar",
+                "description": "Secuela espiritual de OTBYG que añade más de 50 biomas mágicos y realistas, con nuevos tipos de madera, plantas y atmósfera."
+            },
+            {
+                "name": "Serene Seasons",
+                "file": "SereneSeasons-forge-1.20.1-9.1.0.2.jar",
+                "description": "Añade un sistema de estaciones dinámico que afecta la temperatura, el color del follaje y el crecimiento de los cultivos."
+            },
+            {
+                "name": "Enlightened End",
+                "file": "enlightend-5.0.14-1.20.1.jar",
+                "description": "Expanda enormemente la dimensión del End con nuevos biomas, mecánicas de gravedad, minerales y estructuras tanto arriba como abajo de las islas."
+            },
+            {
+                "name": "Unusual End",
+                "file": "unusualend-2.3.0-forge-1.20.1.jar",
+                "description": "Renueva la dimensión del End con biomas de bosques y montañas, gólems protectores de ciudades y gadgets de teletransporte avanzados."
+            },
+            {
+                "name": "Nether's Exorcism Reborn",
+                "file": "nethers_exorcism_reborn-1.1.3Beta.jar",
+                "description": "Añade biomas extraños y fascinantes al Nether, como bosques de ADN y deltas de ámbar, renovando la exploración del infierno."
+            },
+            {
+                "name": "Spelunkery",
+                "file": "spelunkery-1.20.1-0.3.16-forge.jar",
+                "description": "Mejora la exploración minera con nuevas variaciones de cuevas, hitos subterráneos y herramientas novedosas para la excavación."
+            }
+        ]
+    },
+    {
+        "category": "Progresión de Personaje",
+        "mods": [
+            {
+                "name": "Fathomless Crimson",
+                "file": "FathomlessCrimson-1.1.3bugfix.jar",
+                "description": "Un mod de horror y RPG que introduce un culto malévolo y criaturas con mecánicas avanzadas para una progresión oscura."
+            },
+            {
+                "name": "The Graveyard",
+                "file": "The_Graveyard_3.1_(FORGE)_for_1.20.1.jar",
+                "description": "Llena el mundo de biomas y estructuras temáticas de ultratumba, incluyendo un jefe tipo Lich y eventos de hordas de no muertos."
+            },
+            {
+                "name": "Tyz's Skills",
+                "file": "Tyz's skills 4.3-1.20.1.jar",
+                "description": "Un sistema de habilidades pasivas que permite subir de nivel y desbloquear mejoras de salud, alcance o bonos de experiencia."
+            },
+            {
+                "name": "Ars Nouveau",
+                "file": "ars_nouveau-1.20.1-4.12.7-all.jar",
+                "description": "Permite crear tus propios hechizos personalizados, automatizar tareas con familiares mágicos y construir infraestructuras de hechicería."
+            },
+            {
+                "name": "Better Combat",
+                "file": "bettercombat-forge-1.9.0+1.20.1.jar",
+                "description": "Rediseña por completo el sistema de combate cuerpo a cuerpo con animaciones fluidas, combos y detección de colisiones precisa."
+            },
+            {
+                "name": "Knight Quest",
+                "file": "knightquest-forge-1.20.1-1.9.3.jar",
+                "description": "Añade más de 30 sets de armaduras con habilidades pasivas, nuevas armas y un sistema de progresión basado en esencias mágicas."
+            },
+            {
+                "name": "Sweety's Archaeology",
+                "file": "sweety_archaeology-1.0.9c-forge-1.20.1.jar",
+                "description": "Expanda el sistema de arqueología con nuevas estructuras, reliquias con poderes únicos como reparación de equipo y mejores sitios de excavación."
+            },
+            {
+                "name": "Terramity",
+                "file": "terramity-0.9.8-forge-1.20.1.jar",
+                "description": "Inspirado en Terraria, añade un largo camino de progresión con accesorios, parreos, dashes y jefes que escalan en dificultad."
+            },
+            {
+                "name": "As You Wish",
+                "file": "as_you_wish-1.3.1-forge-1.20.1.jar",
+                "description": "Introduce un sistema de deseos mediante genios que puedes invocar con una lámpara mágica, ofreciendo poderosas mejoras o retos épicos."
+            }
+        ]
+    },
+    {
+        "category": "RPG CLASSES",
+        "mods": [
+            {
+                "name": "Archers",
+                "file": "archers-1.3.0+1.20.1.jar",
+                "description": "Añade arcos y equipamiento especializado para la clase arquero, con habilidades centradas en el combate a distancia."
+            },
+            {
+                "name": "Paladins",
+                "file": "paladins-1.4.0+1.20.1.jar",
+                "description": "Introduce equipamiento sagrado y habilidades defensivas para la clase paladín, enfocándose en la protección y curación."
+            },
+            {
+                "name": "Rogues",
+                "file": "rogues-1.2.0+1.20.1.jar",
+                "description": "Habilidades de sigilo, ataques críticos y armas rápidas para la clase Rogues, permitiendo un estilo de juego ágil y letal."
+            },
+            {
+                "name": "Wizards",
+                "file": "wizards-1.4.1+1.20.1.jar",
+                "description": "Añade báculos y hechizos poderosos para la clase mago, permitiendo manipular los elementos y controlar el campo de batalla."
+            }
+        ]
+    },
+    {
+        "category": "Tecnologia",
+        "mods": [
+            {
+                "name": "Ad Astra",
+                "file": "ad_astra-forge-1.20.1-1.15.20.jar",
+                "description": "La exploración espacial total, permitiendo construir cohetes para viajar a la Luna, Marte, Venus y otros sistemas solares."
+            },
+            {
+                "name": "Create",
+                "file": "create-1.20.1-6.0.8.jar",
+                "description": "Un mod revolucionario de automatización mecánica basado en energía rotacional, engranajes y contrapsiones ingeniosas."
+            },
+            {
+                "name": "Create New Age",
+                "file": "create-new-age-1.1.7f+forge-mc1.20.1.jar",
+                "description": "Add-on para Create que integra la electricidad y los motores magnéticos, permitiendo la generación de energía FE a gran escala."
+            },
+            {
+                "name": "Create Nuclear",
+                "file": "createnuclear-1.3.1-forge.jar",
+                "description": "Introduce reactores nucleares masivos a Create, con sistemas de refinamiento de uranio y gestión de radiación peligrosa."
+            },
+            {
+                "name": "The Factory Must Grow (TFMG)",
+                "file": "tfmg-1.0.2f.jar",
+                "description": "Expanda Create hacia la era industrial con motores de combustión interna, refinamiento de petróleo crudo y producción de plástico."
+            }
+        ]
+    },
+    {
+        "category": "Vanilla+ & Calidad de Vida",
+        "mods": [
+            {
+                "name": "Farmer's Delight",
+                "file": "FarmersDelight-1.20.1-1.2.9.jar",
+                "description": "Mejora enormemente la agricultura y la cocina, permitiendo preparar platos elaborados que otorgan bonificaciones sustanciales."
+            },
+            {
+                "name": "Aleki's Nifty Ships",
+                "file": "alekiNiftyShips-FORGE-1.20.1-1.0.14.jar",
+                "description": "Añade barcos personalizables y barcos de guerra con cañones, permitiendo una navegación realista y combate naval."
+            },
+            {
+                "name": "Dungeons Delight",
+                "file": "forge-dungeonsdelight-1.20.1-1.2.10.jar",
+                "description": "Extensión de Farmer's Delight que permite cocinar partes de monstruos en una olla especial, otorgando efectos de estado inusuales y temáticos."
+            },
+            {
+                "name": "Enchanting System Overhaul (ESO)",
+                "file": "eso-forge-1.20.1-1.2.2-all.jar",
+                "description": "Rediseña el sistema de encantamientos eliminando el azar. Permite aprender, mejorar y aplicar encantamientos específicos mediante materiales y exploración."
+            },
+            {
+                "name": "Let's Do Vinery",
+                "file": "letsdo-vinery-forge-1.4.41.jar",
+                "description": "Introduce el arte de la vinicultura, permitiendo cultivar uvas, fermentar vinos y decorar viñedos detallados."
+            },
+            {
+                "name": "Minervillager",
+                "file": "minervillager-1.20.1-5.6.1.jar",
+                "description": "Introduce aldeanos subterráneos que habitan en las minas, actuando como compañeros útiles para tus excavaciones."
+            },
+            {
+                "name": "Starcatcher",
+                "file": "starcatcher-2.1.3-FORGE-1.20.1.jar",
+                "description": "Reinventa la pesca como un minijuego de habilidad con más de 90 especies de peces nuevas y un catálogo para coleccionistas."
             }
         ]
     }
