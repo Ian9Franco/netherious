@@ -1,6 +1,7 @@
 'use client'
 
 import { ReactNode } from 'react'
+import { DynamicBackground } from './dynamic-background'
 
 interface BookLayoutProps {
   leftPage: ReactNode
@@ -10,9 +11,10 @@ interface BookLayoutProps {
 
 export function BookLayout({ leftPage, rightPage, navigation }: BookLayoutProps) {
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden font-[family-name:var(--font-pixel)]" style={{
-      background: 'linear-gradient(135deg, #3d5c3d 0%, #4a6b4a 50%, #3d5c3d 100%)'
-    }}>
+    <div className="min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden font-[family-name:var(--font-pixel)] relative">
+      {/* Dynamic Background */}
+      <DynamicBackground />
+      
       <div className="relative w-full max-w-[90rem]">
         {/* Navigation - positioned higher and closer */}
         <div className="absolute left-0 top-[40%] -translate-y-1/2 -translate-x-[68%] z-20">

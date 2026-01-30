@@ -16,6 +16,7 @@
     {
       "id": "criaturas",
       "title": "Criaturas & Fauna Salvaje",
+      "icon": "/assets/mini/criaturasyfauna.png",
       "description": "Una enorme diversidad de animales, criaturas prehistóricas, aliados y amenazas que llenan el mundo de vida.",
       "stats": [
         {
@@ -33,6 +34,7 @@
     {
       "id": "enemigos",
       "title": "Enemigos & Hostilidad",
+      "icon": "/assets/mini/enemigos.png",
       "description": "Criaturas agresivas, mutaciones antinaturales y horrores que transforman la exploración en supervivencia.",
       "stats": [
         {
@@ -50,6 +52,7 @@
     {
       "id": "estructuras",
       "title": "Estructuras & Mazmorras Épicas",
+      "icon": "/assets/mini/dungeons.png",
       "description": "Construcciones masivas con enemigos, botines épicos y ambientación inmersiva.",
       "stats": [
         {
@@ -67,6 +70,7 @@
     {
       "id": "herramientas",
       "title": "Herramientas & Vehículos",
+      "icon": "/assets/mini/6.png",
       "description": "Armas legendarias, equipamiento especializado y vehículos para la exploración y el combate.",
       "stats": [
         {
@@ -84,6 +88,7 @@
     {
       "id": "jefes",
       "title": "Jefes & Combate Avanzado",
+      "icon": "/assets/mini/bosses.png",
       "description": "Jefes memorables, encuentros diseñados para poner a prueba al jugador más experimentado.",
       "stats": [
         {
@@ -101,6 +106,7 @@
     {
       "id": "mundos",
       "title": "Mundos & Dimensiones Alternas",
+      "icon": "/assets/mini/dimesiones.png",
       "description": "Explora biomas renovados, paisajes dinámicos y versiones expandidas de las dimensiones vanilla.",
       "stats": [
         {
@@ -118,6 +124,7 @@
     {
       "id": "progresion",
       "title": "Progresión de Personaje",
+      "icon": "/assets/mini/7.png",
       "description": "Clases, habilidades, misiones y narrativa que transforman tu aventura.",
       "stats": [
         {
@@ -135,6 +142,7 @@
     {
       "id": "clases",
       "title": "RPG Classes",
+      "icon": "/assets/mini/8.png",
       "description": "Elige tu camino: Arquero, Paladín, Pícaro o Mago con habilidades únicas.",
       "stats": [
         {
@@ -152,6 +160,7 @@
     {
       "id": "tecnologia",
       "title": "Tecnología",
+      "icon": "/assets/mini/3.png",
       "description": "Maquinaria industrial, viajes espaciales y sistemas energéticos basados en Create.",
       "stats": [
         {
@@ -169,6 +178,7 @@
     {
       "id": "vanilla",
       "title": "Vanilla+ & Calidad de Vida",
+      "icon": "/assets/mini/4.png",
       "description": "Mejoras al estilo clásico con sistemas balanceados, inmersión y progresión natural.",
       "stats": [
         {
