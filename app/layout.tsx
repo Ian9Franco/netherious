@@ -23,25 +23,9 @@ const vt323 = VT323({
 export const metadata: Metadata = {
   title: 'Netherious • Servidor Minecraft',
   description: 'Servidor Minecraft con modpack único. Explora el Nether como nunca antes.',
-  generator: 'v0.app',
-  icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
-  },
+  generator: 'NOTORIOUS',
 }
+
 
 export default function RootLayout({
   children,
