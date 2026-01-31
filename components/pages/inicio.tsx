@@ -90,8 +90,10 @@ export function InicioRightPage({ onPageChange }: InicioProps) {
           </div>
 
           {/* Title */}
-          <h2 className="text-[16px] text-[#8B4513] uppercase mb-3 font-bold text-center drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">
+          <h2 className="text-[16px] text-[#8B4513] uppercase mb-3 font-bold text-center drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)] flex items-center justify-center gap-4">
+            <Image src="/assets/bookmagic.gif" alt="Magic" width={60} height={60} className="pixelated shrink-0" />
             {intro.title}
+            <Image src="/assets/bookmagic.gif" alt="Magic" width={60} height={60} className="pixelated -scale-x-100 shrink-0" />
           </h2>
 
           {/* Description */}

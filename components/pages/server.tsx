@@ -111,8 +111,10 @@ export function ServerRightPage() {
             style={{ imageRendering: 'pixelated' }}
           />
         </div>
-        <h2 className="text-[14px] text-[#8B4513] uppercase mb-2 font-bold text-center drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">
+        <h2 className="text-[14px] text-[#8B4513] uppercase mb-2 font-bold text-center drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)] flex items-center justify-center gap-2">
+          <Image src="/assets/bookmagic.gif" alt="Magic" width={60} height={60} className="pixelated" />
           {intro.title}
+          <Image src="/assets/bookmagic.gif" alt="Magic" width={60} height={60} className="pixelated -scale-x-100" />
         </h2>
 
         {/* Description */}

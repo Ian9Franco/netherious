@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { Instagram, Linkedin, Github, Globe } from "lucide-react"
 import { useSoundEffects } from "@/hooks/use-sound-effects"
+import Image from "next/image"
 
 const socialLinks = [
     {
@@ -49,7 +50,7 @@ export function Footer() {
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    onClick={() => playSound("redirect")}
+                                    onClick={() => playSound("nav-forward")}
                                     whileHover={{ scale: 1.1, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                     className={`w-8 h-8 flex items-center justify-center bg-background border-2 border-border transition-colors ${link.color} minecraft-button`}
@@ -61,11 +62,27 @@ export function Footer() {
                         })}
                     </div>
 
+                    {/* Decorative Eye */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.8, duration: 1 }}
+                        className="relative hidden md:block"
+                    >
+                        <Image
+                            src="/assets/eyeender.gif"
+                            alt="Eye of Ender"
+                            width={40}
+                            height={40}
+                            className="pixelated drop-shadow-[0_0_8px_rgba(168,85,247,0.4)]"
+                        />
+                    </motion.div>
+
                     {/* Copyright / Email */}
                     <div className="flex flex-col items-center md:items-end gap-0.5">
                         <motion.a
                             href="mailto:ian9franco@gmail.com"
-                            onClick={() => playSound("redirect")}
+                            onClick={() => playSound("nav-forward")}
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 200, damping: 15 }}
                             className="text-lg md:text-xl text-muted-foreground font-[family-name:var(--font-vt323)] cursor-pointer transition-colors hover:text-cyan-400 leading-none"
@@ -77,7 +94,7 @@ export function Footer() {
                             href="https://ian-pontorno-portfolio.vercel.app/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            onClick={() => playSound("redirect")}
+                            onClick={() => playSound("nav-forward")}
                             whileHover={{ scale: 1.05 }}
                             transition={{ type: "spring", stiffness: 200, damping: 15 }}
                             className="text-lg md:text-xl text-muted-foreground font-[family-name:var(--font-vt323)] cursor-pointer transition-colors hover:text-orange-500 leading-none"
