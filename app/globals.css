@@ -453,4 +453,50 @@
   .animate-fadeIn {
     animation: fadeIn 0.3s ease-out;
   }
+
+  /* ========================================
+     MOBILE RESPONSIVE STYLES
+     ======================================== */
+  
+  @media (max-width: 767px) {
+    /* Adjust scrollbar for mobile */
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    /* Scale down large images on mobile */
+    .mobile-scale-down {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Adjust text sizes for mobile readability */
+    .mobile-text-scale p,
+    .mobile-text-scale span {
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* Show scrollbar on mobile for usability */
+    .custom-scrollbar {
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Ensure images don't overflow on mobile */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Mobile-friendly button sizing */
+    button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+
+    /* Improve tap targets */
+    a, button, [role="button"] {
+      padding: 8px;
+    }
+  }
 }
