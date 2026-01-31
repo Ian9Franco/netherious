@@ -120,21 +120,28 @@
     @apply border-border outline-ring/50;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
+    cursor: none !important;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+
+  body,
+  html {
+    cursor: none !important;
   }
 }
 
 @layer utilities {
   .pixel-border {
-    box-shadow: 
+    box-shadow:
       0 0 0 2px var(--color-border),
       0 0 0 4px var(--color-background);
   }
-  
+
   .pixel-shadow {
-    box-shadow: 
+    box-shadow:
       4px 0 0 0 rgba(0, 0, 0, 0.3),
       0 4px 0 0 rgba(0, 0, 0, 0.3),
       4px 4px 0 0 rgba(0, 0, 0, 0.5);
@@ -152,7 +159,7 @@
     margin: 0.05em 0.15em 0 0;
     color: #8B4513;
     font-weight: bold;
-    text-shadow: 
+    text-shadow:
       2px 2px 0 rgba(0, 0, 0, 0.3),
       0 0 12px rgba(139, 69, 19, 0.4);
   }
@@ -162,7 +169,7 @@
     position: relative;
     padding-bottom: 8px;
   }
-  
+
   .ornamental-underline::after {
     content: '';
     position: absolute;
@@ -170,14 +177,13 @@
     left: 0;
     right: 0;
     height: 3px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      #8B4513 10%, 
-      #8B4513 50%, 
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        #8B4513 10%,
+        #8B4513 50%,
+        transparent 100%);
   }
-  
+
   .ornamental-underline::before {
     content: '◆';
     position: absolute;
@@ -194,7 +200,7 @@
   .gothic-corners {
     position: relative;
   }
-  
+
   .gothic-corners::before,
   .gothic-corners::after {
     content: '';
@@ -203,14 +209,14 @@
     height: 12px;
     border: 2px solid #8B4513;
   }
-  
+
   .gothic-corners::before {
     top: -4px;
     left: -4px;
     border-right: none;
     border-bottom: none;
   }
-  
+
   .gothic-corners::after {
     top: -4px;
     right: -4px;
@@ -221,21 +227,19 @@
   /* Parchment Texture Overlay */
   .parchment-texture {
     position: relative;
-    background-image: 
-      repeating-linear-gradient(
-        0deg,
+    background-image:
+      repeating-linear-gradient(0deg,
         transparent,
         transparent 2px,
         rgba(139, 69, 19, 0.02) 2px,
-        rgba(139, 69, 19, 0.02) 4px
-      );
+        rgba(139, 69, 19, 0.02) 4px);
   }
-  
+
   .parchment-texture::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: 
+    background-image:
       radial-gradient(circle at 20% 30%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 80% 70%, rgba(139, 69, 19, 0.02) 0%, transparent 50%);
     pointer-events: none;
@@ -245,7 +249,7 @@
   .ink-stain {
     position: relative;
   }
-  
+
   .ink-stain::after {
     content: '';
     position: absolute;
@@ -260,15 +264,14 @@
   .codex-divider {
     position: relative;
     height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      #8B4513 20%, 
-      #8B4513 80%, 
-      transparent 100%
-    );
+    background: linear-gradient(90deg,
+        transparent 0%,
+        #8B4513 20%,
+        #8B4513 80%,
+        transparent 100%);
     margin: 16px 0;
   }
-  
+
   .codex-divider::before,
   .codex-divider::after {
     content: '◆';
@@ -280,11 +283,11 @@
     background: #e8dcc8;
     padding: 0 4px;
   }
-  
+
   .codex-divider::before {
     left: 0;
   }
-  
+
   .codex-divider::after {
     right: 0;
   }
@@ -296,12 +299,12 @@
     height: 40px;
     background: radial-gradient(circle, #8B4513 0%, #5c3d1a 100%);
     border-radius: 50%;
-    box-shadow: 
+    box-shadow:
       inset 0 2px 4px rgba(255, 255, 255, 0.2),
       inset 0 -2px 4px rgba(0, 0, 0, 0.3),
       0 4px 8px rgba(0, 0, 0, 0.3);
   }
-  
+
   .wax-seal::before {
     content: '✦';
     position: absolute;
@@ -317,7 +320,7 @@
   .marginalia {
     position: relative;
   }
-  
+
   .marginalia::before {
     content: '❦';
     position: absolute;
@@ -334,13 +337,12 @@
     border-left: 3px solid #8B4513;
     border-right: 3px solid #8B4513;
     background: linear-gradient(90deg,
-      rgba(139, 69, 19, 0.05) 0%,
-      transparent 5%,
-      transparent 95%,
-      rgba(139, 69, 19, 0.05) 100%
-    );
+        rgba(139, 69, 19, 0.05) 0%,
+        transparent 5%,
+        transparent 95%,
+        rgba(139, 69, 19, 0.05) 100%);
   }
-  
+
   .scroll-edge::before,
   .scroll-edge::after {
     content: '';
@@ -350,11 +352,11 @@
     height: 3px;
     background: #8B4513;
   }
-  
+
   .scroll-edge::before {
     top: 0;
   }
-  
+
   .scroll-edge::after {
     bottom: 0;
   }
@@ -363,26 +365,26 @@
   .custom-scrollbar::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-track {
     background: #d4c4a8;
     border: 1px solid #8B4513;
     border-radius: 0;
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #8B4513 0%, #5c3d1a 100%);
     border: 1px solid #3a2010;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
-  
+
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #9B5523 0%, #6c4d2a 100%);
   }
 
   /* Aged Paper Effect */
   .aged-paper {
-    background: 
+    background:
       radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.03) 0%, transparent 50%),
       radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.02) 0%, transparent 50%),
       radial-gradient(circle at 50% 50%, rgba(139, 69, 19, 0.01) 0%, transparent 100%);
@@ -394,7 +396,7 @@
     position: relative;
     padding: 12px;
   }
-  
+
   .runic-border::before,
   .runic-border::after {
     content: '';
@@ -404,12 +406,12 @@
     background: #8B4513;
     transform: rotate(45deg);
   }
-  
+
   .runic-border::before {
     top: -3px;
     left: -3px;
   }
-  
+
   .runic-border::after {
     bottom: -3px;
     right: -3px;
@@ -417,14 +419,31 @@
 
   /* Fingerprint Auth Animations */
   @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-10px); }
-    75% { transform: translateX(10px); }
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    25% {
+      transform: translateX(-10px);
+    }
+
+    75% {
+      transform: translateX(10px);
+    }
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   .animate-shake {

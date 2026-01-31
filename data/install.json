@@ -1,6 +1,7 @@
 {
   "title": "Instalación Completa",
   "subtitle": "Paso a paso para descargar y configurar Netherious en tu PC",
+  "icon": "/assets/mini/descarga/instalacion.png",
   "intro": {
     "title": "Guía de Instalación",
     "steps": "Sigue estos pasos en orden para una experiencia sin problemas"
@@ -11,7 +12,7 @@
       "title": "1. Forge 1.20.1",
       "critical": true,
       "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
-      "icon": "Download",
+      "icon": "/assets/mini/descarga/instalacion.png",
       "color": "#3b82f6",
       "action": "Descargar Forge",
       "instructions": [
@@ -37,11 +38,11 @@
       "id": "server_core",
       "title": "2. Descargar Netherious Core",
       "description": "Descarga el paquete completo del servidor con todas las configuraciones, packs de recursos y mods esenciales.",
-      "icon": "Package",
+      "icon": "/assets/mini/descarga/descargamodpack.png",
       "color": "#10b981",
       "action": "Descargar Netherious.zip",
       "critical": true,
-      "downloadUrl": "https://drive.google.com/file/d/1jOBbQX_9aqNBw87ErDd8xmPwROFaAyIR/view?usp=sharing",
+      "downloadUrl": "https://drive.google.com/file/d/1FGOHvUE-i9hm7MU40KL9iNyoCzbV8fZm/view?usp=drive_link",
       "recommendation": "Descarga este archivo después de instalar Forge",
       "instructions": [
         "Descarga el archivo netherious.zip desde el botón de abajo",
@@ -54,7 +55,7 @@
       "id": "optional_mods",
       "title": "3. Mods Opcionales",
       "description": "Mods de partículas y animaciones solo para cliente local. Elimina cualquiera si experimentas problemas de rendimiento.",
-      "icon": "Sparkles",
+      "icon": "/assets/mini/general/1.png",
       "color": "#f59e0b",
       "recommendation": "Usa solo si experimentas problemas de rendimiento",
       "variant": "outline",
@@ -92,7 +93,7 @@
       "id": "config",
       "title": "4. Configuración Final",
       "description": "Ajusta la configuración para rendimiento óptimo en tu sistema.",
-      "icon": "Settings",
+      "icon": "/assets/mini/general/cofre.png",
       "color": "#06b6d4",
       "checkpoints": [
         "Asigna 8 GB de RAM mínimo en el launcher",
@@ -101,5 +102,8 @@
         "Proba conectarte al servidor"
       ]
     }
-  ]
+  ],
+  "outro": {
+    "icon": "/assets/mini/general/discord.png"
+  }
 }

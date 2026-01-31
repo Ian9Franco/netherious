@@ -1,6 +1,7 @@
 {
   "intro": {
     "title": "La Historia Comienza",
+    "icon": "/assets/mini/lore/la historia.png",
     "paragraph1": "Bienvenido a Netherious: RPG Expansion — un mundo donde la magia se mezcla con la maquinaria y la aventura nunca se detiene. Cada estructura guarda secretos, cada bioma es un reto, y cada jugador forja su propio destino.",
     "paragraph2": "Explora ruinas antiguas, fortalezas flotantes y fábricas movidas por vapor. Viaja entre dimensiones, mejora tus habilidades y enfréntate a criaturas que no pertenecen a este mundo. Todo está conectado por portales, engranajes y poder arcano."
   },
@@ -16,7 +17,7 @@
     {
       "id": "criaturas",
       "title": "Criaturas & Fauna Salvaje",
-      "icon": "/assets/mini/criaturasyfauna.png",
+      "icon": "/assets/mini/lore/criaturasyfauna.png",
       "description": "Una enorme diversidad de animales, criaturas prehistóricas, aliados y amenazas que llenan el mundo de vida.",
       "stats": [
         {
@@ -28,13 +29,18 @@
           "label": "Peligro",
           "value": 5,
           "type": "attack"
+        },
+        {
+          "label": "Top Mods",
+          "value": 7,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "enemigos",
       "title": "Enemigos & Hostilidad",
-      "icon": "/assets/mini/enemigos.png",
+      "icon": "/assets/mini/lore/enemigos.png",
       "description": "Criaturas agresivas, mutaciones antinaturales y horrores que transforman la exploración en supervivencia.",
       "stats": [
         {
@@ -46,13 +52,18 @@
           "label": "Frecuencia",
           "value": 8,
           "type": "speed"
+        },
+        {
+          "label": "Top Mods",
+          "value": 4,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "estructuras",
       "title": "Estructuras & Mazmorras Épicas",
-      "icon": "/assets/mini/dungeons.png",
+      "icon": "/assets/mini/lore/mazmorras.png",
       "description": "Construcciones masivas con enemigos, botines épicos y ambientación inmersiva.",
       "stats": [
         {
@@ -64,13 +75,18 @@
           "label": "Recompensa",
           "value": 9,
           "type": "magic"
+        },
+        {
+          "label": "Top Mods",
+          "value": 2,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "herramientas",
       "title": "Herramientas & Vehículos",
-      "icon": "/assets/mini/6.png",
+      "icon": "/assets/mini/lore/herramientas2.png",
       "description": "Armas legendarias, equipamiento especializado y vehículos para la exploración y el combate.",
       "stats": [
         {
@@ -82,13 +98,18 @@
           "label": "Complejidad",
           "value": 6,
           "type": "speed"
+        },
+        {
+          "label": "Top Mods",
+          "value": 7,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "jefes",
       "title": "Jefes & Combate Avanzado",
-      "icon": "/assets/mini/bosses.png",
+      "icon": "/assets/mini/lore/bosses.png",
       "description": "Jefes memorables, encuentros diseñados para poner a prueba al jugador más experimentado.",
       "stats": [
         {
@@ -100,13 +121,18 @@
           "label": "Riesgo",
           "value": 9,
           "type": "attack"
+        },
+        {
+          "label": "Top Mods",
+          "value": 5,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "mundos",
       "title": "Mundos & Dimensiones Alternas",
-      "icon": "/assets/mini/dimesiones.png",
+      "icon": "/assets/mini/lore/dimesiones.png",
       "description": "Explora biomas renovados, paisajes dinámicos y versiones expandidas de las dimensiones vanilla.",
       "stats": [
         {
@@ -118,13 +144,18 @@
           "label": "Peligro",
           "value": 6,
           "type": "attack"
+        },
+        {
+          "label": "Top Mods",
+          "value": 6,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "progresion",
       "title": "Progresión de Personaje",
-      "icon": "/assets/mini/7.png",
+      "icon": "/assets/mini/lore/progresion.png",
       "description": "Clases, habilidades, misiones y narrativa que transforman tu aventura.",
       "stats": [
         {
@@ -136,13 +167,18 @@
           "label": "Complejidad",
           "value": 7,
           "type": "speed"
+        },
+        {
+          "label": "Top Mods",
+          "value": 9,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "clases",
       "title": "RPG Classes",
-      "icon": "/assets/mini/8.png",
+      "icon": "/assets/mini/lore/rpg.png",
       "description": "Elige tu camino: Arquero, Paladín, Pícaro o Mago con habilidades únicas.",
       "stats": [
         {
@@ -154,13 +190,18 @@
           "label": "Versatilidad",
           "value": 10,
           "type": "speed"
+        },
+        {
+          "label": "Top Mods",
+          "value": 4,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "tecnologia",
       "title": "Tecnología",
-      "icon": "/assets/mini/3.png",
+      "icon": "/assets/mini/lore/tecnologia.png",
       "description": "Maquinaria industrial, viajes espaciales y sistemas energéticos basados en Create.",
       "stats": [
         {
@@ -172,13 +213,18 @@
           "label": "Utilidad",
           "value": 10,
           "type": "speed"
+        },
+        {
+          "label": "Top Mods",
+          "value": 5,
+          "type": "speed"
         }
       ]
     },
     {
       "id": "vanilla",
       "title": "Vanilla+ & Calidad de Vida",
-      "icon": "/assets/mini/4.png",
+      "icon": "/assets/mini/lore/vanilla.png",
       "description": "Mejoras al estilo clásico con sistemas balanceados, inmersión y progresión natural.",
       "stats": [
         {
@@ -190,6 +236,11 @@
           "label": "Inmersión",
           "value": 8,
           "type": "magic"
+        },
+        {
+          "label": "Top Mods",
+          "value": 7,
+          "type": "speed"
         }
       ]
     }
@@ -210,6 +261,7 @@
   ],
   "outro": {
     "title": "Tu Aventura Comienza Ahora",
+    "icon": "/assets/mini/lore/tuhistoriacomienza.png",
     "paragraph": "Únete a Netherious y vive la experiencia definitiva de Minecraft modded. Cada muerte te enseña, cada victoria te fortalece, y cada descubrimiento cambia tu mundo."
   }
 }

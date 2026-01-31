@@ -14,7 +14,7 @@ export function BookLayout({ leftPage, rightPage, navigation }: BookLayoutProps)
     <div className="min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden font-[family-name:var(--font-pixel)] relative">
       {/* Dynamic Background */}
       <DynamicBackground />
-      
+
       <div className="relative w-full max-w-[90rem]">
         {/* Navigation - positioned higher and closer */}
         <div className="absolute left-0 top-[40%] -translate-y-1/2 -translate-x-[68%] z-20">
@@ -29,18 +29,18 @@ export function BookLayout({ leftPage, rightPage, navigation }: BookLayoutProps)
             imageRendering: 'pixelated',
           }}
         >
-          {/* Two-page layout with larger gap to avoid spine */}
-          <div className="absolute inset-[8%] grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+          {/* Two-page layout with optimized spacing */}
+          <div className="absolute inset-[9%] grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20">
             {/* Left page */}
             <div className="relative overflow-hidden">
-              <div className="h-full overflow-hidden">
+              <div className="h-full overflow-hidden px-2">
                 {leftPage}
               </div>
             </div>
 
             {/* Right page */}
             <div className="relative overflow-hidden">
-              <div className="h-full overflow-hidden">
+              <div className="h-full overflow-hidden px-2">
                 {rightPage}
               </div>
             </div>

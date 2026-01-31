@@ -1,7 +1,10 @@
 {
   "title": "Información del Servidor",
   "subtitle": "Todo lo que necesitas saber para conectarte a Netherious",
-  "ip": "179.41.11.247:25591",
+  "icon": "/assets/mini/server/expansion netherious.png",
+  "connection_seal": "/assets/mini/server/conexion al servidor1.png",
+  "right_featured_icon": "/assets/mini/server/dale que llueve.png",
+  "ip": "sv30.minehost.pro:25471",
   "intro": {
     "title": "Netherious: RPG Expansion",
     "description": "Servidor privado de Minecraft con mods personalizados en Forge 1.20.1, diseñado para aventureros que buscan experiencias épicas con exploración profunda, combate desafiante y secretos escondidos bajo tierra."
@@ -10,21 +13,21 @@
     {
       "label": "Versión de Minecraft",
       "value": "1.20.1",
-      "icon": "Server",
+      "icon": "/assets/mini/general/1.png",
       "color": "#3b82f6",
       "description": "Versión específica requerida para compatibilidad total"
     },
     {
       "label": "Cargador de Mods",
       "value": "Forge 1.20.1",
-      "icon": "Cpu",
+      "icon": "/assets/mini/lore/gear.png",
       "color": "#f59e0b",
       "description": "Mod loader necesario para cargar todos los mods del servidor"
     },
     {
       "label": "Versión de Java",
       "value": "Java 8+",
-      "icon": "Coffee",
+      "icon": "/assets/mini/general/imp.png",
       "color": "#10b981",
       "description": "Compatible desde Java 8, pero se recomienda Java 21 para mejor estabilidad y rendimiento"
     }
@@ -45,5 +48,8 @@
       "value": "13GB máximo con todos los mods, shaders y texturas",
       "icon": "HardDrive"
     }
-  ]
+  ],
+  "outro": {
+    "discord_icon": "/assets/mini/general/discord.png"
+  }
 }

@@ -3,22 +3,28 @@ import { PixelContainer } from '@/components/pixel-container'
 import Image from 'next/image'
 import homeData from '@/data/home.json'
 
-export function InicioLeftPage() {
-  const { hero, intro } = homeData;
+interface InicioProps {
+  onPageChange?: (page: string) => void
+}
+
+export function InicioLeftPage({ onPageChange }: InicioProps) {
+  const { hero, features } = homeData;
 
   return (
-    <div className="space-y-6 font-[family-name:var(--font-pixel)] h-full overflow-y-auto pr-1 custom-scrollbar flex flex-col justify-center">
-      {/* Hero Section */}
-      <div className="flex flex-col items-center mb-6 relative">
-        <Image
-          src="/assets/logo/logo.png"
-          alt="Netherious"
-          width={140}
-          height={45}
-          className="block h-auto w-auto drop-shadow-[4px_4px_0_rgba(139,69,19,0.4)]"
-          style={{ imageRendering: 'pixelated' }}
-          priority
-        />
+    <div className="space-y-6 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-1 custom-scrollbar flex flex-col">
+      {/* Hero Section - Larger Logo */}
+      <div className="flex flex-col items-center mb-4 relative">
+        <div className="hover:scale-105 transition-transform duration-500 cursor-pointer ease-out-back">
+          <Image
+            src="/assets/logo/logo.png"
+            alt="Netherious"
+            width={240}
+            height={72}
+            className="block h-auto w-auto drop-shadow-[6px_6px_0_rgba(139,69,19,0.4)]"
+            style={{ imageRendering: 'pixelated' }}
+            priority
+          />
+        </div>
         <p className="text-[11px] text-[#5c3d1a] font-bold mt-4 text-center leading-relaxed max-w-[90%] drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">
           {hero.subtitle}
         </p>
@@ -26,106 +32,120 @@ export function InicioLeftPage() {
 
       <div className="codex-divider"></div>
 
-      {/* Intro Section */}
-      <div className="relative pl-20 min-h-[60px] parchment-texture">
-        <Image
-          src="/assets/craiyon_211530_image.png"
-          alt="Info"
-          width={84}
-          height={84}
-          className="absolute left-[-10px] top-[-8px]"
-          style={{ imageRendering: 'pixelated' }}
-        />
-        <h2 className="text-[14px] text-[#8B4513] uppercase mb-2 font-bold drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">{intro.title}</h2>
-        <p className="text-[10px] leading-relaxed text-[#3a2010] drop-cap pr-2">
-          {intro.paragraph}
-        </p>
+      {/* Features Index - Simple List like Coffee Menu */}
+      <div className="flex-1">
+        <h2 className="text-[14px] text-[#8B4513] uppercase mb-4 font-bold text-center drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">
+          Características
+        </h2>
+        <div className="space-y-3">
+          {features.map((feature, index) => (
+            <div key={index} className="flex items-center gap-3 bg-[#d4c4a8]/40 border-2 border-[#8B4513]/30 p-2 hover:bg-[#d4c4a8]/60 transition-colors cursor-pointer">
+              {/* Icon */}
+              <div className="flex-shrink-0">
+                <Image
+                  src={index === 0 ? "/assets/mini/inicio/inicio mundosvivos.png" : index === 1 ? "/assets/mini/inicio/inicio combate.png" : "/assets/mini/inicio/inicio progresion rpg.png"}
+                  alt="Feature"
+                  width={160}
+                  height={160}
+                  className="drop-shadow-[6px_6px_0_rgba(0,0,0,0.3)] hover:scale-110 transition-transform duration-300 cursor-pointer"
+                  style={{ imageRendering: 'pixelated' }}
+                />
+              </div>
+              {/* Label */}
+              <div className="flex-1">
+                <h3 className="text-[11px] font-bold text-[#8B4513] uppercase leading-tight">
+                  {feature.title}
+                </h3>
+              </div>
+              {/* Indicator */}
+              <div className="flex-shrink-0">
+                <div className="w-2 h-2 bg-[#8B4513] transform rotate-45"></div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
 }
 
-export function InicioRightPage() {
-  const { features, cards, cta } = homeData;
+export function InicioRightPage({ onPageChange }: InicioProps) {
+  const { intro, cards, cta } = homeData;
 
   return (
-    <div className="space-y-4 font-[family-name:var(--font-pixel)] h-full overflow-y-auto pr-1 custom-scrollbar">
-      {/* All Features with POP ART */}
-      <div className="space-y-4">
-        {features.map((feature, index) => {
-          const gradients = [
-            'from-[#ff6b9d] to-[#ff1744]',
-            'from-[#00ff88] to-[#00cc66]',
-            'from-[#5555ff] to-[#3d5afe]',
-            'from-[#ffdd00] to-[#ffaa00]',
-            'from-[#ff6f00] to-[#e65100]'
-          ];
-          const accents = ['#ff6b9d', '#00ff88', '#5555ff', '#ffdd00', '#ff6f00'];
-          const gradient = gradients[index % gradients.length];
-          const accent = accents[index % accents.length];
-          
-          return (
-            <div key={index} className="relative pl-16 marginalia">
-              {/* Icon with comic burst */}
-              <div className="absolute left-[-4px] top-[-2px]">
-                <Image
-                  src={`/assets/mini/${(index % 8) + 1}.png`}
-                  alt="Feature"
-                  width={48}
-                  height={48}
-                  className="relative z-10 drop-shadow-[4px_4px_0_#000]"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-                <div className="absolute inset-0 -z-10 scale-125 opacity-20" style={{
-                  backgroundImage: `repeating-conic-gradient(from 0deg, ${accent} 0deg 15deg, transparent 15deg 30deg)`
-                }}></div>
-              </div>
-              
-              <div className="bg-white/40 backdrop-blur-sm border-4 border-black p-2 shadow-[4px_4px_0_rgba(0,0,0,0.3)]">
-                <h3 className={`text-[12px] font-black uppercase mb-0.5 bg-gradient-to-r ${gradient} bg-clip-text text-transparent`}>
-                  {feature.title}
-                </h3>
-                <p className="text-[9px] text-[#3a2010] leading-tight font-bold">{feature.description}</p>
-              </div>
-            </div>
-          );
-        })}
+    <div className="space-y-6 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-1 custom-scrollbar flex flex-col">
+      {/* Featured Visual - Large Image */}
+      <div className="relative">
+        <div className="bg-[#e8dcc8] border-4 border-[#8B4513] p-4 relative">
+          {/* Large Featured Icon */}
+          <div className="flex justify-center mb-4">
+            <Image
+              src="/assets/craiyon_211530_image.png"
+              alt="Featured"
+              width={220}
+              height={220}
+              className="drop-shadow-[10px_10px_0_rgba(0,0,0,0.4)]"
+              style={{ imageRendering: 'pixelated' }}
+            />
+          </div>
+
+          {/* Title */}
+          <h2 className="text-[16px] text-[#8B4513] uppercase mb-3 font-bold text-center drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">
+            {intro.title}
+          </h2>
+
+          {/* Description */}
+          <p className="text-[11px] leading-relaxed text-[#3a2010] text-center px-2">
+            {intro.paragraph}
+          </p>
+
+          {/* Decorative corners */}
+          <div className="absolute -top-2 -left-2 w-3 h-3 bg-[#8B4513]"></div>
+          <div className="absolute -top-2 -right-2 w-3 h-3 bg-[#8B4513]"></div>
+          <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-[#8B4513]"></div>
+          <div className="absolute -bottom-2 -right-2 w-3 h-3 bg-[#8B4513]"></div>
+        </div>
       </div>
 
       <div className="codex-divider"></div>
 
-      {/* Highlights / Cards */}
-      <div className="grid grid-cols-1 gap-2 mt-2">
+      {/* Highlights Cards */}
+      <div className="flex-1 space-y-3">
+        <h3 className="text-[18px] text-[#8B4513] uppercase font-bold mb-5 drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)] flex items-center gap-6">
+          <Image src="/assets/mini/inicio/destacados.png" alt="Highlight icon" width={160} height={160} style={{ imageRendering: 'pixelated' }} className="drop-shadow-[6px_6px_0_rgba(0,0,0,0.3)]" />
+          Destacados
+        </h3>
         {cards.map((card, idx) => (
-          <div key={idx} className="bg-[#d4c4a8]/30 border border-[#8B4513]/30 p-2 relative pl-2 hover:bg-[#d4c4a8]/50 transition-colors gothic-corners aged-paper">
-            <div className="flex items-center gap-2 mb-1">
-              <div className="w-1.5 h-1.5 bg-[#8B4513] transform rotate-45"></div>
-              <h4 className="text-[10px] uppercase font-bold text-[#8B4513]">{card.title}</h4>
+          <div key={idx} className="bg-[#d4c4a8]/40 border-2 border-[#8B4513]/30 p-3 relative hover:bg-[#d4c4a8]/60 transition-colors">
+            <div className="flex items-start gap-2 mb-1">
+              <div className="w-2 h-2 bg-[#8B4513] transform rotate-45 mt-1 flex-shrink-0"></div>
+              <div className="flex-1">
+                <h4 className="text-[11px] uppercase font-bold text-[#8B4513] mb-1">{card.title}</h4>
+                <p className="text-[10px] text-[#3a2010] leading-tight">{card.text}</p>
+              </div>
             </div>
-            <p className="text-[9px] text-[#3a2010] leading-tight pl-3.5">{card.text}</p>
           </div>
         ))}
       </div>
 
-      {/* CTA Section */}
-      <div className="mt-4 pt-2 px-1">
-        <div className="bg-[#e8dcc8] relative p-4 scroll-edge shadow-md group">
-          {/* Decorative Corners */}
-          <div className="absolute -top-1 -left-1 w-2 h-2 bg-[#8B4513]"></div>
-          <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#8B4513]"></div>
-          <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-[#8B4513]"></div>
-          <div className="absolute -bottom-1 -right-1 w-2 h-2 bg-[#8B4513]"></div>
-
-          {/* Inner Border */}
-          <div className="absolute inset-[3px] border border-[#8B4513]/30 pointer-events-none"></div>
-
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2 wax-seal z-10">
-            <span className="text-[9px] font-bold text-[#e8dcc8] uppercase absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">⚔</span>
-          </div>
-          <h3 className="text-[14px] text-[#8B4513] font-bold mb-1 text-center mt-1 drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)]">{cta.title}</h3>
-          <p className="text-[10px] text-[#3a2010] mb-3 text-center leading-relaxed">{cta.description}</p>
-          <div className="flex justify-center gap-2">
-            <PixelButton variant="primary" className="text-[10px] py-1 px-4 shadow-[0_3px_0_#3a2010] hover:translate-y-[-1px] transition-transform">{cta.button}</PixelButton>
+      {/* CTA Section - Action Buttons */}
+      <div className="mt-auto pt-4">
+        <div className="bg-gradient-to-br from-[#e8dcc8] to-[#d4c4a8] relative p-4 border-4 border-[#8B4513] shadow-lg">
+          <h3 className="text-[13px] text-[#8B4513] font-bold mb-2 text-center uppercase drop-shadow-[2px_2px_0_rgba(0,0,0,0.2)]">
+            {cta.title}
+          </h3>
+          <p className="text-[10px] text-[#3a2010] mb-3 text-center leading-relaxed">
+            {cta.description}
+          </p>
+          <div className="flex justify-center">
+            <PixelButton
+              variant="comic"
+              className="text-[12px] py-4 px-8 font-black flex flex-col items-center gap-2 shadow-[8px_8px_0_0_#000] hover:scale-110 transition-transform"
+              onClick={() => onPageChange?.('descarga')}
+            >
+              <Image src="/assets/mini/general/cofre.png" alt="Chest" width={64} height={64} style={{ imageRendering: 'pixelated' }} className="drop-shadow-[6px_6px_0_rgba(0,0,0,0.3)]" />
+              <span>{cta.button}</span>
+            </PixelButton>
           </div>
         </div>
       </div>

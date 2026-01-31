@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netherious Core - Modlist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lexend:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --bg-surface: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --accent-primary: #6366f1;
+            --accent-secondary: #8b5cf6;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.05);
+            --success: #10b981;
+            --gold: #fbbf24;
+            --gold-glow: rgba(251, 191, 36, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #1e1b4b, #030712 60%);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header Premium */
+        .header {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .logo-container img {
+            height: 100px;
+            filter: drop-shadow(0 0 15px rgba(99, 102, 241, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container img:hover {
+            transform: scale(1.05);
+        }
+
+        .header h1 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat {
+            position: relative;
+            padding: 0 1rem;
+        }
+
+        .stat:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -1rem;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .stat-num {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-primary);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Layout Main + Sidebar */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 2rem;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: stretch;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            color: #fff;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+            opacity: 0.5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .btn:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .side-block {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.5rem;
+            backdrop-filter: blur(12px);
+        }
+
+        .side-block h3 {
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-secondary);
+        }
+
+        .side-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .side-item {
+            font-size: 0.8rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .side-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .side-item.is-top {
+            border-color: var(--gold);
+            color: #fff;
+        }
+
+        /* Categories Area */
+        .category {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 0.75rem;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .category.collapsed {
+            border-color: transparent;
+        }
+
+        .category:not(.collapsed) {
+            border-color: var(--accent-primary);
+        }
+
+        .category-header {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: 'Lexend', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .category-icon {
+            font-size: 1.25rem;
+            background: rgba(255, 255, 255, 0.05);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-primary);
+            padding: 0.15rem 0.5rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .arrow {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .category.collapsed .arrow {
+            transform: rotate(-90deg);
+        }
+
+        .category-content {
+            max-height: 10000px;
+            padding: 0 1.25rem 1.25rem;
+            transition: all 0.4s ease;
+        }
+
+        .category.collapsed .category-content {
+            max-height: 0;
+            padding: 0 1.25rem;
+            visibility: hidden;
+        }
+
+        .subcategory-item {
+            margin-top: 1.25rem;
+        }
+
+        .subcategory-title {
+            color: var(--accent-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .subcategory-title span {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .mod-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.6rem 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .mod-card:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--accent-primary);
+            color: #fff;
+            transform: translateX(3px);
+        }
+
+        .mod-card::before {
+            content: '📦';
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .mod-card.is-top {
+            border: 1px solid var(--gold);
+            background: rgba(251, 191, 36, 0.05);
+            box-shadow: 0 0 15px var(--gold-glow);
+            color: #fff;
+        }
+
+        .mod-card.is-top:hover {
+            background: rgba(251, 191, 36, 0.15);
+            box-shadow: 0 0 25px var(--gold-glow);
+        }
+
+        .mod-card.is-top::before {
+            content: '⭐';
+            opacity: 1;
+        }
+
+        .badge-top {
+            background: var(--gold);
+            color: #000;
+            font-size: 0.6rem;
+            font-weight: 800;
+            padding: 0.1rem 0.3rem;
+            border-radius: 3px;
+            text-transform: uppercase;
+            margin-left: auto;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            background: var(--bg-card);
+            border-radius: 20px;
+            display: none;
+        }
+
+        @media (max-width: 1100px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .stats {
+                flex-wrap: wrap;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--bg-surface);
+            border-radius: 4px;
+            border: 2px solid var(--bg-dark);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="netherious.png" alt="Netherious Logo">
+            </div>
+            <h1>Netherious Core</h1>
+            <p class="subtitle">Modpack 1.20.1 • Forge</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-num">313</span>
+                    <span class="stat-label">Mods</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">12</span>
+                    <span class="stat-label">Categorías</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">28</span>
+                    <span class="stat-label">Librerías</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">10</span>
+                    <span class="stat-label">Datapacks</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-layout">
+            <div class="content-area">
+                <div class="controls">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="searchInput" placeholder="Filtrar por nombre de mod..."
+                            onkeyup="filterMods()">
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn" onclick="expandAll()">
+                            <span>↔️</span> Expandir
+                        </button>
+                        <button class="btn" onclick="collapseAll()">
+                            <span>↕️</span> Colapsar
+                        </button>
+                    </div>
+                </div>
+
+                <div id="categoriesList">
+
+                    <div class="category" id="cat-local">
+                        <div class="category-header" onclick="toggleCategory('local')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                .local
+                                <span class="badge">90</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">animaciones <span>(8)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="animation_overhaul-forge-1.20.x-1.3.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Animation_Overhaul-forge-1.20.x-1.3.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="hmi 4.2.5h1 1.20.1 - 1.20.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">HMI
+                                        4.2.5H1 1.20.1 - 1.20.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="citresewn-1.2.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">citresewn-1.2.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="eatinganimation-1.20.1-5.1.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">eatinganimation-1.20.1-5.1.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="gml-4.0.10-all"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">gml-4.0.10-all</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="pommel-held-items-1.4.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">pommel-held-items-1.4.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="waveycapes-forge-1.8.2-mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">waveycapes-forge-1.8.2-mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="weaponmaster_ydm-forge-1.20.1-4.2.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">weaponmaster_ydm-forge-1.20.1-4.2.3</a>
+                                </div>
+                            </div>
+
+                            <div class="subcategory-item">
+
+                              
+                            </div>
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">particulas <span>(10)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fog-forge-1.5.3-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Fog-forge-1.5.3-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="perception-forge-0.1.4+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Perception-FORGE-0.1.4+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="coolrain-1.3.0-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">coolrain-1.3.0-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="eg_particle_interactions-forge-1.20.1-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">eg_particle_interactions-forge-1.20.1-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="explosiveenhancement-forge-1.20.1-1.1.0-client"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">explosiveenhancement-forge-1.20.1-1.1.0-client</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fallingleaves-1.20.1-2.1.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">fallingleaves-1.20.1-2.1.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="particular-1.21.10-neoforge-1.3.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">particular-1.21.10-NeoForge-1.3.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="pop-1.20.1-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">pop-1.20.1-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tempadwithshaders-1.20.1-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">tempadwithshaders-1.20.1-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="windy-1.1.1+1.20-fabric"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">windy-1.1.1+1.20-fabric</a>
+                                </div>
+                            </div>
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">quality <span>(44)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="afkcamera-1.4.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">AFKcamera-1.4.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="armorquickswap-v8.0.0-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ArmorQuickSwap-v8.0.0-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="effectdescriptions-v8.0.2-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">EffectDescriptions-v8.0.2-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="forgematica-0.1.13-mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Forgematica-0.1.13-mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="forgematicaprinter-0.1.0+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ForgematicaPrinter-0.1.0+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersiveui-forge-0.3.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ImmersiveUI-FORGE-0.3.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="jade-1.20.1-forge-11.13.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Jade-1.20.1-Forge-11.13.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="jadeaddons-1.20.1-forge-5.5.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">JadeAddons-1.20.1-Forge-5.5.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="leavemybarsalone-v8.0.0-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">LeaveMyBarsAlone-v8.0.0-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mru-1.0.4+1.20.1+forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">MRU-1.0.4+1.20.1+forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mafglib-0.1.14-mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">MaFgLib-0.1.14-mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mousetweaks-forge-mc1.20.1-2.25.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">MouseTweaks-forge-mc1.20.1-2.25.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="necronomicon-forge-1.6.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Necronomicon-Forge-1.6.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="octolib-forge-0.5.0.1+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">OctoLib-FORGE-0.5.0.1+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="overflowingbars-v8.0.1-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">OverflowingBars-v8.0.1-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="pickupnotifier-v8.0.0-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">PickUpNotifier-v8.0.0-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="puzzleslib-v8.1.33-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">PuzzlesLib-v8.1.33-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="shouldersurfing-forge-1.20.1-4.14.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ShoulderSurfing-Forge-1.20.1-4.14.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="smoothscrollingrefurbished+1.20-1.1.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">SmoothScrollingRefurbished+1.20-1.1.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="travelerstitles-1.20-forge-4.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">TravelersTitles-1.20-Forge-4.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="yungsapi-1.20-forge-4.0.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">YungsApi-1.20-Forge-4.0.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="appleskin-forge-mc1.20.1-2.5.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">appleskin-forge-mc1.20.1-2.5.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ash_api-forge-3.0.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ash_api-forge-3.0.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cinematiczoom-1.0.0k"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cinematiczoom-1.0.0k</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="clientsort-forge-2.1.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">clientsort-forge-2.1.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cloth-config-11.1.136-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cloth-config-11.1.136-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="collective-1.20.1-8.12"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">collective-1.20.1-8.12</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cupboard-1.20.1-2.7"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cupboard-1.20.1-2.7</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="draggable_lists-mc1.20-1.0.1-rev.824b2f3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">draggable_lists-mc1.20-1.0.1-rev.824b2f3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="drippyloadingscreen_forge_3.0.12_mc_1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">drippyloadingscreen_forge_3.0.12_MC_1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="enhanced_boss_bars-1.20.1-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">enhanced_boss_bars-1.20.1-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="entity_model_features_1.20.1-forge-3.0.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">entity_model_features_1.20.1-forge-3.0.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="entity_texture_features_1.20.1-forge-7.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">entity_texture_features_1.20.1-forge-7.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fancymenu_forge_3.7.0_mc_1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">fancymenu_forge_3.7.0_MC_1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fancytoasts-forge-1.20.1-1.4.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">fancytoasts-forge-1.20.1-1.4.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersive-hotbar-1.0.4-1.20-1.20.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">immersive-hotbar-1.0.4-1.20-1.20.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="jei-1.20.1-forge-15.20.0.128"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">jei-1.20.1-forge-15.20.0.128</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="journeymap-1.20.1-5.10.3-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">journeymap-1.20.1-5.10.3-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="konkrete_forge_1.8.0_mc_1.20-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">konkrete_forge_1.8.0_MC_1.20-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="melody_forge_1.0.3_mc_1.20.1-1.20.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">melody_forge_1.0.3_MC_1.20.1-1.20.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="polytone-1.20-3.5.17"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">polytone-1.20-3.5.17</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="shuffle-forge-9.0.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">shuffle-forge-9.0.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tooltipoverhaul-forge-1.20.1-1.4.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">tooltipoverhaul-forge-1.20.1-1.4.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="yet_another_config_lib_v3-3.6.6+1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">yet_another_config_lib_v3-3.6.6+1.20.1-forge</a>
+                                </div>
+                            </div>
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">rendimiento <span>(20)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="clumps-forge-1.20.1-12.0.0.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Clumps-forge-1.20.1-12.0.0.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fastitemframes-v20.1.5-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">FastItemFrames-v20.1.5-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="icterine-forge-1.20.0-1-1.3.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Icterine-forge-1.20.0-1-1.3.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="adaptive_performance_tweaks_core_1.20.1-11.5.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">adaptive_performance_tweaks_core_1.20.1-11.5.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="adaptive_performance_tweaks_items_1.20.1-11.5.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">adaptive_performance_tweaks_items_1.20.1-11.5.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="colorwheel-forge-1.1.2+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">colorwheel-forge-1.1.2+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="colorwheel_patcher-forge-1.0.4+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">colorwheel_patcher-forge-1.0.4+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cullleaves-forge-4.1.1+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cullleaves-forge-4.1.1+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="dynamiclights-v1.9-mc1.17-1.21.5-mod"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">dynamiclights-v1.9-mc1.17-1.21.5-mod</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="embeddium-0.3.31+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">embeddium-0.3.31+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="entityculling-forge-1.9.3-mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">entityculling-forge-1.9.3-mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ferritecore-6.0.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ferritecore-6.0.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersive_optimization-forge-1.20.1-0.1.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">immersive_optimization-forge-1.20.1-0.1.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="memoryleakfix-forge-1.17+-1.1.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">memoryleakfix-forge-1.17+-1.1.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="midnightlib-forge-1.9.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">midnightlib-forge-1.9.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="modernfix-forge-5.25.2+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">modernfix-forge-5.25.2+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="oculus-mc1.20.1-1.8.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">oculus-mc1.20.1-1.8.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="radium-mc1.20.1-0.12.4+git.26c9d8e"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">radium-mc1.20.1-0.12.4+git.26c9d8e</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="spark-1.10.53-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">spark-1.10.53-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="vanillin-forge-1.20.1-1.1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">vanillin-forge-1.20.1-1.1.3</a>
+                                </div>
+                            </div>
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">sonidos <span>(7)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="presencefootsteps-1.20.1-1.9.1-beta.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">PresenceFootsteps-1.20.1-1.9.1-beta.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="sounds-2.2.1+1.20.1+forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Sounds-2.2.1+1.20.1+forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="biomemusic-1.20.1-3.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">biomemusic-1.20.1-3.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="illagerraidmusic-1.20-1.20.1-1.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">illagerraidmusic-1.20-1.20.1-1.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="reactivemusic-1.1.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">reactivemusic-1.1.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="sound-physics-remastered-forge-1.20.1-1.5.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">sound-physics-remastered-forge-1.20.1-1.5.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="sound_physics_perfected-1.15+1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">sound_physics_perfected-1.15+1.20.1-forge</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-server">
+                        <div class="category-header" onclick="toggleCategory('server')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                .server
+                                <span class="badge">38</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">dungeon <span>(12)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="dungeonsarisesevenseas-1.19.2-1.0.2-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">DungeonsAriseSevenSeas-1.19.2-1.0.2-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="epic villages v1.1.0 (1.20+)"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Epic
+                                        Villages v1.1.0 (1.20+)</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="epic witch huts v1.1.0 (1.20+)"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Epic Witch
+                                        Huts v1.1.0 (1.20+)</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="yungsbetterendisland-1.20-forge-2.0.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">YungsBetterEndIsland-1.20-Forge-2.0.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="yungsbetternetherfortresses-1.20-forge-2.0.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">YungsBetterNetherFortresses-1.20-Forge-2.0.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="awesomedungeonend-forge-1.20.1-3.1.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">awesomedungeonend-forge-1.20.1-3.1.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="awesomedungeonnether-forge-1.20.1-3.1.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">awesomedungeonnether-forge-1.20.1-3.1.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="dungeons-and-taverns-ancient-city-overhaul-1 [forge]"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">dungeons-and-taverns-ancient-city-overhaul-1
+                                        [Forge]</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="end_villager_outpost-1.0.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">end_villager_outpost-1.0.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="libraryferret-forge-1.20.1-4.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">libraryferret-forge-1.20.1-4.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="lukis-woodland-mansions-v.1.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">lukis-woodland-mansions-v.1.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="structure_gel-1.20.1-2.16.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">structure_gel-1.20.1-2.16.2</a>
+                                </div>
+                            </div>
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">quality <span>(10)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="boss music mod 1.20.x v1.2.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Boss Music
+                                        Mod 1.20.x v1.2.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mini-boss boss bars 1.20.1 1.0.142"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Mini-boss
+                                        Boss Bars 1.20.1 1.0.142</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="almostunified-forge-1.20.1-0.10.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">almostunified-forge-1.20.1-0.10.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create-renewable-egapples-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create-renewable-egapples-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create-renewable-netherite-2.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create-renewable-netherite-2.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="doubledoors-1.20.1-7.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">doubledoors-1.20.1-7.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="edf-remastered-4.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">edf-remastered-4.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="hero-proof-5.2.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">hero-proof-5.2.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="inventorytotem-1.20.1-3.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">inventorytotem-1.20.1-3.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="nocreeperexplosion-1.20.x-1.0.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">nocreeperexplosion-1.20.x-1.0.1</a>
+                                </div>
+                            </div>
+
+                            <div class="subcategory-item">
+                                <div class="subcategory-title">rendimiento <span>(16)</span></div>
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="chunky-1.3.146"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Chunky-1.3.146</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="clumps-forge-1.20.1-12.0.0.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Clumps-forge-1.20.1-12.0.0.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="icterine-forge-1.20.0-1-1.3.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Icterine-forge-1.20.0-1-1.3.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="leavesbegone-v8.0.0-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">LeavesBeGone-v8.0.0-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="necronomicon-forge-1.6.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Necronomicon-Forge-1.6.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="youshallnotspawn-forge-1.20.x-2.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">YouShallNotSpawn-forge-1.20.x-2.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="almanac-1.20.x-forge-1.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">almanac-1.20.x-forge-1.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="darktimer-forge-1.20.1-1.0.9"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">darktimer-forge-1.20.1-1.0.9</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ferritecore-6.0.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ferritecore-6.0.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="getittogetherdrops-forge-1.20-1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">getittogetherdrops-forge-1.20-1.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersive_optimization-forge-1.20.1-0.1.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">immersive_optimization-forge-1.20.1-0.1.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="incontrol-1.20-9.4.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">incontrol-1.20-9.4.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="letmedespawn-1.20.x-forge-1.5.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">letmedespawn-1.20.x-forge-1.5.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="memoryleakfix-forge-1.17+-1.1.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">memoryleakfix-forge-1.17+-1.1.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="modernfix-forge-5.25.2+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">modernfix-forge-5.25.2+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="structure_layout_optimizer-forge-1.0.11"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">structure_layout_optimizer-forge-1.0.11</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-criaturas--fauna-salvaje">
+                        <div class="category-header" onclick="toggleCategory('criaturas--fauna-salvaje')">
+                            <div class="category-title">
+                                <span class="category-icon">🐾</span>
+                                Criaturas & Fauna Salvaje
+                                <span class="badge">16</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cnb-1.20.1-1.6.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">CNB-1.20.1-1.6.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="adorablehamsterpets-3.4.3-1.20.1+forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">adorablehamsterpets-3.4.3-1.20.1+forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="astemirlib-1.20.1-1.25"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">astemirlib-1.20.1-1.25</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="companions-forge-1.20.1-1.2.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">companions-forge-1.20.1-1.2.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="copperagebackport-forge-1.20.1-0.1.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">copperagebackport-forge-1.20.1-0.1.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ghosts-forge-1.20.1-1.2.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ghosts-forge-1.20.1-1.2.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="golemoverhaul-forge-1.20.1-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">golemoverhaul-forge-1.20.1-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mpekka-0.4-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">mpekka-0.4-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="primal-1.0.6+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">primal-1.0.6+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ror-0.59-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ror-0.59-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="species-3.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">species-3.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tameablebeasts-1.20.1-7.1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">tameablebeasts-1.20.1-7.1.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="thedawnera-1.20.1-0.642"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">thedawnera-1.20.1-0.642</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="valarian_conquest 4.2-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">valarian_conquest
+                                        4.2-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="wab-1.20.1-1.4.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">wab-1.20.1-1.4.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="wonderoussea-1.0.4-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">wonderoussea-1.0.4-forge-1.20.1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-enemigos--hostilidad">
+                        <div class="category-header" onclick="toggleCategory('enemigos--hostilidad')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Enemigos & Hostilidad
+                                <span class="badge">11</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="illagerinvasion-v8.0.7-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">IllagerInvasion-v8.0.7-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mutantmonsters-v8.0.8-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">MutantMonsters-v8.0.8-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="undeadunleashed-1.2.2-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">UndeadUnleashed-1.2.2-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="blighted_beasts-1.20.1-1.5.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">blighted_beasts-1.20.1-1.5.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="clanging-howl-[forge]_1.20.1_1.0.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">clanging-howl-[Forge]_1.20.1_1.0.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="crypticfoes-1.0.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">crypticfoes-1.0.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="dweller_dweller-3.13.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">dweller_dweller-3.13.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="illagerblabber-1.20.1-forge-1.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">illagerblabber-1.20.1-Forge-1.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mythsandlegends-0.0.8.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">mythsandlegends-0.0.8.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="savage_and_ravage-1.20.1-6.0.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">savage_and_ravage-1.20.1-6.0.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="warden-with-loot-2.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">warden-with-loot-2.2</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-estructuras--mazmorras-épicas">
+                        <div class="category-header" onclick="toggleCategory('estructuras--mazmorras-épicas')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Estructuras & Mazmorras Épicas
+                                <span class="badge">7</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="compatstructures-1.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">compatstructures-1.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="feur_dungeon_spawner-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">feur_dungeon_spawner-1.20.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="idas_forge-1.12.1+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">idas_forge-1.12.1+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="integrated_api-1.5.1+1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">integrated_api-1.5.1+1.20.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="integrated_cataclysm_forge-1.0.5+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">integrated_cataclysm_forge-1.0.5+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="integrated_stronghold-1.1.2+1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">integrated_stronghold-1.1.2+1.20.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="structure_gel-1.20.1-2.16.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">structure_gel-1.20.1-2.16.2</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-herramientas--vehiculos">
+                        <div class="category-header" onclick="toggleCategory('herramientas--vehiculos')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Herramientas & Vehiculos
+                                <span class="badge">14</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="magnumtorch-v8.0.2-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">MagnumTorch-v8.0.2-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="rpg_style_more_gems_1.0_1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">RPG_Style_More_Gems_1.0_1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="rpg_style_more_weapons_r_1.0.3_forge_1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">RPG_Style_More_Weapons_R_1.0.3_Forge_1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="clockwork-forge-1.20.1-1.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">clockwork-forge-1.20.1-1.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="grapplinghookmod-reforged-1.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">grapplingHookMod-Reforged-1.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersive_aircraft-1.4.0+1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">immersive_aircraft-1.4.0+1.20.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersive_machinery-0.2.0+1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">immersive_machinery-0.2.0+1.20.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="justhammers-forge-20.1.5+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">justhammers-forge-20.1.5+mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="miningmaster-1.20.1-4.1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">miningmaster-1.20.1-4.1.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="orevolution-1.20.1-3.2.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">orevolution-1.20.1-3.2.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="shieldexp-forge-1.20.1-1.3.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">shieldexp-forge-1.20.1-1.3.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tempad-forge-1.20.1-2.3.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">tempad-forge-1.20.1-2.3.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="travelersbackpack-forge-1.20.1-9.1.46"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">travelersbackpack-forge-1.20.1-9.1.46</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="wraith-waystones-3.3.3+mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">wraith-waystones-3.3.3+mc1.20.1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-jefes--combate-avanzado">
+                        <div class="category-header" onclick="toggleCategory('jefes--combate-avanzado')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Jefes & Combate Avanzado
+                                <span class="badge">14</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="dungeon now loading-forge-1.20.1-2.11"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Dungeon
+                                        Now Loading-forge-1.20.1-2.11</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="l_enders_cataclysm-3.16"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">L_Enders_Cataclysm-3.16</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="boss_checklist-forge-3.1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">boss_checklist-forge-3.1.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="bossesrise-1.20.1-forge-1.0.9.2b"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">bossesrise-1.20.1-forge-1.0.9.2b</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="bossesunleashed-1.0.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">bossesunleashed-1.0.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cinematiccataclysm-1.0.0-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cinematiccataclysm-1.0.0-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_cataclysm-0.1.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_cataclysm-0.1.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fdbosses-3.1.0.1-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">fdbosses-3.1.0.1-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fdlib-1.0.7-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">fdlib-1.0.7-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="illageandspillagerespillaged-1.2.8"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">illageandspillagerespillaged-1.2.8</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="legendarymonsters-lm_dev_10 mc 1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">legendarymonsters-LM_DEV_10
+                                        MC 1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="lionfishapi-2.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">lionfishapi-2.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="wither_spawn_animation-1.6-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">wither_spawn_animation-1.6-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="witherreincarnated-1.20.1-1.0.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">witherreincarnated-1.20.1-1.0.5</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-mundos--dimensiones-alternas">
+                        <div class="category-header" onclick="toggleCategory('mundos--dimensiones-alternas')">
+                            <div class="category-title">
+                                <span class="category-icon">🌍</span>
+                                Mundos & Dimensiones Alternas
+                                <span class="badge">20</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="corgilib-forge-1.20.1-4.0.3.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Corgilib-Forge-1.20.1-4.0.3.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="glitchcore-forge-1.20.1-0.0.1.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">GlitchCore-forge-1.20.1-0.0.1.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="nether's overhaul-1.20.1_v1.3.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Nether's
+                                        Overhaul-1.20.1_V1.3.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="oh-the-biomes-weve-gone-forge-1.7.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Oh-The-Biomes-Weve-Gone-Forge-1.7.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="oh-the-trees-youll-grow-forge-1.20.1-1.5.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Oh-The-Trees-Youll-Grow-forge-1.20.1-1.5.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="quark-4.0-462"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Quark-4.0-462</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="sereneseasons-forge-1.20.1-9.1.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">SereneSeasons-forge-1.20.1-9.1.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="terrablender-forge-1.20.1-3.0.1.10"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">TerraBlender-forge-1.20.1-3.0.1.10</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="zeta-1.0-31"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Zeta-1.0-31</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="blueprint-1.20.1-7.1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">blueprint-1.20.1-7.1.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="caverns_and_chasms-1.20.1-2.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">caverns_and_chasms-1.20.1-2.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_enlightend-1.0.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_enlightend-1.0.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="enlightend-5.0.14-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">enlightend-5.0.14-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="immersive_weathering-1.20.1-2.0.5-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">immersive_weathering-1.20.1-2.0.5-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="nether-s-exoticism-1.20.1-1.2.9"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">nether-s-exoticism-1.20.1-1.2.9</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="nethers_exorcism_reborn-1.1.3beta"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">nethers_exorcism_reborn-1.1.3Beta</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="phantasm-1.0.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">phantasm-1.0.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="projectvibrantjourneys-1.20.1-6.2.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">projectvibrantjourneys-1.20.1-6.2.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="spelunkery-1.20.1-0.3.16-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">spelunkery-1.20.1-0.3.16-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="unusualend-2.3.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">unusualend-2.3.0-forge-1.20.1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-progresión-de-personaje">
+                        <div class="category-header" onclick="toggleCategory('progresión-de-personaje')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Progresión de Personaje
+                                <span class="badge">17</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fathomlesscrimson-1.1.3bugfix"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">FathomlessCrimson-1.1.3bugfix</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="nexuslayer-1.0.9"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">NexusLayer-1.0.9</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="parcool-1.20.1-3.4.2.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ParCool-1.20.1-3.4.2.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="the_graveyard_3.1_(forge)_for_1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">The_Graveyard_3.1_(FORGE)_for_1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tyz's skills 4.3-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Tyz's
+                                        skills 4.3-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ars_creo-1.20.1-4.3.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ars_creo-1.20.1-4.3.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ars_nouveau-1.20.1-4.12.7-all"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ars_nouveau-1.20.1-4.12.7-all</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="arsdelight-1.1.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">arsdelight-1.1.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="as_you_wish-1.3.1-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">as_you_wish-1.3.1-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="bc_particle-0.0.3-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">bc_particle-0.0.3-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="bettercombat-forge-1.9.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">bettercombat-forge-1.9.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="caelus-forge-3.2.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">caelus-forge-3.2.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_crafting_of_terramity-0.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_crafting_of_terramity-0.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="knightquest-forge-1.20.1-1.9.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">knightquest-forge-1.20.1-1.9.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="lootr-forge-1.20-0.7.35.94"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">lootr-forge-1.20-0.7.35.94</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="sweety_archaeology-1.0.9c-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">sweety_archaeology-1.0.9c-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="terramity-0.9.8-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">terramity-0.9.8-forge-1.20.1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-rpg-classes">
+                        <div class="category-header" onclick="toggleCategory('rpg-classes')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                RPG CLASSES
+                                <span class="badge">14</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="connector-1.0.0-beta.47+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Connector-1.0.0-beta.47+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="shieldapi-1.0.1+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ShieldAPI-1.0.1+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="archers-1.3.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">archers-1.3.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="azurelibarmor-fabric-1.20.1-2.0.14"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">azurelibarmor-fabric-1.20.1-2.0.14</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="fabric-api-0.92.6+1.11.14+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">fabric-api-0.92.6+1.11.14+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="gazebo-1.1.1+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">gazebo-1.1.1+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="paladins-1.4.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">paladins-1.4.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ranged_weapon_api-1.1.4+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ranged_weapon_api-1.1.4+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="rogues-1.2.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">rogues-1.2.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="runes-0.9.13+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">runes-0.9.13+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="spell_engine-0.15.12+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">spell_engine-0.15.12+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="spell_power-0.12.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">spell_power-0.12.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="structure_pool_api-1.0+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">structure_pool_api-1.0+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="wizards-1.4.1+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">wizards-1.4.1+1.20.1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-tecnologia">
+                        <div class="category-header" onclick="toggleCategory('tecnologia')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Tecnologia
+                                <span class="badge">33</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="steam_rails-1.6.15-beta+forge-mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Steam_Rails-1.6.15-beta+forge-mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ad_astra-forge-1.20.1-1.15.20"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ad_astra-forge-1.20.1-1.15.20</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ad_astra_more_structures-1.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ad_astra_more_structures-1.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="bits_n_bobs-0.0.39"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">bits_n_bobs-0.0.39</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="botarium-forge-1.20.1-2.3.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">botarium-forge-1.20.1-2.3.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create-1.20.1-6.0.8"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create-1.20.1-6.0.8</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create-gunsmithing-1.20.1-1.4.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create-gunsmithing-1.20.1-1.4.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create-metalwork-1.20.1-1.0.11-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create-metalwork-1.20.1-1.0.11-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create-new-age-1.1.7f+forge-mc1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create-new-age-1.1.7f+forge-mc1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_ad_astra_recipes-1.0.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_ad_astra_recipes-1.0.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_bb-1.0.7-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_bb-1.0.7-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_connected-1.1.10-mc1.20.1-all"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_connected-1.1.10-mc1.20.1-all</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_jetpack-forge-4.4.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_jetpack-forge-4.4.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_jetpack_curios-1.2.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_jetpack_curios-1.2.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_misc_and_things_ 1.20.1_4.0a"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_misc_and_things_
+                                        1.20.1_4.0A</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_mobile_packages-1.20.1-0.6.0-beta-03"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_mobile_packages-1.20.1-0.6.0-Beta-03</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_ranged-1.1.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_ranged-1.1.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_ratatouille-1.20.1-1.3.8"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_ratatouille-1.20.1-1.3.8</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_simple_ore_doubling-1.6.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_simple_ore_doubling-1.6.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="create_vibrant_vaults-0.3.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">create_vibrant_vaults-0.3.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="createaddition-1.20.1-1.3.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">createaddition-1.20.1-1.3.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="createcontraptionterminals-1.20-1.2.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">createcontraptionterminals-1.20-1.2.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="createdeco-2.0.3-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">createdeco-2.0.3-1.20.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="createnuclear-1.3.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">createnuclear-1.3.1-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="createornithopterglider-1.0.2-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">createornithopterglider-1.0.2-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cyberspace 2.2.0 (f1.20.1)"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cyberspace
+                                        2.2.0 (F1.20.1)</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ethium_1.20.1_v4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ethium_1.20.1_V4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="morelights-0.2.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">morelights-0.2.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ntgl-1.20.1-3.0.6"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ntgl-1.20.1-3.0.6</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="oil_well_yeeter-0.4-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">oil_well_yeeter-0.4-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ratatouille_fried_delights-1.20.1-1.0.2"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">ratatouille_fried_delights-1.20.1-1.0.2</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tfmg-1.0.2f"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">tfmg-1.0.2f</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="toms_storage-1.20-1.7.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">toms_storage-1.20-1.7.1</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category" id="cat-vanilla+--calidad-de-vida">
+                        <div class="category-header" onclick="toggleCategory('vanilla+--calidad-de-vida')">
+                            <div class="category-title">
+                                <span class="category-icon">📦</span>
+                                Vanilla+ & Calidad de Vida
+                                <span class="badge">39</span>
+                            </div>
+                            <div class="arrow">▼</div>
+                        </div>
+                        <div class="category-content">
+
+                            <div class="subcategory-item">
+
+                                <div class="mod-grid">
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cardiac-forge-0.5.3.2+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Cardiac-FORGE-0.5.3.2+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="easyanvils-v8.0.2-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">EasyAnvils-v8.0.2-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="easymagic-v8.0.1-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">EasyMagic-v8.0.1-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="farmersdelight-1.20.1-1.2.9"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">FarmersDelight-1.20.1-1.2.9</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="ping-wheel-1.12.0-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">Ping-Wheel-1.12.0-forge-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="tradingpost-v8.0.2-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">TradingPost-v8.0.2-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="treechop-1.20.1-forge-0.19.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">TreeChop-1.20.1-forge-0.19.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="visualworkbench-v8.0.1-1.20.1-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">VisualWorkbench-v8.0.1-1.20.1-Forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="alekiniftyships-forge-1.20.1-1.0.14"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">alekiNiftyShips-FORGE-1.20.1-1.0.14</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="another_furniture-forge-1.20.1-3.0.4"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">another_furniture-forge-1.20.1-3.0.4</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="baguettelib-1.20.1-forge-1.1.5"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">baguettelib-1.20.1-Forge-1.1.5</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="biggerstacks-1.20.1-1.0.4-all"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">biggerstacks-1.20.1-1.0.4-all</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="blessfulled-0.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">blessfulled-0.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="booklinggear-1.20.1-3.13"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">booklinggear-1.20.1-3.13</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cfm_wap-1.20.1-forge-1.2.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cfm_wap-1.20.1-forge-1.2.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="corpse-forge-1.20.1-1.0.23"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">corpse-forge-1.20.1-1.0.23</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="corpsecurioscompat-1.20.1-forge-3.1.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">corpsecurioscompat-1.20.1-Forge-3.1.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="cratedelight-25.09.22-1.20-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">cratedelight-25.09.22-1.20-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="easydisenchanting-forge-1.0.0-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">easydisenchanting-forge-1.0.0-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="eso-forge-1.20.1-1.2.2-all"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">eso-forge-1.20.1-1.2.2-all</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="forge-dungeonsdelight-1.20.1-1.2.10"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">forge-dungeonsdelight-1.20.1-1.2.10</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="forge-runiclib-1.20.1-4.3.8"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">forge-runiclib-1.20.1-4.3.8</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="letsdo-nethervinery-forge-1.2.19"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">letsdo-nethervinery-forge-1.2.19</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="letsdo-vinery-forge-1.4.41"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">letsdo-vinery-forge-1.4.41</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mcw-holidays-1.1.2-mc1.20.1forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">mcw-holidays-1.1.2-mc1.20.1forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="mcw-mcwstairs-1.0.2-mc1.20.1forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">mcw-mcwstairs-1.0.2-mc1.20.1forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="miners_delight-1.20.1-1.2.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">miners_delight-1.20.1-1.2.3</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="minervillager-1.20.1-5.6.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">minervillager-1.20.1-5.6.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="pet_cemetery-1.20.1-2.0.0"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">pet_cemetery-1.20.1-2.0.0</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="polymorph-forge-0.49.10+1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">polymorph-forge-0.49.10+1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="refurbished_furniture-forge-1.20.1-1.0.20"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">refurbished_furniture-forge-1.20.1-1.0.20</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="saturation_plus-1.1.0-forge-1.20"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">saturation_plus-1.1.0-forge-1.20</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="shutter-2.2.0-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">shutter-2.2.0-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="sleep_tight-1.20-1.4.7"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">sleep_tight-1.20-1.4.7</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="starcatcher-2.1.3-forge-1.20.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">starcatcher-2.1.3-FORGE-1.20.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="storagedelight-25.12.09-1.20-forge"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">storagedelight-25.12.09-1.20-forge</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="supplementaries-1.20-3.1.41"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">supplementaries-1.20-3.1.41</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="trashslot-forge-1.20-15.1.1"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">trashslot-forge-1.20-15.1.1</a>
+                                    <a href="automodpack/modpacks/179.41.11.247-25591/mods/" class="mod-card"
+                                        data-name="watut-forge-1.20.1-1.2.3"
+                                        title="Abrir carpeta: automodpack/modpacks/179.41.11.247-25591/mods/">watut-forge-1.20.1-1.2.3</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="no-results" id="noResults">
+                    <div style="font-size: 2rem; margin-bottom: 1rem;">🔍</div>
+                    <h2 style="color: #fff">No se encontraron mods</h2>
+                    <p style="color: var(--text-secondary)">Prueba con otros términos de búsqueda</p>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="side-block">
+                    <h3>📚 Librerías <span>(28)</span></h3>
+                    <div class="side-list">
+                        <a href="librerias/" class="side-item">OctoLib-FORGE-0.5.0.1+1.20.1 </a>
+                        <a href="librerias/" class="side-item">Patchouli-1.20.1-84.1-FORGE </a>
+                        <a href="librerias/" class="side-item">PuzzlesLib-v8.1.33-1.20.1-Forge </a>
+                        <a href="librerias/" class="side-item">YungsApi-1.20-Forge-4.0.6 </a>
+                        <a href="librerias/" class="side-item">architectury-9.2.14-forge </a>
+                        <a href="librerias/" class="side-item">automodpack-mc1.20.1-forge-4.0.5 </a>
+                        <a href="librerias/" class="side-item">azurelib-neo-1.20.1-3.1.3 </a>
+                        <a href="librerias/" class="side-item">balm-forge-1.20.1-7.3.37-all </a>
+                        <a href="librerias/" class="side-item">cloth-config-11.1.136-forge </a>
+                        <a href="librerias/" class="side-item">collective-1.20.1-8.12 </a>
+                        <a href="librerias/" class="side-item">coroutil-forge-1.20.1-1.3.7 </a>
+                        <a href="librerias/" class="side-item">curios-forge-5.14.1+1.20.1 </a>
+                        <a href="librerias/" class="side-item">framework-forge-1.20.1-0.7.15 </a>
+                        <a href="librerias/" class="side-item">fzzy_config-0.7.4+1.20.1+forge </a>
+                        <a href="librerias/" class="side-item">geckolib-forge-1.20.1-4.8.2 </a>
+                        <a href="librerias/" class="side-item">knightlib-forge-1.20.1-1.4.3 </a>
+                        <a href="librerias/" class="side-item">kotlinforforge-4.12.0-all </a>
+                        <a href="librerias/" class="side-item">kubejs-create-forge-2001.3.0-build.8 </a>
+                        <a href="librerias/" class="side-item">kubejs-forge-2001.6.5-build.16 </a>
+                        <a href="librerias/" class="side-item">moonlight-1.20-2.16.16-forge </a>
+                        <a href="librerias/" class="side-item">owo-lib-0.11.2+1.20 </a>
+                        <a href="librerias/" class="side-item">player-animation-lib-forge-1.0.2-rc1+1.20 </a>
+                        <a href="librerias/" class="side-item">resourcefulconfig-forge-1.20.1-2.1.3 </a>
+                        <a href="librerias/" class="side-item">resourcefullib-forge-1.20.1-2.1.29 </a>
+                        <a href="librerias/" class="side-item">rhino-forge-2001.2.3-build.10 </a>
+                        <a href="librerias/" class="side-item">spark-1.10.53-forge </a>
+                        <a href="librerias/" class="side-item">txnilib-forge-1.0.24-1.20.1 </a>
+                        <a href="librerias/" class="side-item">yet_another_config_lib_v3-3.6.6+1.20.1-forge </a>
+                    </div>
+                </div>
+
+                <div class="side-block">
+                    <h3>📦 Datapacks <span>(10)</span></h3>
+                    <div class="side-list">
+                        <a href="datapacks/" class="side-item">Create Immersive Aircrafts Warship Recipe DataPack
+                            v1.0.zip </a>
+                        <a href="datapacks/" class="side-item">Create_Tempad_Datapack_v1.zip </a>
+                        <a href="datapacks/" class="side-item">Tom's Storage - Creatified.zip </a>
+                        <a href="datapacks/" class="side-item">Woodcutter_v.2.0_1.20.1.zip </a>
+                        <a href="datapacks/" class="side-item">better_combat_terramity.zip </a>
+                        <a href="datapacks/" class="side-item">create_curios_backtank-1.0.0.zip </a>
+                        <a href="datapacks/" class="side-item">extended-furnaces.zip </a>
+                        <a href="datapacks/" class="side-item">intstrong_graveyard-1.0.0-1.20.1.zip </a>
+                        <a href="datapacks/" class="side-item">sculk-expansion-1.3.2.zip </a>
+                        <a href="datapacks/" class="side-item">terramityES.zip </a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        function toggleCategory(id) {
+            document.getElementById('cat-' + id).classList.toggle('collapsed');
+        }
+
+        function expandAll() {
+            document.querySelectorAll('.category').forEach(cat => cat.classList.remove('collapsed'));
+        }
+
+        function collapseAll() {
+            document.querySelectorAll('.category').forEach(cat => cat.classList.add('collapsed'));
+        }
+
+        function filterMods() {
+            const search = document.getElementById('searchInput').value.toLowerCase();
+            const categories = document.querySelectorAll('.category');
+            let totalVisible = 0;
+
+            categories.forEach(cat => {
+                const mods = cat.querySelectorAll('.mod-card');
+                let catHasMatch = false;
+
+                mods.forEach(mod => {
+                    const isMatch = mod.getAttribute('data-name').includes(search);
+                    mod.style.display = isMatch ? 'flex' : 'none';
+                    if (isMatch) catHasMatch = true;
+                });
+
+                cat.style.display = catHasMatch ? 'block' : 'none';
+                if (search && catHasMatch) cat.classList.remove('collapsed');
+                if (catHasMatch) totalVisible++;
+            });
+
+            document.getElementById('noResults').style.display = (totalVisible === 0 && search) ? 'block' : 'none';
+            document.getElementById('categoriesList').style.display = (totalVisible === 0 && search) ? 'none' : 'block';
+        }
+
+        // Inicializar colapsado
+        document.addEventListener('DOMContentLoaded', collapseAll);
+    </script>
+</body>
+
+</html>

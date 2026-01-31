@@ -1,4 +1,5 @@
 import { PixelContainer } from '@/components/pixel-container'
+import { PixelButton } from '@/components/pixel-button'
 import Image from 'next/image'
 import loreData from '@/data/lore.json'
 import { useEffect, useState } from 'react'
@@ -36,7 +37,7 @@ const StatBar = ({ label, value, type, categoryId }: { label: string, value: num
       <div className={`relative min-w-[80px] bg-gradient-to-br ${colors.label} text-black font-black text-center leading-none py-2 px-3 border-4 border-black shadow-[4px_4px_0_#000] uppercase text-[9px]`}>
         <span className="relative z-10">{label}</span>
         {/* Halftone dots effect */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ 
+        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{
           backgroundImage: 'radial-gradient(circle, black 1px, transparent 1px)',
           backgroundSize: '4px 4px'
         }}></div>
@@ -77,78 +78,77 @@ const StatBar = ({ label, value, type, categoryId }: { label: string, value: num
 }
 
 export function LoreLeftPage() {
-  const { intro, about, categories } = loreData;
-  const leftCategories = categories.slice(0, 3);
+  const { intro, categories } = loreData;
 
   return (
-    <div className="space-y-4 font-[family-name:var(--font-pixel)] h-full overflow-y-auto pr-2 custom-scrollbar">
-      {/* Intro - Keep vintage */}
-      <div className="border-b-4 border-[#8B4513] pb-2 mb-4 ornamental-underline">
-        <h1 className="text-[20px] text-[#8B4513] uppercase tracking-wide drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">{intro.title}</h1>
-        <p className="text-[9px] text-[#3a2010] leading-relaxed mt-2 drop-cap">{intro.paragraph1}</p>
-        <p className="text-[9px] text-[#3a2010] leading-relaxed mt-1">{intro.paragraph2}</p>
+    <div className="space-y-6 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-2 custom-scrollbar flex flex-col">
+      {/* Intro Header */}
+      <div className="border-b-4 border-[#8B4513] pb-3 mb-2 flex flex-col items-center">
+        <div className="flex items-center gap-4 mb-2">
+          <Image
+            src="/assets/mini/general/la historia comienza.png"
+            alt="La Historia Comienza"
+            width={320}
+            height={90}
+            className="drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]"
+            style={{ imageRendering: 'pixelated' }}
+          />
+          {intro.icon && (
+            <Image
+              src={intro.icon}
+              alt="Intro"
+              width={180}
+              height={180}
+              className="drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]"
+              style={{ imageRendering: 'pixelated' }}
+            />
+          )}
+        </div>
+        <p className="text-[9px] text-[#3a2010] leading-relaxed mt-2 text-center">
+          {intro.paragraph1}
+        </p>
       </div>
 
-      <div className="codex-divider"></div>
-
-      {/* About - Keep vintage */}
-      <div className="relative pl-10 parchment-texture">
-        <Image
-          src="/assets/mini/1.png"
-          alt="About"
-          width={36}
-          height={36}
-          className="absolute left-[-4px] top-[-2px]"
-          style={{ imageRendering: 'pixelated' }}
-        />
-        <h2 className="text-[13px] text-[#8B4513] uppercase mb-1 font-bold border-b border-[#8B4513]/20 pb-1 drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">{about.title}</h2>
-        {about.paragraphs.map((p, i) => (
-          <p key={i} className="text-[9px] text-[#3a2010] leading-relaxed mb-1">{p}</p>
-        ))}
-      </div>
-
-      <div className="codex-divider"></div>
-
-      {/* Categories with ENHANCED POP ART */}
-      <div className="space-y-6 mt-6">
-        {leftCategories.map((cat, index) => {
-          const colors = categoryColors[cat.id] || categoryColors['criaturas'];
-          return (
-            <div key={cat.id} className="relative pl-20 marginalia">
-              {/* Icon with comic burst */}
-              <div className="absolute left-[-10px] top-[-8px]">
-                <Image
-                  src={cat.icon}
-                  alt="Icon"
-                  width={78}
-                  height={78}
-                  className="relative z-10 drop-shadow-[5px_5px_0_#000]"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-                {/* Comic burst behind icon */}
-                <div className={`absolute inset-0 -z-10 scale-110 opacity-30`} style={{
-                  backgroundImage: `repeating-conic-gradient(from 0deg, ${colors.accent} 0deg 15deg, transparent 15deg 30deg)`
-                }}></div>
+      {/* Category Index - Simple List */}
+      <div className="flex-1">
+        <h2 className="text-[13px] text-[#8B4513] uppercase mb-4 font-bold text-center drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">
+          Categorías
+        </h2>
+        <div className="space-y-2">
+          {categories.map((cat, index) => {
+            const colors = categoryColors[cat.id] || categoryColors['criaturas'];
+            return (
+              <div key={cat.id} className="flex items-center gap-3 bg-[#d4c4a8]/40 border-2 border-[#8B4513]/30 p-2 hover:bg-[#d4c4a8]/60 transition-colors cursor-pointer relative">
+                {/* Icon */}
+                <div className="flex-shrink-0 relative">
+                  <Image
+                    src={cat.icon}
+                    alt="Icon"
+                    width={86}
+                    height={86}
+                    className="drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)] hover:scale-110 transition-transform duration-300 cursor-pointer"
+                    style={{ imageRendering: 'pixelated' }}
+                  />
+                  {/* Color accent */}
+                  <div className={`absolute -bottom-1 -right-1 w-3 h-3 bg-gradient-to-br ${colors.label} border-2 border-black`}></div>
+                </div>
+                {/* Label */}
+                <div className="flex-1">
+                  <h3 className="text-[11px] font-bold text-[#8B4513] uppercase leading-tight">
+                    {cat.title}
+                  </h3>
+                  <p className="text-[8px] text-[#3a2010] leading-tight mt-0.5">
+                    {cat.stats.length} características
+                  </p>
+                </div>
+                {/* Indicator */}
+                <div className="flex-shrink-0">
+                  <div className="w-2 h-2 bg-[#8B4513] transform rotate-45"></div>
+                </div>
               </div>
-
-              <h2 className="text-[14px] text-[#8B4513] uppercase mb-1 font-bold drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">{cat.title}</h2>
-              <p className="text-[10px] text-[#3a2010] mb-2 leading-tight pr-2">{cat.description}</p>
-              
-              {/* Pop art container with comic details */}
-              <div className="relative space-y-1 bg-white/50 backdrop-blur-sm p-4 border-4 border-black shadow-[8px_8px_0_rgba(0,0,0,0.3)] mt-3">
-                {/* Comic corner accents */}
-                <div className={`absolute top-0 left-0 w-4 h-4 bg-gradient-to-br ${colors.label} border-r-4 border-b-4 border-black`}></div>
-                <div className={`absolute top-0 right-0 w-4 h-4 bg-gradient-to-bl ${colors.label} border-l-4 border-b-4 border-black`}></div>
-                <div className={`absolute bottom-0 left-0 w-4 h-4 bg-gradient-to-tr ${colors.label} border-r-4 border-t-4 border-black`}></div>
-                <div className={`absolute bottom-0 right-0 w-4 h-4 bg-gradient-to-tl ${colors.label} border-l-4 border-t-4 border-black`}></div>
-                
-                {cat.stats.map((stat, i) => (
-                  <StatBar key={i} label={stat.label} value={stat.value} type={stat.type} categoryId={cat.id} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   )
@@ -156,54 +156,73 @@ export function LoreLeftPage() {
 
 export function LoreRightPage() {
   const { categories, outro } = loreData;
-  const rightCategories = categories.slice(3, 6);
+  // Show ALL categories in detail
+  const featuredCategories = categories;
 
   return (
-    <div className="space-y-4 font-[family-name:var(--font-pixel)] h-full overflow-y-auto pr-2 custom-scrollbar">
-      <div className="flex items-center gap-2 mb-2 border-b border-[#8B4513]/30 pb-2 ornamental-underline">
-        <Image
-          src="/assets/mini/4.png"
-          alt="Icon"
-          width={48}
-          height={48}
-          style={{ imageRendering: 'pixelated' }}
-        />
-        <h2 className="text-[16px] text-[#8B4513] uppercase font-bold drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)]">El Codex</h2>
+    <div className="space-y-5 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-2 custom-scrollbar">
+      <div className="flex items-center justify-between mb-2 border-b-2 border-[#8B4513]/30 pb-2">
+        <div className="flex items-center gap-2">
+          <Image
+            src="/assets/mini/lore/codex.png"
+            alt="Codex Icon"
+            width={150}
+            height={150}
+            className="drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)] mb-4 mr-4"
+            style={{ imageRendering: 'pixelated' }}
+          />
+          <Image
+            src="/assets/mini/general/codex.png"
+            alt="Codex Title"
+            width={320}
+            height={100}
+            className="drop-shadow-[4px_4px_0_rgba(0,0,0,0.3)] mb-4"
+            style={{ imageRendering: 'pixelated' }}
+          />
+        </div>
+
+        <PixelButton
+          variant="secondary"
+          className="h-fit py-2 px-4 shadow-[4px_4px_0_0_#000] text-[10px] flex items-center gap-2 hover:scale-105"
+          onClick={() => window.open('/modlist/modlist.html', '_blank')}
+        >
+          <span>📜</span>
+          <span>WIKI</span>
+        </PixelButton>
       </div>
 
-      {/* Categories with ENHANCED POP ART */}
+      {/* Featured Categories with Details */}
       <div className="space-y-6">
-        {rightCategories.map((cat, index) => {
+        {featuredCategories.map((cat, index) => {
           const colors = categoryColors[cat.id] || categoryColors['criaturas'];
           return (
-            <div key={cat.id} className="relative pl-20 marginalia">
-              {/* Icon with comic burst */}
-              <div className="absolute left-[-10px] top-[-8px]">
+            <div key={cat.id} className="relative">
+              {/* Category Header with Large Icon */}
+              <div className="flex items-center gap-3 mb-3 bg-gradient-to-r from-[#e8dcc8] to-[#d4c4a8] border-2 border-[#8B4513] p-3">
                 <Image
                   src={cat.icon}
                   alt="Icon"
-                  width={78}
-                  height={78}
-                  className="relative z-10 drop-shadow-[5px_5px_0_#000]"
+                  width={121}
+                  height={121}
+                  className="drop-shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-110 transition-transform duration-300 cursor-pointer"
                   style={{ imageRendering: 'pixelated' }}
                 />
-                {/* Comic burst behind icon */}
-                <div className={`absolute inset-0 -z-10 scale-110 opacity-30`} style={{
-                  backgroundImage: `repeating-conic-gradient(from 0deg, ${colors.accent} 0deg 15deg, transparent 15deg 30deg)`
-                }}></div>
+                <div className="flex-1">
+                  <h3 className="text-[13px] text-[#8B4513] uppercase font-bold drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">
+                    {cat.title}
+                  </h3>
+                  <p className="text-[9px] text-[#3a2010] leading-tight mt-1">
+                    {cat.description}
+                  </p>
+                </div>
               </div>
 
-              <h2 className="text-[14px] text-[#8B4513] uppercase mb-1 font-bold drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">{cat.title}</h2>
-              <p className="text-[10px] text-[#3a2010] mb-2 leading-tight pr-2">{cat.description}</p>
-              
-              {/* Pop art container with comic details */}
-              <div className="relative space-y-1 bg-white/50 backdrop-blur-sm p-4 border-4 border-black shadow-[8px_8px_0_rgba(0,0,0,0.3)] mt-3">
+              {/* Stats Container */}
+              <div className="relative space-y-1 bg-white/50 backdrop-blur-sm p-3 border-4 border-black shadow-[6px_6px_0_rgba(0,0,0,0.3)]">
                 {/* Comic corner accents */}
-                <div className={`absolute top-0 left-0 w-4 h-4 bg-gradient-to-br ${colors.label} border-r-4 border-b-4 border-black`}></div>
-                <div className={`absolute top-0 right-0 w-4 h-4 bg-gradient-to-bl ${colors.label} border-l-4 border-b-4 border-black`}></div>
-                <div className={`absolute bottom-0 left-0 w-4 h-4 bg-gradient-to-tr ${colors.label} border-r-4 border-t-4 border-black`}></div>
-                <div className={`absolute bottom-0 right-0 w-4 h-4 bg-gradient-to-tl ${colors.label} border-l-4 border-t-4 border-black`}></div>
-                
+                <div className={`absolute top-0 left-0 w-3 h-3 bg-gradient-to-br ${colors.label} border-r-4 border-b-4 border-black`}></div>
+                <div className={`absolute top-0 right-0 w-3 h-3 bg-gradient-to-bl ${colors.label} border-l-4 border-b-4 border-black`}></div>
+
                 {cat.stats.map((stat, i) => (
                   <StatBar key={i} label={stat.label} value={stat.value} type={stat.type} categoryId={cat.id} />
                 ))}
@@ -213,20 +232,24 @@ export function LoreRightPage() {
         })}
       </div>
 
-      <div className="codex-divider mt-6"></div>
+      <div className="codex-divider mt-4"></div>
 
-      {/* Outro - Keep vintage */}
-      <div className="relative pl-10 parchment-texture mt-4">
+      {/* Outro */}
+      <div className="relative pl-48 parchment-texture mt-12 min-h-[160px] flex flex-col justify-center">
         <Image
-          src="/assets/mini/10.png"
+          src={outro.icon}
           alt="Outro"
-          width={36}
-          height={36}
-          className="absolute left-[-4px] top-[-2px]"
+          width={180}
+          height={180}
+          className="absolute left-[-30px] top-[-20px] z-10"
           style={{ imageRendering: 'pixelated' }}
         />
-        <h2 className="text-[13px] text-[#8B4513] uppercase mb-1 font-bold drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">{outro.title}</h2>
-        <p className="text-[9px] text-[#3a2010] leading-relaxed">{outro.paragraph}</p>
+        <h2 className="text-[14px] text-[#8B4513] uppercase mb-1 font-bold drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">
+          {outro.title}
+        </h2>
+        <p className="text-[10px] text-[#3a2010] leading-relaxed">
+          {outro.paragraph}
+        </p>
       </div>
     </div>
   )

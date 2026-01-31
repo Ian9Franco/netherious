@@ -11,8 +11,10 @@ interface CopyButtonProps {
 function CopyButton({ text, label = 'COPIAR' }: CopyButtonProps) {
   const [copied, setCopied] = useState(false)
 
+  const { playSound } = useSoundEffects()
   const handleCopy = async () => {
     await navigator.clipboard.writeText(text)
+    playSound('success-orb')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -29,17 +31,24 @@ function CopyButton({ text, label = 'COPIAR' }: CopyButtonProps) {
   )
 }
 
+import { useSoundEffects } from '@/hooks/use-sound-effects'
+
+// ... existing code ...
+
 export function FingerprintSection() {
   const [input, setInput] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [shake, setShake] = useState(false)
+  const { playSound } = useSoundEffects()
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     if (input.toLowerCase() === 'llueve') {
+      playSound('success-villager')
       setShowPassword(true)
       setInput('')
     } else {
+      playSound('failure')
       setShake(true)
       setTimeout(() => setShake(false), 500)
       setInput('')
@@ -63,11 +72,23 @@ export function FingerprintSection() {
       <div className="absolute -top-6 right-4 w-12 h-12 bg-gradient-to-br from-[#ffdd00] to-[#ff6b00] border-4 border-black rounded-full flex items-center justify-center shadow-[4px_4px_0_#000] rotate-12">
         <Image src="/assets/button2.png" alt="Fingerprint" width={32} height={32} style={{ imageRendering: 'pixelated' }} />
       </div>
-      
+
       <div className="relative z-10">
-        <h2 className="text-[14px] text-white font-black uppercase mb-2 drop-shadow-[2px_2px_0_#000] tracking-wide border-b-4 border-black pb-2" style={{ textShadow: '3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000' }}>
+        <h2 className="text-[14px] text-white font-black uppercase mb-1 drop-shadow-[2px_2px_0_#000] tracking-wide border-b-4 border-black pb-2" style={{ textShadow: '3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000' }}>
           🔐 CONTRASEÑA DE SEGURIDAD
         </h2>
+
+        {/* New image requested */}
+        <div className="flex justify-center mb-3">
+          <Image
+            src="/assets/mini/server/dale que llueve.png"
+            alt="Dale que llueve"
+            width={120}
+            height={40}
+            style={{ imageRendering: 'pixelated' }}
+            className="drop-shadow-[2px_2px_0_#000]"
+          />
+        </div>
 
         <p className="text-[10px] text-white font-bold mb-3 leading-relaxed bg-black/30 p-2 border-2 border-black">
           ⚡ El servidor te solicitará esta contraseña al entrar por primera vez para descargar el modpack oficial de Netherious.
@@ -102,14 +123,14 @@ export function FingerprintSection() {
               <div className="w-3 h-3 bg-black rounded-full animate-pulse"></div>
               <span className="text-[10px] text-black font-black uppercase tracking-wide">✓ ACCESO CONCEDIDO!</span>
             </div>
-            
+
             <div className="bg-black border-4 border-[#ffdd00] p-3 shadow-[6px_6px_0_#ffdd00]">
               <div className="text-[9px] text-[#ffdd00] mb-2 text-center uppercase font-black tracking-wide">🔑 CONTRASEÑA MAESTRA</div>
               <div className="text-[12px] text-[#00ff88] font-mono text-center select-all break-all leading-tight mb-3 font-black bg-black/50 p-2 border-2 border-[#00ff88]">
-                123456789101112131415
+                299d9dcbf42ef73161fc7cdb201a42fde56d499234ce0a2a951102eede9fd9a2
               </div>
               <div className="flex justify-center mb-3">
-                <CopyButton text="123456789101112131415" label="COPIAR" />
+                <CopyButton text="299d9dcbf42ef73161fc7cdb201a42fde56d499234ce0a2a951102eede9fd9a2" label="COPIAR" />
               </div>
 
               {/* BOSS FINAL IMAGE */}
@@ -118,11 +139,11 @@ export function FingerprintSection() {
                   ⚔️ BOSS FINAL ⚔️
                 </div>
                 <div className="relative bg-black p-1 border-2 border-white">
-                  <Image 
-                    src="/assets/mini/1000010522.png" 
-                    alt="Boss Final" 
-                    width={200} 
-                    height={200} 
+                  <Image
+                    src="/assets/mini/server/bossfinal.png"
+                    alt="Boss Final"
+                    width={200}
+                    height={200}
                     className="w-full h-auto"
                     style={{ imageRendering: 'pixelated' }}
                   />
