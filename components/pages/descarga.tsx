@@ -3,6 +3,7 @@ import { PixelContainer } from '@/components/pixel-container'
 import { useSoundEffects } from '@/hooks/use-sound-effects'
 import Image from 'next/image'
 import installData from '@/data/install.json'
+import { motion } from 'framer-motion'
 
 export function DescargaLeftPage() {
   const { title, subtitle, sections } = installData;
@@ -13,20 +14,29 @@ export function DescargaLeftPage() {
       <div className="border-b-4 border-[#8B4513] pb-3 mb-2 flex flex-col items-center">
         <div className="flex items-center gap-4 mb-2">
           {installData.icon && (
-            <Image
-              src={installData.icon}
-              alt="Install"
-              width={220}
-              height={220}
-              className="drop-shadow-[6px_6px_0_rgba(0,0,0,0.3)] hover:scale-110 transition-transform duration-300 cursor-pointer"
-              style={{ imageRendering: 'pixelated' }}
-            />
+            <motion.div
+              animate={{ y: [0, -12, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <Image
+                src={installData.icon}
+                alt="Install"
+                width={250}
+                height={250}
+                className="drop-shadow-[6px_6px_0_rgba(0,0,0,0.3)] hover:scale-110 transition-transform duration-300 cursor-pointer"
+                style={{ imageRendering: 'pixelated' }}
+              />
+            </motion.div>
           )}
           <Image
             src="/assets/mini/general/instalacion completa.png"
             alt="Instalación Completa"
-            width={320}
-            height={96}
+            width={280}
+            height={84}
             className="drop-shadow-[3px_3px_0_rgba(0,0,0,0.3)]"
             style={{ imageRendering: 'pixelated' }}
           />
@@ -132,8 +142,8 @@ export function DescargaRightPage() {
                     <Image
                       src="/assets/mini/descarga/descargamodpack.png"
                       alt="Modpack Logo"
-                      width={240}
-                      height={240}
+                      width={280}
+                      height={280}
                       style={{ imageRendering: 'pixelated' }}
                       className="drop-shadow-[8px_8px_0_rgba(0,0,0,0.4)] hover:scale-110 transition-transform duration-300 cursor-pointer"
                     />
