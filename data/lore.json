@@ -2,15 +2,15 @@
   "intro": {
     "title": "La Historia Comienza",
     "icon": "/assets/mini/lore/la historia.png",
-    "paragraph1": "Bienvenido a Netherious: RPG Expansion — un mundo donde la magia se mezcla con la maquinaria y la aventura nunca se detiene. Cada estructura guarda secretos, cada bioma es un reto, y cada jugador forja su propio destino.",
-    "paragraph2": "Explora ruinas antiguas, fortalezas flotantes y fábricas movidas por vapor. Viaja entre dimensiones, mejora tus habilidades y enfréntate a criaturas que no pertenecen a este mundo. Todo está conectado por portales, engranajes y poder arcano."
+    "paragraph1": "Bienvenido a Netherious: RPG Expansion — un mundo donde la magia choca con engranajes, vapor y pólvora. Acá no paseás: sobrevivís. Cada estructura esconde algo raro, cada bioma te quiere matar un poquito, y cada jugador escribe su historia a los golpes.",
+    "paragraph2": "Ruinas antiguas, fortalezas flotantes y fábricas que rugen como bestias mecánicas. Saltás entre dimensiones, mejorás tus builds y te cruzás con criaturas que claramente no deberían existir. Portales, acero y poder arcano sosteniendo un mundo que no te debe nada."
   },
   "about": {
     "title": "Sobre el Servidor",
     "paragraphs": [
-      "Netherious corre sobre **Forge 1.20.1** y combina lo mejor del RPG con la exploración y el progreso técnico. No es solo otro survival: es un mundo vivo con historias, facciones y secretos ocultos.",
-      "Vas a encontrar desde aldeas saqueadas por illagers hasta fortalezas mecánicas del mod *Create*. Los biomas cobran vida con criaturas únicas, y las mazmorras esconden tesoros y jefes que pondrán a prueba tus builds.",
-      "Podés ser un mago, un paladín, un ingeniero o un simple aventurero con hambre de gloria. En *Netherious*, cada pelea, máquina o portal puede cambiar el rumbo de tu historia."
+      "Netherious corre sobre **Forge 1.20.1** y mezcla RPG serio con exploración salvaje y progreso técnico de verdad. No es otro survival genérico: es un mundo vivo, con facciones, historia y secretos que no te van a regalar nada.",
+      "Hay aldeas arrasadas, fortalezas mecánicas del mod *Create* y mazmorras que parecen diseñadas por alguien que disfruta verte sufrir. Los biomas respiran, los jefes pegan fuerte y tus builds importan.",
+      "Podés ser mago, paladín, ingeniero o un loquito con una pala oxidada. Da igual. Si no te adaptás, respawneás. En *Netherious*, el mundo no escala a vos: vos escalás o quedás atrás."
     ]
   },
   "categories": [
@@ -18,20 +18,20 @@
       "id": "criaturas",
       "title": "Criaturas & Fauna Salvaje",
       "icon": "/assets/mini/lore/criaturasyfauna.png",
-      "description": "Una enorme diversidad de animales, criaturas prehistóricas, aliados y amenazas que llenan el mundo de vida.",
+      "description": "Animales, bestias prehistóricas, aliados raros y cosas que definitivamente no deberías acariciar. El mundo está vivo… y con hambre.",
       "stats": [
         {
-          "label": "Diversidad",
+          "label": "Biodiversidad Salvaje",
           "value": 9,
           "type": "magic"
         },
         {
-          "label": "Peligro",
+          "label": "Nivel de Mordida",
           "value": 5,
           "type": "attack"
         },
         {
-          "label": "Top Mods",
+          "label": "Contenido Bestial",
           "value": 7,
           "type": "speed"
         }
@@ -41,20 +41,20 @@
       "id": "enemigos",
       "title": "Enemigos & Hostilidad",
       "icon": "/assets/mini/lore/enemigos.png",
-      "description": "Criaturas agresivas, mutaciones antinaturales y horrores que transforman la exploración en supervivencia.",
+      "description": "Mutaciones, horrores y mobs con ganas reales de borrarte del mapa. Explorar acá es básicamente firmar un contrato de riesgo.",
       "stats": [
         {
-          "label": "Peligro",
-          "value": 9,
+          "label": "Letalidad",
+          "value": 8,
           "type": "attack"
         },
         {
-          "label": "Frecuencia",
-          "value": 8,
+          "label": "Densidad de Spawn",
+          "value": 6,
           "type": "speed"
         },
         {
-          "label": "Top Mods",
+          "label": "Variedad de Pesadillas",
           "value": 4,
           "type": "speed"
         }
@@ -64,21 +64,21 @@
       "id": "estructuras",
       "title": "Estructuras & Mazmorras Épicas",
       "icon": "/assets/mini/lore/mazmorras.png",
-      "description": "Construcciones masivas con enemigos, botines épicos y ambientación inmersiva.",
+      "description": "Construcciones gigantes, pasillos traicioneros y botines que valen cada casi-muerte. Si entrás, preparate para pelear.",
       "stats": [
         {
-          "label": "Peligro",
+          "label": "Trampas Mortales",
           "value": 7,
           "type": "attack"
         },
         {
-          "label": "Recompensa",
+          "label": "Botín Jugoso",
           "value": 9,
           "type": "magic"
         },
         {
-          "label": "Top Mods",
-          "value": 2,
+          "label": "Exploración Hardcore",
+          "value": 8,
           "type": "speed"
         }
       ]
@@ -87,20 +87,20 @@
       "id": "herramientas",
       "title": "Herramientas & Vehículos",
       "icon": "/assets/mini/lore/herramientas2.png",
-      "description": "Armas legendarias, equipamiento especializado y vehículos para la exploración y el combate.",
+      "description": "Armas legendarias, equipo especializado y máquinas para moverte más rápido que tu mala suerte. Tecnología al servicio del caos.",
       "stats": [
         {
-          "label": "Utilidad",
+          "label": "Impacto en Gameplay",
           "value": 10,
           "type": "speed"
         },
         {
-          "label": "Complejidad",
+          "label": "Curva de Aprendizaje",
           "value": 6,
           "type": "speed"
         },
         {
-          "label": "Top Mods",
+          "label": "Arsenal Disponible",
           "value": 7,
           "type": "speed"
         }
@@ -110,21 +110,21 @@
       "id": "jefes",
       "title": "Jefes & Combate Avanzado",
       "icon": "/assets/mini/lore/bosses.png",
-      "description": "Jefes memorables, encuentros diseñados para poner a prueba al jugador más experimentado.",
+      "description": "Encuentros diseñados para humillarte hasta que aprendas. Patrones, mecánicas y daño serio. Acá no hay button mashing.",
       "stats": [
         {
-          "label": "Peligro",
+          "label": "Dificultad Bruta",
           "value": 10,
           "type": "attack"
         },
         {
-          "label": "Riesgo",
-          "value": 9,
+          "label": "Castigo por Error",
+          "value": 11,
           "type": "attack"
         },
         {
-          "label": "Top Mods",
-          "value": 5,
+          "label": "Espectáculo del Combate",
+          "value": 9,
           "type": "speed"
         }
       ]
@@ -133,20 +133,20 @@
       "id": "mundos",
       "title": "Mundos & Dimensiones Alternas",
       "icon": "/assets/mini/lore/dimesiones.png",
-      "description": "Explora biomas renovados, paisajes dinámicos y versiones expandidas de las dimensiones vanilla.",
+      "description": "Dimensiones expandidas, biomas rarísimos y paisajes que parecen sacados de otro juego. Viajar es obligatorio. Sobrevivir, opcional.",
       "stats": [
         {
-          "label": "Exploración",
+          "label": "Libertad de Exploración",
           "value": 10,
           "type": "magic"
         },
         {
-          "label": "Peligro",
+          "label": "Amenazas Ambientales",
           "value": 6,
           "type": "attack"
         },
         {
-          "label": "Top Mods",
+          "label": "Rareza de Biomas",
           "value": 6,
           "type": "speed"
         }
@@ -156,20 +156,20 @@
       "id": "progresion",
       "title": "Progresión de Personaje",
       "icon": "/assets/mini/lore/progresion.png",
-      "description": "Clases, habilidades, misiones y narrativa que transforman tu aventura.",
+      "description": "Clases, habilidades, misiones y sistemas que cambian tu forma de jugar. No subís números: evolucionás o te quedás atrás.",
       "stats": [
         {
-          "label": "Poder",
+          "label": "Escalado de Poder",
           "value": 9,
           "type": "magic"
         },
         {
-          "label": "Complejidad",
+          "label": "Profundidad de Builds",
           "value": 7,
           "type": "speed"
         },
         {
-          "label": "Top Mods",
+          "label": "Sistemas RPG",
           "value": 9,
           "type": "speed"
         }
@@ -179,21 +179,21 @@
       "id": "clases",
       "title": "RPG Classes",
       "icon": "/assets/mini/lore/rpg.png",
-      "description": "Elige tu camino: Arquero, Paladín, Pícaro o Mago con habilidades únicas.",
+      "description": "Arquero, Paladín, Pícaro o Mago. Elegí tu estilo. Después bancate las consecuencias.",
       "stats": [
         {
-          "label": "Poder",
+          "label": "Potencial de Daño",
           "value": 8,
           "type": "magic"
         },
         {
-          "label": "Versatilidad",
-          "value": 10,
+          "label": "Flexibilidad Táctica",
+          "value": 8,
           "type": "speed"
         },
         {
-          "label": "Top Mods",
-          "value": 4,
+          "label": "Sinergias",
+          "value": 8,
           "type": "speed"
         }
       ]
@@ -202,21 +202,21 @@
       "id": "tecnologia",
       "title": "Tecnología",
       "icon": "/assets/mini/lore/tecnologia.png",
-      "description": "Maquinaria industrial, viajes espaciales y sistemas energéticos basados en Create.",
+      "description": "Maquinaria industrial, automatización pesada y sistemas energéticos con *Create*. Si te gustan los engranajes girando, este es tu patio de juegos.",
       "stats": [
         {
-          "label": "Complejidad",
+          "label": "Ingeniería Compleja",
+          "value": 7,
+          "type": "speed"
+        },
+        {
+          "label": "Automatización Total",
           "value": 9,
           "type": "speed"
         },
         {
-          "label": "Utilidad",
+          "label": "Potencia Industrial",
           "value": 10,
-          "type": "speed"
-        },
-        {
-          "label": "Top Mods",
-          "value": 5,
           "type": "speed"
         }
       ]
@@ -225,10 +225,10 @@
       "id": "vanilla",
       "title": "Vanilla+ & Calidad de Vida",
       "icon": "/assets/mini/lore/vanilla.png",
-      "description": "Mejoras al estilo clásico con sistemas balanceados, inmersión y progresión natural.",
+      "description": "Mejoras inteligentes al Minecraft clásico. Todo se siente familiar… pero mejor, más fluido y menos tosco.",
       "stats": [
         {
-          "label": "Utilidad",
+          "label": "Comodidad General",
           "value": 10,
           "type": "speed"
         },
@@ -238,7 +238,7 @@
           "type": "magic"
         },
         {
-          "label": "Top Mods",
+          "label": "Pulido del Juego",
           "value": 7,
           "type": "speed"
         }
@@ -248,20 +248,20 @@
   "features": [
     {
       "title": "Mods Curados",
-      "description": "Una selección balanceada de mods para exploración, combate y rendimiento óptimo."
+      "description": "Nada de relleno. Cada mod está elegido, probado y ajustado. Calidad > cantidad."
     },
     {
       "title": "Aventuras Épicas",
-      "description": "Ruinas, biomas y desafíos con recompensas legendarias en cada expedición."
+      "description": "Ruinas, biomas y expediciones donde siempre hay algo valioso… o algo intentando matarte."
     },
     {
       "title": "Desafíos Legendarios",
-      "description": "Combates y progresión con profundidad, dificultad y estrategia real."
+      "description": "Combate con mecánicas reales, estrategia y dificultad honesta. Si ganás, te lo merecés."
     }
   ],
   "outro": {
     "title": "Tu Aventura Comienza Ahora",
     "icon": "/assets/mini/lore/tuhistoriacomienza.png",
-    "paragraph": "Únete a Netherious y vive la experiencia definitiva de Minecraft modded. Cada muerte te enseña, cada victoria te fortalece, y cada descubrimiento cambia tu mundo."
+    "paragraph": "Entrá a Netherious. Morí un par de veces. Aprendé. Volvé más fuerte. Acá las victorias se ganan, no se regalan."
   }
 }

@@ -4,12 +4,12 @@ Una experiencia web de alta fidelidad diseñada para el servidor de Minecraft **
 
 ## ✨ Características Principales
 
-- **🎮 Inmersión RPG**: Interfaz diseñada con estética RPG, incluyendo efectos de escritura (Typewriter) en tiempo real y transiciones suaves.
-- **🖼️ Lore Interactivo**: Sistema de categorías con iconos únicos, información detallada de mods y galería de imágenes organizadas.
-- **🔊 Experiencia Sonora Contextual**: Sistema de sonidos ambientales y de interfaz que reaccionan a las acciones del usuario.
-- **🌌 Estética Premium**: Glassmorphism, efectos de meteoros animados, cursores personalizados y máscaras de scroll dinámicas.
-- **📱 Responsive Design**: Dock bar unificado y layouts adaptables para una experiencia fluida en cualquier dispositivo.
-- **🔍 Fingerprint Secreto**: Función oculta de autenticación ("dale que llueve") para revelar información sensible del servidor.
+- **📖 Interfaz de Libro Místico**: Layout dinámico basado en un libro RPG con páginas izquierda/derecha y navegación fluida.
+- **🖼️ Lore & Códex Creativo**: Categorías con etiquetas temáticas (ej: *Peligros de Grado S*, *Bestiario*) y descripciones narrativas alejadas del tono bot.
+- **🎮 Características "Nashe"**: Resumen de los pilares del servidor: *Mundos Flama*, *Combate God* y *Progresión Nashe*.
+- **🔊 Paisaje Sonoro Legendario**: Sistema de audio contextual con sonidos de Minecraft (Enderman, Villagers, XP) que reaccionan a cada click y transición.
+- **📱 Responsive & Pixel Perfect**: Estética de pixel art optimizada para móviles con una Dock bar unificada.
+- **🔍 Fingerprint & Secretos**: Panel de acceso restringido con un tono directo y "pa" para la comunidad.
 
 ## 🛠️ Tecnologías
 

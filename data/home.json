@@ -1,50 +1,50 @@
 {
   "hero": {
-    "title": "Eu! entra",
-    "subtitle": "Forge 1.20.1 • Mods optimizados • Mundo RPG en constante evolución",
+    "title": "Eu! Eu! Eu! entra",
+    "subtitle": "Forge 1.20.1 • Mods optimizados • El RPG que Hytale prometió y nunca entregó",
     "cta": "Copiar IP del servidor"
   },
   "intro": {
     "title": "Bienvenido a Netherious",
-    "paragraph": "No es solo Minecraft modded: es una experiencia RPG con progresión, exploración y tecnología. Cada bioma, criatura y estructura fue elegida a mano para crear una aventura equilibrada, inmersiva y viva."
+    "paragraph": "No es ‘otro modpack’. Es lo que pasa cuando alguien se toma Minecraft en serio. RPG real, progresión de verdad y un mundo vivo, no un tráiler eterno en desarrollo. Cada bioma, criatura y estructura está curado a mano. Acá se juega, no se espera años."
   },
   "cards": [
     {
       "title": "Instalación Sencilla",
-      "text": "Descargá Forge y el pack completo con solo unos clics. Sin cortocircuito.",
+      "text": "Bajás Forge, descargás el pack y listo. Dos clics y estás adentro. Menos vueltas de las que te dio ella.",
       "icon": "Download",
       "color": "#3B82F6"
     },
     {
       "title": "Mods Afinados",
-      "text": "Cada mod fue probado y ajustado para lograr equilibrio, fluidez y una experiencia RE ZARPADA.",
+      "text": "Nada de mods tirados a lo loco. Todo testeado, balanceado y ajustado fino. Cada cosa tiene sentido. Experiencia NOTORIA.",
       "icon": "Sparkles",
       "color": "#A855F7"
     },
     {
       "title": "Rendimiento Óptimo",
-      "text": "Configuraciones ajustadas para ofrecer gráficos nítidos y FPS estables, incluso en exploraciones largas.",
+      "text": "FPS estables, chunks cargando rápido (ojala) y cero tostadora nuclear. Corre suave incluso cuando el mundo explota. Optimización > promesas.",
       "icon": "Zap",
       "color": "#10B981"
     }
   ],
   "features": [
     {
-      "title": "Mundos Vivos",
-      "description": "Explorá biomas únicos, ruinas generadas dinámicamente y aldeas con historia propia."
+      "title": "Mundos Flama",
+      "description": "Biomas únicos, estructuras dinámicas y lugares con historia. Explorás y pasan cosas. No es un mapa vacío con humo y marketing."
     },
     {
-      "title": "Combate Real",
-      "description": "Jefes, enemigos y habilidades especiales que exigen estrategia y reflejos."
+      "title": "Combate God",
+      "description": "Jefes que pegan fuerte, enemigos con mecánicas y peleas que te hacen sudar. Si pestaneas, respawneás. GG Ez."
     },
     {
-      "title": "Progresión RPG",
-      "description": "Desbloqueá clases, encantamientos avanzados y mejoras que cambian tu estilo de juego."
+      "title": "Progresión Nashe",
+      "description": "Clases, builds, encantamientos y decisiones que cambian cómo jugás. No skins lindas: impacto real en gameplay."
     }
   ],
   "cta": {
     "title": "¿Listo para entrar a Netherious?",
-    "description": "Descargá el pack, prepará tu equipo y empezá tu aventura en este mundo RPG.",
+    "description": "Dejá de mirar Reels y metete a jugar algo que ya funciona. Descargá el pack, armate el setup y caé al server.",
     "button": "Ver Instrucciones de Instalación"
   }
 }

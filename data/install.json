@@ -1,31 +1,31 @@
 {
   "title": "Instalación Completa",
-  "subtitle": "Paso a paso para descargar y configurar Netherious en tu PC",
+  "subtitle": "Paso a paso para dejar Netherious andando fino en tu PC (sin sufrir como beta tester)",
   "icon": "/assets/mini/descarga/instalacion.png",
   "intro": {
     "title": "Guía de Instalación",
-    "steps": "Sigue estos pasos en orden para una experiencia sin problemas"
+    "steps": "Seguí los pasos en orden. No inventes. No mezcles. No seas Wachin."
   },
   "sections": [
     {
       "id": "forge",
       "title": "1. Forge 1.20.1",
       "critical": true,
-      "description": "Mod loader requerido. Descárgalo e instálalo primero antes de agregar cualquier mod.",
+      "description": "El mod loader obligatorio. Sin esto no arranca nada. Es literalmente el corazón del asunto.",
       "icon": "/assets/mini/descarga/instalacion.png",
       "color": "#3b82f6",
       "action": "Descargar Forge",
       "instructions": [
-        "Abri la terminal o símbolo del sistema y ejecuta el comando: java -version",
-        "Verifica que tengas Java 8 o una versión superior instalada",
-        "Si no tenes Java, usa el botón de descarga de abajo para instalarlo",
+        "Abri la terminal o símbolo del sistema y ejecuta: java -version",
+        "Chequeá que tengas Java 8 o superior (si dice que no existe… bueno, ahí tenés el problema)",
+        "Si no tenes Java, sos puto. Usa el botón de abajo e instalalo primero",
         "Descarga el instalador de Forge 1.20.1",
         "Ejecuta el instalador",
         "Selecciona 'Install client'",
-        "Confirma la instalación"
+        "Confirma la instalación y listo, no tiene misterio"
       ],
       "link": "https://files.minecraftforge.net/net/minecraftforge/forge/index_1.20.1.html",
-      "recommendation": "Requiere Java instalado en tu sistema",
+      "recommendation": "Requiere Java instalado. Sin Java no hay magia.",
       "extraLinks": [
         {
           "label": "Descargar Java (si no lo tenes)",
@@ -37,27 +37,27 @@
     {
       "id": "server_core",
       "title": "2. Descargar Netherious Core",
-      "description": "Descarga el paquete completo del servidor con todas las configuraciones, packs de recursos y mods esenciales.",
+      "description": "El pack completo con todo lo que hace que el server sea una bestia: configs, recursos y mods bien afinados. Lo pesado ya lo optimizamos nosotros, vos solo bajalo.",
       "icon": "/assets/mini/descarga/descargamodpack.png",
       "color": "#10b981",
       "action": "Descargar Netherious.zip",
       "critical": true,
       "downloadUrl": "https://drive.google.com/file/d/1FGOHvUE-i9hm7MU40KL9iNyoCzbV8fZm/view?usp=drive_link",
-      "recommendation": "Descarga este archivo después de instalar Forge",
+      "recommendation": "Instalá Forge primero. El orden importa, no seas kamikaze.",
       "instructions": [
         "Descarga el archivo netherious.zip desde el botón de abajo",
-        "Una vez descargado, descomprime el contenido en tu carpeta .minecraft",
-        "Acepta reemplazar archivos si se te solicita",
-        "¡Listo! Ya puedes conectarte al servidor"
+        "Descomprimilo todo dentro de tu carpeta .minecraft",
+        "Acepta reemplazar archivos cuando te lo pida",
+        "Listo. ez"
       ]
     },
     {
       "id": "optional_mods",
       "title": "3. Mods Opcionales",
-      "description": "Mods de partículas y animaciones solo para cliente local. Elimina cualquiera si experimentas problemas de rendimiento.",
+      "description": "Puro lujo visual: partículas, animaciones y fueguitos. Si tu PC es una tostadora, sacalos sin culpa.",
       "icon": "/assets/mini/general/1.png",
       "color": "#f59e0b",
-      "recommendation": "Usa solo si experimentas problemas de rendimiento",
+      "recommendation": "Usalos solo si tu rendimiento aguanta. FPS > fueguitos bonitos.",
       "variant": "outline",
       "optionalModsList": [
         "A Good Place",
@@ -92,14 +92,14 @@
     {
       "id": "config",
       "title": "4. Configuración Final",
-      "description": "Ajusta la configuración para rendimiento óptimo en tu sistema.",
+      "description": "Un par de ajustes y tu PC vuela. No hacerlo es como correr con freno de mano.",
       "icon": "/assets/mini/general/cofre.png",
       "color": "#06b6d4",
       "checkpoints": [
-        "Asigna 8 GB de RAM mínimo en el launcher",
-        "Activa VSync en el cliente si tienes 60+ FPS",
-        "Ajusta distancia de renderizado según tu GPU",
-        "Proba conectarte al servidor"
+        "Asigna mínimo 8 GB de RAM en el launcher",
+        "Activa VSync si superas 60 FPS estables",
+        "Ajusta la distancia de renderizado según tu GPU (no te hagas el master race)",
+        "Conectate al servidor y disfrutá, ya hiciste la parte difícil"
       ]
     }
   ],

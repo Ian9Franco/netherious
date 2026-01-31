@@ -43,7 +43,7 @@ export function InicioLeftPage({ onPageChange }: InicioProps) {
               {/* Icon */}
               <div className="flex-shrink-0">
                 <Image
-                  src={index === 0 ? "/assets/mini/inicio/inicio mundosvivos.png" : index === 1 ? "/assets/mini/inicio/inicio combate.png" : "/assets/mini/inicio/inicio progresion rpg.png"}
+                  src={index === 0 ? "/assets/mini/inicio/inicio-mundosvivos.png" : index === 1 ? "/assets/mini/inicio/inicio-progresion.png" : "/assets/mini/inicio/inicio-combate.png"}
                   alt="Feature"
                   width={160}
                   height={160}
@@ -53,9 +53,12 @@ export function InicioLeftPage({ onPageChange }: InicioProps) {
               </div>
               {/* Label */}
               <div className="flex-1">
-                <h3 className="text-[11px] font-bold text-[#8B4513] uppercase leading-tight">
+                <h3 className="text-[11px] font-bold text-[#8B4513] uppercase leading-tight mb-0.5">
                   {feature.title}
                 </h3>
+                <p className="text-[9px] text-[#5c3d1a] leading-tight font-medium">
+                  {feature.description}
+                </p>
               </div>
               {/* Indicator */}
               <div className="flex-shrink-0">

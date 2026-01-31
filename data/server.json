@@ -1,13 +1,13 @@
 {
   "title": "Información del Servidor",
-  "subtitle": "Todo lo que necesitas saber para conectarte a Netherious",
+  "subtitle": "Todo lo que necesitas saber para conectarte a Netherious (y no quedar afuera como turista)",
   "icon": "/assets/mini/server/expansion netherious.png",
   "connection_seal": "/assets/mini/server/conexion al servidor1.png",
   "right_featured_icon": "/assets/mini/server/dale que llueve.png",
   "ip": "sv30.minehost.pro:25471",
   "intro": {
     "title": "Netherious: RPG Expansion",
-    "description": "Servidor privado de Minecraft con mods personalizados en Forge 1.20.1, diseñado para aventureros que buscan experiencias épicas con exploración profunda, combate desafiante y secretos escondidos bajo tierra."
+    "description": "Servidor modded en Forge 1.20.1 hecho a mano, sin humo, por el NOTO. Exploración dennnnnsa, combate que castiga errores y secretos por todos lados. Esto no es survival chill: acá venís a sobrevivir posta."
   },
   "requirements": [
     {
@@ -15,21 +15,21 @@
       "value": "1.20.1",
       "icon": "/assets/mini/general/1.png",
       "color": "#3b82f6",
-      "description": "Versión específica requerida para compatibilidad total"
+      "description": "Versión exacta. No pruebes otra porque no va a andar. La física no negocia."
     },
     {
       "label": "Cargador de Mods",
       "value": "Forge 1.20.1",
       "icon": "/assets/mini/lore/gear.png",
       "color": "#f59e0b",
-      "description": "Mod loader necesario para cargar todos los mods del servidor"
+      "description": "El motor que hace que todo funcione. Sin Forge es solo Minecraft vainilla llorando en una esquina."
     },
     {
       "label": "Versión de Java",
       "value": "Java 8+",
       "icon": "/assets/mini/general/imp.png",
       "color": "#10b981",
-      "description": "Compatible desde Java 8, pero se recomienda Java 21 para mejor estabilidad y rendimiento"
+      "description": "Corre desde Java 8, pero con Java 21 vuela. Más FPS, menos drama."
     }
   ],
   "specs": [

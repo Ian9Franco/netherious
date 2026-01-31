@@ -91,7 +91,7 @@ export function FingerprintSection() {
         </div>
 
         <p className="text-[10px] text-white font-bold mb-3 leading-relaxed bg-black/30 p-2 border-2 border-black">
-          ⚡ El servidor te solicitará esta contraseña al entrar por primera vez para descargar el modpack oficial de Netherious.
+          ⚡ Y pa? vas a entrar y no vas a poner la contraseña? La contraseña es obligatoria pa. Es la llave para descargar el modpack oficial de Netherious. Sin eso, no pasás del lobby pa.
         </p>
 
         {!showPassword ? (

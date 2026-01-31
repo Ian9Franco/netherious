@@ -93,8 +93,6 @@ export function DescargaLeftPage() {
 export function DescargaRightPage() {
   const { sections } = installData;
   const { playSound } = useSoundEffects()
-  // Show first 3 steps in detail
-  const featuredSections = sections.slice(0, 3);
 
   return (
     <div className="space-y-5 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-1 custom-scrollbar">
@@ -105,8 +103,8 @@ export function DescargaRightPage() {
       </div>
 
       {/* Featured Steps with Details */}
-      <div className="space-y-5">
-        {featuredSections.map((section, index) => (
+      <div className="space-y-8">
+        {sections.map((section, index) => (
           <div key={section.id} className="relative">
             {/* Step Header */}
             <div className="flex items-start gap-3 mb-2 bg-gradient-to-r from-[#e8dcc8] to-[#d4c4a8] border-2 border-[#8B4513] p-3">
@@ -128,24 +126,68 @@ export function DescargaRightPage() {
             </div>
 
             {/* Description */}
-            <div className="bg-white/50 backdrop-blur-sm p-3 border-3 border-black mb-2 shadow-[4px_4px_0_rgba(0,0,0,0.2)]">
-              <p className="text-[10px] text-[#3a2010] leading-tight">
+            <div className="bg-white/50 backdrop-blur-sm p-3 border-3 border-black mb-3 shadow-[4px_4px_0_rgba(0,0,0,0.2)]">
+              <p className="text-[10px] text-[#3a2010] font-bold leading-tight">
                 {section.description}
               </p>
             </div>
 
-            {/* Action Buttons - Redesigned Trio */}
-            <div className="flex flex-col gap-6 mt-6">
+            {/* Instructions List */}
+            {section.instructions && (
+              <div className="bg-[#fdf6e3]/80 p-3 border-2 border-[#8B4513]/40 mb-3 shadow-[2px_2px_0_rgba(0,0,0,0.1)]">
+                <ul className="space-y-2">
+                  {section.instructions.map((inst, i) => (
+                    <li key={i} className="text-[9px] text-[#5c3d1a] flex gap-2 items-start">
+                      <span className="text-[#8B4513] font-bold mt-[-2px]">»</span>
+                      <span className="leading-tight font-medium">{inst}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Optional Mods List */}
+            {section.optionalModsList && (
+              <div className="bg-[#f0fdfa]/60 p-3 border-2 border-[#0d9488]/30 mb-3 shadow-[2px_2px_0_rgba(0,0,0,0.1)]">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-1.5">
+                  {section.optionalModsList.map((mod, i) => (
+                    <div key={i} className="text-[8px] text-[#0f766e] flex items-center gap-1.5 font-bold">
+                      <div className="w-1.5 h-1.5 bg-[#0d9488] rotate-45 flex-shrink-0" />
+                      <span className="truncate">{mod}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Checkpoints */}
+            {section.checkpoints && (
+              <div className="bg-[#f0fdf4]/60 p-3 border-2 border-[#16a34a]/30 mb-3 shadow-[2px_2px_0_rgba(0,0,0,0.1)]">
+                <ul className="space-y-2">
+                  {section.checkpoints.map((check, i) => (
+                    <li key={i} className="text-[9px] text-[#166534] flex gap-2 items-start">
+                      <div className="w-3 h-3 border-2 border-[#16a34a] flex-shrink-0 flex items-center justify-center mt-0.5 bg-white">
+                        <div className="w-1.5 h-1.5 bg-[#16a34a]" />
+                      </div>
+                      <span className="leading-tight font-bold">{check}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Action Buttons */}
+            <div className="flex flex-col gap-4 mt-4">
               {section.downloadUrl && (
-                <div className="flex items-center gap-6 bg-gradient-to-r from-[#ffd700]/10 to-transparent p-4 border-l-8 border-[#ffd700] rounded-r-lg">
+                <div className="flex items-center gap-4 bg-gradient-to-r from-[#ffd700]/10 to-transparent p-3 border-l-8 border-[#ffd700] rounded-r-lg">
                   <div className="flex-shrink-0">
                     <Image
-                      src="/assets/mini/descarga/descargamodpack.png"
+                      src={section.icon || "/assets/mini/descarga/descargamodpack.png"}
                       alt="Modpack Logo"
-                      width={280}
-                      height={280}
+                      width={80}
+                      height={80}
                       style={{ imageRendering: 'pixelated' }}
-                      className="drop-shadow-[8px_8px_0_rgba(0,0,0,0.4)] hover:scale-110 transition-transform duration-300 cursor-pointer"
+                      className="drop-shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-110 transition-transform duration-300 cursor-pointer"
                     />
                   </div>
                   <a
@@ -155,14 +197,14 @@ export function DescargaRightPage() {
                     className="flex-1"
                     onClick={() => playSound('click-modpack')}
                   >
-                    <PixelButton variant="comic-purple" className="w-full text-[14px] py-3 px-6 font-black shadow-[6px_6px_0_0_#000] hover:translate-y-[-3px] hover:translate-x-[-3px] transition-all uppercase tracking-widest">
-                      DESCARGAR NETHERIOUS
+                    <PixelButton variant="comic-purple" className="w-full text-[12px] py-2 px-4 font-black shadow-[4px_4px_0_0_#000] hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all uppercase tracking-widest">
+                      DESCARGAR PACK
                     </PixelButton>
                   </a>
                 </div>
               )}
 
-              <div className="flex items-center gap-6">
+              <div className="flex items-center gap-4">
                 {section.link && (
                   <a
                     href={section.link}
@@ -171,8 +213,8 @@ export function DescargaRightPage() {
                     className="flex-[2]"
                     onClick={() => playSound('click-forge')}
                   >
-                    <PixelButton variant="comic-orange" className="w-full text-[11px] py-2 px-4 font-black flex items-center justify-center gap-3 shadow-[4px_4px_0_0_#000]">
-                      <Image src="/assets/mini/general/imp.png" alt="Forge" width={32} height={32} style={{ imageRendering: 'pixelated' }} />
+                    <PixelButton variant="comic-orange" className="w-full text-[10px] py-2 px-3 font-black flex items-center justify-center gap-2 shadow-[3px_3px_0_0_#000]">
+                      <Image src="/assets/mini/general/imp.png" alt="Forge" width={24} height={24} style={{ imageRendering: 'pixelated' }} />
                       <span className="truncate">DESCARGAR FORGE</span>
                     </PixelButton>
                   </a>
@@ -187,9 +229,9 @@ export function DescargaRightPage() {
                       className="flex-1"
                       onClick={() => playSound('success')}
                     >
-                      <PixelButton variant="comic-red" className="w-full text-[11px] py-2 px-3 font-black flex flex-col items-center gap-1 shadow-[3px_3px_0_0_#000]">
-                        <Image src="/assets/mini/general/java.png" alt="Java" width={32} height={32} style={{ imageRendering: 'pixelated' }} />
-                        <span className="text-[9px]">JAVA</span>
+                      <PixelButton variant="comic-red" className="w-full text-[10px] py-2 px-2 font-black flex flex-col items-center gap-0 shadow-[2px_2px_0_0_#000]">
+                        <Image src="/assets/mini/general/java.png" alt="Java" width={24} height={24} style={{ imageRendering: 'pixelated' }} />
+                        <span className="text-[8px] leading-none">JAVA</span>
                       </PixelButton>
                     </a>
                   )
@@ -199,8 +241,6 @@ export function DescargaRightPage() {
           </div>
         ))}
       </div>
-
-
 
       {/* Discord CTA */}
       <div className="flex justify-center pt-4 mt-auto">

@@ -18,6 +18,19 @@ const categoryColors: Record<string, { gradient: string, label: string, accent: 
   'vanilla': { gradient: 'from-[#8bc34a] to-[#689f38]', label: 'from-[#8bc34a] to-[#689f38]', accent: '#8bc34a' },
 }
 
+const categorySubtitles: Record<string, string> = {
+  'criaturas': 'Bestiario & Compañeros',
+  'enemigos': 'Peligros de Grado S',
+  'estructuras': 'Saqueo & Arqueología',
+  'herramientas': 'Arsenal de Supervivencia',
+  'jefes': 'Retos de Sangre',
+  'mundos': 'Planos Inexplorados',
+  'progresion': 'Evolución de Poder',
+  'clases': 'Roles del Gremio',
+  'tecnologia': 'Vapor & Automatización',
+  'vanilla': 'Esencia Refinada',
+}
+
 // Helper component for Stat Bar with ENHANCED Pop Art Style
 const StatBar = ({ label, value, type, categoryId }: { label: string, value: number, type: string, categoryId: string }) => {
   const [width, setWidth] = useState(0);
@@ -133,13 +146,17 @@ export function LoreLeftPage() {
                   <div className={`absolute -bottom-1 -right-1 w-3 h-3 bg-gradient-to-br ${colors.label} border-2 border-black`}></div>
                 </div>
                 {/* Label */}
-                <div className="flex-1">
-                  <h3 className="text-[11px] font-bold text-[#8B4513] uppercase leading-tight">
+                <div className="flex-1 flex flex-col gap-0.5">
+                  <h3 className="text-[11px] font-black text-[#633a1e] uppercase leading-tight drop-shadow-[0.5px_0.5px_0_rgba(255,255,255,0.4)]">
                     {cat.title}
                   </h3>
-                  <p className="text-[8px] text-[#3a2010] leading-tight mt-0.5">
-                    {cat.stats.length} características
-                  </p>
+                  <div className="flex">
+                    <div className={`px-2 py-0.5 bg-[#e8dcc8] border-l-4 border-2 border-black rounded-sm shadow-[2px_2px_0_rgba(0,0,0,0.15)] flex items-center gap-1.5`} style={{ borderColor: `black black black ${colors.accent}` }}>
+                      <span className="text-[8px] text-[#5c3d1a] font-black uppercase tracking-wider leading-none">
+                        {categorySubtitles[cat.id] || `${cat.stats.length} características`}
+                      </span>
+                    </div>
+                  </div>
                 </div>
                 {/* Indicator */}
                 <div className="flex-shrink-0">
