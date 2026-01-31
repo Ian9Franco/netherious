@@ -1,6 +1,6 @@
 {
   "title": "Información del Servidor",
-  "subtitle": "Todo lo que necesitas saber para conectarte a Netherious (y no quedar afuera como turista)",
+  "subtitle": "Todo lo que necesitas saber para conectarte a Netherious (y no hacer preguntas boludas)",
   "icon": "/assets/mini/server/expansion netherious.png",
   "connection_seal": "/assets/mini/server/conexion al servidor1.png",
   "right_featured_icon": "/assets/mini/server/dale que llueve.png",
@@ -15,21 +15,21 @@
       "value": "1.20.1",
       "icon": "/assets/mini/general/1.png",
       "color": "#3b82f6",
-      "description": "Versión exacta. No pruebes otra porque no va a andar. La física no negocia."
+      "description": "Versión exacta. No pruebes otra porque no va a andar."
     },
     {
       "label": "Cargador de Mods",
       "value": "Forge 1.20.1",
       "icon": "/assets/mini/lore/gear.png",
       "color": "#f59e0b",
-      "description": "El motor que hace que todo funcione. Sin Forge es solo Minecraft vainilla llorando en una esquina."
+      "description": "El motor que hace que todo funcione. Sin Forge es solo Minecraft, una garcha."
     },
     {
       "label": "Versión de Java",
       "value": "Java 8+",
       "icon": "/assets/mini/general/imp.png",
       "color": "#10b981",
-      "description": "Corre desde Java 8, pero con Java 21 vuela. Más FPS, menos drama."
+      "description": "Corre desde Java 8, pero con Java 21 mejor. Más FPS, menos drama."
     }
   ],
   "specs": [

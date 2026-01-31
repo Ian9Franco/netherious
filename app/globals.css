@@ -446,6 +446,18 @@
     }
   }
 
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
   .animate-shake {
     animation: shake 0.5s ease-in-out;
   }
@@ -454,11 +466,16 @@
     animation: fadeIn 0.3s ease-out;
   }
 
+  .animate-float {
+    animation: float 2.5s ease-in-out infinite;
+  }
+
   /* ========================================
      MOBILE RESPONSIVE STYLES
      ======================================== */
-  
+
   @media (max-width: 767px) {
+
     /* Adjust scrollbar for mobile */
     .custom-scrollbar::-webkit-scrollbar {
       width: 4px;
@@ -495,7 +512,9 @@
     }
 
     /* Improve tap targets */
-    a, button, [role="button"] {
+    a,
+    button,
+    [role="button"] {
       padding: 8px;
     }
   }

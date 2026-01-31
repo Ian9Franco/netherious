@@ -1,4 +1,4 @@
-import { PixelButton } from '@/components/pixel-button'
+import { ActionButton } from '@/components/ui/action-button'
 import { PixelContainer } from '@/components/pixel-container'
 import Image from 'next/image'
 import homeData from '@/data/home.json'
@@ -14,7 +14,7 @@ export function InicioLeftPage({ onPageChange }: InicioProps) {
     <div className="space-y-6 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-1 custom-scrollbar flex flex-col">
       {/* Hero Section - Larger Logo */}
       <div className="flex flex-col items-center mb-4 relative">
-        <div className="hover:scale-105 transition-transform duration-500 cursor-pointer ease-out-back">
+        <div className="hover:scale-105 transition-transform duration-500 cursor-pointer ease-out-back relative">
           <Image
             src="/assets/logo/logo.png"
             alt="Netherious"
@@ -24,6 +24,22 @@ export function InicioLeftPage({ onPageChange }: InicioProps) {
             style={{ imageRendering: 'pixelated' }}
             priority
           />
+          {/* Discord Small icon integration */}
+          <a
+            href="https://discord.gg/netherious"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute -top-4 -right-8 hover:scale-125 transition-transform duration-300"
+          >
+            <Image
+              src="/assets/botones/discord_small.png"
+              alt="Discord"
+              width={32}
+              height={32}
+              style={{ imageRendering: 'pixelated' }}
+              className="drop-shadow-[2px_2px_0_rgba(0,0,0,0.5)]"
+            />
+          </a>
         </div>
         <p className="text-[11px] text-[#5c3d1a] font-bold mt-4 text-center leading-relaxed max-w-[90%] drop-shadow-[1px_1px_0_rgba(0,0,0,0.2)]">
           {hero.subtitle}
@@ -143,14 +159,11 @@ export function InicioRightPage({ onPageChange }: InicioProps) {
             {cta.description}
           </p>
           <div className="flex justify-center">
-            <PixelButton
-              variant="comic"
-              className="text-[12px] py-4 px-8 font-black flex flex-col items-center gap-2 shadow-[8px_8px_0_0_#000] hover:scale-110 transition-transform"
-              onClick={() => onPageChange?.('descarga')}
-            >
-              <Image src="/assets/mini/general/cofre.png" alt="Chest" width={64} height={64} style={{ imageRendering: 'pixelated' }} className="drop-shadow-[6px_6px_0_rgba(0,0,0,0.3)]" />
-              <span>{cta.button}</span>
-            </PixelButton>
+            <ActionButton
+              buttonKey="inicio-descargar"
+              overrideLabel={cta.button}
+              onNavigate={(page) => onPageChange?.(page)}
+            />
           </div>
         </div>
       </div>

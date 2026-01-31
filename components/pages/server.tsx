@@ -1,19 +1,15 @@
-import { PixelButton } from '@/components/pixel-button'
+import { ActionButton } from '@/components/ui/action-button'
 import { PixelContainer } from '@/components/pixel-container'
 import Image from 'next/image'
 import serverData from '@/data/server.json'
 import { FingerprintSection } from '@/components/fingerprint-section'
 import { useState } from 'react'
-import { useSoundEffects } from '@/hooks/use-sound-effects'
 
 export function ServerLeftPage() {
   const { title, subtitle, ip, intro, requirements } = serverData;
   const [copiedIp, setCopiedIp] = useState(false)
 
-  const { playSound } = useSoundEffects()
-  const handleCopyIp = async () => {
-    await navigator.clipboard.writeText(ip)
-    playSound('success-orb')
+  const handleCopySuccess = () => {
     setCopiedIp(true)
     setTimeout(() => setCopiedIp(false), 2000)
   }
@@ -55,12 +51,12 @@ export function ServerLeftPage() {
               <code className="text-[13px] bg-[#3a2010] text-[#e8dcc8] px-3 py-2 flex-1 text-center rounded-sm font-mono tracking-wide select-all font-bold">
                 {ip}
               </code>
-              <button
-                onClick={handleCopyIp}
-                className="bg-[#8B4513] hover:bg-[#a0522d] text-[#e8dcc8] text-[9px] font-bold py-2 px-3 border-2 border-[#5c3d1a] shadow-[0_3px_0_#3a2010] hover:shadow-[0_1px_0_#3a2010] hover:translate-y-[2px] transition-all uppercase tracking-wide whitespace-nowrap"
-              >
-                {copiedIp ? '✓' : 'COPIAR'}
-              </button>
+              <ActionButton
+                buttonKey="server-copiar-ip"
+                overrideCopyText={ip}
+                overrideLabel={copiedIp ? '✓' : 'COPIAR'}
+                onSuccess={handleCopySuccess}
+              />
             </div>
           </div>
           <div className="flex justify-between items-center px-1 pt-2">
@@ -154,20 +150,13 @@ export function ServerRightPage() {
 
       {/* Action Buttons */}
       <div className="flex flex-wrap gap-3 justify-center pt-3 mt-auto">
-        <a href="https://discord.gg/netherious" target="_blank" rel="noopener noreferrer" className="inline-block">
-          <button className="relative bg-gradient-to-br from-[#7289da] to-[#5865F2] text-white text-[11px] font-black py-2 px-5 border-4 border-black shadow-[6px_6px_0_#000] hover:shadow-[3px_3px_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all uppercase tracking-wide flex items-center gap-2">
-            <Image src={serverData.outro.discord_icon} alt="Discord" width={20} height={20} style={{ imageRendering: 'pixelated' }} />
-            <span className="relative z-10">DISCORD</span>
-            <div className="absolute inset-0 bg-[url('/assets/grid-overlay.png')] opacity-10 pointer-events-none" style={{ backgroundSize: '2px 2px' }}></div>
-          </button>
-        </a>
-        <PixelButton
-          variant="comic"
-          className="py-2 px-5 text-[11px]"
-          onClick={() => window.open('/modlist/modlist.html', '_blank')}
-        >
-          📚 WIKI
-        </PixelButton>
+        <ActionButton
+          buttonKey="server-discord"
+        />
+        <ActionButton
+          buttonKey="server-wiki"
+          onCustomAction={() => window.open('/modlist/modlist.html', '_blank')}
+        />
       </div>
     </div>
   )

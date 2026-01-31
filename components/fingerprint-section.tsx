@@ -153,7 +153,7 @@ export function FingerprintSection() {
                   }}></div>
                 </div>
                 <div className="text-[8px] text-white mt-2 text-center font-bold">
-                  ¡Prepárate para el desafío final!
+                  ¡Ju ju! te va a romper el orto este
                 </div>
               </div>
             </div>

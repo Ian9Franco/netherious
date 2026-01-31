@@ -6,6 +6,7 @@ import './globals.css'
 import { CustomCursor } from '@/components/custom-cursor'
 import { Footer } from '@/components/footer'
 import { Toaster } from '@/components/ui/toaster'
+import { SoundController } from '@/components/sound-controller'
 
 const pressStart2P = Press_Start_2P({
   weight: '400',
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${pressStart2P.variable} ${vt323.variable} antialiased`}>
+        <SoundController />
         <CustomCursor />
         {children}
         <Footer />

@@ -1,6 +1,5 @@
-import { PixelButton } from '@/components/pixel-button'
+import { ActionButton } from '@/components/ui/action-button'
 import { PixelContainer } from '@/components/pixel-container'
-import { useSoundEffects } from '@/hooks/use-sound-effects'
 import Image from 'next/image'
 import installData from '@/data/install.json'
 import { motion } from 'framer-motion'
@@ -92,7 +91,6 @@ export function DescargaLeftPage() {
 
 export function DescargaRightPage() {
   const { sections } = installData;
-  const { playSound } = useSoundEffects()
 
   return (
     <div className="space-y-5 font-[family-name:var(--font-pixel)] h-full overflow-y-auto overflow-x-hidden pr-1 custom-scrollbar">
@@ -177,63 +175,30 @@ export function DescargaRightPage() {
             )}
 
             {/* Action Buttons */}
-            <div className="flex flex-col gap-4 mt-4">
+            <div className="flex flex-col gap-6 mt-6 items-center">
               {section.downloadUrl && (
-                <div className="flex items-center gap-4 bg-gradient-to-r from-[#ffd700]/10 to-transparent p-3 border-l-8 border-[#ffd700] rounded-r-lg">
-                  <div className="flex-shrink-0">
-                    <Image
-                      src={section.icon || "/assets/mini/descarga/descargamodpack.png"}
-                      alt="Modpack Logo"
-                      width={80}
-                      height={80}
-                      style={{ imageRendering: 'pixelated' }}
-                      className="drop-shadow-[4px_4px_0_rgba(0,0,0,0.4)] hover:scale-110 transition-transform duration-300 cursor-pointer"
-                    />
-                  </div>
-                  <a
-                    href={section.downloadUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1"
-                    onClick={() => playSound('click-modpack')}
-                  >
-                    <PixelButton variant="comic-purple" className="w-full text-[12px] py-2 px-4 font-black shadow-[4px_4px_0_0_#000] hover:translate-y-[-2px] hover:translate-x-[-2px] transition-all uppercase tracking-widest">
-                      DESCARGAR PACK
-                    </PixelButton>
-                  </a>
+                <div className="w-full flex justify-center">
+                  <ActionButton
+                    buttonKey="descarga-modpack"
+                    overrideUrl={section.downloadUrl}
+                  />
                 </div>
               )}
 
-              <div className="flex items-center gap-4">
+              <div className="flex flex-wrap items-center justify-center gap-6 w-full">
                 {section.link && (
-                  <a
-                    href={section.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-[2]"
-                    onClick={() => playSound('click-forge')}
-                  >
-                    <PixelButton variant="comic-orange" className="w-full text-[10px] py-2 px-3 font-black flex items-center justify-center gap-2 shadow-[3px_3px_0_0_#000]">
-                      <Image src="/assets/mini/general/imp.png" alt="Forge" width={24} height={24} style={{ imageRendering: 'pixelated' }} />
-                      <span className="truncate">DESCARGAR FORGE</span>
-                    </PixelButton>
-                  </a>
+                  <ActionButton
+                    buttonKey="descarga-forge"
+                    overrideUrl={section.link}
+                  />
                 )}
                 {section.extraLinks && section.extraLinks.map((extra, i) => (
                   extra.label.toLowerCase().includes('java') && (
-                    <a
+                    <ActionButton
                       key={i}
-                      href={extra.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                      onClick={() => playSound('success')}
-                    >
-                      <PixelButton variant="comic-red" className="w-full text-[10px] py-2 px-2 font-black flex flex-col items-center gap-0 shadow-[2px_2px_0_0_#000]">
-                        <Image src="/assets/mini/general/java.png" alt="Java" width={24} height={24} style={{ imageRendering: 'pixelated' }} />
-                        <span className="text-[8px] leading-none">JAVA</span>
-                      </PixelButton>
-                    </a>
+                      buttonKey="descarga-java"
+                      overrideUrl={extra.url}
+                    />
                   )
                 ))}
               </div>
@@ -243,7 +208,7 @@ export function DescargaRightPage() {
       </div>
 
       {/* Discord CTA */}
-      <div className="flex justify-center pt-4 mt-auto">
+      <div className="flex justify-center pt-2 pb-6 mt-auto">
         <a href="https://discord.gg/netherious" target="_blank" rel="noopener noreferrer" className="inline-block">
           <div className="relative bg-gradient-to-br from-[#7289da] to-[#5865F2] border-4 border-black p-4 flex items-center gap-3 shadow-[8px_8px_0_#000] hover:shadow-[4px_4px_0_#000] hover:translate-x-[4px] hover:translate-y-[4px] transition-all cursor-pointer">
             <Image src={installData.outro.icon} alt="Discord" width={56} height={56} style={{ imageRendering: 'pixelated' }} className="drop-shadow-[2px_2px_0_#000]" />

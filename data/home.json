@@ -1,7 +1,7 @@
 {
   "hero": {
     "title": "Eu! Eu! Eu! entra",
-    "subtitle": "Forge 1.20.1 • Mods optimizados • El RPG que Hytale prometió y nunca entregó",
+    "subtitle": "Forge 1.20.1 • Mods optimizados • Es como Hytale pero mejor",
     "cta": "Copiar IP del servidor"
   },
   "intro": {
@@ -10,7 +10,7 @@
   },
   "cards": [
     {
-      "title": "Instalación Sencilla",
+      "title": "Instalación Sencilla (autism-proof)",
       "text": "Bajás Forge, descargás el pack y listo. Dos clics y estás adentro. Menos vueltas de las que te dio ella.",
       "icon": "Download",
       "color": "#3B82F6"

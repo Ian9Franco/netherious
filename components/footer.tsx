@@ -86,13 +86,13 @@ export function Footer() {
             <AnimatePresence>
                 {isExpanded && (
                     <motion.footer
-                        initial={{ y: "100%", opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        exit={{ y: "100%", opacity: 0 }}
-                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ type: "spring", damping: 25, stiffness: 200 }}
                         className="relative bg-gradient-to-b from-[#1a0f0a]/95 to-[#0d0705]/98 
                                    backdrop-blur-xl border-t-4 border-[#8B4513]
-                                   shadow-[0_-8px_32px_rgba(0,0,0,0.5)]"
+                                   shadow-[0_-8px_32px_rgba(0,0,0,0.5)] overflow-hidden"
                     >
                         {/* Decorative pixel border top */}
                         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#d4c4a8]/30 to-transparent" />
@@ -125,7 +125,7 @@ export function Footer() {
                                     transition={{ delay: 0.2 }}
                                 >
                                     <h3 className="text-[12px] font-[family-name:var(--font-pixel)] text-[#8B4513] uppercase tracking-[0.3em]">
-                                        Sígueme
+                                        elsewhere
                                     </h3>
                                     <div className="flex items-center gap-3">
                                         {socialLinks.map((link, index) => {
