@@ -35,13 +35,22 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
-.header h1 {
-    font-family: 'Lexend', sans-serif;
-    font-size: 3rem;
-    background: linear-gradient(to right, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 1rem;
+.logo {
+    max-width: 800px;
+    width: 90%;
+    height: auto;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
+    animation: float 6s ease-in-out infinite;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
 .stats-bar {
@@ -199,12 +208,12 @@ function toggleId(id) {
 <body>
 
 <div class="header">
-    <h1>Netherious Core</h1>
+    <img src="netherious.png" alt="Netherious Core" class="logo">
     <div class="stats-bar">
         <div class="stat-item"><b>92</b> Local</div>
         <div class="stat-item"><b>131</b> Core</div>
         <div class="stat-item"><b>39</b> Server</div>
-        <div class="stat-item"><b>262</b> Total Mods</div>
+        <div class="stat-item"><b>262</b> Experiencia Netherious</div>
     </div>
 </div>
 
@@ -349,9 +358,9 @@ function toggleId(id) {
         </div>
     </div>
     <div class="lib-panel">
-        <h3>📦 Datapacks (10)</h3>
+        <h3>📦 Datapacks (13)</h3>
         <div class="lib-grid">
-            <a href="datapacks/Create Immersive Aircrafts Warship Recipe DataPack v1.0.zip" class="mod-item" target="_blank" title="datapacks/Create Immersive Aircrafts Warship Recipe DataPack v1.0.zip">Create Immersive Aircrafts Warship Recipe DataPack v1.0 </a><a href="datapacks/Create_Tempad_Datapack_v1.zip" class="mod-item" target="_blank" title="datapacks/Create_Tempad_Datapack_v1.zip">Create_Tempad_Datapack_v1 </a><a href="datapacks/Tom's Storage - Creatified.zip" class="mod-item" target="_blank" title="datapacks/Tom's Storage - Creatified.zip">Tom's Storage - Creatified </a><a href="datapacks/Woodcutter_v.2.0_1.20.1.zip" class="mod-item" target="_blank" title="datapacks/Woodcutter_v.2.0_1.20.1.zip">Woodcutter_v.2.0_1.20.1 </a><a href="datapacks/better_combat_terramity.zip" class="mod-item" target="_blank" title="datapacks/better_combat_terramity.zip">better_combat_terramity </a><a href="datapacks/create_curios_backtank-1.0.0.zip" class="mod-item" target="_blank" title="datapacks/create_curios_backtank-1.0.0.zip">create_curios_backtank-1.0.0 </a><a href="datapacks/extended-furnaces.zip" class="mod-item" target="_blank" title="datapacks/extended-furnaces.zip">extended-furnaces </a><a href="datapacks/intstrong_graveyard-1.0.0-1.20.1.zip" class="mod-item" target="_blank" title="datapacks/intstrong_graveyard-1.0.0-1.20.1.zip">intstrong_graveyard-1.0.0-1.20.1 </a><a href="datapacks/sculk-expansion-1.3.2.zip" class="mod-item" target="_blank" title="datapacks/sculk-expansion-1.3.2.zip">sculk-expansion-1.3.2 </a><a href="datapacks/terramityES.zip" class="mod-item" target="_blank" title="datapacks/terramityES.zip">terramityES </a>
+            <a href="datapacks/Advancement-Count.zip" class="mod-item" target="_blank" title="datapacks/Advancement-Count.zip">Advancement-Count </a><a href="datapacks/Create_Tempad_Datapack_v1.zip" class="mod-item" target="_blank" title="datapacks/Create_Tempad_Datapack_v1.zip">Create_Tempad_Datapack_v1 </a><a href="datapacks/ServerSleep.zip" class="mod-item" target="_blank" title="datapacks/ServerSleep.zip">ServerSleep </a><a href="datapacks/Skippy Pearls v1.5 1.20.x.zip" class="mod-item" target="_blank" title="datapacks/Skippy Pearls v1.5 1.20.x.zip">Skippy Pearls v1.5 1.20.x </a><a href="datapacks/Smelting_Plus_DataPack-V1.0.5.zip" class="mod-item" target="_blank" title="datapacks/Smelting_Plus_DataPack-V1.0.5.zip">Smelting_Plus_DataPack-V1.0.5 </a><a href="datapacks/Tom's Storage - Creatified.zip" class="mod-item" target="_blank" title="datapacks/Tom's Storage - Creatified.zip">Tom's Storage - Creatified </a><a href="datapacks/Woodcutter_v.2.0_1.20.1.zip" class="mod-item" target="_blank" title="datapacks/Woodcutter_v.2.0_1.20.1.zip">Woodcutter_v.2.0_1.20.1 </a><a href="datapacks/better_combat_terramity.zip" class="mod-item" target="_blank" title="datapacks/better_combat_terramity.zip">better_combat_terramity </a><a href="datapacks/create_curios_backtank-1.0.0.zip" class="mod-item" target="_blank" title="datapacks/create_curios_backtank-1.0.0.zip">create_curios_backtank-1.0.0 </a><a href="datapacks/extended-furnaces.zip" class="mod-item" target="_blank" title="datapacks/extended-furnaces.zip">extended-furnaces </a><a href="datapacks/intstrong_graveyard-1.0.0-1.20.1.zip" class="mod-item" target="_blank" title="datapacks/intstrong_graveyard-1.0.0-1.20.1.zip">intstrong_graveyard-1.0.0-1.20.1 </a><a href="datapacks/sculk-expansion-1.3.2.zip" class="mod-item" target="_blank" title="datapacks/sculk-expansion-1.3.2.zip">sculk-expansion-1.3.2 </a><a href="datapacks/terramityES.zip" class="mod-item" target="_blank" title="datapacks/terramityES.zip">terramityES </a>
         </div>
     </div>
 </div>
