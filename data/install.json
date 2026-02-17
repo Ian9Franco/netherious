@@ -42,10 +42,12 @@
       "color": "#10b981",
       "action": "Descargar EL.MATI.zip",
       "critical": true,
+      "githubRepo": "Ian9Franco/netherious_svconfig",
       "downloadUrl": "https://github.com/Ian9Franco/netherious_svconfig/releases/download/v1.3/EL.MATI.zip",
+      "isModpack": true,
       "recommendation": "Instalá Forge primero. El orden importa, no seas kamikaze.",
       "instructions": [
-        "Descarga el archivo EL.MATI.zip desde el botón de abajo",
+        "Descarga el archivo .zip desde el botón de abajo",
         "Presiona Windows + R y escribí %appdata%",
         "Entra a la carpeta .minecraft",
         "Descomprimí el contenido del ZIP ahí dentro (debería pedirte reemplazar archivos, ponele que SI a todo)",

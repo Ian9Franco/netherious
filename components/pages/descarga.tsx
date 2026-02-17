@@ -3,6 +3,7 @@ import { PixelContainer } from '@/components/pixel-container'
 import Image from 'next/image'
 import installData from '@/data/install.json'
 import { motion } from 'framer-motion'
+import { useGitHubLatestRelease } from '@/hooks/use-github-latest-release'
 
 export function DescargaLeftPage() {
   const { title, subtitle, sections } = installData;
@@ -178,9 +179,8 @@ export function DescargaRightPage() {
             <div className="flex flex-col gap-6 mt-6 items-center">
               {section.downloadUrl && (
                 <div className="w-full flex justify-center">
-                  <ActionButton
-                    buttonKey="descarga-modpack"
-                    overrideUrl={section.downloadUrl}
+                  <ModpackDownloadButton
+                    section={section}
                   />
                 </div>
               )}
@@ -228,4 +228,24 @@ export function DescargaRightPage() {
       </div>
     </div>
   )
+}
+
+function ModpackDownloadButton({ section }: { section: any }) {
+  const { downloadUrl, loading, error } = useGitHubLatestRelease(section.githubRepo || '');
+
+  // Extraer el nombre del archivo de la URL de GitHub (si existe)
+  const fileName = downloadUrl ? downloadUrl.split('/').pop() : null;
+  const dynamicLabel = fileName ? `Descargar ${fileName}` : section.action;
+
+  // Si no hay repo, usamos la URL fija del JSON como fallback
+  const finalUrl = downloadUrl || section.downloadUrl;
+
+  return (
+    <ActionButton
+      buttonKey="descarga-modpack"
+      overrideUrl={finalUrl}
+      overrideLabel={loading ? "Buscando última versión..." : dynamicLabel}
+      disabled={loading && !section.githubRepo}
+    />
+  );
 }
