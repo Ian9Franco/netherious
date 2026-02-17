@@ -10,7 +10,8 @@ export function FingerprintAuth() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (input.toLowerCase() === 'llueve') {
+    const passphrase = process.env.NEXT_PUBLIC_AUTH_PASSPHRASE || 'llueve'
+    if (input.toLowerCase() === passphrase.toLowerCase()) {
       setShowPassword(true)
       setInput('')
     } else {
@@ -74,7 +75,7 @@ export function FingerprintAuth() {
             <div className="bg-[#0a0505] border-2 border-[#d4a574] p-3 w-full">
               <div className="text-[8px] text-[#d4a574] mb-1 text-center uppercase">Contraseña Maestra</div>
               <div className="text-[11px] text-[#55ff55] font-mono text-center select-all break-all leading-tight">
-                123456789101112131415
+                {process.env.NEXT_PUBLIC_MASTER_KEY || '123456789101112131415'}
               </div>
             </div>
 

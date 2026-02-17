@@ -43,7 +43,8 @@ export function FingerprintSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (input.toLowerCase() === 'llueve') {
+    const passphrase = process.env.NEXT_PUBLIC_AUTH_PASSPHRASE || 'llueve'
+    if (input.toLowerCase() === passphrase.toLowerCase()) {
       playSound('success-villager')
       setShowPassword(true)
       setInput('')
@@ -91,20 +92,20 @@ export function FingerprintSection() {
         </div>
 
         <p className="text-[10px] text-white font-bold mb-3 leading-relaxed bg-black/30 p-2 border-2 border-black">
-          ⚡ Y pa? vas a entrar y no vas a poner la contraseña? La contraseña es obligatoria pa. Es la llave para descargar el modpack oficial de Netherious. Sin eso, no pasás del lobby pa.
+          ⚡ Apurate que estamos afuera esperándote. ☔ ¿Qué pasa, te olvidaste? Mirá el cielo y acordate... La contraseña es obligatoria pa. Es la llave para descargar el modpack oficial de Netherious.
         </p>
 
         {!showPassword ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <label className="text-[10px] text-white font-black uppercase tracking-wide drop-shadow-[2px_2px_0_#000]">
-              💭 ¿Dale que...?
+              🌧️ ¿Dale que...?
             </label>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className={`bg-white border-4 border-black text-black text-[11px] px-3 py-2 text-center font-black focus:outline-none focus:ring-4 focus:ring-[#ffdd00] transition-all uppercase ${shake ? 'animate-shake' : ''}`}
-              placeholder="..."
+              placeholder="☔ me estoy mojando..."
               autoComplete="off"
               style={{ imageRendering: 'pixelated' }}
             />
