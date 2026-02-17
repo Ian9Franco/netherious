@@ -192,6 +192,13 @@ export function DescargaRightPage() {
                     overrideUrl={section.link}
                   />
                 )}
+                {/* Wiki Button */}
+                {section.showWikiButton && (
+                  <ActionButton
+                    buttonKey="server-wiki"
+                    onCustomAction={() => window.open('/modlist/modlist.html', '_blank')}
+                  />
+                )}
                 {section.extraLinks && section.extraLinks.map((extra, i) => (
                   extra.label.toLowerCase().includes('java') && (
                     <ActionButton

@@ -1,50 +1,62 @@
 {
   "hero": {
-    "title": "Eu! Eu! Eu! entra",
-    "subtitle": "Forge 1.20.1 • Mods optimizados • Es como Hytale pero mejor",
+    "title": "NETHERIOUS SEASON III — BORN AGAIN",
+    "subtitle": "Forge 1.20.1 • Supervivencia brutal • RPG de largo plazo • Create llevado al límite",
     "cta": "Copiar IP del servidor"
   },
   "intro": {
-    "title": "Bienvenido a Netherious",
-    "paragraph": "No es ‘otro modpack’. Es lo que pasa cuando alguien se toma Minecraft en serio. RPG real, progresión de verdad y un mundo vivo, no un tráiler eterno en desarrollo. Cada bioma, criatura y estructura está curado a mano. Acá se juega, no se espera años."
+    "title": "No es un modpack. Es un filtro natural.",
+    "paragraph": "Netherious Season III no está hecho para speedrunners con ansiedad crónica. Está diseñado para el longplay. Supervivencia real: temperatura, sed y recursos que importan. RPG profundo, progresión seria y un mundo que no te pide permiso para matarte. Si sobrevivís acá, sobrevivís en cualquier lado."
   },
   "cards": [
     {
-      "title": "Instalación Sencilla (autism-proof)",
-      "text": "Bajás Forge, descargás el pack y listo. Dos clics y estás adentro. Menos vueltas de las que te dio ella.",
+      "title": "Instalación sin Drama",
+      "text": "Forge 1.20.1, descargás el pack y entrás. No necesitás un tutorial de 40 minutos ni un ritual vikingo. Si sabés instalar mods, sabés entrar. Si no, aprendé.",
       "icon": "Download",
       "color": "#3B82F6"
     },
     {
-      "title": "Mods Afinados",
-      "text": "Nada de mods tirados a lo loco. Todo testeado, balanceado y ajustado fino. Cada cosa tiene sentido. Experiencia NOTORIA.",
+      "title": "Arquitectura de Mods Curada",
+      "text": "No hay 200 mods tirados por capricho. Hay una visión. Create con addons que lo convierten en ingeniería industrial. Sistemas RPG que escalan. Mecánicas que dialogan entre sí. Todo balanceado para que cada decisión pese.",
       "icon": "Sparkles",
       "color": "#A855F7"
     },
     {
-      "title": "Rendimiento Óptimo",
-      "text": "FPS estables, chunks cargando rápido (ojala) y cero tostadora nuclear. Corre suave incluso cuando el mundo explota. Optimización > promesas.",
+      "title": "Rendimiento Real",
+      "text": "Optimización agresiva. Servidor estable incluso con automatización pesada, bosses activos y mundo generado hasta donde alcanza tu ego. Si algo rompe, se ajusta. Acá no se improvisa.",
       "icon": "Zap",
       "color": "#10B981"
     }
   ],
   "features": [
     {
-      "title": "Mundos Flama",
-      "description": "Biomas únicos, estructuras dinámicas y lugares con historia. Explorás y pasan cosas. No es un mapa vacío con humo y marketing."
+      "title": "Supervivencia Sin Muletas",
+      "description": "La temperatura te puede matar. La sed también. No es cosmético, es central. El entorno importa, la preparación importa y el descuido se paga. Survival significa algo otra vez."
     },
     {
-      "title": "Combate God",
-      "description": "Jefes que pegan fuerte, enemigos con mecánicas y peleas que te hacen sudar. Si pestaneas, respawneás. GG Ez."
+      "title": "Worldgen Épico en las 3 Dimensiones",
+      "description": "Overworld, Nether y End reimaginados. Biomas masivos, estructuras colosales, ruinas con historia y zonas que parecen jefes finales por sí solas. No explorás por loot. Explorás porque el mundo te desafía."
     },
     {
-      "title": "Progresión Nashe",
-      "description": "Clases, builds, encantamientos y decisiones que cambian cómo jugás. No skins lindas: impacto real en gameplay."
+      "title": "Create en Modo Industrial",
+      "description": "Addons de Create llevados al extremo. Automatización compleja, cadenas de producción reales y máquinas que ocupan media montaña. Si tu base no parece una fábrica distópica, estás empezando."
+    },
+    {
+      "title": "RPG de Verdadero Longplay",
+      "description": "Progresión lenta y significativa. Builds, mejoras, especialización y decisiones que cambian tu forma de jugar. No es un minijuego disfrazado. Es una campaña extendida."
+    },
+    {
+      "title": "Bosses que no son Decoración",
+      "description": "Múltiples jefes con mecánicas reales, daño serio y fases que castigan errores. No son piñatas con barra de vida. Son exámenes finales."
+    },
+    {
+      "title": "Prehistoria Evolucionada",
+      "description": "Criaturas prehistóricas siguen existiendo, pero ahora forman parte de un ecosistema más grande. No son el centro del show. Son una pieza más en un mundo que no gira alrededor tuyo."
     }
   ],
   "cta": {
-    "title": "¿Listo para entrar a Netherious?",
-    "description": "Dejá de mirar Reels y metete a jugar algo que ya funciona. Descargá el pack, armate el setup y caé al server.",
+    "title": "¿Vas a sobrevivir o vas a mirar desde el lobby?",
+    "description": "Dejá el modo espectador mental. Instalá el pack, prepará tu estrategia y entrá. Netherious no es para todos. Y eso es exactamente el punto.",
     "button": "Ver Instrucciones de Instalación"
   }
 }

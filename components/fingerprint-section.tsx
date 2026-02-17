@@ -127,10 +127,10 @@ export function FingerprintSection() {
             <div className="bg-black border-4 border-[#ffdd00] p-3 shadow-[6px_6px_0_#ffdd00]">
               <div className="text-[9px] text-[#ffdd00] mb-2 text-center uppercase font-black tracking-wide">🔑 CONTRASEÑA MAESTRA</div>
               <div className="text-[12px] text-[#00ff88] font-mono text-center select-all break-all leading-tight mb-3 font-black bg-black/50 p-2 border-2 border-[#00ff88]">
-                299d9dcbf42ef73161fc7cdb201a42fde56d499234ce0a2a951102eede9fd9a2
+                {process.env.NEXT_PUBLIC_FINGERPRINT}
               </div>
               <div className="flex justify-center mb-3">
-                <CopyButton text="299d9dcbf42ef73161fc7cdb201a42fde56d499234ce0a2a951102eede9fd9a2" label="COPIAR" />
+                <CopyButton text={process.env.NEXT_PUBLIC_FINGERPRINT || ""} label="COPIAR" />
               </div>
 
               {/* BOSS FINAL IMAGE */}

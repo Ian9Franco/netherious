@@ -1,267 +1,147 @@
 {
   "intro": {
-    "title": "La Historia Comienza",
+    "title": "La Historia No Empieza. Te Pone a Prueba.",
     "icon": "/assets/mini/lore/la historia.png",
-    "paragraph1": "Bienvenido a Netherious: RPG Expansion — un mundo donde la magia choca con engranajes, vapor y pólvora. Acá no paseás: sobrevivís. Cada estructura esconde algo raro, cada bioma te quiere matar un poquito, y cada jugador escribe su historia a los golpes.",
-    "paragraph2": "Ruinas antiguas, fortalezas flotantes y fábricas que rugen como bestias mecánicas. Saltás entre dimensiones, mejorás tus builds y te cruzás con criaturas que claramente no deberían existir. Portales, acero y poder arcano sosteniendo un mundo que no te debe nada."
+    "paragraph1": "Bienvenido a Netherious: Season III. Acá la magia convive con acero industrial y engranajes que no paran de girar. No venís a pasear: venís a sobrevivir. La temperatura te castiga, la sed te limita y el entorno no está diseñado para gustarte. Está diseñado para filtrarte.",
+    "paragraph2": "Overworld, Nether y End fueron reconstruidos para sentirse masivos, hostiles y vivos. Fábricas colosales, ruinas imposibles, estructuras que parecen jefes antes del jefe. Saltás entre dimensiones, escalás tu build y tratás de no morir en el proceso. El mundo no te debe equilibrio."
   },
   "about": {
     "title": "Sobre el Servidor",
     "paragraphs": [
-      "Netherious corre sobre **Forge 1.20.1** y mezcla RPG serio con exploración salvaje y progreso técnico de verdad. No es otro survival genérico: es un mundo vivo, con facciones, historia y secretos que no te van a regalar nada.",
-      "Hay aldeas arrasadas, fortalezas mecánicas del mod *Create* y mazmorras que parecen diseñadas por alguien que disfruta verte sufrir. Los biomas respiran, los jefes pegan fuerte y tus builds importan.",
-      "Podés ser mago, paladín, ingeniero o un loquito con una pala oxidada. Da igual. Si no te adaptás, respawneás. En *Netherious*, el mundo no escala a vos: vos escalás o quedás atrás."
+      "Netherious corre sobre **Forge 1.20.1** y combina supervivencia exigente con progresión RPG de largo plazo y tecnología industrial basada en *Create* y sus addons. No es un survival liviano. Es un ecosistema que reacciona a tus errores.",
+      "La sed importa. La temperatura importa. La logística importa. Si ignorás el entorno, el entorno te elimina. El progreso no es lineal ni rápido: se construye con planificación, automatización y decisiones que pesan.",
+      "Podés especializarte, experimentar builds o convertirte en ingeniero industrial. Pero si no entendés el sistema, el sistema te pasa por arriba. Acá no escalamos el mundo para que te sientas cómodo."
     ]
   },
   "categories": [
     {
       "id": "criaturas",
-      "title": "Criaturas & Fauna Salvaje",
+      "title": "Fauna & Ecosistema Hostil",
       "icon": "/assets/mini/lore/criaturasyfauna.png",
-      "description": "Animales, bestias prehistóricas, aliados raros y cosas que definitivamente no deberías acariciar. El mundo está vivo… y con hambre.",
+      "description": "Criaturas salvajes, especies prehistóricas y entidades que no están para decorar el paisaje. El mundo está vivo. Y tiene hambre.",
       "stats": [
-        {
-          "label": "Biodiversidad Salvaje",
-          "value": 9,
-          "type": "magic"
-        },
-        {
-          "label": "Nivel de Mordida",
-          "value": 5,
-          "type": "attack"
-        },
-        {
-          "label": "Contenido Bestial",
-          "value": 7,
-          "type": "speed"
-        }
+        { "label": "Diversidad Biológica", "value": 9, "type": "magic" },
+        { "label": "Agresividad Natural", "value": 7, "type": "attack" },
+        { "label": "Impacto en Supervivencia", "value": 8, "type": "speed" }
       ]
     },
     {
       "id": "enemigos",
-      "title": "Enemigos & Hostilidad",
+      "title": "Hostilidad Real",
       "icon": "/assets/mini/lore/enemigos.png",
-      "description": "Mutaciones, horrores y mobs con ganas reales de borrarte del mapa. Explorar acá es básicamente firmar un contrato de riesgo.",
+      "description": "Mobs rediseñados, mutaciones y amenazas que no existen para darte XP gratis. Cada salida nocturna es una apuesta.",
       "stats": [
-        {
-          "label": "Letalidad",
-          "value": 8,
-          "type": "attack"
-        },
-        {
-          "label": "Densidad de Spawn",
-          "value": 6,
-          "type": "speed"
-        },
-        {
-          "label": "Variedad de Pesadillas",
-          "value": 4,
-          "type": "speed"
-        }
+        { "label": "Letalidad", "value": 9, "type": "attack" },
+        { "label": "Presión Constante", "value": 8, "type": "speed" },
+        { "label": "Variedad de Amenazas", "value": 8, "type": "speed" }
       ]
     },
     {
       "id": "estructuras",
-      "title": "Estructuras & Mazmorras Épicas",
+      "title": "Estructuras & Mazmorras",
       "icon": "/assets/mini/lore/mazmorras.png",
-      "description": "Construcciones gigantes, pasillos traicioneros y botines que valen cada casi-muerte. Si entrás, preparate para pelear.",
+      "description": "Construcciones gigantes, trampas inteligentes y recompensas que justifican cada casi-muerte. Si entrás sin plan, salís en respawn.",
       "stats": [
-        {
-          "label": "Trampas Mortales",
-          "value": 7,
-          "type": "attack"
-        },
-        {
-          "label": "Botín Jugoso",
-          "value": 9,
-          "type": "magic"
-        },
-        {
-          "label": "Exploración Hardcore",
-          "value": 8,
-          "type": "speed"
-        }
+        { "label": "Complejidad", "value": 9, "type": "attack" },
+        { "label": "Recompensa Estratégica", "value": 9, "type": "magic" },
+        { "label": "Riesgo Real", "value": 10, "type": "attack" }
       ]
     },
     {
       "id": "herramientas",
-      "title": "Herramientas & Vehículos",
+      "title": "Arsenal & Movilidad",
       "icon": "/assets/mini/lore/herramientas2.png",
-      "description": "Armas legendarias, equipo especializado y máquinas para moverte más rápido que tu mala suerte. Tecnología al servicio del caos.",
+      "description": "Equipamiento especializado, armas avanzadas y sistemas de transporte que no son lujo: son necesidad.",
       "stats": [
-        {
-          "label": "Impacto en Gameplay",
-          "value": 10,
-          "type": "speed"
-        },
-        {
-          "label": "Curva de Aprendizaje",
-          "value": 6,
-          "type": "speed"
-        },
-        {
-          "label": "Arsenal Disponible",
-          "value": 7,
-          "type": "speed"
-        }
+        { "label": "Impacto en Gameplay", "value": 10, "type": "speed" },
+        { "label": "Curva Técnica", "value": 8, "type": "speed" },
+        { "label": "Sinergia con Builds", "value": 9, "type": "magic" }
       ]
     },
     {
       "id": "jefes",
-      "title": "Jefes & Combate Avanzado",
+      "title": "Bosses & Combate Estratégico",
       "icon": "/assets/mini/lore/bosses.png",
-      "description": "Encuentros diseñados para humillarte hasta que aprendas. Patrones, mecánicas y daño serio. Acá no hay button mashing.",
+      "description": "Encuentros con fases, patrones y castigo real. No se ganan spameando click. Se ganan entendiendo mecánicas.",
       "stats": [
-        {
-          "label": "Dificultad Bruta",
-          "value": 10,
-          "type": "attack"
-        },
-        {
-          "label": "Castigo por Error",
-          "value": 11,
-          "type": "attack"
-        },
-        {
-          "label": "Espectáculo del Combate",
-          "value": 9,
-          "type": "speed"
-        }
+        { "label": "Dificultad Mecánica", "value": 10, "type": "attack" },
+        { "label": "Castigo por Error", "value": 11, "type": "attack" },
+        { "label": "Escala Épica", "value": 9, "type": "magic" }
       ]
     },
     {
       "id": "mundos",
-      "title": "Mundos & Dimensiones Alternas",
+      "title": "Dimensiones Reimaginadas",
       "icon": "/assets/mini/lore/dimesiones.png",
-      "description": "Dimensiones expandidas, biomas rarísimos y paisajes que parecen sacados de otro juego. Viajar es obligatorio. Sobrevivir, opcional.",
+      "description": "Overworld, Nether y End expandidos con biomas únicos, amenazas ambientales y estructuras que redefinen la exploración.",
       "stats": [
-        {
-          "label": "Libertad de Exploración",
-          "value": 10,
-          "type": "magic"
-        },
-        {
-          "label": "Amenazas Ambientales",
-          "value": 6,
-          "type": "attack"
-        },
-        {
-          "label": "Rareza de Biomas",
-          "value": 6,
-          "type": "speed"
-        }
+        { "label": "Escala del Mundo", "value": 10, "type": "magic" },
+        { "label": "Amenazas Ambientales", "value": 9, "type": "attack" },
+        { "label": "Exploración Forzada", "value": 9, "type": "speed" }
       ]
     },
     {
       "id": "progresion",
-      "title": "Progresión de Personaje",
+      "title": "Progresión de Largo Plazo",
       "icon": "/assets/mini/lore/progresion.png",
-      "description": "Clases, habilidades, misiones y sistemas que cambian tu forma de jugar. No subís números: evolucionás o te quedás atrás.",
+      "description": "Sistemas RPG diseñados para semanas de juego, no para una tarde. Evolucionás o te estancás.",
       "stats": [
-        {
-          "label": "Escalado de Poder",
-          "value": 9,
-          "type": "magic"
-        },
-        {
-          "label": "Profundidad de Builds",
-          "value": 7,
-          "type": "speed"
-        },
-        {
-          "label": "Sistemas RPG",
-          "value": 9,
-          "type": "speed"
-        }
+        { "label": "Escalado de Poder", "value": 9, "type": "magic" },
+        { "label": "Profundidad de Builds", "value": 9, "type": "speed" },
+        { "label": "Impacto en Meta", "value": 8, "type": "speed" }
       ]
     },
     {
       "id": "clases",
-      "title": "RPG Classes",
+      "title": "Especialización RPG",
       "icon": "/assets/mini/lore/rpg.png",
-      "description": "Arquero, Paladín, Pícaro o Mago. Elegí tu estilo. Después bancate las consecuencias.",
+      "description": "No elegís clase por estética. La elegís porque cambia tu forma de sobrevivir.",
       "stats": [
-        {
-          "label": "Potencial de Daño",
-          "value": 8,
-          "type": "magic"
-        },
-        {
-          "label": "Flexibilidad Táctica",
-          "value": 8,
-          "type": "speed"
-        },
-        {
-          "label": "Sinergias",
-          "value": 8,
-          "type": "speed"
-        }
+        { "label": "Versatilidad", "value": 8, "type": "magic" },
+        { "label": "Sinergia", "value": 9, "type": "speed" },
+        { "label": "Impacto Estratégico", "value": 8, "type": "attack" }
       ]
     },
     {
       "id": "tecnologia",
-      "title": "Tecnología",
+      "title": "Ingeniería Industrial",
       "icon": "/assets/mini/lore/tecnologia.png",
-      "description": "Maquinaria industrial, automatización pesada y sistemas energéticos con *Create*. Si te gustan los engranajes girando, este es tu patio de juegos.",
+      "description": "Create y addons llevados al extremo. Automatización masiva, cadenas de producción complejas y fábricas que dominan el paisaje.",
       "stats": [
-        {
-          "label": "Ingeniería Compleja",
-          "value": 7,
-          "type": "speed"
-        },
-        {
-          "label": "Automatización Total",
-          "value": 9,
-          "type": "speed"
-        },
-        {
-          "label": "Potencia Industrial",
-          "value": 10,
-          "type": "speed"
-        }
+        { "label": "Complejidad Mecánica", "value": 9, "type": "speed" },
+        { "label": "Automatización Avanzada", "value": 10, "type": "speed" },
+        { "label": "Escala Industrial", "value": 10, "type": "magic" }
       ]
     },
     {
       "id": "vanilla",
-      "title": "Vanilla+ & Calidad de Vida",
+      "title": "Vanilla+ Pulido",
       "icon": "/assets/mini/lore/vanilla.png",
-      "description": "Mejoras inteligentes al Minecraft clásico. Todo se siente familiar… pero mejor, más fluido y menos tosco.",
+      "description": "Mejoras que respetan la esencia de Minecraft pero eliminan lo tosco. Familiar, pero evolucionado.",
       "stats": [
-        {
-          "label": "Comodidad General",
-          "value": 10,
-          "type": "speed"
-        },
-        {
-          "label": "Inmersión",
-          "value": 8,
-          "type": "magic"
-        },
-        {
-          "label": "Pulido del Juego",
-          "value": 7,
-          "type": "speed"
-        }
+        { "label": "Calidad de Vida", "value": 9, "type": "speed" },
+        { "label": "Inmersión", "value": 9, "type": "magic" },
+        { "label": "Balance General", "value": 8, "type": "speed" }
       ]
     }
   ],
   "features": [
     {
-      "title": "Mods Curados",
-      "description": "Nada de relleno. Cada mod está elegido, probado y ajustado. Calidad > cantidad."
+      "title": "Supervivencia Central",
+      "description": "Temperatura, sed y entorno influyen en cada decisión. No es decoración. Es mecánica base."
     },
     {
-      "title": "Aventuras Épicas",
-      "description": "Ruinas, biomas y expediciones donde siempre hay algo valioso… o algo intentando matarte."
+      "title": "Worldgen Masivo",
+      "description": "Tres dimensiones reconstruidas para exploración obligatoria y riesgo constante."
     },
     {
-      "title": "Desafíos Legendarios",
-      "description": "Combate con mecánicas reales, estrategia y dificultad honesta. Si ganás, te lo merecés."
+      "title": "Create Expandido",
+      "description": "Automatización pesada y progreso técnico que redefine el mid y late game."
     }
   ],
   "outro": {
-    "title": "Tu Aventura Comienza Ahora",
+    "title": "El Mundo Está Listo. ¿Vos?",
     "icon": "/assets/mini/lore/tuhistoriacomienza.png",
-    "paragraph": "Entrá a Netherious. Morí un par de veces. Aprendé. Volvé más fuerte. Acá las victorias se ganan, no se regalan."
+    "paragraph": "Entrá. Adaptate. Morí. Ajustá tu estrategia. Netherious no es difícil por capricho. Es exigente porque puede permitirse serlo."
   }
 }

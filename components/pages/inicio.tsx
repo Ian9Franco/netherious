@@ -59,7 +59,16 @@ export function InicioLeftPage({ onPageChange }: InicioProps) {
               {/* Icon */}
               <div className="flex-shrink-0">
                 <Image
-                  src={index === 0 ? "/assets/mini/inicio/inicio-mundosvivos.png" : index === 1 ? "/assets/mini/inicio/inicio-progresion.png" : "/assets/mini/inicio/inicio-combate.png"}
+                  src={
+                    [
+                      "/assets/mini/inicio/inicio-mundosvivos.png",
+                      "/assets/mini/inicio/inicio-progresion.png",
+                      "/assets/mini/lore/tecnologia.png",
+                      "/assets/mini/lore/rpg.png",
+                      "/assets/mini/lore/bosses.png",
+                      "/assets/mini/lore/criaturasyfauna.png"
+                    ][index] || "/assets/mini/inicio/inicio-combate.png"
+                  }
                   alt="Feature"
                   width={160}
                   height={160}

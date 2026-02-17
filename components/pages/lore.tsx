@@ -198,14 +198,7 @@ export function LoreRightPage() {
           />
         </div>
 
-        <PixelButton
-          variant="secondary"
-          className="h-fit py-2 px-4 shadow-[4px_4px_0_0_#000] text-[10px] flex items-center gap-2 hover:scale-105"
-          onClick={() => window.open('/modlist/modlist.html', '_blank')}
-        >
-          <span>📜</span>
-          <span>WIKI</span>
-        </PixelButton>
+
       </div>
 
       {/* Featured Categories with Details */}
