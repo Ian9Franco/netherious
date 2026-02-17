@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useCallback, useRef } from 'react'
+import { useCallback } from 'react'
 
 export type SoundType =
   | 'click-default'
@@ -16,12 +16,11 @@ export type SoundType =
   | 'ambient-cave'
   | 'success-orb'
   | 'modpack-hover'
-  | 'random-loop'
 
-const SOUND_PATHS = {
+const SOUND_PATHS: Record<string, string | string[]> = {
   // Buttons
   'click-default': [
-    '/assets/sounds/button/minecraft-fox-squeak-1.mp3', // Kept for reference, but random loop handles this now
+    '/assets/sounds/button/minecraft-fox-squeak-1.mp3',
     '/assets/sounds/button/minecraft-idle3.mp3'
   ],
   'click-forge': '/assets/sounds/no/creeper-36141.mp3',
@@ -49,37 +48,19 @@ const SOUND_PATHS = {
   // Ambient/Random
   'ambient-cave': '/assets/sounds/cave/cave11_0QWMESM.mp3',
   'success-orb': '/assets/sounds/success/orb.mp3',
-  // Random loop items manually handled
 }
 
 export function useSoundEffects() {
-  const lastRandomSoundRef = useRef<number>(0) // Track last random sound time
-
   const playSound = useCallback((type: SoundType) => {
     try {
-      let path: string
+      let path: string | undefined
 
-      // Custom handling for random-loop to pick from 3 sounds randomly
-      if (type === 'random-loop') {
-        const sounds = [
-          '/assets/sounds/button/minecraft-fox-squeak-1.mp3',
-          '/assets/sounds/button/minecraft-idle3.mp3',
-          '/assets/sounds/cave/cave11_0QWMESM.mp3'
-        ]
-        // Truly random selection
-        const randomIndex = Math.floor(Math.random() * sounds.length)
-        path = sounds[randomIndex]
-
-        // Update last random sound time
-        lastRandomSoundRef.current = Date.now()
+      const pathOrArray = SOUND_PATHS[type]
+      if (Array.isArray(pathOrArray)) {
+        const randomIndex = Math.floor(Math.random() * pathOrArray.length)
+        path = pathOrArray[randomIndex]
       } else {
-        const pathOrArray = SOUND_PATHS[type as keyof typeof SOUND_PATHS]
-        if (Array.isArray(pathOrArray)) {
-          const randomIndex = Math.floor(Math.random() * pathOrArray.length)
-          path = pathOrArray[randomIndex]
-        } else {
-          path = pathOrArray
-        }
+        path = pathOrArray
       }
 
       if (!path) return
@@ -93,8 +74,6 @@ export function useSoundEffects() {
         audio.volume = 0.05
       } else if (type === 'ambient-cave') {
         audio.volume = 0.15
-      } else if (type === 'random-loop') {
-        audio.volume = 0.25
       } else {
         audio.volume = 0.30
       }
