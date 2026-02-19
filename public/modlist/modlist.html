@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NETHERIOUS SEASON III - Ultimate Wiki</title>
     <link rel="icon" type="image/x-icon" href="netherious.ico">
-    <link
-        href="https://fonts.googleapis.com/css2?family=VT323&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #1a0f05;
@@ -22,470 +19,831 @@
             --highlight: #ffdd00;
             --success: #10b981;
             --danger: #ef4444;
+            --glass: rgba(0, 0, 0, 0.3);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: var(--bg);
-            background-image:
-                linear-gradient(rgba(26, 15, 5, 0.9), rgba(26, 15, 5, 0.9)),
-                url('/assets/background.png');
-            /* Assume a background exists, or fallback to color */
+            background-image: linear-gradient(rgba(26, 15, 5, 0.92), rgba(26, 15, 5, 0.92)), url('netherious.png');
+            background-size: cover;
+            background-attachment: fixed;
             color: var(--text);
             font-family: 'Outfit', sans-serif;
             padding: 2rem;
             scroll-behavior: smooth;
         }
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: var(--panel); border-left: 2px solid var(--border); }
+        ::-webkit-scrollbar-thumb { background: var(--accent-dark); border: 2px solid var(--panel); box-shadow: inset -2px -2px 0px rgba(0, 0, 0, 0.3), inset 2px 2px 0px rgba(255, 255, 255, 0.1); }
 
-        /* Pixel Art Scrollbar */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
+        .header { text-align: center; margin-bottom: 4rem; position: relative; }
+        .header h1 { font-family: 'VT323', monospace; font-size: 5.5rem; color: var(--highlight); text-shadow: 6px 6px 0px #000; letter-spacing: -2px; margin-bottom: 0.5rem; text-transform: uppercase; }
+        .header p { color: var(--muted); font-size: 1.4rem; font-family: 'VT323', monospace; text-transform: uppercase; letter-spacing: 2px; }
 
-        ::-webkit-scrollbar-track {
-            background: var(--panel);
-            border-left: 2px solid var(--border);
-        }
+        .stats-bar { display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; }
+        .stat-pill { background: var(--panel); border: 4px solid var(--border); padding: 0.8rem 1.8rem; font-family: 'VT323', monospace; font-size: 1.3rem; display: flex; align-items: center; gap: 12px; box-shadow: 5px 5px 0px #000; transition: 0.2s; }
+        .stat-pill b { color: var(--highlight); font-size: 1.6rem; }
+        .stat-pill:hover { transform: scale(1.05); }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-dark);
-            border: 2px solid var(--panel);
-            box-shadow: inset -2px -2px 0px rgba(0, 0, 0, 0.3), inset 2px 2px 0px rgba(255, 255, 255, 0.1);
-        }
+        .grid-layout { display: grid; grid-template-columns: 340px 1fr 340px; gap: 2rem; max-width: 1800px; margin: 0 auto; }
+        .column-section { background: var(--glass); border: 4px solid var(--border); padding: 1.5rem; height: fit-content; box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); }
+        .section-title { font-family: 'VT323', monospace; font-size: 2.2rem; text-transform: uppercase; color: var(--accent); margin-bottom: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 10px; text-shadow: 2px 2px 0px #000; }
+        .badge-count { background: var(--accent-dark); color: #fff; padding: 4px 15px; font-size: 1.2rem; font-family: 'VT323', monospace; border: 2px solid #000; box-shadow: 3px 3px 0px #000; }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--border);
-        }
+        .category-card { background: var(--card); border: 2px solid var(--border); margin-bottom: 1rem; overflow: hidden; transition: 0.2s; }
+        .category-header { padding: 1rem; cursor: pointer; display: flex; align-items: center; gap: 12px; font-family: 'VT323', monospace; font-size: 1.5rem; }
+        .category-header:hover { background: rgba(255, 255, 255, 0.05); color: var(--highlight); }
+        .category-body { padding: 0.8rem; border-top: 2px solid var(--border); display: flex; flex-direction: column; gap: 6px; background: rgba(0, 0, 0, 0.2); }
+        .category-body.collapsed { display: none; }
+        .mod-item { padding: 0.5rem 0.8rem; background: rgba(0,0,0,0.3); border-radius: 4px; font-size: 0.9rem; color: var(--muted); border-left: 3px solid transparent; transition: 0.2s; }
+        .mod-item:hover { color: #fff; background: var(--panel); border-left-color: var(--accent); transform: translateX(5px); }
 
-        .header {
-            text-align: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
+        .bottom-area { margin-top: 6rem; max-width: 1800px; margin-left: auto; margin-right: auto; padding-bottom: 5rem; }
+        .asset-section { margin-bottom: 4rem; }
+        .panel-title { font-size: 2.5rem; margin-bottom: 2rem; font-family: 'VT323', monospace; color: var(--highlight); text-shadow: 3px 3px 0px #000; display: flex; align-items: center; gap: 15px; }
+        .panel-title::after { content: ''; flex: 1; height: 4px; background: var(--border); margin-left: 20px; box-shadow: 0 2px 0 #000; }
 
-        .header h1 {
-            font-family: 'VT323', monospace;
-            font-size: 5rem;
-            color: var(--highlight);
-            text-shadow: 4px 4px 0px #000;
-            letter-spacing: -2px;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-        }
+        .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .asset-card { background: var(--card); border: 3px solid var(--border); padding: 1rem; display: flex; align-items: center; gap: 15px; transition: 0.3s; position: relative; box-shadow: 5px 5px 0px rgba(0,0,0,0.3); }
+        .asset-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0px rgba(0,0,0,0.4); border-color: var(--accent); }
+        .asset-icon { font-size: 2rem; background: var(--panel); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--border); box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
+        .asset-info { display: flex; flex-direction: column; gap: 4px; }
+        .asset-name { font-weight: 600; font-size: 1rem; color: var(--text); }
+        .asset-path { font-size: 0.75rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; opacity: 0.7; }
 
-        .header p {
-            color: var(--muted);
-            font-size: 1.2rem;
-            font-family: 'VT323', monospace;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .stat-pill {
-            background: var(--panel);
-            border: 4px solid var(--border);
-            padding: 0.8rem 1.5rem;
-            font-family: 'VT323', monospace;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 4px 4px 0px #000;
-            transition: transform 0.2s;
-            image-rendering: pixelated;
-        }
-
-        .stat-pill:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px #000;
-        }
-
-        .stat-pill b {
-            color: var(--highlight);
-            font-size: 1.4rem;
-        }
-
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 320px 1fr 320px;
-            gap: 2rem;
-            max-width: 1700px;
-            margin: 0 auto;
-        }
-
-        .column-section {
-            background: rgba(42, 21, 10, 0.6);
-            border: 4px solid var(--border);
-            padding: 1.5rem;
-            height: fit-content;
-            box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.4);
-        }
-
-        .section-title {
-            font-family: 'VT323', monospace;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 2rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            text-shadow: 2px 2px 0px #000;
-        }
-
-        .badge-count {
-            background: var(--accent-dark);
-            color: #fff;
-            padding: 4px 12px;
-            font-size: 1rem;
-            font-family: 'VT323', monospace;
-            border: 2px solid #000;
-            box-shadow: 2px 2px 0px #000;
-        }
-
-        .category-card {
-            background: var(--card);
-            border: 2px solid var(--border);
-            margin-bottom: 1rem;
-            overflow: hidden;
-            transition: 0.2s;
-            box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .category-card:hover {
-            border-color: var(--accent);
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.3);
-        }
-
-        .category-header {
-            padding: 1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-            user-select: none;
-            transition: 0.2s;
-            font-family: 'VT323', monospace;
-            font-size: 1.4rem;
-            color: var(--text);
-        }
-
-        .category-header:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--highlight);
-        }
-
-        .badge-sm {
-            margin-left: auto;
-            color: var(--muted);
-            font-size: 1rem;
-            border: 1px solid var(--border);
-            padding: 2px 8px;
-            font-family: 'VT323', monospace;
-        }
-
-        .category-body {
-            padding: 0.5rem 1rem 1rem;
-            border-top: 2px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            background: rgba(0, 0, 0, 0.1);
-        }
-
-        .category-body.collapsed {
-            display: none;
-        }
-
-        .subcategory-header {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--accent-light);
-            margin: 1rem 0 0.5rem 0;
-            font-weight: 700;
-            opacity: 0.8;
-        }
-
-        .mod-item {
-            cursor: default;
-            display: block;
-            padding: 0.6rem 0.8rem;
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid transparent;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: 0.2s;
-            font-family: 'Outfit', sans-serif;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mod-item:hover {
-            background: var(--panel);
-            color: var(--highlight);
-            border-color: var(--accent);
-            transform: translateX(4px);
-            box-shadow: 2px 2px 0px #000;
-        }
-
-        /* Pixel corner effect through clip-path or border images could be complex, keeping simple borders for performance */
-
-        .bottom-area {
-            margin-top: 5rem;
-            max-width: 1700px;
-            margin-left: auto;
-            margin-right: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-        }
-
-        .panel-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 4px solid var(--accent-dark);
-            width: fit-content;
-            padding-bottom: 5px;
-            font-family: 'VT323', monospace;
-            color: var(--highlight);
-            text-shadow: 2px 2px 0px #000;
-        }
-
-        .asset-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 1rem;
-        }
-
-        @media (max-width: 1300px) {
-            .grid-layout {
-                grid-template-columns: 1fr;
-            }
-        }
+        @media (max-width: 1300px) { .grid-layout { grid-template-columns: 1fr; } }
     </style>
     <script>
         function toggleId(id) { document.getElementById(id).classList.toggle('collapsed'); }
-        function expandAll() { document.querySelectorAll('.category-body').forEach(b => b.classList.remove('collapsed')); }
-        function collapseAll() { document.querySelectorAll('.category-body').forEach(b => b.classList.add('collapsed')); }
     </script>
 </head>
-
 <body>
     <div class="header">
-        <img src="netherious.png" alt="NETHERIOUS SEASON III"
-            style="max-width: 600px; width: 100%; image-rendering: pixelated; margin-bottom: 0.5rem;">
-        <p>BORN AGAIN</p>
+        <img src="netherious.png" alt="NETHERIOUS" style="max-width: 650px; width: 100%; image-rendering: pixelated; margin-bottom: 1rem;">
+        <p>Expertly Modded Season III</p>
         <div class="stats-bar">
-            <div class="stat-pill"><b>98</b> Local</div>
-            <div class="stat-pill"><b>187</b> Core</div>
-            <div class="stat-pill"><b>47</b> Server</div>
-            <div class="stat-pill"><b>94</b> Assets</div>
-            <div class="stat-pill"><b>332</b> Total Mods</div>
+            <div class="stat-pill"><b>101</b> Local</div>
+            <div class="stat-pill"><b>252</b> Core</div>
+            <div class="stat-pill"><b>56</b> Server</div>
+            <div class="stat-pill"><b>104</b> Assets</div>
         </div>
     </div>
 
     <div class="grid-layout">
-        <div class="column-section">
-            <h2 class="section-title">💻 Client-Side <span class="badge-count">98</span></h2>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-animaciones')"><span
-                        class="cat-icon">🎬</span><span>animaciones</span><span class="badge-sm">5</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-animaciones"><div class="mod-item" title=".local/animaciones/citresewn-1.2.2+1.20.1.jar">citresewn-1.2.2+1.20.1</div><div class="mod-item" title=".local/animaciones/fallingleaves-1.20.1-2.1.2.jar">fallingleaves-1.20.1-2.1.2</div><div class="mod-item" title=".local/animaciones/punchy-2.3-forge-1.20.1.jar">punchy-2.3-forge-1.20.1</div><div class="mod-item" title=".local/animaciones/waveycapes-forge-1.8.2-mc1.20.1.jar">waveycapes-forge-1.8.2-mc1.20.1</div><div class="mod-item" title=".local/animaciones/weaponmaster_ydm-forge-1.20.1-4.2.3.jar">weaponmaster_ydm-forge-1.20.1-4.2.3</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-fab')"><span
-                        class="cat-icon">📦</span><span>fab</span><span class="badge-sm">5</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-fab"><div class="mod-item" title=".local/fab/Connector-1.0.0-beta.48+1.20.1.jar">Connector-1.0.0-beta.48+1.20.1</div><div class="mod-item" title=".local/fab/fabric-api-0.92.6+1.11.14+1.20.1.jar">fabric-api-0.92.6+1.11.14+1.20.1</div><div class="mod-item" title=".local/fab/moreculling-1.20.1-0.24.5.jar">moreculling-1.20.1-0.24.5</div><div class="mod-item" title=".local/fab/replaymod-1.20.1-2.6.23.jar">replaymod-1.20.1-2.6.23</div><div class="mod-item" title=".local/fab/threadtweak-fabric-1.20.2-0.1.1.jar">threadtweak-fabric-1.20.2-0.1.1</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-matic')"><span
-                        class="cat-icon">📦</span><span>matic</span><span class="badge-sm">4</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-matic"><div class="mod-item" title=".local/matic/Forgematica-0.1.13-mc1.20.1.jar">Forgematica-0.1.13-mc1.20.1</div><div class="mod-item" title=".local/matic/ForgematicaPrinter-0.1.0+mc1.20.1.jar">ForgematicaPrinter-0.1.0+mc1.20.1</div><div class="mod-item" title=".local/matic/JavaScriptJS-2001-1.0.1.jar">JavaScriptJS-2001-1.0.1</div><div class="mod-item" title=".local/matic/MaFgLib-0.1.14-mc1.20.1.jar">MaFgLib-0.1.14-mc1.20.1</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-particulas')"><span
-                        class="cat-icon">✨</span><span>particulas</span><span class="badge-sm">11</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-particulas"><div class="mod-item" title=".local/particulas/Fog-forge-1.5.3-1.20.1.jar">Fog-forge-1.5.3-1.20.1</div><div class="mod-item" title=".local/particulas/Perception-FORGE-0.1.4+1.20.1.jar">Perception-FORGE-0.1.4+1.20.1</div><div class="mod-item" title=".local/particulas/coolrain-1.3.0-1.20.1.jar">coolrain-1.3.0-1.20.1</div><div class="mod-item" title=".local/particulas/eg_particle_interactions-forge-1.20.1-1.0.0.jar">eg_particle_interactions-forge-1.20.1-1.0.0</div><div class="mod-item" title=".local/particulas/explosiveenhancement-forge-1.20.1-1.1.0-client.jar">explosiveenhancement-forge-1.20.1-1.1.0-client</div><div class="mod-item" title=".local/particulas/fallingleaves-1.20.1-2.1.2.jar">fallingleaves-1.20.1-2.1.2</div><div class="mod-item" title=".local/particulas/foglooksmodernnow-1.2.1.jar">foglooksmodernnow-1.2.1</div><div class="mod-item" title=".local/particulas/particular-1.21.10-NeoForge-1.3.1.jar">particular-1.21.10-NeoForge-1.3.1</div><div class="mod-item" title=".local/particulas/pop-1.20.1-1.0.0.jar">pop-1.20.1-1.0.0</div><div class="mod-item" title=".local/particulas/tempadwithshaders-1.20.1-1.0.0.jar">tempadwithshaders-1.20.1-1.0.0</div><div class="mod-item" title=".local/particulas/windy-1.1.1+1.20-fabric.jar">windy-1.1.1+1.20-fabric</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-quality')"><span
-                        class="cat-icon">🎨</span><span>quality</span><span class="badge-sm">53</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-quality"><div class="mod-item" title=".local/quality/AFKcamera-1.4.2+1.20.1.jar">AFKcamera-1.4.2+1.20.1</div><div class="mod-item" title=".local/quality/ArmorQuickSwap-v8.0.0-1.20.1-Forge.jar">ArmorQuickSwap-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".local/quality/Bookshelf-Forge-1.20.1-20.2.15.jar">Bookshelf-Forge-1.20.1-20.2.15</div><div class="mod-item" title=".local/quality/EffectDescriptions-v8.0.2-1.20.1-Forge.jar">EffectDescriptions-v8.0.2-1.20.1-Forge</div><div class="mod-item" title=".local/quality/EuphoriaPatcher-1.8.2-r5.7.1-forge.jar">EuphoriaPatcher-1.8.2-r5.7.1-forge</div><div class="mod-item" title=".local/quality/InventoryProfilesNext-forge-1.20-1.10.20.jar">InventoryProfilesNext-forge-1.20-1.10.20</div><div class="mod-item" title=".local/quality/Jade-1.20.1-Forge-11.13.2.jar">Jade-1.20.1-Forge-11.13.2</div><div class="mod-item" title=".local/quality/JadeAddons-1.20.1-Forge-5.5.0.jar">JadeAddons-1.20.1-Forge-5.5.0</div><div class="mod-item" title=".local/quality/LeaveMyBarsAlone-v8.0.0-1.20.1-Forge.jar">LeaveMyBarsAlone-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".local/quality/MouseTweaks-forge-mc1.20.1-2.25.1.jar">MouseTweaks-forge-mc1.20.1-2.25.1</div><div class="mod-item" title=".local/quality/Necronomicon-Forge-1.6.0+1.20.1.jar">Necronomicon-Forge-1.6.0+1.20.1</div><div class="mod-item" title=".local/quality/OctoLib-FORGE-0.5.0.1+1.20.1.jar">OctoLib-FORGE-0.5.0.1+1.20.1</div><div class="mod-item" title=".local/quality/OverflowingBars-v8.0.1-1.20.1-Forge.jar">OverflowingBars-v8.0.1-1.20.1-Forge</div><div class="mod-item" title=".local/quality/PickUpNotifier-v8.0.0-1.20.1-Forge.jar">PickUpNotifier-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".local/quality/PuzzlesLib-v8.1.33-1.20.1-Forge.jar">PuzzlesLib-v8.1.33-1.20.1-Forge</div><div class="mod-item" title=".local/quality/ResourcePackOverrides-v8.0.3-1.20.1-Forge.jar">ResourcePackOverrides-v8.0.3-1.20.1-Forge</div><div class="mod-item" title=".local/quality/ShoulderSurfing-Forge-1.20.1-4.14.3.jar">ShoulderSurfing-Forge-1.20.1-4.14.3</div><div class="mod-item" title=".local/quality/SmoothScrollingRefurbished+1.20-1.1.2.jar">SmoothScrollingRefurbished+1.20-1.1.2</div><div class="mod-item" title=".local/quality/Tips-Forge-1.20.1-12.1.9.jar">Tips-Forge-1.20.1-12.1.9</div><div class="mod-item" title=".local/quality/TravelersTitles-1.20-Forge-4.0.2.jar">TravelersTitles-1.20-Forge-4.0.2</div><div class="mod-item" title=".local/quality/YungsApi-1.20-Forge-4.0.6.jar">YungsApi-1.20-Forge-4.0.6</div><div class="mod-item" title=".local/quality/appleskin-forge-mc1.20.1-2.5.1.jar">appleskin-forge-mc1.20.1-2.5.1</div><div class="mod-item" title=".local/quality/architectury-9.2.14-forge.jar">architectury-9.2.14-forge</div><div class="mod-item" title=".local/quality/ash_api-forge-3.0.2+1.20.1.jar">ash_api-forge-3.0.2+1.20.1</div><div class="mod-item" title=".local/quality/automodpack-mc1.20.1-forge-4.0.5.jar">automodpack-mc1.20.1-forge-4.0.5</div><div class="mod-item" title=".local/quality/betterworldloading20-1.0.jar">betterworldloading20-1.0</div><div class="mod-item" title=".local/quality/cinematiczoom-1.0.0k.jar">cinematiczoom-1.0.0k</div><div class="mod-item" title=".local/quality/cloth-config-11.1.136-forge.jar">cloth-config-11.1.136-forge</div><div class="mod-item" title=".local/quality/collective-1.20.1-8.12.jar">collective-1.20.1-8.12</div><div class="mod-item" title=".local/quality/cupboard-1.20.1-2.7.jar">cupboard-1.20.1-2.7</div><div class="mod-item" title=".local/quality/defaultoptions-forge-1.20.1-18.0.4.jar">defaultoptions-forge-1.20.1-18.0.4</div><div class="mod-item" title=".local/quality/do_a_barrel_roll-forge-3.5.6+1.20.1.jar">do_a_barrel_roll-forge-3.5.6+1.20.1</div><div class="mod-item" title=".local/quality/draggable_lists-mc1.20-1.0.1-rev.824b2f3.jar">draggable_lists-mc1.20-1.0.1-rev.824b2f3</div><div class="mod-item" title=".local/quality/drippyloadingscreen_forge_3.0.12_MC_1.20.1.jar">drippyloadingscreen_forge_3.0.12_MC_1.20.1</div><div class="mod-item" title=".local/quality/enhanced_boss_bars-1.20.1-1.0.0.jar">enhanced_boss_bars-1.20.1-1.0.0</div><div class="mod-item" title=".local/quality/entity_model_features_1.20.1-forge-3.0.1.jar">entity_model_features_1.20.1-forge-3.0.1</div><div class="mod-item" title=".local/quality/entity_texture_features_1.20.1-forge-7.0.2.jar">entity_texture_features_1.20.1-forge-7.0.2</div><div class="mod-item" title=".local/quality/fancymenu_forge_3.7.0_MC_1.20.1.jar">fancymenu_forge_3.7.0_MC_1.20.1</div><div class="mod-item" title=".local/quality/fancytoasts-forge-1.20.1-1.4.5.jar">fancytoasts-forge-1.20.1-1.4.5</div><div class="mod-item" title=".local/quality/fancytoasts-forge-1.20.1-1.4.5.1.jar">fancytoasts-forge-1.20.1-1.4.5.1</div><div class="mod-item" title=".local/quality/immersive-hotbar-1.0.4-1.20-1.20.4.jar">immersive-hotbar-1.0.4-1.20-1.20.4</div><div class="mod-item" title=".local/quality/jei-1.20.1-forge-15.20.0.129.jar">jei-1.20.1-forge-15.20.0.129</div><div class="mod-item" title=".local/quality/journeymap-1.20.1-5.10.3-forge.jar">journeymap-1.20.1-5.10.3-forge</div><div class="mod-item" title=".local/quality/konkrete_forge_1.8.0_MC_1.20-1.20.1.jar">konkrete_forge_1.8.0_MC_1.20-1.20.1</div><div class="mod-item" title=".local/quality/kotlinforforge-4.12.0-all.jar">kotlinforforge-4.12.0-all</div><div class="mod-item" title=".local/quality/libIPN-forge-1.20-4.0.2.jar">libIPN-forge-1.20-4.0.2</div><div class="mod-item" title=".local/quality/melody_forge_1.0.3_MC_1.20.1-1.20.4.jar">melody_forge_1.0.3_MC_1.20.1-1.20.4</div><div class="mod-item" title=".local/quality/polytone-1.20-3.5.17.jar">polytone-1.20-3.5.17</div><div class="mod-item" title=".local/quality/seamless-loading-screen-2.0.3+1.20.1-forge.jar">seamless-loading-screen-2.0.3+1.20.1-forge</div><div class="mod-item" title=".local/quality/servercountryflags-1.10.0-1.20.1-FORGE.jar">servercountryflags-1.10.0-1.20.1-FORGE</div><div class="mod-item" title=".local/quality/shuffle-forge-9.0.0+1.20.1.jar">shuffle-forge-9.0.0+1.20.1</div><div class="mod-item" title=".local/quality/tooltipoverhaul-forge-1.20.1-1.4.0.jar">tooltipoverhaul-forge-1.20.1-1.4.0</div><div class="mod-item" title=".local/quality/yet_another_config_lib_v3-3.6.6+1.20.1-forge.jar">yet_another_config_lib_v3-3.6.6+1.20.1-forge</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-rendimiento')"><span
-                        class="cat-icon">⚡</span><span>rendimiento</span><span class="badge-sm">12</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-rendimiento"><div class="mod-item" title=".local/rendimiento/FastItemFrames-v20.1.5-1.20.1-Forge.jar">FastItemFrames-v20.1.5-1.20.1-Forge</div><div class="mod-item" title=".local/rendimiento/adaptive_performance_tweaks_core_1.20.1-11.5.0.jar">adaptive_performance_tweaks_core_1.20.1-11.5.0</div><div class="mod-item" title=".local/rendimiento/adaptive_performance_tweaks_items_1.20.1-11.5.0.jar">adaptive_performance_tweaks_items_1.20.1-11.5.0</div><div class="mod-item" title=".local/rendimiento/colorwheel-forge-1.1.2+mc1.20.1.jar">colorwheel-forge-1.1.2+mc1.20.1</div><div class="mod-item" title=".local/rendimiento/colorwheel_patcher-forge-1.0.4+mc1.20.1.jar">colorwheel_patcher-forge-1.0.4+mc1.20.1</div><div class="mod-item" title=".local/rendimiento/cullleaves-forge-4.1.1+1.20.1.jar">cullleaves-forge-4.1.1+1.20.1</div><div class="mod-item" title=".local/rendimiento/embeddium-0.3.31+mc1.20.1.jar">embeddium-0.3.31+mc1.20.1</div><div class="mod-item" title=".local/rendimiento/entity_model_features_1.20.1-forge-3.0.1.jar">entity_model_features_1.20.1-forge-3.0.1</div><div class="mod-item" title=".local/rendimiento/entity_texture_features_1.20.1-forge-7.0.2.jar">entity_texture_features_1.20.1-forge-7.0.2</div><div class="mod-item" title=".local/rendimiento/entityculling-forge-1.9.3-mc1.20.1.jar">entityculling-forge-1.9.3-mc1.20.1</div><div class="mod-item" title=".local/rendimiento/oculus-mc1.20.1-1.8.0.jar">oculus-mc1.20.1-1.8.0</div><div class="mod-item" title=".local/rendimiento/vanillin-forge-1.20.1-1.1.3.jar">vanillin-forge-1.20.1-1.1.3</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-💻client-side-sonidos')"><span
-                        class="cat-icon">🔊</span><span>sonidos</span><span class="badge-sm">8</span></div>
-                <div class="category-body collapsed" id="section-💻client-side-sonidos"><div class="mod-item" title=".local/sonidos/MRU-1.0.4+1.20.1+forge.jar">MRU-1.0.4+1.20.1+forge</div><div class="mod-item" title=".local/sonidos/PresenceFootsteps-1.20.1-1.9.1-beta.1.jar">PresenceFootsteps-1.20.1-1.9.1-beta.1</div><div class="mod-item" title=".local/sonidos/Sounds-2.2.1+1.20.1+forge.jar">Sounds-2.2.1+1.20.1+forge</div><div class="mod-item" title=".local/sonidos/biomemusic-1.20.1-3.5.jar">biomemusic-1.20.1-3.5</div><div class="mod-item" title=".local/sonidos/illagerraidmusic-1.20-1.20.1-1.2.jar">illagerraidmusic-1.20-1.20.1-1.2</div><div class="mod-item" title=".local/sonidos/reactivemusic-1.1.0+1.20.1.jar">reactivemusic-1.1.0+1.20.1</div><div class="mod-item" title=".local/sonidos/sound-physics-remastered-forge-1.20.1-1.5.1.jar">sound-physics-remastered-forge-1.20.1-1.5.1</div><div class="mod-item" title=".local/sonidos/sound_physics_perfected-1.15+1.20.1-forge.jar">sound_physics_perfected-1.15+1.20.1-forge</div>
-                </div>
-            </div>
-        </div>
-        <div class="column-section">
-            <h2 class="section-title">⚔️ Netherious Core <span class="badge-count">187</span></h2>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-criaturas&faunasalvaje')"><span
-                        class="cat-icon">🐾</span><span>Criaturas & Fauna Salvaje</span><span class="badge-sm">22</span>
-                </div>
-                <div class="category-body collapsed" id="core-criaturas&faunasalvaje"><div class="mod-item" title="Criaturas & Fauna Salvaje/CNB-1.20.1-1.6.1.jar">CNB-1.20.1-1.6.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/GuardRibbits-1.20.1-Forge-1.0.4.jar">GuardRibbits-1.20.1-Forge-1.0.4</div><div class="mod-item" title="Criaturas & Fauna Salvaje/More Critters 1.3.3.jar">More Critters 1.3.3</div><div class="mod-item" title="Criaturas & Fauna Salvaje/Ribbits-1.20.1-Forge-3.0.5.jar">Ribbits-1.20.1-Forge-3.0.5</div><div class="mod-item" title="Criaturas & Fauna Salvaje/[1.20.1-Forge] Hybrid Aquatic 1.5.4.jar">[1.20.1-Forge] Hybrid
-                        Aquatic 1.5.4</div><div class="mod-item" title="Criaturas & Fauna Salvaje/adorablehamsterpets-3.5.0-1.20.1+forge.jar">adorablehamsterpets-3.5.0-1.20.1+forge</div><div class="mod-item" title="Criaturas & Fauna Salvaje/companions-forge-1.20.1-1.2.1.jar">companions-forge-1.20.1-1.2.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/croaks-1.9.6-forge-1.20.1.jar">croaks-1.9.6-forge-1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/ghosts-forge-1.20.1-1.2.2.jar">ghosts-forge-1.20.1-1.2.2</div><div class="mod-item" title="Criaturas & Fauna Salvaje/letfishlove-2.1.0.jar">letfishlove-2.1.0</div><div class="mod-item" title="Criaturas & Fauna Salvaje/letmorefishlove-2.0.1.jar">letmorefishlove-2.0.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/maverick-0.2-1.20.1.jar">maverick-0.2-1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/moregolems-0.1-1.20.1.jar">moregolems-0.1-1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/moremobvariants-forge+1.20.1-1.3.0.1.jar">moremobvariants-forge+1.20.1-1.3.0.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/mpekka-0.4-1.20.1.jar">mpekka-0.4-1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/nowaitvillagerscream-1.0.4.jar">nowaitvillagerscream-1.0.4</div><div class="mod-item" title="Criaturas & Fauna Salvaje/primal-1.0.6+1.20.1.jar">primal-1.0.6+1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/species-3.5.jar">species-3.5</div><div class="mod-item" title="Criaturas & Fauna Salvaje/tameablebeasts-1.20.1-7.1.3.jar">tameablebeasts-1.20.1-7.1.3</div><div class="mod-item" title="Criaturas & Fauna Salvaje/villagergolemhealer 1.20.1.jar">villagergolemhealer
-                        1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/wab-1.20.1-1.4.1.jar">wab-1.20.1-1.4.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/wonderoussea-1.0.4-forge-1.20.1.jar">wonderoussea-1.0.4-forge-1.20.1</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-enemigos&hostilidad')"><span
-                        class="cat-icon">💀</span><span>Enemigos & Hostilidad</span><span class="badge-sm">8</span>
-                </div>
-                <div class="category-body collapsed" id="core-enemigos&hostilidad"><div class="mod-item" title="Enemigos & Hostilidad/IllagerInvasion-v8.0.7-1.20.1-Forge.jar">IllagerInvasion-v8.0.7-1.20.1-Forge</div><div class="mod-item" title="Enemigos & Hostilidad/blighted_beasts-1.20.1-1.5.3.jar">blighted_beasts-1.20.1-1.5.3</div><div class="mod-item" title="Enemigos & Hostilidad/crypticfoes-1.0.3.jar">crypticfoes-1.0.3</div><div class="mod-item" title="Enemigos & Hostilidad/dweller_dweller-3.13.1.jar">dweller_dweller-3.13.1</div><div class="mod-item" title="Enemigos & Hostilidad/illagerblabber-1.20.1-Forge-1.0.2.jar">illagerblabber-1.20.1-Forge-1.0.2</div><div class="mod-item" title="Enemigos & Hostilidad/mythsandlegends-0.0.8.5.jar">mythsandlegends-0.0.8.5</div><div class="mod-item" title="Enemigos & Hostilidad/roost2-1.0.0r-forge-1.20.1.jar">roost2-1.0.0r-forge-1.20.1</div><div class="mod-item" title="Enemigos & Hostilidad/warden-with-loot-2.2.jar">warden-with-loot-2.2</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-estructuras&dungeonsépicas')"><span
-                        class="cat-icon">🏰</span><span>Estructuras & Dungeons Épicas</span><span
-                        class="badge-sm">7</span></div>
-                <div class="category-body collapsed" id="core-estructuras&dungeonsépicas"><div class="mod-item" title="Estructuras & Dungeons Épicas/idas_forge-1.12.1+1.20.1.jar">idas_forge-1.12.1+1.20.1</div><div class="mod-item" title="Estructuras & Dungeons Épicas/integrated_api-1.5.1+1.20.1-forge.jar">integrated_api-1.5.1+1.20.1-forge</div><div class="mod-item" title="Estructuras & Dungeons Épicas/integrated_cataclysm_forge-1.0.5+1.20.1.jar">integrated_cataclysm_forge-1.0.5+1.20.1</div><div class="mod-item" title="Estructuras & Dungeons Épicas/integrated_stronghold-1.1.2+1.20.1-forge.jar">integrated_stronghold-1.1.2+1.20.1-forge</div><div class="mod-item" title="Estructuras & Dungeons Épicas/structure_gel-1.20.1-2.16.2.jar">structure_gel-1.20.1-2.16.2</div><div class="mod-item" title="Estructuras & Dungeons Épicas/villager_fish_shop-1.0.0-forge-1.20.1.jar">villager_fish_shop-1.0.0-forge-1.20.1</div><div class="mod-item" title="Estructuras & Dungeons Épicas/villager_warship-1.0.0-forge-1.20.1.jar">villager_warship-1.0.0-forge-1.20.1</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-herramientas&vehiculos')"><span
-                        class="cat-icon">📦</span><span>Herramientas & Vehiculos</span><span class="badge-sm">13</span>
-                </div>
-                <div class="category-body collapsed" id="core-herramientas&vehiculos"><div class="mod-item" title="Herramientas & Vehiculos/MagnumTorch-v8.0.2-1.20.1-Forge.jar">MagnumTorch-v8.0.2-1.20.1-Forge</div><div class="mod-item" title="Herramientas & Vehiculos/MobLassos-v8.0.1-1.20.1-Forge.jar">MobLassos-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Herramientas & Vehiculos/RPG_Style_More_Gems_1.0_1.20.1.jar">RPG_Style_More_Gems_1.0_1.20.1</div><div class="mod-item" title="Herramientas & Vehiculos/RPG_Style_More_Weapons_R_1.0.3_Forge_1.20.1.jar">RPG_Style_More_Weapons_R_1.0.3_Forge_1.20.1</div><div class="mod-item" title="Herramientas & Vehiculos/alekiNiftyShips-FORGE-1.20.1-1.0.14.jar">alekiNiftyShips-FORGE-1.20.1-1.0.14</div><div class="mod-item" title="Herramientas & Vehiculos/clockwork-forge-1.20.1-1.0.2.jar">clockwork-forge-1.20.1-1.0.2</div><div class="mod-item" title="Herramientas & Vehiculos/grapplingHookMod-Reforged-1.2.jar">grapplingHookMod-Reforged-1.2</div><div class="mod-item" title="Herramientas & Vehiculos/justhammers-forge-20.1.5+mc1.20.1.jar">justhammers-forge-20.1.5+mc1.20.1</div><div class="mod-item" title="Herramientas & Vehiculos/orevolution-1.20.1-3.2.4.jar">orevolution-1.20.1-3.2.4</div><div class="mod-item" title="Herramientas & Vehiculos/shieldexp-forge-1.20.1-1.3.5.jar">shieldexp-forge-1.20.1-1.3.5</div><div class="mod-item" title="Herramientas & Vehiculos/tempad-forge-1.20.1-2.3.4.jar">tempad-forge-1.20.1-2.3.4</div><div class="mod-item" title="Herramientas & Vehiculos/travelersbackpack-forge-1.20.1-9.1.52.jar">travelersbackpack-forge-1.20.1-9.1.52</div><div class="mod-item" title="Herramientas & Vehiculos/travelertoolbelt-forge-1.20.1-1.0.2.jar">travelertoolbelt-forge-1.20.1-1.0.2</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-jefes&combateavanzado')"><span
-                        class="cat-icon">📦</span><span>Jefes & Combate Avanzado</span><span class="badge-sm">16</span>
-                </div>
-                <div class="category-body collapsed" id="core-jefes&combateavanzado"><div class="mod-item" title="Jefes & Combate Avanzado/Dungeon Now Loading-forge-1.20.1-2.11.jar">Dungeon Now
-                        Loading-forge-1.20.1-2.11</div><div class="mod-item" title="Jefes & Combate Avanzado/L_Enders_Cataclysm-3.16.jar">L_Enders_Cataclysm-3.16</div><div class="mod-item" title="Jefes & Combate Avanzado/[1.19.4-1.20.1]witherswrath-1.15.2.jar">[1.19.4-1.20.1]witherswrath-1.15.2</div><div class="mod-item" title="Jefes & Combate Avanzado/boss_checklist-forge-3.1.3.jar">boss_checklist-forge-3.1.3</div><div class="mod-item" title="Jefes & Combate Avanzado/bossesrise-1.20.1-forge-1.0.9.2b.jar">bossesrise-1.20.1-forge-1.0.9.2b</div><div class="mod-item" title="Jefes & Combate Avanzado/bossesunleashed-1.0.3.jar">bossesunleashed-1.0.3</div><div class="mod-item" title="Jefes & Combate Avanzado/cataclysm_compat_1.20.1-1.0.2.jar">cataclysm_compat_1.20.1-1.0.2</div><div class="mod-item" title="Jefes & Combate Avanzado/cataclysmfortresses-1.20.1-Forge.jar">cataclysmfortresses-1.20.1-Forge</div><div class="mod-item" title="Jefes & Combate Avanzado/cinematiccataclysm-1.0.0-1.20.1.jar">cinematiccataclysm-1.0.0-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/cinematiccataclysm-1.0.1-1.21.1.jar">cinematiccataclysm-1.0.1-1.21.1</div><div class="mod-item" title="Jefes & Combate Avanzado/create_cataclysm-0.1.0-forge-1.20.1.jar">create_cataclysm-0.1.0-forge-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/fdbosses-3.1.0.1-1.20.1.jar">fdbosses-3.1.0.1-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/fdlib-1.0.7-1.20.1.jar">fdlib-1.0.7-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/legendarymonsters-2.0.6 MC 1.20.1.jar">legendarymonsters-2.0.6
-                        MC 1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/lionfishapi-2.4.jar">lionfishapi-2.4</div><div class="mod-item" title="Jefes & Combate Avanzado/wither_spawn_animation-1.6-forge-1.20.1.jar">wither_spawn_animation-1.6-forge-1.20.1</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-mundos&dimensionesalternas')"><span
-                        class="cat-icon">🌍</span><span>Mundos & Dimensiones Alternas</span><span
-                        class="badge-sm">16</span></div>
-                <div class="category-body collapsed" id="core-mundos&dimensionesalternas"><div class="mod-item" title="Mundos & Dimensiones Alternas/ElysiumAPI-1.20.1-1.1.3.jar">ElysiumAPI-1.20.1-1.1.3</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Jadens-Nether-Expansion-2.3.5.jar">Jadens-Nether-Expansion-2.3.5</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Quark-4.0-462.jar">Quark-4.0-462</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Zeta-1.0-31.jar">Zeta-1.0-31</div><div class="mod-item" title="Mundos & Dimensiones Alternas/blueprint-1.20.1-7.1.3.jar">blueprint-1.20.1-7.1.3</div><div class="mod-item" title="Mundos & Dimensiones Alternas/create_enlightend-1.0.0-forge-1.20.1.jar">create_enlightend-1.0.0-forge-1.20.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/enlightend-5.0.14-1.20.1.jar">enlightend-5.0.14-1.20.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/nether-s-exoticism-1.20.1-1.2.9.jar">nether-s-exoticism-1.20.1-1.2.9</div><div class="mod-item" title="Mundos & Dimensiones Alternas/nethers_exorcism_reborn-1.1.3Beta.jar">nethers_exorcism_reborn-1.1.3Beta</div><div class="mod-item" title="Mundos & Dimensiones Alternas/phantasm-1.0.1.jar">phantasm-1.0.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/spelunkery-1.20.1-0.3.16-forge.jar">spelunkery-1.20.1-0.3.16-forge</div><div class="mod-item" title="Mundos & Dimensiones Alternas/unusualend-2.3.0-forge-1.20.1.jar">unusualend-2.3.0-forge-1.20.1</div>
-                    <div class="subcategory-header">biome</div><div class="mod-item" title="Mundos & Dimensiones Alternas/biome/Corgilib-Forge-1.20.1-4.0.3.4.jar">Corgilib-Forge-1.20.1-4.0.3.4</div><div class="mod-item" title="Mundos & Dimensiones Alternas/biome/Oh-The-Biomes-Weve-Gone-Forge-1.7.4.jar">Oh-The-Biomes-Weve-Gone-Forge-1.7.4</div><div class="mod-item" title="Mundos & Dimensiones Alternas/biome/Oh-The-Trees-Youll-Grow-forge-1.20.1-1.5.0.jar">Oh-The-Trees-Youll-Grow-forge-1.20.1-1.5.0</div><div class="mod-item" title="Mundos & Dimensiones Alternas/biome/TerraBlender-forge-1.20.1-3.0.1.10.jar">TerraBlender-forge-1.20.1-3.0.1.10</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-progresióndepersonaje')"><span
-                        class="cat-icon">📦</span><span>Progresión de Personaje</span><span class="badge-sm">16</span>
-                </div>
-                <div class="category-body collapsed" id="core-progresióndepersonaje"><div class="mod-item" title="Progresión de Personaje/Cognition-v2.4.10-1.20.1.jar">Cognition-v2.4.10-1.20.1</div><div class="mod-item" title="Progresión de Personaje/Spoiled-forge-1.20.1-2.2.0.jar">Spoiled-forge-1.20.1-2.2.0</div><div class="mod-item" title="Progresión de Personaje/The_Graveyard_3.1_(FORGE)_for_1.20.1.jar">The_Graveyard_3.1_(FORGE)_for_1.20.1</div><div class="mod-item" title="Progresión de Personaje/Tyz's skills 4.3-1.20.1.jar">Tyz's skills 4.3-1.20.1</div><div class="mod-item" title="Progresión de Personaje/as_you_wish-1.3.1-forge-1.20.1.jar">as_you_wish-1.3.1-forge-1.20.1</div><div class="mod-item" title="Progresión de Personaje/bc_particle-0.0.3-forge-1.20.1.jar">bc_particle-0.0.3-forge-1.20.1</div><div class="mod-item" title="Progresión de Personaje/bettercombat-forge-1.9.0+1.20.1.jar">bettercombat-forge-1.9.0+1.20.1</div><div class="mod-item" title="Progresión de Personaje/biofactory-forge-1.20.1-0.6.0.jar">biofactory-forge-1.20.1-0.6.0</div><div class="mod-item" title="Progresión de Personaje/biomancy-forge-1.20.1-2.9.0.1-alpha.0.jar">biomancy-forge-1.20.1-2.9.0.1-alpha.0</div><div class="mod-item" title="Progresión de Personaje/diet-forge-2.1.1+1.20.1.jar">diet-forge-2.1.1+1.20.1</div><div class="mod-item" title="Progresión de Personaje/hexalia-1.2.82-1.20.1+forge.jar">hexalia-1.2.82-1.20.1+forge</div><div class="mod-item" title="Progresión de Personaje/knightquest-forge-1.20.1-1.9.3.jar">knightquest-forge-1.20.1-1.9.3</div><div class="mod-item" title="Progresión de Personaje/legendarysurvivaladdon-1.3.0.jar">legendarysurvivaladdon-1.3.0</div><div class="mod-item" title="Progresión de Personaje/legendarysurvivaloverhaul-1.20.1-2.4.2.jar">legendarysurvivaloverhaul-1.20.1-2.4.2</div><div class="mod-item" title="Progresión de Personaje/lootr-forge-1.20-0.7.35.94.jar">lootr-forge-1.20-0.7.35.94</div><div class="mod-item" title="Progresión de Personaje/sweety_archaeology-1.0.9c-forge-1.20.1.jar">sweety_archaeology-1.0.9c-forge-1.20.1</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-tecnologia')"><span
-                        class="cat-icon">📦</span><span>Tecnologia</span><span class="badge-sm">5</span></div>
-                <div class="category-body collapsed" id="core-tecnologia"><div class="mod-item" title="Tecnologia/ad_astra-forge-1.20.1-1.15.20.jar">ad_astra-forge-1.20.1-1.15.20</div><div class="mod-item" title="Tecnologia/ad_astra_more_structures-1.0.0.jar">ad_astra_more_structures-1.0.0</div><div class="mod-item" title="Tecnologia/botarium-forge-1.20.1-2.3.4.jar">botarium-forge-1.20.1-2.3.4</div><div class="mod-item" title="Tecnologia/cyberspace 2.2.0 (F1.20.1).jar">cyberspace 2.2.0 (F1.20.1)</div><div class="mod-item" title="Tecnologia/oil_well_yeeter-0.4-1.20.1.jar">oil_well_yeeter-0.4-1.20.1</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-vanilla+&calidaddevida')"><span
-                        class="cat-icon">📦</span><span>Vanilla+ & Calidad de Vida</span><span
-                        class="badge-sm">38</span></div>
-                <div class="category-body collapsed" id="core-vanilla+&calidaddevida"><div class="mod-item" title="Vanilla+ & Calidad de Vida/Cardiac-FORGE-0.5.3.2+1.20.1.jar">Cardiac-FORGE-0.5.3.2+1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/EasyMagic-v8.0.1-1.20.1-Forge.jar">EasyMagic-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/FarmersDelight-1.20.1-1.2.10.jar">FarmersDelight-1.20.1-1.2.10</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/Ping-Wheel-1.12.0-forge-1.20.1.jar">Ping-Wheel-1.12.0-forge-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/SwordBlockingMechanics-v8.0.2-1.20.1-Forge.jar">SwordBlockingMechanics-v8.0.2-1.20.1-Forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/VisualWorkbench-v8.0.1-1.20.1-Forge.jar">VisualWorkbench-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/another_furniture-forge-1.20.1-3.0.4.jar">another_furniture-forge-1.20.1-3.0.4</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/baguettelib-1.20.1-Forge-1.1.5.jar">baguettelib-1.20.1-Forge-1.1.5</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/blessfulled-0.3.jar">blessfulled-0.3</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/booklinggear-1.20.1-3.13.jar">booklinggear-1.20.1-3.13</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/corpse-forge-1.20.1-1.0.23.jar">corpse-forge-1.20.1-1.0.23</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/corpsecurioscompat-1.20.1-Forge-3.1.3.jar">corpsecurioscompat-1.20.1-Forge-3.1.3</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/cratedelight-25.09.22-1.20-forge.jar">cratedelight-25.09.22-1.20-forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/forge-dungeonsdelight-1.20.1-1.2.10.jar">forge-dungeonsdelight-1.20.1-1.2.10</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/forge-runiclib-1.20.1-4.3.8.jar">forge-runiclib-1.20.1-4.3.8</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidocopecookery_automation-1.0.0.jar">kaleidocopecookery_automation-1.0.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscope_compat-2.1.0-1.20.1.jar">kaleidoscope_compat-2.1.0-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscope_end-1.0.1-1.20.1.jar">kaleidoscope_end-1.0.1-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscope_nether-1.0.6 fix2-1.20.1.jar">kaleidoscope_nether-1.0.6
-                        fix2-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscopecookery-1.2.0-forge+mc1.20.1.jar">kaleidoscopecookery-1.2.0-forge+mc1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-bakery-forge-2.0.6.jar">letsdo-bakery-forge-2.0.6</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-brewery-forge-2.0.6.jar">letsdo-brewery-forge-2.0.6</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-farm_and_charm-forge-1.0.14.jar">letsdo-farm_and_charm-forge-1.0.14</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-vinery-forge-1.4.41.jar">letsdo-vinery-forge-1.4.41</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/mcw-mcwstairs-1.0.2-mc1.20.1forge.jar">mcw-mcwstairs-1.0.2-mc1.20.1forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/minervillager-1.20.1-5.7.jar">minervillager-1.20.1-5.7</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/pet_cemetery-1.20.1-2.0.0.jar">pet_cemetery-1.20.1-2.0.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/polymorph-forge-0.49.10+1.20.1.jar">polymorph-forge-0.49.10+1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/refurbished_furniture-forge-1.20.1-1.0.20.jar">refurbished_furniture-forge-1.20.1-1.0.20</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/shutter-2.2.0-1.20.1.jar">shutter-2.2.0-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/simplytents-1.0.0-forge-1.20.1.jar">simplytents-1.0.0-forge-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/starcatcher-2.1.3-FORGE-1.20.1.jar">starcatcher-2.1.3-FORGE-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/storage_shelves-1.1.2-forge-1.20.1.jar">storage_shelves-1.1.2-forge-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/storagedelight-25.12.09-1.20-forge.jar">storagedelight-25.12.09-1.20-forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/sullysmod-3.2.1-beta-all.jar">sullysmod-3.2.1-beta-all</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/supplementaries-1.20-3.1.41.jar">supplementaries-1.20-3.1.41</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/trashslot-forge-1.20-15.1.1.jar">trashslot-forge-1.20-15.1.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/wares-1.20.1-1.2.10.jar">wares-1.20.1-1.2.10</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-create')"><span
-                        class="cat-icon">📦</span><span>create</span><span class="badge-sm">41</span></div>
-                <div class="category-body collapsed" id="core-create"><div class="mod-item" title="create/CreateLazyTick-2.3.1-6.0.x-forge-1.20.1.jar">CreateLazyTick-2.3.1-6.0.x-forge-1.20.1</div><div class="mod-item" title="create/TotemFactory-1.1.0+mc1.20.1-Forge.jar">TotemFactory-1.1.0+mc1.20.1-Forge</div><div class="mod-item" title="create/bits_n_bobs-0.0.41.jar">bits_n_bobs-0.0.41</div><div class="mod-item" title="create/cmparallelpipes-forge-2.0.3.jar">cmparallelpipes-forge-2.0.3</div><div class="mod-item" title="create/create-1.20.1-6.0.8.jar">create-1.20.1-6.0.8</div><div class="mod-item" title="create/create-metalwork-1.20.1-1.0.11-forge.jar">create-metalwork-1.20.1-1.0.11-forge</div><div class="mod-item" title="create/create-new-age-1.1.7f+forge-mc1.20.1.jar">create-new-age-1.1.7f+forge-mc1.20.1</div><div class="mod-item" title="create/create_ad_astra_recipes-1.0.0-forge-1.20.1.jar">create_ad_astra_recipes-1.0.0-forge-1.20.1</div><div class="mod-item" title="create/create_bb-1.0.7-1.20.1-Forge.jar">create_bb-1.0.7-1.20.1-Forge</div><div class="mod-item" title="create/create_central_kitchen-1.20.1-for-create-6.0.6-1.4.3b.jar">create_central_kitchen-1.20.1-for-create-6.0.6-1.4.3b</div><div class="mod-item" title="create/create_connected-1.1.13-mc1.20.1-all.jar">create_connected-1.1.13-mc1.20.1-all</div><div class="mod-item" title="create/create_enchantment_industry-1.3.3-for-create-6.0.6.jar">create_enchantment_industry-1.3.3-for-create-6.0.6</div><div class="mod-item" title="create/create_factory_logistics-1.20.1-1.4.7.jar">create_factory_logistics-1.20.1-1.4.7</div><div class="mod-item" title="create/create_gravity-1.20.1-1.2.0.jar">create_gravity-1.20.1-1.2.0</div><div class="mod-item" title="create/create_hypertube-0.3.0-FORGE.jar">create_hypertube-0.3.0-FORGE</div><div class="mod-item" title="create/create_jetpack-forge-4.4.6.jar">create_jetpack-forge-4.4.6</div><div class="mod-item" title="create/create_jetpack_curios-1.2.0-forge-1.20.1.jar">create_jetpack_curios-1.2.0-forge-1.20.1</div><div class="mod-item" title="create/create_mobile_packages-1.20.1-0.6.0.jar">create_mobile_packages-1.20.1-0.6.0</div><div class="mod-item" title="create/create_ranged-1.1.0-forge-1.20.1.jar">create_ranged-1.1.0-forge-1.20.1</div><div class="mod-item" title="create/create_ratatouille-1.20.1-1.3.8.jar">create_ratatouille-1.20.1-1.3.8</div><div class="mod-item" title="create/create_simple_ore_doubling-1.6.0-forge-1.20.1.jar">create_simple_ore_doubling-1.6.0-forge-1.20.1</div><div class="mod-item" title="create/createaddition-1.20.1-1.3.3.jar">createaddition-1.20.1-1.3.3</div><div class="mod-item" title="create/createaddoncompatibility-0.2.4.jar">createaddoncompatibility-0.2.4</div><div class="mod-item" title="create/createdeco-2.0.3-1.20.1-forge.jar">createdeco-2.0.3-1.20.1-forge</div><div class="mod-item" title="create/createdieselgenerators-1.20.1-1.3.8.jar">createdieselgenerators-1.20.1-1.3.8</div><div class="mod-item" title="create/createnuclear-1.3.1-forge.jar">createnuclear-1.3.1-forge</div><div class="mod-item" title="create/createornithopterglider-1.0.2-1.20.1.jar">createornithopterglider-1.0.2-1.20.1</div><div class="mod-item" title="create/createprism-1.20-1.0.1.jar">createprism-1.20-1.0.1</div><div class="mod-item" title="create/createteleporters2.3-1.20.1.jar">createteleporters2.3-1.20.1</div><div class="mod-item" title="create/createthreadedtrains-forge-1.20.1-1.0.0x.jar">createthreadedtrains-forge-1.20.1-1.0.0x</div><div class="mod-item" title="create/createtransmission-1.0.4+forge-create6-1.20.1.jar">createtransmission-1.0.4+forge-create6-1.20.1</div><div class="mod-item" title="create/createvinery-1.0.0.jar">createvinery-1.0.0</div><div class="mod-item" title="create/ethium_1.20.1_V4.jar">ethium_1.20.1_V4</div><div class="mod-item" title="create/fluid-1.20-1.2.1.jar">fluid-1.20-1.2.1</div><div class="mod-item" title="create/fusion-1.2.12-forge-mc1.20.1.jar">fusion-1.2.12-forge-mc1.20.1</div><div class="mod-item" title="create/morelights-0.2.1.jar">morelights-0.2.1</div><div class="mod-item" title="create/petrolpark-1.20.1-1.4.25-all.jar">petrolpark-1.20.1-1.4.25-all</div><div class="mod-item" title="create/petrolsparts-1.20.1-1.2.3-all.jar">petrolsparts-1.20.1-1.2.3-all</div><div class="mod-item" title="create/protection_pixel-2.2.1-forge-1.20.1.jar">protection_pixel-2.2.1-forge-1.20.1</div><div class="mod-item" title="create/ratatouille_fried_delights-1.20.1-1.0.2.jar">ratatouille_fried_delights-1.20.1-1.0.2</div><div class="mod-item" title="create/tfmg-1.0.2f.jar">tfmg-1.0.2f</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('core-kube')"><span
-                        class="cat-icon">📦</span><span>kube</span><span class="badge-sm">5</span></div>
-                <div class="category-body collapsed" id="core-kube"><div class="mod-item" title="kube/dg_js-1.20.1-1.2.5.jar">dg_js-1.20.1-1.2.5</div><div class="mod-item" title="kube/kubejs-create-forge-2001.3.0-build.8.jar">kubejs-create-forge-2001.3.0-build.8</div><div class="mod-item" title="kube/kubejs-forge-2001.6.5-build.16.jar">kubejs-forge-2001.6.5-build.16</div><div class="mod-item" title="kube/rhino-forge-2001.2.3-build.10.jar">rhino-forge-2001.2.3-build.10</div><div class="mod-item" title="kube/tfmgjs-1.20.1-1.3.2.jar">tfmgjs-1.20.1-1.3.2</div></div>
-            </div>
-        </div>
-        <div class="column-section">
-            <h2 class="section-title">☁️ Server-Side <span class="badge-count">47</span></h2>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-☁️server-side-dungeon')"><span
-                        class="cat-icon">🏰</span><span>dungeon</span><span class="badge-sm">13</span></div>
-                <div class="category-body collapsed" id="section-☁️server-side-dungeon"><div class="mod-item" title=".server/dungeon/DungeonsAriseSevenSeas-1.19.2-1.0.2-forge.jar">DungeonsAriseSevenSeas-1.19.2-1.0.2-forge</div><div class="mod-item" title=".server/dungeon/Epic Witch Huts v1.1.0 (1.20+).jar">Epic Witch Huts v1.1.0 (1.20+)</div><div class="mod-item" title=".server/dungeon/YungsBetterEndIsland-1.20-Forge-2.0.6.jar">YungsBetterEndIsland-1.20-Forge-2.0.6</div><div class="mod-item" title=".server/dungeon/YungsBetterNetherFortresses-1.20-Forge-2.0.6.jar">YungsBetterNetherFortresses-1.20-Forge-2.0.6</div><div class="mod-item" title=".server/dungeon/[forge]ctov-3.4.14.jar">[forge]ctov-3.4.14</div><div class="mod-item" title=".server/dungeon/awesomedungeonend-forge-1.20.1-3.1.1.jar">awesomedungeonend-forge-1.20.1-3.1.1</div><div class="mod-item" title=".server/dungeon/awesomedungeonnether-forge-1.20.1-3.1.1.jar">awesomedungeonnether-forge-1.20.1-3.1.1</div><div class="mod-item" title=".server/dungeon/dungeons-and-taverns-ancient-city-overhaul-1 [Forge].jar">dungeons-and-taverns-ancient-city-overhaul-1
-                        [Forge]</div><div class="mod-item" title=".server/dungeon/end_villager_outpost-1.0.0-forge-1.20.1.jar">end_villager_outpost-1.0.0-forge-1.20.1</div><div class="mod-item" title=".server/dungeon/libraryferret-forge-1.20.1-4.0.0.jar">libraryferret-forge-1.20.1-4.0.0</div><div class="mod-item" title=".server/dungeon/lithostitched-forge-1.20.1-1.4.11.jar">lithostitched-forge-1.20.1-1.4.11</div><div class="mod-item" title=".server/dungeon/lukis-woodland-mansions-v.1.0.jar">lukis-woodland-mansions-v.1.0</div><div class="mod-item" title=".server/dungeon/structure_gel-1.20.1-2.16.2.jar">structure_gel-1.20.1-2.16.2</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-☁️server-side-quality')"><span
-                        class="cat-icon">🎨</span><span>quality</span><span class="badge-sm">12</span></div>
-                <div class="category-body collapsed" id="section-☁️server-side-quality"><div class="mod-item" title=".server/quality/Boss Music Mod 1.20.x v1.2.1.jar">Boss Music Mod 1.20.x v1.2.1</div><div class="mod-item" title=".server/quality/Mini-boss Boss Bars 1.20.1 1.0.142.jar">Mini-boss Boss Bars 1.20.1
-                        1.0.142</div><div class="mod-item" title=".server/quality/almostunified-forge-1.20.1-0.11.0.jar">almostunified-forge-1.20.1-0.11.0</div><div class="mod-item" title=".server/quality/create-renewable-egapples-1.0.0.jar">create-renewable-egapples-1.0.0</div><div class="mod-item" title=".server/quality/create-renewable-netherite-2.0.0.jar">create-renewable-netherite-2.0.0</div><div class="mod-item" title=".server/quality/doubledoors-1.20.1-7.2.jar">doubledoors-1.20.1-7.2</div><div class="mod-item" title=".server/quality/edf-remastered-4.3.jar">edf-remastered-4.3</div><div class="mod-item" title=".server/quality/hero-proof-5.2.1.jar">hero-proof-5.2.1</div><div class="mod-item" title=".server/quality/inventorytotem-1.20.1-3.4.jar">inventorytotem-1.20.1-3.4</div><div class="mod-item" title=".server/quality/nocreeperexplosion-1.20.x-1.0.1.jar">nocreeperexplosion-1.20.x-1.0.1</div><div class="mod-item" title=".server/quality/sensible_stacks-1.0.0.jar">sensible_stacks-1.0.0</div><div class="mod-item" title=".server/quality/treeharvester-1.20.1-9.1.jar">treeharvester-1.20.1-9.1</div></div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-☁️server-side-rendimiento')"><span
-                        class="cat-icon">⚡</span><span>rendimiento</span><span class="badge-sm">20</span></div>
-                <div class="category-body collapsed" id="section-☁️server-side-rendimiento"><div class="mod-item" title=".server/rendimiento/Chunky-1.3.146.jar">Chunky-1.3.146</div><div class="mod-item" title=".server/rendimiento/Clumps-forge-1.20.1-12.0.0.4.jar">Clumps-forge-1.20.1-12.0.0.4</div><div class="mod-item" title=".server/rendimiento/EmptyNbtFix-1.20.1-1.0.0.jar">EmptyNbtFix-1.20.1-1.0.0</div><div class="mod-item" title=".server/rendimiento/Icterine-forge-1.20.0-1-1.3.0.jar">Icterine-forge-1.20.0-1-1.3.0</div><div class="mod-item" title=".server/rendimiento/LeavesBeGone-v8.0.0-1.20.1-Forge.jar">LeavesBeGone-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".server/rendimiento/Necronomicon-Forge-1.6.0+1.20.1.jar">Necronomicon-Forge-1.6.0+1.20.1</div><div class="mod-item" title=".server/rendimiento/Not Enough Recipe Book-FORGE-0.4.1+1.20.1.jar">Not
-                        Enough Recipe Book-FORGE-0.4.1+1.20.1</div><div class="mod-item" title=".server/rendimiento/YouShallNotSpawn-forge-1.20.x-2.0.2.jar">YouShallNotSpawn-forge-1.20.x-2.0.2</div><div class="mod-item" title=".server/rendimiento/almanac-1.20.x-forge-1.0.2.jar">almanac-1.20.x-forge-1.0.2</div><div class="mod-item" title=".server/rendimiento/createstuffadditionsfix-forge-1.20.1-0.0.0.1.jar">createstuffadditionsfix-forge-1.20.1-0.0.0.1</div><div class="mod-item" title=".server/rendimiento/darktimer-forge-1.20.1-1.0.9.jar">darktimer-forge-1.20.1-1.0.9</div><div class="mod-item" title=".server/rendimiento/ferritecore-6.0.1-forge.jar">ferritecore-6.0.1-forge</div><div class="mod-item" title=".server/rendimiento/getittogetherdrops-forge-1.20-1.3.jar">getittogetherdrops-forge-1.20-1.3</div><div class="mod-item" title=".server/rendimiento/immersive_optimization-forge-1.20.1-0.1.0.jar">immersive_optimization-forge-1.20.1-0.1.0</div><div class="mod-item" title=".server/rendimiento/incontrol-1.20-9.4.5.jar">incontrol-1.20-9.4.5</div><div class="mod-item" title=".server/rendimiento/item_split_bug_fix-1.20.1-1.4.jar">item_split_bug_fix-1.20.1-1.4</div><div class="mod-item" title=".server/rendimiento/letmedespawn-1.20.x-forge-1.5.0.jar">letmedespawn-1.20.x-forge-1.5.0</div><div class="mod-item" title=".server/rendimiento/memoryleakfix-forge-1.17+-1.1.5.jar">memoryleakfix-forge-1.17+-1.1.5</div><div class="mod-item" title=".server/rendimiento/modernfix-forge-5.25.2+mc1.20.1.jar">modernfix-forge-5.25.2+mc1.20.1</div><div class="mod-item" title=".server/rendimiento/structure_layout_optimizer-forge-1.0.11.jar">structure_layout_optimizer-forge-1.0.11</div>
-                </div>
-            </div>
-            <div class="category-card">
-                <div class="category-header" onclick="toggleId('section-☁️server-side-x')"><span
-                        class="cat-icon">📦</span><span>x</span><span class="badge-sm">2</span></div>
-                <div class="category-body collapsed" id="section-☁️server-side-x"><div class="mod-item" title=".server/x/Epic Villages v1.1.0 (1.20+).jar">Epic Villages v1.1.0 (1.20+)</div><div class="mod-item" title=".server/x/createrecycle-1.0.0.jar">createrecycle-1.0.0</div></div>
-            </div>
-        </div>
+        <div class="column-section"><h2 class="section-title">💻 Client-Side <span class="badge-count">101</span></h2><div class="category-card"><div class="category-header" onclick="toggleId('section-💻client-side-animaciones')"><span class="cat-icon">🎬</span><span>animaciones</span><span class="badge-sm">5</span></div><div class="category-body collapsed" id="section-💻client-side-animaciones"><div class="mod-item" title=".local/animaciones/citresewn-1.2.2+1.20.1.jar">citresewn-1.2.2+1.20.1</div><div class="mod-item" title=".local/animaciones/fallingleaves-1.20.1-2.1.2.jar">fallingleaves-1.20.1-2.1.2</div><div class="mod-item" title=".local/animaciones/punchy-2.3-forge-1.20.1.jar">punchy-2.3-forge-1.20.1</div><div class="mod-item" title=".local/animaciones/waveycapes-forge-1.8.2-mc1.20.1.jar">waveycapes-forge-1.8.2-mc1.20.1</div><div class="mod-item" title=".local/animaciones/weaponmaster_ydm-forge-1.20.1-4.2.3.jar">weaponmaster_ydm-forge-1.20.1-4.2.3</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-💻client-side-matic')"><span class="cat-icon">📦</span><span>matic</span><span class="badge-sm">5</span></div><div class="category-body collapsed" id="section-💻client-side-matic"><div class="mod-item" title=".local/matic/Forgematica-0.1.13-mc1.20.1.jar">Forgematica-0.1.13-mc1.20.1</div><div class="mod-item" title=".local/matic/ForgematicaPrinter-0.1.0+mc1.20.1.jar">ForgematicaPrinter-0.1.0+mc1.20.1</div><div class="mod-item" title=".local/matic/JavaScriptJS-2001-1.0.1.jar">JavaScriptJS-2001-1.0.1</div><div class="mod-item" title=".local/matic/MaFgLib-0.1.14-mc1.20.1.jar">MaFgLib-0.1.14-mc1.20.1</div><div class="mod-item" title=".local/matic/profiler-1.0.jar">profiler-1.0</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-💻client-side-particulas')"><span class="cat-icon">✨</span><span>particulas</span><span class="badge-sm">11</span></div><div class="category-body collapsed" id="section-💻client-side-particulas"><div class="mod-item" title=".local/particulas/Fog-forge-1.5.3-1.20.1.jar">Fog-forge-1.5.3-1.20.1</div><div class="mod-item" title=".local/particulas/Perception-FORGE-0.1.4+1.20.1.jar">Perception-FORGE-0.1.4+1.20.1</div><div class="mod-item" title=".local/particulas/coolrain-1.3.0-1.20.1.jar">coolrain-1.3.0-1.20.1</div><div class="mod-item" title=".local/particulas/eg_particle_interactions-forge-1.20.1-1.0.0.jar">eg_particle_interactions-forge-1.20.1-1.0.0</div><div class="mod-item" title=".local/particulas/explosiveenhancement-forge-1.20.1-1.1.0-client.jar">explosiveenhancement-forge-1.20.1-1.1.0-client</div><div class="mod-item" title=".local/particulas/fallingleaves-1.20.1-2.1.2.jar">fallingleaves-1.20.1-2.1.2</div><div class="mod-item" title=".local/particulas/foglooksmodernnow-1.2.1.jar">foglooksmodernnow-1.2.1</div><div class="mod-item" title=".local/particulas/particular-1.21.10-NeoForge-1.3.1.jar">particular-1.21.10-NeoForge-1.3.1</div><div class="mod-item" title=".local/particulas/pop-1.20.1-1.0.0.jar">pop-1.20.1-1.0.0</div><div class="mod-item" title=".local/particulas/tempadwithshaders-1.20.1-1.0.0.jar">tempadwithshaders-1.20.1-1.0.0</div><div class="mod-item" title=".local/particulas/windy-1.1.1+1.20-fabric.jar">windy-1.1.1+1.20-fabric</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-💻client-side-quality')"><span class="cat-icon">🎨</span><span>quality</span><span class="badge-sm">55</span></div><div class="category-body collapsed" id="section-💻client-side-quality"><div class="mod-item" title=".local/quality/AFKcamera-1.4.2+1.20.1.jar">AFKcamera-1.4.2+1.20.1</div><div class="mod-item" title=".local/quality/ArmorQuickSwap-v8.0.0-1.20.1-Forge.jar">ArmorQuickSwap-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".local/quality/Bookshelf-Forge-1.20.1-20.2.15.jar">Bookshelf-Forge-1.20.1-20.2.15</div><div class="mod-item" title=".local/quality/EffectDescriptions-v8.0.2-1.20.1-Forge.jar">EffectDescriptions-v8.0.2-1.20.1-Forge</div><div class="mod-item" title=".local/quality/EuphoriaPatcher-1.8.2-r5.7.1-forge.jar">EuphoriaPatcher-1.8.2-r5.7.1-forge</div><div class="mod-item" title=".local/quality/InventoryProfilesNext-forge-1.20-1.10.20.jar">InventoryProfilesNext-forge-1.20-1.10.20</div><div class="mod-item" title=".local/quality/Jade-1.20.1-Forge-11.13.2.jar">Jade-1.20.1-Forge-11.13.2</div><div class="mod-item" title=".local/quality/JadeAddons-1.20.1-Forge-5.5.0.jar">JadeAddons-1.20.1-Forge-5.5.0</div><div class="mod-item" title=".local/quality/LeaveMyBarsAlone-v8.0.0-1.20.1-Forge.jar">LeaveMyBarsAlone-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".local/quality/MouseTweaks-forge-mc1.20.1-2.25.1.jar">MouseTweaks-forge-mc1.20.1-2.25.1</div><div class="mod-item" title=".local/quality/Necronomicon-Forge-1.6.0+1.20.1.jar">Necronomicon-Forge-1.6.0+1.20.1</div><div class="mod-item" title=".local/quality/OctoLib-FORGE-0.5.0.1+1.20.1.jar">OctoLib-FORGE-0.5.0.1+1.20.1</div><div class="mod-item" title=".local/quality/OverflowingBars-v8.0.1-1.20.1-Forge.jar">OverflowingBars-v8.0.1-1.20.1-Forge</div><div class="mod-item" title=".local/quality/PickUpNotifier-v8.0.0-1.20.1-Forge.jar">PickUpNotifier-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".local/quality/PuzzlesLib-v8.1.33-1.20.1-Forge.jar">PuzzlesLib-v8.1.33-1.20.1-Forge</div><div class="mod-item" title=".local/quality/ResourcePackOverrides-v8.0.3-1.20.1-Forge.jar">ResourcePackOverrides-v8.0.3-1.20.1-Forge</div><div class="mod-item" title=".local/quality/ShoulderSurfing-Forge-1.20.1-4.14.3.jar">ShoulderSurfing-Forge-1.20.1-4.14.3</div><div class="mod-item" title=".local/quality/SmoothScrollingRefurbished+1.20-1.1.2.jar">SmoothScrollingRefurbished+1.20-1.1.2</div><div class="mod-item" title=".local/quality/Tips-Forge-1.20.1-12.1.9.jar">Tips-Forge-1.20.1-12.1.9</div><div class="mod-item" title=".local/quality/TravelersTitles-1.20-Forge-4.0.2.jar">TravelersTitles-1.20-Forge-4.0.2</div><div class="mod-item" title=".local/quality/YungsApi-1.20-Forge-4.0.6.jar">YungsApi-1.20-Forge-4.0.6</div><div class="mod-item" title=".local/quality/appleskin-forge-mc1.20.1-2.5.1.jar">appleskin-forge-mc1.20.1-2.5.1</div><div class="mod-item" title=".local/quality/architectury-9.2.14-forge.jar">architectury-9.2.14-forge</div><div class="mod-item" title=".local/quality/ash_api-forge-3.0.2+1.20.1.jar">ash_api-forge-3.0.2+1.20.1</div><div class="mod-item" title=".local/quality/automodpack-mc1.20.1-forge-4.0.5.jar">automodpack-mc1.20.1-forge-4.0.5</div><div class="mod-item" title=".local/quality/balm-forge-1.20.1-7.3.37-all.jar">balm-forge-1.20.1-7.3.37-all</div><div class="mod-item" title=".local/quality/betterworldloading20-1.0.jar">betterworldloading20-1.0</div><div class="mod-item" title=".local/quality/cloth-config-11.1.136-forge.jar">cloth-config-11.1.136-forge</div><div class="mod-item" title=".local/quality/collective-1.20.1-8.12.jar">collective-1.20.1-8.12</div><div class="mod-item" title=".local/quality/cupboard-1.20.1-2.7.jar">cupboard-1.20.1-2.7</div><div class="mod-item" title=".local/quality/defaultoptions-forge-1.20.1-18.0.4.jar">defaultoptions-forge-1.20.1-18.0.4</div><div class="mod-item" title=".local/quality/do_a_barrel_roll-forge-3.5.6+1.20.1.jar">do_a_barrel_roll-forge-3.5.6+1.20.1</div><div class="mod-item" title=".local/quality/draggable_lists-mc1.20-1.0.1-rev.824b2f3.jar">draggable_lists-mc1.20-1.0.1-rev.824b2f3</div><div class="mod-item" title=".local/quality/drippyloadingscreen_forge_3.0.12_MC_1.20.1.jar">drippyloadingscreen_forge_3.0.12_MC_1.20.1</div><div class="mod-item" title=".local/quality/enhanced_boss_bars-1.20.1-1.0.0.jar">enhanced_boss_bars-1.20.1-1.0.0</div><div class="mod-item" title=".local/quality/entity_model_features_1.20.1-forge-3.0.1.jar">entity_model_features_1.20.1-forge-3.0.1</div><div class="mod-item" title=".local/quality/entity_texture_features_1.20.1-forge-7.0.2.jar">entity_texture_features_1.20.1-forge-7.0.2</div><div class="mod-item" title=".local/quality/fancymenu_forge_3.7.0_MC_1.20.1.jar">fancymenu_forge_3.7.0_MC_1.20.1</div><div class="mod-item" title=".local/quality/fancytoasts-forge-1.20.1-1.4.5.jar">fancytoasts-forge-1.20.1-1.4.5</div><div class="mod-item" title=".local/quality/fancytoasts-forge-1.20.1-1.4.5.1.jar">fancytoasts-forge-1.20.1-1.4.5.1</div><div class="mod-item" title=".local/quality/immersive-hotbar-1.0.4-1.20-1.20.4.jar">immersive-hotbar-1.0.4-1.20-1.20.4</div><div class="mod-item" title=".local/quality/jei-1.20.1-forge-15.20.0.129.jar">jei-1.20.1-forge-15.20.0.129</div><div class="mod-item" title=".local/quality/journeymap-1.20.1-5.10.3-forge.jar">journeymap-1.20.1-5.10.3-forge</div><div class="mod-item" title=".local/quality/konkrete_forge_1.8.0_MC_1.20-1.20.1.jar">konkrete_forge_1.8.0_MC_1.20-1.20.1</div><div class="mod-item" title=".local/quality/kotlinforforge-4.12.0-all.jar">kotlinforforge-4.12.0-all</div><div class="mod-item" title=".local/quality/libIPN-forge-1.20-4.0.2.jar">libIPN-forge-1.20-4.0.2</div><div class="mod-item" title=".local/quality/melody_forge_1.0.3_MC_1.20.1-1.20.4.jar">melody_forge_1.0.3_MC_1.20.1-1.20.4</div><div class="mod-item" title=".local/quality/performancetweaks-forge-1.1.0.jar">performancetweaks-forge-1.1.0</div><div class="mod-item" title=".local/quality/polytone-1.20-3.5.17.jar">polytone-1.20-3.5.17</div><div class="mod-item" title=".local/quality/seamless-loading-screen-2.0.3+1.20.1-forge.jar">seamless-loading-screen-2.0.3+1.20.1-forge</div><div class="mod-item" title=".local/quality/servercountryflags-1.10.0-1.20.1-FORGE.jar">servercountryflags-1.10.0-1.20.1-FORGE</div><div class="mod-item" title=".local/quality/shuffle-forge-9.0.0+1.20.1.jar">shuffle-forge-9.0.0+1.20.1</div><div class="mod-item" title=".local/quality/tooltipoverhaul-forge-1.20.1-1.4.0.jar">tooltipoverhaul-forge-1.20.1-1.4.0</div><div class="mod-item" title=".local/quality/trajectory_indicator-1.0.0-1.20.1.jar">trajectory_indicator-1.0.0-1.20.1</div><div class="mod-item" title=".local/quality/yet_another_config_lib_v3-3.6.6+1.20.1-forge.jar">yet_another_config_lib_v3-3.6.6+1.20.1-forge</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-💻client-side-rendimiento')"><span class="cat-icon">⚡</span><span>rendimiento</span><span class="badge-sm">17</span></div><div class="category-body collapsed" id="section-💻client-side-rendimiento"><div class="mod-item" title=".local/rendimiento/AsyncParticles-2.4.0-beta.3+1.20.1.jar">AsyncParticles-2.4.0-beta.3+1.20.1</div><div class="mod-item" title=".local/rendimiento/FastItemFrames-v20.1.5-1.20.1-Forge.jar">FastItemFrames-v20.1.5-1.20.1-Forge</div><div class="mod-item" title=".local/rendimiento/adaptive_performance_tweaks_core_1.20.1-11.5.0.jar">adaptive_performance_tweaks_core_1.20.1-11.5.0</div><div class="mod-item" title=".local/rendimiento/adaptive_performance_tweaks_items_1.20.1-11.5.0.jar">adaptive_performance_tweaks_items_1.20.1-11.5.0</div><div class="mod-item" title=".local/rendimiento/canary-mc1.20.1-0.3.3.jar">canary-mc1.20.1-0.3.3</div><div class="mod-item" title=".local/rendimiento/colorwheel-forge-1.1.2+mc1.20.1.jar">colorwheel-forge-1.1.2+mc1.20.1</div><div class="mod-item" title=".local/rendimiento/colorwheel_patcher-forge-1.0.4+mc1.20.1.jar">colorwheel_patcher-forge-1.0.4+mc1.20.1</div><div class="mod-item" title=".local/rendimiento/cullleaves-forge-4.1.1+1.20.1.jar">cullleaves-forge-4.1.1+1.20.1</div><div class="mod-item" title=".local/rendimiento/doespotatotick-1.20.1-5.5.5.jar">doespotatotick-1.20.1-5.5.5</div><div class="mod-item" title=".local/rendimiento/embeddium-0.3.31+mc1.20.1.jar">embeddium-0.3.31+mc1.20.1</div><div class="mod-item" title=".local/rendimiento/entity_model_features_1.20.1-forge-3.0.1.jar">entity_model_features_1.20.1-forge-3.0.1</div><div class="mod-item" title=".local/rendimiento/entity_texture_features_1.20.1-forge-7.0.2.jar">entity_texture_features_1.20.1-forge-7.0.2</div><div class="mod-item" title=".local/rendimiento/entityculling-forge-1.9.3-mc1.20.1.jar">entityculling-forge-1.9.3-mc1.20.1</div><div class="mod-item" title=".local/rendimiento/flerovium-forge-1.20.1-1.2.18-all.jar">flerovium-forge-1.20.1-1.2.18-all</div><div class="mod-item" title=".local/rendimiento/oculus-mc1.20.1-1.8.0.jar">oculus-mc1.20.1-1.8.0</div><div class="mod-item" title=".local/rendimiento/redirected-forge-1.0.0-1.20.1.jar">redirected-forge-1.0.0-1.20.1</div><div class="mod-item" title=".local/rendimiento/vanillin-forge-1.20.1-1.1.3.jar">vanillin-forge-1.20.1-1.1.3</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-💻client-side-sonidos')"><span class="cat-icon">🔊</span><span>sonidos</span><span class="badge-sm">8</span></div><div class="category-body collapsed" id="section-💻client-side-sonidos"><div class="mod-item" title=".local/sonidos/MRU-1.0.4+1.20.1+forge.jar">MRU-1.0.4+1.20.1+forge</div><div class="mod-item" title=".local/sonidos/PresenceFootsteps-1.20.1-1.9.1-beta.1.jar">PresenceFootsteps-1.20.1-1.9.1-beta.1</div><div class="mod-item" title=".local/sonidos/Sounds-2.2.1+1.20.1+forge.jar">Sounds-2.2.1+1.20.1+forge</div><div class="mod-item" title=".local/sonidos/biomemusic-1.20.1-3.5.jar">biomemusic-1.20.1-3.5</div><div class="mod-item" title=".local/sonidos/illagerraidmusic-1.20-1.20.1-1.2.jar">illagerraidmusic-1.20-1.20.1-1.2</div><div class="mod-item" title=".local/sonidos/reactivemusic-1.1.0+1.20.1.jar">reactivemusic-1.1.0+1.20.1</div><div class="mod-item" title=".local/sonidos/sound-physics-remastered-forge-1.20.1-1.5.1.jar">sound-physics-remastered-forge-1.20.1-1.5.1</div><div class="mod-item" title=".local/sonidos/sound_physics_perfected-1.15+1.20.1-forge.jar">sound_physics_perfected-1.15+1.20.1-forge</div></div></div></div>
+        <div class="column-section"><h2 class="section-title">⚔️ Netherious Core <span class="badge-count">252</span></h2><div class="category-card"><div class="category-header" onclick="toggleId('core-criaturas&faunasalvaje')"><span class="cat-icon">🐾</span><span>Criaturas & Fauna Salvaje</span><span class="badge-sm">15</span></div><div class="category-body collapsed" id="core-criaturas&faunasalvaje"><div class="mod-item" title="Criaturas & Fauna Salvaje/CNB-1.20.1-1.6.1.jar">CNB-1.20.1-1.6.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/More Critters 1.3.3.jar">More Critters 1.3.3</div><div class="mod-item" title="Criaturas & Fauna Salvaje/Ribbits-1.20.1-Forge-3.0.5.jar">Ribbits-1.20.1-Forge-3.0.5</div><div class="mod-item" title="Criaturas & Fauna Salvaje/adorablehamsterpets-3.5.0-1.20.1+forge.jar">adorablehamsterpets-3.5.0-1.20.1+forge</div><div class="mod-item" title="Criaturas & Fauna Salvaje/companions-forge-1.20.1-1.2.1.jar">companions-forge-1.20.1-1.2.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/ghosts-forge-1.20.1-1.2.2.jar">ghosts-forge-1.20.1-1.2.2</div><div class="mod-item" title="Criaturas & Fauna Salvaje/maverick-0.2-1.20.1.jar">maverick-0.2-1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/moremobvariants-forge+1.20.1-1.3.0.1.jar">moremobvariants-forge+1.20.1-1.3.0.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/mpekka-0.4-1.20.1.jar">mpekka-0.4-1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/nowaitvillagerscream-1.0.4.jar">nowaitvillagerscream-1.0.4</div><div class="mod-item" title="Criaturas & Fauna Salvaje/primal-1.0.6+1.20.1.jar">primal-1.0.6+1.20.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/species-3.5.jar">species-3.5</div><div class="mod-item" title="Criaturas & Fauna Salvaje/tameablebeasts-1.20.1-7.1.3.jar">tameablebeasts-1.20.1-7.1.3</div><div class="mod-item" title="Criaturas & Fauna Salvaje/wab-1.20.1-1.4.1.jar">wab-1.20.1-1.4.1</div><div class="mod-item" title="Criaturas & Fauna Salvaje/wonderoussea-1.0.4-forge-1.20.1.jar">wonderoussea-1.0.4-forge-1.20.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-enemigos&hostilidad')"><span class="cat-icon">💀</span><span>Enemigos & Hostilidad</span><span class="badge-sm">8</span></div><div class="category-body collapsed" id="core-enemigos&hostilidad"><div class="mod-item" title="Enemigos & Hostilidad/IllagerInvasion-v8.0.7-1.20.1-Forge.jar">IllagerInvasion-v8.0.7-1.20.1-Forge</div><div class="mod-item" title="Enemigos & Hostilidad/blighted_beasts-1.20.1-1.5.3.jar">blighted_beasts-1.20.1-1.5.3</div><div class="mod-item" title="Enemigos & Hostilidad/crypticfoes-1.0.3.jar">crypticfoes-1.0.3</div><div class="mod-item" title="Enemigos & Hostilidad/dweller_dweller-3.13.1.jar">dweller_dweller-3.13.1</div><div class="mod-item" title="Enemigos & Hostilidad/illagerblabber-1.20.1-Forge-1.0.2.jar">illagerblabber-1.20.1-Forge-1.0.2</div><div class="mod-item" title="Enemigos & Hostilidad/mythsandlegends-0.0.8.5.jar">mythsandlegends-0.0.8.5</div><div class="mod-item" title="Enemigos & Hostilidad/roost2-1.0.0r-forge-1.20.1.jar">roost2-1.0.0r-forge-1.20.1</div><div class="mod-item" title="Enemigos & Hostilidad/warden-with-loot-2.2.jar">warden-with-loot-2.2</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-estructuras&dungeonsépicas')"><span class="cat-icon">🏰</span><span>Estructuras & Dungeons Épicas</span><span class="badge-sm">6</span></div><div class="category-body collapsed" id="core-estructuras&dungeonsépicas"><div class="mod-item" title="Estructuras & Dungeons Épicas/idas_forge-1.12.1+1.20.1.jar">idas_forge-1.12.1+1.20.1</div><div class="mod-item" title="Estructuras & Dungeons Épicas/integrated_api-1.5.1+1.20.1-forge.jar">integrated_api-1.5.1+1.20.1-forge</div><div class="mod-item" title="Estructuras & Dungeons Épicas/integrated_cataclysm_forge-1.0.5+1.20.1.jar">integrated_cataclysm_forge-1.0.5+1.20.1</div><div class="mod-item" title="Estructuras & Dungeons Épicas/integrated_stronghold-1.1.2+1.20.1-forge.jar">integrated_stronghold-1.1.2+1.20.1-forge</div><div class="mod-item" title="Estructuras & Dungeons Épicas/structure_gel-1.20.1-2.16.2.jar">structure_gel-1.20.1-2.16.2</div><div class="mod-item" title="Estructuras & Dungeons Épicas/villager_fish_shop-1.0.0-forge-1.20.1.jar">villager_fish_shop-1.0.0-forge-1.20.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-herramientas&vehiculos')"><span class="cat-icon">📦</span><span>Herramientas & Vehiculos</span><span class="badge-sm">13</span></div><div class="category-body collapsed" id="core-herramientas&vehiculos"><div class="mod-item" title="Herramientas & Vehiculos/MagnumTorch-v8.0.2-1.20.1-Forge.jar">MagnumTorch-v8.0.2-1.20.1-Forge</div><div class="mod-item" title="Herramientas & Vehiculos/MobLassos-v8.0.1-1.20.1-Forge.jar">MobLassos-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Herramientas & Vehiculos/RPG_Style_More_Gems_1.0_1.20.1.jar">RPG_Style_More_Gems_1.0_1.20.1</div><div class="mod-item" title="Herramientas & Vehiculos/RPG_Style_More_Weapons_R_1.0.3_Forge_1.20.1.jar">RPG_Style_More_Weapons_R_1.0.3_Forge_1.20.1</div><div class="mod-item" title="Herramientas & Vehiculos/alekiNiftyShips-FORGE-1.20.1-1.0.14.jar">alekiNiftyShips-FORGE-1.20.1-1.0.14</div><div class="mod-item" title="Herramientas & Vehiculos/clockwork-forge-1.20.1-1.0.2.jar">clockwork-forge-1.20.1-1.0.2</div><div class="mod-item" title="Herramientas & Vehiculos/grapplingHookMod-Reforged-1.2.jar">grapplingHookMod-Reforged-1.2</div><div class="mod-item" title="Herramientas & Vehiculos/justhammers-forge-20.1.5+mc1.20.1.jar">justhammers-forge-20.1.5+mc1.20.1</div><div class="mod-item" title="Herramientas & Vehiculos/orevolution-1.20.1-3.2.4.jar">orevolution-1.20.1-3.2.4</div><div class="mod-item" title="Herramientas & Vehiculos/shieldexp-forge-1.20.1-1.3.5.jar">shieldexp-forge-1.20.1-1.3.5</div><div class="mod-item" title="Herramientas & Vehiculos/tempad-forge-1.20.1-2.3.4.jar">tempad-forge-1.20.1-2.3.4</div><div class="mod-item" title="Herramientas & Vehiculos/travelersbackpack-forge-1.20.1-9.1.52.jar">travelersbackpack-forge-1.20.1-9.1.52</div><div class="mod-item" title="Herramientas & Vehiculos/travelertoolbelt-forge-1.20.1-1.0.2.jar">travelertoolbelt-forge-1.20.1-1.0.2</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-jefes&combateavanzado')"><span class="cat-icon">📦</span><span>Jefes & Combate Avanzado</span><span class="badge-sm">17</span></div><div class="category-body collapsed" id="core-jefes&combateavanzado"><div class="mod-item" title="Jefes & Combate Avanzado/Dungeon Now Loading-forge-1.20.1-2.11.jar">Dungeon Now Loading-forge-1.20.1-2.11</div><div class="mod-item" title="Jefes & Combate Avanzado/L_Enders_Cataclysm-3.16.jar">L_Enders_Cataclysm-3.16</div><div class="mod-item" title="Jefes & Combate Avanzado/[1.19.4-1.20.1]witherswrath-1.15.2.jar">[1.19.4-1.20.1]witherswrath-1.15.2</div><div class="mod-item" title="Jefes & Combate Avanzado/boss_checklist-forge-3.1.3.jar">boss_checklist-forge-3.1.3</div><div class="mod-item" title="Jefes & Combate Avanzado/bossesrise-1.20.1-forge-1.0.9.2b.jar">bossesrise-1.20.1-forge-1.0.9.2b</div><div class="mod-item" title="Jefes & Combate Avanzado/bossesunleashed-1.0.3.jar">bossesunleashed-1.0.3</div><div class="mod-item" title="Jefes & Combate Avanzado/cataclysm_compat_1.20.1-1.0.2.jar">cataclysm_compat_1.20.1-1.0.2</div><div class="mod-item" title="Jefes & Combate Avanzado/cataclysmfortresses-1.20.1-Forge.jar">cataclysmfortresses-1.20.1-Forge</div><div class="mod-item" title="Jefes & Combate Avanzado/cataclysmiccombat-1.4.1-1.20.1.jar">cataclysmiccombat-1.4.1-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/cinematiccataclysm-1.0.0-1.20.1.jar">cinematiccataclysm-1.0.0-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/cinematiccataclysm-1.0.1-1.21.1.jar">cinematiccataclysm-1.0.1-1.21.1</div><div class="mod-item" title="Jefes & Combate Avanzado/create_cataclysm-0.1.0-forge-1.20.1.jar">create_cataclysm-0.1.0-forge-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/fdbosses-3.1.0.1-1.20.1.jar">fdbosses-3.1.0.1-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/fdlib-1.0.7-1.20.1.jar">fdlib-1.0.7-1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/legendarymonsters-2.0.6 MC 1.20.1.jar">legendarymonsters-2.0.6 MC 1.20.1</div><div class="mod-item" title="Jefes & Combate Avanzado/lionfishapi-2.4.jar">lionfishapi-2.4</div><div class="mod-item" title="Jefes & Combate Avanzado/wither_spawn_animation-1.6-forge-1.20.1.jar">wither_spawn_animation-1.6-forge-1.20.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-mundos&dimensionesalternas')"><span class="cat-icon">🌍</span><span>Mundos & Dimensiones Alternas</span><span class="badge-sm">17</span></div><div class="category-body collapsed" id="core-mundos&dimensionesalternas"><div class="mod-item" title="Mundos & Dimensiones Alternas/ElysiumAPI-1.20.1-1.1.3.jar">ElysiumAPI-1.20.1-1.1.3</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Incendium_1.20.x_v5.3.5.jar">Incendium_1.20.x_v5.3.5</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Jadens-Nether-Expansion-2.3.5.jar">Jadens-Nether-Expansion-2.3.5</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Quark-4.0-462.jar">Quark-4.0-462</div><div class="mod-item" title="Mundos & Dimensiones Alternas/Zeta-1.0-31.jar">Zeta-1.0-31</div><div class="mod-item" title="Mundos & Dimensiones Alternas/betterendcities-1.0.0-1.20.1.jar">betterendcities-1.0.0-1.20.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/blooming-biosphere-1.1.0.jar">blooming-biosphere-1.1.0</div><div class="mod-item" title="Mundos & Dimensiones Alternas/blueprint-1.20.1-7.1.3.jar">blueprint-1.20.1-7.1.3</div><div class="mod-item" title="Mundos & Dimensiones Alternas/create_enlightend-1.0.0-forge-1.20.1.jar">create_enlightend-1.0.0-forge-1.20.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/echoes_of_the_end__structures_-10.00.11 Release-forge-1.20.1.jar">echoes_of_the_end__structures_-10.00.11 Release-forge-1.20.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/enlightend-5.0.14-1.20.1.jar">enlightend-5.0.14-1.20.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/nether-s-exoticism-1.20.1-1.2.9.jar">nether-s-exoticism-1.20.1-1.2.9</div><div class="mod-item" title="Mundos & Dimensiones Alternas/nethers_exorcism_reborn-1.1.3Beta.jar">nethers_exorcism_reborn-1.1.3Beta</div><div class="mod-item" title="Mundos & Dimensiones Alternas/netherweather-1.1.2_backport.jar">netherweather-1.1.2_backport</div><div class="mod-item" title="Mundos & Dimensiones Alternas/phantasm-1.0.1.jar">phantasm-1.0.1</div><div class="mod-item" title="Mundos & Dimensiones Alternas/spelunkery-1.20.1-0.3.16-forge.jar">spelunkery-1.20.1-0.3.16-forge</div><div class="mod-item" title="Mundos & Dimensiones Alternas/unusualend-2.3.0-forge-1.20.1.jar">unusualend-2.3.0-forge-1.20.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-progresióndepersonaje')"><span class="cat-icon">📦</span><span>Progresión de Personaje</span><span class="badge-sm">12</span></div><div class="category-body collapsed" id="core-progresióndepersonaje"><div class="mod-item" title="Progresión de Personaje/Cognition-v2.4.10-1.20.1.jar">Cognition-v2.4.10-1.20.1</div><div class="mod-item" title="Progresión de Personaje/The_Graveyard_3.1_(FORGE)_for_1.20.1.jar">The_Graveyard_3.1_(FORGE)_for_1.20.1</div><div class="mod-item" title="Progresión de Personaje/Tyz's skills 4.3-1.20.1.jar">Tyz's skills 4.3-1.20.1</div><div class="mod-item" title="Progresión de Personaje/as_you_wish-1.3.1-forge-1.20.1.jar">as_you_wish-1.3.1-forge-1.20.1</div><div class="mod-item" title="Progresión de Personaje/bc_particle-0.0.3-forge-1.20.1.jar">bc_particle-0.0.3-forge-1.20.1</div><div class="mod-item" title="Progresión de Personaje/bettercombat-forge-1.9.0+1.20.1.jar">bettercombat-forge-1.9.0+1.20.1</div><div class="mod-item" title="Progresión de Personaje/biofactory-forge-1.20.1-0.6.0.jar">biofactory-forge-1.20.1-0.6.0</div><div class="mod-item" title="Progresión de Personaje/biomancy-forge-1.20.1-2.9.0.1-alpha.0.jar">biomancy-forge-1.20.1-2.9.0.1-alpha.0</div><div class="mod-item" title="Progresión de Personaje/hexalia-1.2.82-1.20.1+forge.jar">hexalia-1.2.82-1.20.1+forge</div><div class="mod-item" title="Progresión de Personaje/knightquest-forge-1.20.1-1.9.3.jar">knightquest-forge-1.20.1-1.9.3</div><div class="mod-item" title="Progresión de Personaje/lootr-forge-1.20-0.7.35.94.jar">lootr-forge-1.20-0.7.35.94</div><div class="mod-item" title="Progresión de Personaje/sweety_archaeology-1.0.9c-forge-1.20.1.jar">sweety_archaeology-1.0.9c-forge-1.20.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-tecnologia')"><span class="cat-icon">📦</span><span>Tecnologia</span><span class="badge-sm">6</span></div><div class="category-body collapsed" id="core-tecnologia"><div class="mod-item" title="Tecnologia/ad_astra-forge-1.20.1-1.15.20.jar">ad_astra-forge-1.20.1-1.15.20</div><div class="mod-item" title="Tecnologia/ad_astra_more_structures-1.0.0.jar">ad_astra_more_structures-1.0.0</div><div class="mod-item" title="Tecnologia/botarium-forge-1.20.1-2.3.4.jar">botarium-forge-1.20.1-2.3.4</div><div class="mod-item" title="Tecnologia/create_ad_astra_recipes-1.0.0-forge-1.20.1.jar">create_ad_astra_recipes-1.0.0-forge-1.20.1</div><div class="mod-item" title="Tecnologia/cyberspace 2.2.0 (F1.20.1).jar">cyberspace 2.2.0 (F1.20.1)</div><div class="mod-item" title="Tecnologia/oil_well_yeeter-0.4-1.20.1.jar">oil_well_yeeter-0.4-1.20.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-vanilla+&calidaddevida')"><span class="cat-icon">📦</span><span>Vanilla+ & Calidad de Vida</span><span class="badge-sm">45</span></div><div class="category-body collapsed" id="core-vanilla+&calidaddevida"><div class="mod-item" title="Vanilla+ & Calidad de Vida/Cardiac-FORGE-0.5.3.2+1.20.1.jar">Cardiac-FORGE-0.5.3.2+1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/CustomDisenchanter-1.6.0.jar">CustomDisenchanter-1.6.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/EasyMagic-v8.0.1-1.20.1-Forge.jar">EasyMagic-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/FarmersDelight-1.20.1-1.2.10.jar">FarmersDelight-1.20.1-1.2.10</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/Ping-Wheel-1.12.0-forge-1.20.1.jar">Ping-Wheel-1.12.0-forge-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/UniversalBoneMeal-v8.0.1-1.20.1-Forge.jar">UniversalBoneMeal-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/VisualWorkbench-v8.0.1-1.20.1-Forge.jar">VisualWorkbench-v8.0.1-1.20.1-Forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/amendments-1.20-2.2.5.jar">amendments-1.20-2.2.5</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/another_furniture-forge-1.20.1-3.0.4.jar">another_furniture-forge-1.20.1-3.0.4</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/backupbeds-1.0.0.jar">backupbeds-1.0.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/baguettelib-1.20.1-Forge-1.1.5.jar">baguettelib-1.20.1-Forge-1.1.5</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/blessfulled-0.6.jar">blessfulled-0.6</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/booklinggear-1.20.1-3.13.jar">booklinggear-1.20.1-3.13</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/combat_dash-1.7-forge-1.20.1.jar">combat_dash-1.7-forge-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/corpse-forge-1.20.1-1.0.23.jar">corpse-forge-1.20.1-1.0.23</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/corpsecurioscompat-1.20.1-Forge-3.1.3.jar">corpsecurioscompat-1.20.1-Forge-3.1.3</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/cratedelight-25.09.22-1.20-forge.jar">cratedelight-25.09.22-1.20-forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/exposure-forge-1.20.1-1.9.13.jar">exposure-forge-1.20.1-1.9.13</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/exposure_catalog-1.20.1-1.0.3-forge.jar">exposure_catalog-1.20.1-1.0.3-forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/forge-dungeonsdelight-1.20.1-1.2.10.jar">forge-dungeonsdelight-1.20.1-1.2.10</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/forge-runiclib-1.20.1-4.3.8.jar">forge-runiclib-1.20.1-4.3.8</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidocopecookery_automation-1.0.0.jar">kaleidocopecookery_automation-1.0.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscope_compat-2.1.0-1.20.1.jar">kaleidoscope_compat-2.1.0-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscope_end-1.0.1-1.20.1.jar">kaleidoscope_end-1.0.1-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscope_nether-1.0.6 fix2-1.20.1.jar">kaleidoscope_nether-1.0.6 fix2-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/kaleidoscopecookery-1.2.0-forge+mc1.20.1.jar">kaleidoscopecookery-1.2.0-forge+mc1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/lendersdelight-1.20.1-1.0.10.jar">lendersdelight-1.20.1-1.0.10</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-bakery-forge-2.0.6.jar">letsdo-bakery-forge-2.0.6</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-brewery-forge-2.0.6.jar">letsdo-brewery-forge-2.0.6</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-farm_and_charm-forge-1.0.14.jar">letsdo-farm_and_charm-forge-1.0.14</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/letsdo-vinery-forge-1.4.41.jar">letsdo-vinery-forge-1.4.41</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/mcw-mcwstairs-1.0.2-mc1.20.1forge.jar">mcw-mcwstairs-1.0.2-mc1.20.1forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/minervillager-1.20.1-5.7.jar">minervillager-1.20.1-5.7</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/pet_cemetery-1.20.1-2.0.0.jar">pet_cemetery-1.20.1-2.0.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/polymorph-forge-0.49.10+1.20.1.jar">polymorph-forge-0.49.10+1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/rpgtimeline-forge-1.20.1-2.0.4.0.jar">rpgtimeline-forge-1.20.1-2.0.4.0</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/saturation_plus-1.2.0-forge-1.20.jar">saturation_plus-1.2.0-forge-1.20</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/shutter-2.2.0-1.20.1.jar">shutter-2.2.0-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/starcatcher-2.1.3-FORGE-1.20.1.jar">starcatcher-2.1.3-FORGE-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/storage_shelves-1.1.2-forge-1.20.1.jar">storage_shelves-1.1.2-forge-1.20.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/storagedelight-25.12.09-1.20-forge.jar">storagedelight-25.12.09-1.20-forge</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/sullysmod-3.2.1-beta-all.jar">sullysmod-3.2.1-beta-all</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/supplementaries-1.20-3.1.41.jar">supplementaries-1.20-3.1.41</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/trashslot-forge-1.20-15.1.1.jar">trashslot-forge-1.20-15.1.1</div><div class="mod-item" title="Vanilla+ & Calidad de Vida/wares-1.20.1-1.2.10.jar">wares-1.20.1-1.2.10</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-create')"><span class="cat-icon">⚙️</span><span>create</span><span class="badge-sm">47</span></div><div class="category-body collapsed" id="core-create"><div class="mod-item" title="create/CreateLazyTick-2.3.1-6.0.x-forge-1.20.1.jar">CreateLazyTick-2.3.1-6.0.x-forge-1.20.1</div><div class="mod-item" title="create/TotemFactory-1.1.0+mc1.20.1-Forge.jar">TotemFactory-1.1.0+mc1.20.1-Forge</div><div class="mod-item" title="create/bellsandwhistles-0.4.5-1.20.x-Create6.0+.jar">bellsandwhistles-0.4.5-1.20.x-Create6.0+</div><div class="mod-item" title="create/bits_n_bobs-0.0.41.jar">bits_n_bobs-0.0.41</div><div class="mod-item" title="create/cmparallelpipes-forge-2.0.3.jar">cmparallelpipes-forge-2.0.3</div><div class="mod-item" title="create/create-1.20.1-6.0.8.jar">create-1.20.1-6.0.8</div><div class="mod-item" title="create/create-metalwork-1.20.1-1.0.11-forge.jar">create-metalwork-1.20.1-1.0.11-forge</div><div class="mod-item" title="create/create-new-age-1.1.7f+forge-mc1.20.1.jar">create-new-age-1.1.7f+forge-mc1.20.1</div><div class="mod-item" title="create/create_bb-1.0.7-1.20.1-Forge.jar">create_bb-1.0.7-1.20.1-Forge</div><div class="mod-item" title="create/create_central_kitchen-1.20.1-for-create-6.0.6-1.4.3b.jar">create_central_kitchen-1.20.1-for-create-6.0.6-1.4.3b</div><div class="mod-item" title="create/create_connected-1.1.13-mc1.20.1-all.jar">create_connected-1.1.13-mc1.20.1-all</div><div class="mod-item" title="create/create_enchantment_industry-1.3.3-for-create-6.0.6.jar">create_enchantment_industry-1.3.3-for-create-6.0.6</div><div class="mod-item" title="create/create_factory_logistics-1.20.1-1.4.7.jar">create_factory_logistics-1.20.1-1.4.7</div><div class="mod-item" title="create/create_generators-1.0.0-forge-1.20.1.jar">create_generators-1.0.0-forge-1.20.1</div><div class="mod-item" title="create/create_gravity-1.20.1-1.2.0.jar">create_gravity-1.20.1-1.2.0</div><div class="mod-item" title="create/create_hypertube-0.4.0-FORGE.jar">create_hypertube-0.4.0-FORGE</div><div class="mod-item" title="create/create_jetpack-forge-4.4.6.jar">create_jetpack-forge-4.4.6</div><div class="mod-item" title="create/create_jetpack_curios-1.2.0-forge-1.20.1.jar">create_jetpack_curios-1.2.0-forge-1.20.1</div><div class="mod-item" title="create/create_mobile_packages-1.20.1-0.6.0.jar">create_mobile_packages-1.20.1-0.6.0</div><div class="mod-item" title="create/create_ranged-1.1.0-forge-1.20.1.jar">create_ranged-1.1.0-forge-1.20.1</div><div class="mod-item" title="create/create_ratatouille-1.20.1-1.3.8.jar">create_ratatouille-1.20.1-1.3.8</div><div class="mod-item" title="create/create_simple_ore_doubling-1.6.0-forge-1.20.1.jar">create_simple_ore_doubling-1.6.0-forge-1.20.1</div><div class="mod-item" title="create/createaddition-1.20.1-1.3.3.jar">createaddition-1.20.1-1.3.3</div><div class="mod-item" title="create/createaddoncompatibility-0.2.4.jar">createaddoncompatibility-0.2.4</div><div class="mod-item" title="create/createdeco-2.0.3-1.20.1-forge.jar">createdeco-2.0.3-1.20.1-forge</div><div class="mod-item" title="create/createdieselgenerators-1.20.1-1.3.8.jar">createdieselgenerators-1.20.1-1.3.8</div><div class="mod-item" title="create/createnuclear-1.3.1-forge.jar">createnuclear-1.3.1-forge</div><div class="mod-item" title="create/createoreexcavation-1.20-1.6.5.jar">createoreexcavation-1.20-1.6.5</div><div class="mod-item" title="create/createornithopterglider-1.0.2-1.20.1.jar">createornithopterglider-1.0.2-1.20.1</div><div class="mod-item" title="create/createprism-1.20-1.0.1.jar">createprism-1.20-1.0.1</div><div class="mod-item" title="create/createpropulsion-0.3.1.jar">createpropulsion-0.3.1</div><div class="mod-item" title="create/createteleporters2.3-1.20.1.jar">createteleporters2.3-1.20.1</div><div class="mod-item" title="create/createterminal-1.20.1-1.0.3.jar">createterminal-1.20.1-1.0.3</div><div class="mod-item" title="create/createthreadedtrains-forge-1.20.1-1.0.0x.jar">createthreadedtrains-forge-1.20.1-1.0.0x</div><div class="mod-item" title="create/createtransmission-1.0.4+forge-create6-1.20.1.jar">createtransmission-1.0.4+forge-create6-1.20.1</div><div class="mod-item" title="create/createvinery-1.0.0.jar">createvinery-1.0.0</div><div class="mod-item" title="create/ethium_1.20.1_V4.jar">ethium_1.20.1_V4</div><div class="mod-item" title="create/extra_gauges-2.0.7.jar">extra_gauges-2.0.7</div><div class="mod-item" title="create/fluid-1.20-1.2.1.jar">fluid-1.20-1.2.1</div><div class="mod-item" title="create/fusion-1.2.12-forge-mc1.20.1.jar">fusion-1.2.12-forge-mc1.20.1</div><div class="mod-item" title="create/morelights-0.2.1.jar">morelights-0.2.1</div><div class="mod-item" title="create/petrolpark-1.20.1-1.4.25-all.jar">petrolpark-1.20.1-1.4.25-all</div><div class="mod-item" title="create/petrolsparts-1.20.1-1.2.3-all.jar">petrolsparts-1.20.1-1.2.3-all</div><div class="mod-item" title="create/protection_pixel-2.2.1-forge-1.20.1.jar">protection_pixel-2.2.1-forge-1.20.1</div><div class="mod-item" title="create/ratatouille_fried_delights-1.20.1-1.0.2.jar">ratatouille_fried_delights-1.20.1-1.0.2</div><div class="mod-item" title="create/tfmg-1.0.2f.jar">tfmg-1.0.2f</div><div class="mod-item" title="create/valkyrienskies-120-2.4.10.jar">valkyrienskies-120-2.4.10</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-kube')"><span class="cat-icon">📦</span><span>kube</span><span class="badge-sm">5</span></div><div class="category-body collapsed" id="core-kube"><div class="mod-item" title="kube/dg_js-1.20.1-1.2.5.jar">dg_js-1.20.1-1.2.5</div><div class="mod-item" title="kube/kubejs-create-forge-2001.3.0-build.8.jar">kubejs-create-forge-2001.3.0-build.8</div><div class="mod-item" title="kube/kubejs-forge-2001.6.5-build.16.jar">kubejs-forge-2001.6.5-build.16</div><div class="mod-item" title="kube/rhino-forge-2001.2.3-build.10.jar">rhino-forge-2001.2.3-build.10</div><div class="mod-item" title="kube/tfmgjs-1.20.1-1.3.2.jar">tfmgjs-1.20.1-1.3.2</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-resourcepacks')"><span class="cat-icon">🖼️</span><span>resourcepacks</span><span class="badge-sm">41</span></div><div class="category-body collapsed" id="core-resourcepacks"><div class="mod-item" title="resourcepacks/Doc's Whimscape Additions - Even More Delight.zip">Doc's Whimscape Additions - Even More Delight</div><div class="mod-item" title="resourcepacks/Enchanced Evil.zip">Enchanced Evil</div><div class="mod-item" title="resourcepacks/EnderEyes_1.21.9_v3.1.zip">EnderEyes_1.21.9_v3.1</div><div class="mod-item" title="resourcepacks/FA+Details-v2.1.zip">FA+Details-v2.1</div><div class="mod-item" title="resourcepacks/FA+Player-v1.0.zip">FA+Player-v1.0</div><div class="mod-item" title="resourcepacks/FA+Spiders-v2.1.zip">FA+Spiders-v2.1</div><div class="mod-item" title="resourcepacks/Flamin’ Horsev1.0.1.zip">Flamin’ Horsev1.0.1</div><div class="mod-item" title="resourcepacks/Fresh Lanostry Foxes.zip">Fresh Lanostry Foxes</div><div class="mod-item" title="resourcepacks/FreshAnimations_v1.10.3.zip">FreshAnimations_v1.10.3</div><div class="mod-item" title="resourcepacks/Let's Do Reimagined v1.3.zip">Let's Do Reimagined v1.3</div><div class="mod-item" title="resourcepacks/MMV+FA+Details-v2.0.0.zip">MMV+FA+Details-v2.0.0</div><div class="mod-item" title="resourcepacks/Mizuno's x Letsdo Bakery.zip">Mizuno's x Letsdo Bakery</div><div class="mod-item" title="resourcepacks/Mizuno's x Letsdo Farm and Charm.zip">Mizuno's x Letsdo Farm and Charm</div><div class="mod-item" title="resourcepacks/Mizuno's x [Let's Do] Vinery.zip">Mizuno's x [Let's Do] Vinery</div><div class="mod-item" title="resourcepacks/More Modded GUI Revision Dark BB.zip">More Modded GUI Revision Dark BB</div><div class="mod-item" title="resourcepacks/Quark Programmer Art.zip">Quark Programmer Art</div><div class="mod-item" title="resourcepacks/SE Vanilla Consistency 1.20.1.zip">SE Vanilla Consistency 1.20.1</div><div class="mod-item" title="resourcepacks/Visual Titles 1.3.zip">Visual Titles 1.3</div><div class="mod-item" title="resourcepacks/WhimScape Emissive Path 1.20.2-1.21.11.zip">WhimScape Emissive Path 1.20.2-1.21.11</div><div class="mod-item" title="resourcepacks/Whimscape BiomesWeveGone.zip">Whimscape BiomesWeveGone</div><div class="mod-item" title="resourcepacks/Whimscape Recipe Viewers Addon.zip">Whimscape Recipe Viewers Addon</div><div class="mod-item" title="resourcepacks/Whimscape x Chest Search Bar.zip">Whimscape x Chest Search Bar</div><div class="mod-item" title="resourcepacks/Whimscape x Exploration v2.0.zip">Whimscape x Exploration v2.0</div><div class="mod-item" title="resourcepacks/Whimscape x TrashSlot 1.2.zip">Whimscape x TrashSlot 1.2</div><div class="mod-item" title="resourcepacks/Whimscape x Trinkets 1.3.zip">Whimscape x Trinkets 1.3</div><div class="mod-item" title="resourcepacks/Whimscape-x-Create-1.21.1_r11.zip">Whimscape-x-Create-1.21.1_r11</div><div class="mod-item" title="resourcepacks/Whimscape_1.20-1.20.1_r7.zip">Whimscape_1.20-1.20.1_r7</div><div class="mod-item" title="resourcepacks/Whimscape_Leaves_1.20-1.21.11_r1.zip">Whimscape_Leaves_1.20-1.21.11_r1</div><div class="mod-item" title="resourcepacks/Whimscape_x_FreshAnimations_1.20-1.21.11_r2.zip">Whimscape_x_FreshAnimations_1.20-1.21.11_r2</div><div class="mod-item" title="resourcepacks/Whimscape_x_Overflowing_Bars_1.21.zip">Whimscape_x_Overflowing_Bars_1.21</div><div class="mod-item" title="resourcepacks/[1.20.0 - 1.20.1] GUI Revision Dark.zip">[1.20.0 - 1.20.1] GUI Revision Dark</div><div class="mod-item" title="resourcepacks/bushy-grapevines-1-0-0.zip">bushy-grapevines-1-0-0</div><div class="mod-item" title="resourcepacks/crops-3d(2).zip">crops-3d(2)</div><div class="mod-item" title="resourcepacks/cubic-sun-moon-v1.8.2a.zip">cubic-sun-moon-v1.8.2a</div><div class="mod-item" title="resourcepacks/lanostry_foxes.zip">lanostry_foxes</div><div class="mod-item" title="resourcepacks/tfmg Diesel Generators.zip">tfmg Diesel Generators</div><div class="mod-item" title="resourcepacks/v2_[Darkmode]Enhanched_Travelers_Backpack_GUI.zip">v2_[Darkmode]Enhanched_Travelers_Backpack_GUI</div><div class="mod-item" title="resourcepacks/whimscape_unofficial_additions_1.0.7.zip">whimscape_unofficial_additions_1.0.7</div><div class="mod-item" title="resourcepacks/§a§lVocal Villagers §r§71.2.zip">§a§lVocal Villagers §r§71.2</div><div class="mod-item" title="resourcepacks/§d§lDimensionRed's Alchemy [1.20 - 1.21] v.1.3.zip">§d§lDimensionRed's Alchemy [1.20 - 1.21] v.1.3</div><div class="mod-item" title="resourcepacks/§lJEI-1.19.3~1.20.4-Mechanical-equation-GUI-v0.1.0.zip">§lJEI-1.19.3~1.20.4-Mechanical-equation-GUI-v0.1.0</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('core-shaderpacks')"><span class="cat-icon">🌈</span><span>shaderpacks</span><span class="badge-sm">20</span></div><div class="category-body collapsed" id="core-shaderpacks"><div class="mod-item" title="shaderpacks/BSL_v8.4.zip">BSL_v8.4</div><div class="mod-item" title="shaderpacks/Bliss_v2.1.2_(Chocapic13_Shaders_edit) + Clrwl_1.0.4.zip">Bliss_v2.1.2_(Chocapic13_Shaders_edit) + Clrwl_1.0.4</div><div class="mod-item" title="shaderpacks/ComplementaryReimagined_r5.7.1.zip">ComplementaryReimagined_r5.7.1</div><div class="mod-item" title="shaderpacks/ComplementaryUnbound_r5.7.1.zip">ComplementaryUnbound_r5.7.1</div><div class="mod-item" title="shaderpacks/EclipseShaders.zip">EclipseShaders</div><div class="mod-item" title="shaderpacks/Pastel-Shaders-Universal-v1.200.zip">Pastel-Shaders-Universal-v1.200</div><div class="mod-item" title="shaderpacks/SEUS-Renewed-v1.0.1.zip">SEUS-Renewed-v1.0.1</div><div class="mod-item" title="shaderpacks/Sildur's Vibrant Shaders v1.541 Medium.zip">Sildur's Vibrant Shaders v1.541 Medium</div><div class="mod-item" title="shaderpacks/Sildurs Vibrant Shaders v1.20 Extreme-VL.zip">Sildurs Vibrant Shaders v1.20 Extreme-VL</div><div class="mod-item" title="shaderpacks/Sildurs Vibrant Shaders v1.20 High.zip">Sildurs Vibrant Shaders v1.20 High</div><div class="mod-item" title="shaderpacks/Solas Shader V3.3.zip">Solas Shader V3.3</div><div class="mod-item" title="shaderpacks/VibrantVisualsForJava_0.0.1_1.21.4.zip">VibrantVisualsForJava_0.0.1_1.21.4</div><div class="mod-item" title="shaderpacks/Visual-Vibrance-v0.3.5a.zip">Visual-Vibrance-v0.3.5a</div><div class="mod-item" title="shaderpacks/YoFPS Low (Chocapic13 Edit).zip">YoFPS Low (Chocapic13 Edit)</div><div class="mod-item" title="shaderpacks/YoFPS+High+(Chocapic13+Edit).zip">YoFPS+High+(Chocapic13+Edit)</div><div class="mod-item" title="shaderpacks/YoFPS+Low+(Chocapic13+Edit).zip">YoFPS+Low+(Chocapic13+Edit)</div><div class="mod-item" title="shaderpacks/photon_v1.2a.zip">photon_v1.2a</div><div class="mod-item" title="shaderpacks/superDuperVanilla.zip">superDuperVanilla</div><div class="mod-item" title="shaderpacks/§d§lEclipse§e§lLite.zip">§d§lEclipse§e§lLite</div><div class="mod-item" title="shaderpacks/春 v2 251221.zip">春 v2 251221</div></div></div></div>
+        <div class="column-section"><h2 class="section-title">☁️ Server-Side <span class="badge-count">56</span></h2><div class="category-card"><div class="category-header" onclick="toggleId('section-☁️server-side-dungeon')"><span class="cat-icon">🏰</span><span>dungeon</span><span class="badge-sm">13</span></div><div class="category-body collapsed" id="section-☁️server-side-dungeon"><div class="mod-item" title=".server/dungeon/DungeonsAriseSevenSeas-1.19.2-1.0.2-forge.jar">DungeonsAriseSevenSeas-1.19.2-1.0.2-forge</div><div class="mod-item" title=".server/dungeon/Epic Witch Huts v1.1.0 (1.20+).jar">Epic Witch Huts v1.1.0 (1.20+)</div><div class="mod-item" title=".server/dungeon/YungsBetterEndIsland-1.20-Forge-2.0.6.jar">YungsBetterEndIsland-1.20-Forge-2.0.6</div><div class="mod-item" title=".server/dungeon/YungsBetterNetherFortresses-1.20-Forge-2.0.6.jar">YungsBetterNetherFortresses-1.20-Forge-2.0.6</div><div class="mod-item" title=".server/dungeon/awesomedungeonend-forge-1.20.1-3.1.1.jar">awesomedungeonend-forge-1.20.1-3.1.1</div><div class="mod-item" title=".server/dungeon/awesomedungeonnether-forge-1.20.1-3.1.1.jar">awesomedungeonnether-forge-1.20.1-3.1.1</div><div class="mod-item" title=".server/dungeon/dungeons-and-taverns-ancient-city-overhaul-1 [Forge].jar">dungeons-and-taverns-ancient-city-overhaul-1 [Forge]</div><div class="mod-item" title=".server/dungeon/end_villager_outpost-1.0.0-forge-1.20.1.jar">end_villager_outpost-1.0.0-forge-1.20.1</div><div class="mod-item" title=".server/dungeon/epic-structures-villages-1.2.0.jar">epic-structures-villages-1.2.0</div><div class="mod-item" title=".server/dungeon/grim-kingdoms-lost-structures-ruins-v1.0.0.jar">grim-kingdoms-lost-structures-ruins-v1.0.0</div><div class="mod-item" title=".server/dungeon/libraryferret-forge-1.20.1-4.0.0.jar">libraryferret-forge-1.20.1-4.0.0</div><div class="mod-item" title=".server/dungeon/lukis-woodland-mansions-v.1.0.jar">lukis-woodland-mansions-v.1.0</div><div class="mod-item" title=".server/dungeon/structure_gel-1.20.1-2.16.2.jar">structure_gel-1.20.1-2.16.2</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-☁️server-side-quality')"><span class="cat-icon">🎨</span><span>quality</span><span class="badge-sm">11</span></div><div class="category-body collapsed" id="section-☁️server-side-quality"><div class="mod-item" title=".server/quality/Boss Music Mod 1.20.x v1.2.1.jar">Boss Music Mod 1.20.x v1.2.1</div><div class="mod-item" title=".server/quality/Mini-boss Boss Bars 1.20.1 1.0.142.jar">Mini-boss Boss Bars 1.20.1 1.0.142</div><div class="mod-item" title=".server/quality/almostunified-forge-1.20.1-0.11.0.jar">almostunified-forge-1.20.1-0.11.0</div><div class="mod-item" title=".server/quality/create-renewable-egapples-1.0.0.jar">create-renewable-egapples-1.0.0</div><div class="mod-item" title=".server/quality/create-renewable-netherite-2.0.0.jar">create-renewable-netherite-2.0.0</div><div class="mod-item" title=".server/quality/doubledoors-1.20.1-7.2.jar">doubledoors-1.20.1-7.2</div><div class="mod-item" title=".server/quality/edf-remastered-4.3.jar">edf-remastered-4.3</div><div class="mod-item" title=".server/quality/hero-proof-5.2.1.jar">hero-proof-5.2.1</div><div class="mod-item" title=".server/quality/inventorytotem-1.20.1-3.4.jar">inventorytotem-1.20.1-3.4</div><div class="mod-item" title=".server/quality/nocreeperexplosion-1.20.x-1.0.1.jar">nocreeperexplosion-1.20.x-1.0.1</div><div class="mod-item" title=".server/quality/treeharvester-1.20.1-9.1.jar">treeharvester-1.20.1-9.1</div></div></div><div class="category-card"><div class="category-header" onclick="toggleId('section-☁️server-side-rendimiento')"><span class="cat-icon">⚡</span><span>rendimiento</span><span class="badge-sm">32</span></div><div class="category-body collapsed" id="section-☁️server-side-rendimiento"><div class="mod-item" title=".server/rendimiento/Chunky-1.3.146.jar">Chunky-1.3.146</div><div class="mod-item" title=".server/rendimiento/Clumps-forge-1.20.1-12.0.0.4.jar">Clumps-forge-1.20.1-12.0.0.4</div><div class="mod-item" title=".server/rendimiento/EmptyNbtFix-1.20.1-1.0.0.jar">EmptyNbtFix-1.20.1-1.0.0</div><div class="mod-item" title=".server/rendimiento/FastFurnace-1.20.1-8.0.2.jar">FastFurnace-1.20.1-8.0.2</div><div class="mod-item" title=".server/rendimiento/FastWorkbench-1.20.1-8.0.4.jar">FastWorkbench-1.20.1-8.0.4</div><div class="mod-item" title=".server/rendimiento/Icterine-forge-1.20.0-1-1.3.0.jar">Icterine-forge-1.20.0-1-1.3.0</div><div class="mod-item" title=".server/rendimiento/LeavesBeGone-v8.0.0-1.20.1-Forge.jar">LeavesBeGone-v8.0.0-1.20.1-Forge</div><div class="mod-item" title=".server/rendimiento/Necronomicon-Forge-1.6.0+1.20.1.jar">Necronomicon-Forge-1.6.0+1.20.1</div><div class="mod-item" title=".server/rendimiento/Not Enough Recipe Book-FORGE-0.4.1+1.20.1.jar">Not Enough Recipe Book-FORGE-0.4.1+1.20.1</div><div class="mod-item" title=".server/rendimiento/Placebo-1.20.1-8.6.3.jar">Placebo-1.20.1-8.6.3</div><div class="mod-item" title=".server/rendimiento/SpawnerControl-forge-1.20.[1-4]-v1.3.jar">SpawnerControl-forge-1.20.[1-4]-v1.3</div><div class="mod-item" title=".server/rendimiento/YouShallNotSpawn-forge-1.20.x-2.0.2.jar">YouShallNotSpawn-forge-1.20.x-2.0.2</div><div class="mod-item" title=".server/rendimiento/almanac-1.20.x-forge-1.0.2.jar">almanac-1.20.x-forge-1.0.2</div><div class="mod-item" title=".server/rendimiento/canary-mc1.20.1-0.3.3.jar">canary-mc1.20.1-0.3.3</div><div class="mod-item" title=".server/rendimiento/createstuffadditionsfix-forge-1.20.1-0.0.0.1.jar">createstuffadditionsfix-forge-1.20.1-0.0.0.1</div><div class="mod-item" title=".server/rendimiento/darktimer-forge-1.20.1-1.0.9.jar">darktimer-forge-1.20.1-1.0.9</div><div class="mod-item" title=".server/rendimiento/doespotatotick-1.20.1-5.5.5.jar">doespotatotick-1.20.1-5.5.5</div><div class="mod-item" title=".server/rendimiento/duplicationless-1.20.1-1.1.5.jar">duplicationless-1.20.1-1.1.5</div><div class="mod-item" title=".server/rendimiento/ferritecore-6.0.1-forge.jar">ferritecore-6.0.1-forge</div><div class="mod-item" title=".server/rendimiento/fluidium-1.20.1-1.4.0.jar">fluidium-1.20.1-1.4.0</div><div class="mod-item" title=".server/rendimiento/getittogetherdrops-forge-1.20-1.3.jar">getittogetherdrops-forge-1.20-1.3</div><div class="mod-item" title=".server/rendimiento/gnetum-2.4.0.jar">gnetum-2.4.0</div><div class="mod-item" title=".server/rendimiento/immersive_optimization-forge-1.20.1-0.1.0.jar">immersive_optimization-forge-1.20.1-0.1.0</div><div class="mod-item" title=".server/rendimiento/item_split_bug_fix-1.20.1-1.4.jar">item_split_bug_fix-1.20.1-1.4</div><div class="mod-item" title=".server/rendimiento/letmedespawn-1.20.x-forge-1.5.0.jar">letmedespawn-1.20.x-forge-1.5.0</div><div class="mod-item" title=".server/rendimiento/memoryleakfix-forge-1.17+-1.1.5.jar">memoryleakfix-forge-1.17+-1.1.5</div><div class="mod-item" title=".server/rendimiento/mobtimizations-forge-1.20.1-1.0.0.jar">mobtimizations-forge-1.20.1-1.0.0</div><div class="mod-item" title=".server/rendimiento/modernfix-forge-5.25.2+mc1.20.1.jar">modernfix-forge-5.25.2+mc1.20.1</div><div class="mod-item" title=".server/rendimiento/profiler-1.0.jar">profiler-1.0</div><div class="mod-item" title=".server/rendimiento/redirected-forge-1.0.0-1.20.1.jar">redirected-forge-1.0.0-1.20.1</div><div class="mod-item" title=".server/rendimiento/structure_layout_optimizer-forge-1.0.11.jar">structure_layout_optimizer-forge-1.0.11</div><div class="mod-item" title=".server/rendimiento/txnilib-forge-1.0.24-1.20.1.jar">txnilib-forge-1.0.24-1.20.1</div></div></div></div>
     </div>
 
     <div class="bottom-area">
-        <div>
-            <h3 class="panel-title">🖼️ Resource Packs (39)</h3>
-            <div class="asset-grid"><div class="mod-item" title="resourcepacks/Doc's Whimscape Additions - Even More Delight.zip">Doc's Whimscape Additions -
-                    Even More Delight</div><div class="mod-item" title="resourcepacks/Enchanced Evil.zip">Enchanced Evil</div><div class="mod-item" title="resourcepacks/EnderEyes_1.21.9_v3.1.zip">EnderEyes_1.21.9_v3.1</div><div class="mod-item" title="resourcepacks/FA+Details-v2.1.zip">FA+Details-v2.1</div><div class="mod-item" title="resourcepacks/FA+Player-v1.0.zip">FA+Player-v1.0</div><div class="mod-item" title="resourcepacks/FA+Spiders-v2.1.zip">FA+Spiders-v2.1</div><div class="mod-item" title="resourcepacks/Flamin’ Horsev1.0.1.zip">Flamin’ Horsev1.0.1</div><div class="mod-item" title="resourcepacks/Fresh Lanostry Foxes.zip">Fresh Lanostry Foxes</div><div class="mod-item" title="resourcepacks/FreshAnimations_v1.10.3.zip">FreshAnimations_v1.10.3</div><div class="mod-item" title="resourcepacks/Let's Do Reimagined v1.3.zip">Let's Do Reimagined v1.3</div><div class="mod-item" title="resourcepacks/MMV+FA+Details-v2.0.0.zip">MMV+FA+Details-v2.0.0</div><div class="mod-item" title="resourcepacks/Mizuno's x Letsdo Bakery.zip">Mizuno's x Letsdo Bakery</div><div class="mod-item" title="resourcepacks/Mizuno's x Letsdo Farm and Charm.zip">Mizuno's x Letsdo Farm and Charm</div><div class="mod-item" title="resourcepacks/Mizuno's x [Let's Do] Vinery.zip">Mizuno's x [Let's Do] Vinery</div><div class="mod-item" title="resourcepacks/More Modded GUI Revision Dark BB.zip">More Modded GUI Revision Dark BB</div><div class="mod-item" title="resourcepacks/Quark Programmer Art.zip">Quark Programmer Art</div><div class="mod-item" title="resourcepacks/SE Vanilla Consistency 1.20.1.zip">SE Vanilla Consistency 1.20.1</div><div class="mod-item" title="resourcepacks/Visual Titles 1.2.1.zip">Visual Titles 1.2.1</div><div class="mod-item" title="resourcepacks/WhimScape Emissive Path 1.20.2-1.21.11.zip">WhimScape Emissive Path
-                    1.20.2-1.21.11</div><div class="mod-item" title="resourcepacks/Whimscape BiomesWeveGone.zip">Whimscape BiomesWeveGone</div><div class="mod-item" title="resourcepacks/Whimscape Recipe Viewers Addon.zip">Whimscape Recipe Viewers Addon</div><div class="mod-item" title="resourcepacks/Whimscape x Chest Search Bar.zip">Whimscape x Chest Search Bar</div><div class="mod-item" title="resourcepacks/Whimscape x Exploration v2.0.zip">Whimscape x Exploration v2.0</div><div class="mod-item" title="resourcepacks/Whimscape x TrashSlot 1.2.zip">Whimscape x TrashSlot 1.2</div><div class="mod-item" title="resourcepacks/Whimscape x Trinkets 1.3.zip">Whimscape x Trinkets 1.3</div><div class="mod-item" title="resourcepacks/Whimscape-x-Create-1.21.1_r11.zip">Whimscape-x-Create-1.21.1_r11</div><div class="mod-item" title="resourcepacks/Whimscape_1.20-1.20.1_r7.zip">Whimscape_1.20-1.20.1_r7</div><div class="mod-item" title="resourcepacks/Whimscape_Leaves_1.20-1.21.11_r1.zip">Whimscape_Leaves_1.20-1.21.11_r1</div><div class="mod-item" title="resourcepacks/Whimscape_x_FreshAnimations_1.20-1.21.11_r2.zip">Whimscape_x_FreshAnimations_1.20-1.21.11_r2</div><div class="mod-item" title="resourcepacks/Whimscape_x_Overflowing_Bars_1.21.zip">Whimscape_x_Overflowing_Bars_1.21</div><div class="mod-item" title="resourcepacks/[1.20.0 - 1.20.1] GUI Revision Dark.zip">[1.20.0 - 1.20.1] GUI Revision
-                    Dark</div><div class="mod-item" title="resourcepacks/bushy-grapevines-1-0-0.zip">bushy-grapevines-1-0-0</div><div class="mod-item" title="resourcepacks/crops-3d(2).zip">crops-3d(2)</div><div class="mod-item" title="resourcepacks/cubic-sun-moon-v1.8.2a.zip">cubic-sun-moon-v1.8.2a</div><div class="mod-item" title="resourcepacks/lanostry_foxes.zip">lanostry_foxes</div><div class="mod-item" title="resourcepacks/tfmg Diesel Generators.zip">tfmg Diesel Generators</div><div class="mod-item" title="resourcepacks/whimscape_unofficial_additions_1.0.7.zip">whimscape_unofficial_additions_1.0.7</div><div class="mod-item" title="resourcepacks/§d§lDimensionRed's Alchemy [1.20 - 1.21] v.1.3.zip">§d§lDimensionRed's Alchemy
-                    [1.20 - 1.21] v.1.3</div><div class="mod-item" title="resourcepacks/§lJEI-1.19.3~1.20.4-Mechanical-equation-GUI-v0.1.0.zip">§lJEI-1.19.3~1.20.4-Mechanical-equation-GUI-v0.1.0</div>
-            </div>
+        <div class="asset-section">
+            <h3 class="panel-title">🖼️ Resource Packs (41)</h3>
+            <div class="asset-grid">
+    <div class="asset-card" title="resourcepacks/Doc's Whimscape Additions - Even More Delight.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Doc's Whimscape Additions - Even More Delight</span>
+            <span class="asset-path">resourcepacks</span>
         </div>
-        <div>
-            <h3 class="panel-title">🌈 Shader Packs (16)</h3>
-            <div class="asset-grid"><div class="mod-item" title="shaderpacks/BSL_v8.4.02.2.zip">BSL_v8.4.02.2</div><div class="mod-item" title="shaderpacks/Bliss_v2.1.2_(Chocapic13_Shaders_edit) + Clrwl_1.0.4.zip">Bliss_v2.1.2_(Chocapic13_Shaders_edit)
-                    + Clrwl_1.0.4</div><div class="mod-item" title="shaderpacks/ComplementaryReimagined_r5.7.1.zip">ComplementaryReimagined_r5.7.1</div><div class="mod-item" title="shaderpacks/ComplementaryUnbound_r5.7.1.zip">ComplementaryUnbound_r5.7.1</div><div class="mod-item" title="shaderpacks/Eclipse-Shader-Unstable.zip">Eclipse-Shader-Unstable</div><div class="mod-item" title="shaderpacks/EclipseShaders.zip">EclipseShaders</div><div class="mod-item" title="shaderpacks/Pastel-Shaders-Universal-v1.200.zip">Pastel-Shaders-Universal-v1.200</div><div class="mod-item" title="shaderpacks/SEUS-Renewed-v1.0.1.zip">SEUS-Renewed-v1.0.1</div><div class="mod-item" title="shaderpacks/Sildurs Vibrant Shaders v1.20 Extreme-VL.zip">Sildurs Vibrant Shaders v1.20
-                    Extreme-VL</div><div class="mod-item" title="shaderpacks/Sildurs Vibrant Shaders v1.20 High.zip">Sildurs Vibrant Shaders
-                    v1.20 High</div><div class="mod-item" title="shaderpacks/Solas Shader V3.3.zip">Solas Shader V3.3</div><div class="mod-item" title="shaderpacks/VibrantVisualsForJava_0.0.1_1.21.4.zip">VibrantVisualsForJava_0.0.1_1.21.4</div><div class="mod-item" title="shaderpacks/Visual-Vibrance-v0.3.4a.zip">Visual-Vibrance-v0.3.4a</div><div class="mod-item" title="shaderpacks/YoFPS Low (Chocapic13 Edit).zip">YoFPS Low (Chocapic13 Edit)</div><div class="mod-item" title="shaderpacks/superDuperVanilla.zip">superDuperVanilla</div><div class="mod-item" title="shaderpacks/春 v2 251221.zip">春 v2 251221</div></div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Enchanced Evil.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Enchanced Evil</span>
+            <span class="asset-path">resourcepacks</span>
         </div>
-        <div>
+    </div>
+    <div class="asset-card" title="resourcepacks/EnderEyes_1.21.9_v3.1.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">EnderEyes_1.21.9_v3.1</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/FA+Details-v2.1.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">FA+Details-v2.1</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/FA+Player-v1.0.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">FA+Player-v1.0</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/FA+Spiders-v2.1.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">FA+Spiders-v2.1</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Flamin’ Horsev1.0.1.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Flamin’ Horsev1.0.1</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Fresh Lanostry Foxes.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Fresh Lanostry Foxes</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/FreshAnimations_v1.10.3.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">FreshAnimations_v1.10.3</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Let's Do Reimagined v1.3.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Let's Do Reimagined v1.3</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/MMV+FA+Details-v2.0.0.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">MMV+FA+Details-v2.0.0</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Mizuno's x Letsdo Bakery.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Mizuno's x Letsdo Bakery</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Mizuno's x Letsdo Farm and Charm.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Mizuno's x Letsdo Farm and Charm</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Mizuno's x [Let's Do] Vinery.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Mizuno's x [Let's Do] Vinery</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/More Modded GUI Revision Dark BB.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">More Modded GUI Revision Dark BB</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Quark Programmer Art.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Quark Programmer Art</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/SE Vanilla Consistency 1.20.1.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">SE Vanilla Consistency 1.20.1</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Visual Titles 1.3.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Visual Titles 1.3</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/WhimScape Emissive Path 1.20.2-1.21.11.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">WhimScape Emissive Path 1.20.2-1.21.11</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape BiomesWeveGone.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape BiomesWeveGone</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape Recipe Viewers Addon.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape Recipe Viewers Addon</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape x Chest Search Bar.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape x Chest Search Bar</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape x Exploration v2.0.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape x Exploration v2.0</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape x TrashSlot 1.2.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape x TrashSlot 1.2</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape x Trinkets 1.3.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape x Trinkets 1.3</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape-x-Create-1.21.1_r11.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape-x-Create-1.21.1_r11</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape_1.20-1.20.1_r7.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape_1.20-1.20.1_r7</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape_Leaves_1.20-1.21.11_r1.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape_Leaves_1.20-1.21.11_r1</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape_x_FreshAnimations_1.20-1.21.11_r2.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape_x_FreshAnimations_1.20-1.21.11_r2</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/Whimscape_x_Overflowing_Bars_1.21.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">Whimscape_x_Overflowing_Bars_1.21</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/[1.20.0 - 1.20.1] GUI Revision Dark.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">[1.20.0 - 1.20.1] GUI Revision Dark</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/bushy-grapevines-1-0-0.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">bushy-grapevines-1-0-0</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/crops-3d(2).zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">crops-3d(2)</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/cubic-sun-moon-v1.8.2a.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">cubic-sun-moon-v1.8.2a</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/lanostry_foxes.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">lanostry_foxes</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/tfmg Diesel Generators.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">tfmg Diesel Generators</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/v2_[Darkmode]Enhanched_Travelers_Backpack_GUI.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">v2_[Darkmode]Enhanched_Travelers_Backpack_GUI</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/whimscape_unofficial_additions_1.0.7.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">whimscape_unofficial_additions_1.0.7</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/§a§lVocal Villagers §r§71.2.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">§a§lVocal Villagers §r§71.2</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/§d§lDimensionRed's Alchemy [1.20 - 1.21] v.1.3.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">§d§lDimensionRed's Alchemy [1.20 - 1.21] v.1.3</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="resourcepacks/§lJEI-1.19.3~1.20.4-Mechanical-equation-GUI-v0.1.0.zip" style="">
+        <div class="asset-icon">🖼️</div>
+        <div class="asset-info">
+            <span class="asset-name">§lJEI-1.19.3~1.20.4-Mechanical-equation-GUI-v0.1.0</span>
+            <span class="asset-path">resourcepacks</span>
+        </div>
+    </div></div>
+        </div>
+        <div class="asset-section">
+            <h3 class="panel-title">🌈 Shader Packs (20)</h3>
+            <div class="asset-grid">
+    <div class="asset-card" title="shaderpacks/BSL_v8.4.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">BSL_v8.4</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Bliss_v2.1.2_(Chocapic13_Shaders_edit) + Clrwl_1.0.4.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Bliss_v2.1.2_(Chocapic13_Shaders_edit) + Clrwl_1.0.4</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/ComplementaryReimagined_r5.7.1.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">ComplementaryReimagined_r5.7.1</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/ComplementaryUnbound_r5.7.1.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">ComplementaryUnbound_r5.7.1</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/EclipseShaders.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">EclipseShaders</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Pastel-Shaders-Universal-v1.200.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Pastel-Shaders-Universal-v1.200</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/SEUS-Renewed-v1.0.1.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">SEUS-Renewed-v1.0.1</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Sildur's Vibrant Shaders v1.541 Medium.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Sildur's Vibrant Shaders v1.541 Medium</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Sildurs Vibrant Shaders v1.20 Extreme-VL.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Sildurs Vibrant Shaders v1.20 Extreme-VL</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Sildurs Vibrant Shaders v1.20 High.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Sildurs Vibrant Shaders v1.20 High</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Solas Shader V3.3.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Solas Shader V3.3</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/VibrantVisualsForJava_0.0.1_1.21.4.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">VibrantVisualsForJava_0.0.1_1.21.4</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/Visual-Vibrance-v0.3.5a.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">Visual-Vibrance-v0.3.5a</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/YoFPS Low (Chocapic13 Edit).zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">YoFPS Low (Chocapic13 Edit)</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/YoFPS+High+(Chocapic13+Edit).zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">YoFPS+High+(Chocapic13+Edit)</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/YoFPS+Low+(Chocapic13+Edit).zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">YoFPS+Low+(Chocapic13+Edit)</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/photon_v1.2a.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">photon_v1.2a</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/superDuperVanilla.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">superDuperVanilla</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/§d§lEclipse§e§lLite.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">§d§lEclipse§e§lLite</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="shaderpacks/春 v2 251221.zip" style="">
+        <div class="asset-icon">🌈</div>
+        <div class="asset-info">
+            <span class="asset-name">春 v2 251221</span>
+            <span class="asset-path">shaderpacks</span>
+        </div>
+    </div></div>
+        </div>
+        <div class="asset-section">
             <h3 class="panel-title">⚙️ Custom Configs (5)</h3>
-            <div class="asset-grid"><div class="mod-item" title="config/defaultoptions">defaultoptions</div><div class="mod-item" title="config/drippyloadingscreen">drippyloadingscreen</div><div class="mod-item" title="config/fancymenu">fancymenu</div><div class="mod-item" title="config/fancytoasts">fancytoasts</div><div class="mod-item" title="config/resourcepackoverrides.json">resourcepackoverrides.json</div></div>
+            <div class="asset-grid">
+    <div class="asset-card" title="config/defaultoptions" style="">
+        <div class="asset-icon">⚙️</div>
+        <div class="asset-info">
+            <span class="asset-name">defaultoptions</span>
+            <span class="asset-path">config</span>
         </div>
-        <div>
+    </div>
+    <div class="asset-card" title="config/drippyloadingscreen" style="">
+        <div class="asset-icon">⚙️</div>
+        <div class="asset-info">
+            <span class="asset-name">drippyloadingscreen</span>
+            <span class="asset-path">config</span>
+        </div>
+    </div>
+    <div class="asset-card" title="config/fancymenu" style="">
+        <div class="asset-icon">⚙️</div>
+        <div class="asset-info">
+            <span class="asset-name">fancymenu</span>
+            <span class="asset-path">config</span>
+        </div>
+    </div>
+    <div class="asset-card" title="config/fancytoasts" style="">
+        <div class="asset-icon">⚙️</div>
+        <div class="asset-info">
+            <span class="asset-name">fancytoasts</span>
+            <span class="asset-path">config</span>
+        </div>
+    </div>
+    <div class="asset-card" title="config/resourcepackoverrides.json" style="">
+        <div class="asset-icon">⚙️</div>
+        <div class="asset-info">
+            <span class="asset-name">resourcepackoverrides.json</span>
+            <span class="asset-path">config</span>
+        </div>
+    </div></div>
+        </div>
+        <div class="asset-section">
             <h3 class="panel-title">📚 Libraries (26)</h3>
-            <div class="asset-grid"><div class="mod-item" title="Librerias/OctoLib-FORGE-0.5.0.1+1.20.1.jar">OctoLib-FORGE-0.5.0.1+1.20.1</div><div class="mod-item" title="Librerias/Patchouli-1.20.1-84.1-FORGE.jar">Patchouli-1.20.1-84.1-FORGE</div><div class="mod-item" title="Librerias/PuzzlesLib-v8.1.33-1.20.1-Forge.jar">PuzzlesLib-v8.1.33-1.20.1-Forge</div><div class="mod-item" title="Librerias/YungsApi-1.20-Forge-4.0.6.jar">YungsApi-1.20-Forge-4.0.6</div><div class="mod-item" title="Librerias/architectury-9.2.14-forge.jar">architectury-9.2.14-forge</div><div class="mod-item" title="Librerias/automodpack-mc1.20.1-forge-4.0.5.jar">automodpack-mc1.20.1-forge-4.0.5</div><div class="mod-item" title="Librerias/azurelib-neo-1.20.1-3.1.3.jar">azurelib-neo-1.20.1-3.1.3</div><div class="mod-item" title="Librerias/balm-forge-1.20.1-7.3.37-all.jar">balm-forge-1.20.1-7.3.37-all</div><div class="mod-item" title="Librerias/caelus-forge-3.2.0+1.20.1.jar">caelus-forge-3.2.0+1.20.1</div><div class="mod-item" title="Librerias/cloth-config-11.1.136-forge.jar">cloth-config-11.1.136-forge</div><div class="mod-item" title="Librerias/collective-1.20.1-8.12.jar">collective-1.20.1-8.12</div><div class="mod-item" title="Librerias/coroutil-forge-1.20.1-1.3.7.jar">coroutil-forge-1.20.1-1.3.7</div><div class="mod-item" title="Librerias/curios-forge-5.14.1+1.20.1.jar">curios-forge-5.14.1+1.20.1</div><div class="mod-item" title="Librerias/fragmentum-forge-1.20.1-1.1.0.jar">fragmentum-forge-1.20.1-1.1.0</div><div class="mod-item" title="Librerias/framework-forge-1.20.1-0.8.0.jar">framework-forge-1.20.1-0.8.0</div><div class="mod-item" title="Librerias/fzzy_config-0.7.4+1.20.1+forge.jar">fzzy_config-0.7.4+1.20.1+forge</div><div class="mod-item" title="Librerias/geckolib-forge-1.20.1-4.8.2.jar">geckolib-forge-1.20.1-4.8.2</div><div class="mod-item" title="Librerias/knightlib-forge-1.20.1-1.4.3.jar">knightlib-forge-1.20.1-1.4.3</div><div class="mod-item" title="Librerias/kotlinforforge-4.12.0-all.jar">kotlinforforge-4.12.0-all</div><div class="mod-item" title="Librerias/moonlight-1.20-2.16.16-forge.jar">moonlight-1.20-2.16.16-forge</div><div class="mod-item" title="Librerias/owo-lib-0.11.2+1.20.jar">owo-lib-0.11.2+1.20</div><div class="mod-item" title="Librerias/player-animation-lib-forge-1.0.2-rc1+1.20.jar">player-animation-lib-forge-1.0.2-rc1+1.20</div><div class="mod-item" title="Librerias/resourcefulconfig-forge-1.20.1-2.1.3.jar">resourcefulconfig-forge-1.20.1-2.1.3</div><div class="mod-item" title="Librerias/resourcefullib-forge-1.20.1-2.1.29.jar">resourcefullib-forge-1.20.1-2.1.29</div><div class="mod-item" title="Librerias/spark-1.10.53-forge.jar">spark-1.10.53-forge</div><div class="mod-item" title="Librerias/yet_another_config_lib_v3-3.6.6+1.20.1-forge.jar">yet_another_config_lib_v3-3.6.6+1.20.1-forge</div>
-            </div>
+            <div class="asset-grid">
+    <div class="asset-card" title="Librerias/OctoLib-FORGE-0.5.0.1+1.20.1.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">OctoLib-FORGE-0.5.0.1+1.20.1</span>
+            <span class="asset-path">Librerias</span>
         </div>
-        <div>
-            <h3 class="panel-title">📦 Datapacks (13)</h3>
-            <div class="asset-grid"><div class="mod-item" title="datapacks/Advancement-Count.zip">Advancement-Count</div><div class="mod-item" title="datapacks/Create_Tempad_Datapack_v1.zip">Create_Tempad_Datapack_v1</div><div class="mod-item" title="datapacks/ServerSleep.zip">ServerSleep</div><div class="mod-item" title="datapacks/Skippy Pearls v1.5 1.20.x.zip">Skippy Pearls v1.5
-                    1.20.x</div><div class="mod-item" title="datapacks/Smelting_Plus_DataPack-V1.0.5.zip">Smelting_Plus_DataPack-V1.0.5</div><div class="mod-item" title="datapacks/Tom's Storage - Creatified.zip">Tom's Storage - Creatified</div><div class="mod-item" title="datapacks/Woodcutter_v.2.0_1.20.1.zip">Woodcutter_v.2.0_1.20.1</div><div class="mod-item" title="datapacks/better_combat_terramity.zip">better_combat_terramity</div><div class="mod-item" title="datapacks/create_curios_backtank-1.0.0.zip">create_curios_backtank-1.0.0</div><div class="mod-item" title="datapacks/extended-furnaces.zip">extended-furnaces</div><div class="mod-item" title="datapacks/intstrong_graveyard-1.0.0-1.20.1.zip">intstrong_graveyard-1.0.0-1.20.1</div><div class="mod-item" title="datapacks/sculk-expansion-1.3.2.zip">sculk-expansion-1.3.2</div><div class="mod-item" title="datapacks/terramityES.zip">terramityES</div></div>
+    </div>
+    <div class="asset-card" title="Librerias/Patchouli-1.20.1-84.1-FORGE.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">Patchouli-1.20.1-84.1-FORGE</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/PuzzlesLib-v8.1.33-1.20.1-Forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">PuzzlesLib-v8.1.33-1.20.1-Forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/YungsApi-1.20-Forge-4.0.6.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">YungsApi-1.20-Forge-4.0.6</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/architectury-9.2.14-forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">architectury-9.2.14-forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/automodpack-mc1.20.1-forge-4.0.5.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">automodpack-mc1.20.1-forge-4.0.5</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/azurelib-neo-1.20.1-3.1.3.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">azurelib-neo-1.20.1-3.1.3</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/balm-forge-1.20.1-7.3.37-all.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">balm-forge-1.20.1-7.3.37-all</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/caelus-forge-3.2.0+1.20.1.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">caelus-forge-3.2.0+1.20.1</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/cloth-config-11.1.136-forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">cloth-config-11.1.136-forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/collective-1.20.1-8.12.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">collective-1.20.1-8.12</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/coroutil-forge-1.20.1-1.3.7.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">coroutil-forge-1.20.1-1.3.7</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/curios-forge-5.14.1+1.20.1.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">curios-forge-5.14.1+1.20.1</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/fragmentum-forge-1.20.1-1.1.0.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">fragmentum-forge-1.20.1-1.1.0</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/framework-forge-1.20.1-0.8.0.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">framework-forge-1.20.1-0.8.0</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/fzzy_config-0.7.4+1.20.1+forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">fzzy_config-0.7.4+1.20.1+forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/geckolib-forge-1.20.1-4.8.2.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">geckolib-forge-1.20.1-4.8.2</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/knightlib-forge-1.20.1-1.4.3.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">knightlib-forge-1.20.1-1.4.3</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/kotlinforforge-4.12.0-all.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">kotlinforforge-4.12.0-all</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/moonlight-1.20-2.16.16-forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">moonlight-1.20-2.16.16-forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/owo-lib-0.11.2+1.20.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">owo-lib-0.11.2+1.20</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/player-animation-lib-forge-1.0.2-rc1+1.20.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">player-animation-lib-forge-1.0.2-rc1+1.20</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/resourcefulconfig-forge-1.20.1-2.1.3.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">resourcefulconfig-forge-1.20.1-2.1.3</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/resourcefullib-forge-1.20.1-2.1.29.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">resourcefullib-forge-1.20.1-2.1.29</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/spark-1.10.53-forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">spark-1.10.53-forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div>
+    <div class="asset-card" title="Librerias/yet_another_config_lib_v3-3.6.6+1.20.1-forge.jar" style="">
+        <div class="asset-icon">📚</div>
+        <div class="asset-info">
+            <span class="asset-name">yet_another_config_lib_v3-3.6.6+1.20.1-forge</span>
+            <span class="asset-path">Librerias</span>
+        </div>
+    </div></div>
+        </div>
+        <div class="asset-section">
+            <h3 class="panel-title">📦 Datapacks (12)</h3>
+            <div class="asset-grid">
+    <div class="asset-card" title="datapacks/Advancement-Count.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">Advancement-Count</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/BiggerStackSize-[1.20.1]-v1.0.1.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">BiggerStackSize-[1.20.1]-v1.0.1</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/Create_Tempad_Datapack_v1.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">Create_Tempad_Datapack_v1</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/ServerSleep.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">ServerSleep</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/Skippy Pearls v1.5 1.20.x.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">Skippy Pearls v1.5 1.20.x</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/Smelting_Plus_DataPack-V1.0.5.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">Smelting_Plus_DataPack-V1.0.5</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/Woodcutter_v.2.0_1.20.1.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">Woodcutter_v.2.0_1.20.1</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/create_curios_backtank-1.0.0.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">create_curios_backtank-1.0.0</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/extended-furnaces.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">extended-furnaces</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/intstrong_graveyard-1.0.0-1.20.1.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">intstrong_graveyard-1.0.0-1.20.1</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/sculk-expansion-1.3.2.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">sculk-expansion-1.3.2</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div>
+    <div class="asset-card" title="datapacks/toolbar-sounds_v1.1_1.20-1.20.4.zip" style="">
+        <div class="asset-icon">📦</div>
+        <div class="asset-info">
+            <span class="asset-name">toolbar-sounds_v1.1_1.20-1.20.4</span>
+            <span class="asset-path">datapacks</span>
+        </div>
+    </div></div>
         </div>
     </div>
 </body>
-
 </html>
