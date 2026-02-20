@@ -78,10 +78,10 @@ export function DescargaLeftPage() {
       {/* Nefarious Trio Image moved to left page */}
       <div className="flex justify-center pt-4 mt-auto">
         <Image
-          src="/assets/mini/descarga/the-nefarious-trio-png.png"
-          alt="The Nefarious Trio"
-          width={360}
-          height={180}
+          src="/assets/mini/descarga/BannerWAN.png"
+          alt="Banner WAN"
+          width={550}
+          height={275}
           style={{ imageRendering: 'pixelated' }}
           className="drop-shadow-[10px_10px_0_rgba(0,0,0,0.4)] hover:scale-105 transition-transform duration-500 cursor-pointer"
         />

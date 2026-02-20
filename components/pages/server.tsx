@@ -19,11 +19,11 @@ export function ServerLeftPage() {
       {/* Header */}
       <div className="border-b-4 border-[#8B4513] pb-3 mb-2 flex flex-col items-center">
         <Image
-          src="/assets/mini/server/conexion al servidor1.png"
-          alt="Conexión"
-          width={360}
-          height={120}
-          className="mb-2 drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)] hover:scale-105 transition-transform duration-300 cursor-pointer"
+          src="/assets/mini/server/BOSSES.png"
+          alt="Bosses"
+          width={1000}
+          height={333}
+          className="mb-2 drop-shadow-[2px_2px_0_rgba(0,0,0,0.3)] hover:scale-110 transition-transform duration-300 cursor-pointer max-w-none w-[110%]"
           style={{ imageRendering: 'pixelated' }}
         />
         <p className="text-[9px] text-[#5c3d1a] font-bold text-center mt-1">
