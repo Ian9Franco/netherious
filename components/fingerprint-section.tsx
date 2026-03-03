@@ -32,6 +32,7 @@ function CopyButton({ text, label = 'COPIAR' }: CopyButtonProps) {
 }
 
 import { useSoundEffects } from '@/hooks/use-sound-effects'
+import { verifyPassphrase } from '@/app/actions/security'
 
 // ... existing code ...
 
@@ -39,20 +40,35 @@ export function FingerprintSection() {
   const [input, setInput] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [shake, setShake] = useState(false)
+  const [fingerprint, setFingerprint] = useState('')
+  const [serverIp, setServerIp] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const { playSound } = useSoundEffects()
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const passphrase = process.env.NEXT_PUBLIC_AUTH_PASSPHRASE || 'llueve'
-    if (input.toLowerCase() === passphrase.toLowerCase()) {
-      playSound('success-villager')
-      setShowPassword(true)
-      setInput('')
-    } else {
+    setIsLoading(true)
+    
+    try {
+      const result = await verifyPassphrase(input)
+      
+      if (result.success && result.fingerprint) {
+        playSound('success-villager')
+        setFingerprint(result.fingerprint)
+        setServerIp(result.serverIp || '')
+        setShowPassword(true)
+        setInput('')
+      } else {
+        playSound('failure')
+        setShake(true)
+        setTimeout(() => setShake(false), 500)
+        setInput('')
+      }
+    } catch (error) {
+      console.error('Security verification failed:', error)
       playSound('failure')
-      setShake(true)
-      setTimeout(() => setShake(false), 500)
-      setInput('')
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -111,10 +127,11 @@ export function FingerprintSection() {
             />
             <button
               type="submit"
-              className="relative bg-gradient-to-b from-[#00ff88] to-[#00cc66] text-black text-[10px] font-black py-3 px-4 border-4 border-black shadow-[6px_6px_0_#000] hover:shadow-[3px_3px_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all uppercase tracking-wider"
+              disabled={isLoading}
+              className={`relative bg-gradient-to-b from-[#00ff88] to-[#00cc66] text-black text-[10px] font-black py-3 px-4 border-4 border-black shadow-[6px_6px_0_#000] hover:shadow-[3px_3px_0_#000] hover:translate-x-[3px] hover:translate-y-[3px] transition-all uppercase tracking-wider ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
               style={{ imageRendering: 'pixelated' }}
             >
-              <span className="relative z-10">✓ VERIFICAR</span>
+              <span className="relative z-10">{isLoading ? 'VERIFICANDO...' : '✓ VERIFICAR'}</span>
               <div className="absolute inset-0 bg-[url('/assets/grid-overlay.png')] opacity-10 pointer-events-none" style={{ backgroundSize: '2px 2px' }}></div>
             </button>
           </form>
@@ -128,10 +145,18 @@ export function FingerprintSection() {
             <div className="bg-black border-4 border-[#ffdd00] p-3 shadow-[6px_6px_0_#ffdd00]">
               <div className="text-[9px] text-[#ffdd00] mb-2 text-center uppercase font-black tracking-wide">🔑 CONTRASEÑA MAESTRA</div>
               <div className="text-[12px] text-[#00ff88] font-mono text-center select-all break-all leading-tight mb-3 font-black bg-black/50 p-2 border-2 border-[#00ff88]">
-                {process.env.NEXT_PUBLIC_FINGERPRINT}
+                {fingerprint}
+              </div>
+              <div className="flex justify-center mb-4">
+                <CopyButton text={fingerprint} label="COPIAR FINGERPRINT" />
+              </div>
+
+              <div className="text-[9px] text-[#ffdd00] mb-2 text-center uppercase font-black tracking-wide border-t-2 border-[#ffdd00]/30 pt-3">🌐 DIRECCIÓN IP DEL SERVIDOR</div>
+              <div className="text-[12px] text-[#00ff88] font-mono text-center select-all break-all leading-tight mb-3 font-black bg-black/50 p-2 border-2 border-[#00ff88]">
+                {serverIp}
               </div>
               <div className="flex justify-center mb-3">
-                <CopyButton text={process.env.NEXT_PUBLIC_FINGERPRINT || ""} label="COPIAR" />
+                <CopyButton text={serverIp} label="COPIAR IP" />
               </div>
 
               {/* BOSS FINAL IMAGE */}

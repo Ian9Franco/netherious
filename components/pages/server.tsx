@@ -46,17 +46,13 @@ export function ServerLeftPage() {
         </div>
         <div className="space-y-2 text-[11px] text-[#3a2010]">
           <div className="flex flex-col gap-2">
-            <span className="font-bold text-[#8B4513] text-[10px] text-center">DIRECCIÓN IP:</span>
-            <div className="flex gap-2 items-center">
-              <code className="text-[13px] bg-[#3a2010] text-[#e8dcc8] px-3 py-2 flex-1 text-center rounded-sm font-mono tracking-wide select-all font-bold">
-                {ip}
-              </code>
-              <ActionButton
-                buttonKey="server-copiar-ip"
-                overrideCopyText={ip}
-                overrideLabel={copiedIp ? '✓' : 'COPIAR'}
-                onSuccess={handleCopySuccess}
-              />
+            <span className="font-bold text-[#8B4513] text-[10px] text-center uppercase">🔐 DIRECCIÓN IP PROTEGIDA:</span>
+            <div className="flex flex-col gap-2 items-center bg-[#3a2010] p-3 border-2 border-[#8B4513]">
+              <span className="text-[9px] text-[#e8dcc8] font-bold text-center leading-tight">
+                LA IP ESTÁ OCULTA POR SEGURIDAD.<br/>
+                DESBLOQUEÁ LOS SECRETOS (PÁGINA DERECHA)<br/>
+                PARA VERLA Y CONECTARTE.
+              </span>
             </div>
           </div>
           <div className="flex justify-between items-center px-1 pt-2">
