@@ -95,33 +95,23 @@ export function FingerprintSection() {
           🔐 CONTRASEÑA DE SEGURIDAD
         </h2>
 
-        {/* New image requested */}
-        <div className="flex justify-center mb-3">
-          <Image
-            src="/assets/mini/server/dale que llueve.png"
-            alt="Dale que llueve"
-            width={120}
-            height={40}
-            style={{ imageRendering: 'pixelated' }}
-            className="drop-shadow-[2px_2px_0_#000]"
-          />
-        </div>
+        {/* Hint image removed */}
 
         <p className="text-[10px] text-white font-bold mb-3 leading-relaxed bg-black/30 p-2 border-2 border-black">
-          ⚡ Apurate que estamos afuera esperándote. ☔ ¿Qué pasa, te olvidaste? Mirá el cielo y acordate... La contraseña es obligatoria pa. Es la llave para descargar el modpack oficial de Netherious.
+          🔒 Esta sección está protegida. Ingresa la contraseña de seguridad para acceder al fingerprint y la IP del servidor. La contraseña es obligatoria para descargar el modpack oficial.
         </p>
 
         {!showPassword ? (
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
             <label className="text-[10px] text-white font-black uppercase tracking-wide drop-shadow-[2px_2px_0_#000]">
-              🌧️ ¿Dale que...?
+              🔑 INGRESA LA CONTRASEÑA
             </label>
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className={`bg-white border-4 border-black text-black text-[11px] px-3 py-2 text-center font-black focus:outline-none focus:ring-4 focus:ring-[#ffdd00] transition-all uppercase ${shake ? 'animate-shake' : ''}`}
-              placeholder="☔ me estoy mojando..."
+              placeholder="escribí aquí..."
               autoComplete="off"
               style={{ imageRendering: 'pixelated' }}
             />
