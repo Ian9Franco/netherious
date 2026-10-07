@@ -2,6 +2,7 @@
 """Generate public/modlist/modlist.html from a Windows tree export (modlist.txt)."""
 
 import html
+import json
 import re
 import sys
 from pathlib import Path
@@ -15,6 +16,81 @@ COLUMN_MAP = {
     "both": ("⚔️", "Netherious Core", "core"),
     "server": ("☁️", "Server-Side", "section-☁️server-side"),
 }
+
+COLUMN_BLURBS = {
+    "client": (
+        "Solo en tu Minecraft: gráficos, menús, sonido ambiental y herramientas de interfaz. "
+        "El servidor no necesita estos archivos."
+    ),
+    "both": (
+        "Mods compartidos: lo que define el gameplay del pack. Si está aquí, van en cliente y servidor. "
+        "La carpeta «core» son librerías y APIs (dependencias), no contenido jugable."
+    ),
+    "server": (
+        "Lógica exclusiva del servidor: estructuras extra, reglas de mundo, dificultad y optimización "
+        "sin impacto visual en tu PC."
+    ),
+}
+
+CATEGORY_BLURBS: dict[str, str] = {
+    "animaciones": "Animaciones de jugador, agua, capas y detalles visuales locales.",
+    "menu": "Menú principal, pantalla de carga y música de interfaz (FancyMenu, Drippy, etc.).",
+    "particulas": "Partículas, clima, polvo, sangre y atmósfera visual.",
+    "qol-cli": (
+        "Calidad de vida en pantalla: barras, overlays, música reactiva, vistas de mazmorras. "
+        "Solo cliente; no confundir con «util» o «Utilidad & QoL» del core (esos afectan al mundo en ambos lados)."
+    ),
+    "rendimiento": "Optimización gráfica local: Sodium, Iris, culling, compat EMF.",
+    "ux": "Información y navegación: EMI, mapa, Jade, appleskin, diario de loot.",
+    "rec": "Resource packs opcionales incluidos en el pack (texturas y estética).",
+    "sha": "Shader packs incluidos; se activan en opciones de video.",
+    "combat": "Combate compartido: Better Combat, compat Cataclysm y variantes de daño.",
+    "core": (
+        "Librerías base (Architectury, GeckoLib, Curios, YACL, Moonlight…). "
+        "Son dependencias técnicas; casi nunca añaden contenido por sí solas."
+    ),
+    "create basics": "Create y addons principales: energía, fluidos, trenes, nuclear, petroquímica.",
+    "create dependiente": "Addons de Create que requieren otros mods del ecosistema Create.",
+    "dungeons _ mazmorras": "Estructuras, mazmorras, integraciones y contenido de exploración compartido.",
+    "fauna-pasivos": "Criaturas pasivas, fauna y variantes amigables.",
+    "food": "Cocina Kaleidoscope, tavernas y delicias compartidas.",
+    "herrmaientas": "Armas, hechizos, joyas, mochilas y herramientas de progresión.",
+    "jefes": "Jefes, Cataclysm, cinemáticas y contenido de raid/boss.",
+    "mecanicas": "Sistemas de juego: arqueología, comercio, minerales, progresión.",
+    "mobs-enemigos": "Hostiles, invasiones, variantes y amenazas.",
+    "mundo": "Biomas, dimensiones, generación y estructuras del overworld/end/nether.",
+    "sable": "Create Aeronautics / Sable: física, naves, submarinos y propulsión.",
+    "tecnologia": "Oritech, Cyberspace, cintas y automatización avanzada.",
+    "util": (
+        "Contenido y comodidades vanilla+ en ambos lados: muebles Let's Do, barcos, cofres, viaje. "
+        "A diferencia de «Utilidad & QoL», aquí hay bloques/mobs/items; qol-cli es solo UI en cliente."
+    ),
+    "utilidad _ qol": (
+        "Reglas y comodidades compartidas (anvilos, magia fácil, llaves, watut, automodpack). "
+        "Van en cliente y servidor; no son librerías «core» ni cosmética pura de cliente."
+    ),
+    "mecanica": "Mecánicas de servidor: pesca, antorchas, inventario, dragón del End.",
+    "root": "Archivos sueltos en la raíz de esta carpeta (datapacks zip, compat, etc.).",
+}
+
+ASSET_BLURBS = {
+    "rec": CATEGORY_BLURBS["rec"],
+    "sha": CATEGORY_BLURBS["sha"],
+}
+
+
+def category_blurb(top_key: str, category: str) -> str:
+    key = category.lower()
+    if top_key == "server" and key == "mundo":
+        return (
+            "Generación y biomas aplicados desde el servidor (YUNG's, Geophilic, ríos, sparse structures)."
+        )
+    if top_key == "both" and key == "mundo":
+        return CATEGORY_BLURBS["mundo"]
+    return CATEGORY_BLURBS.get(
+        key,
+        "Mods agrupados en esta carpeta del pack Netherious IV.",
+    )
 
 CLIENT_ASSET_FOLDERS = {
     "rec": ("resourcepacks", "🖼️", "Resource Packs"),
@@ -146,6 +222,7 @@ def mod_item(relative_path: str, label: str) -> str:
 
 
 def category_card(
+    top_key: str,
     section_prefix: str,
     category: str,
     files: list[str],
@@ -157,6 +234,7 @@ def category_card(
     cat_slug = slugify(category)
     icon = CATEGORY_ICONS.get(category.lower(), "📦")
     section_id = f"{section_prefix}-{cat_slug}"
+    blurb = html.escape(category_blurb(top_key, category))
     items = "".join(
         mod_item(f"{path_prefix}/{f}", strip_ext(f))
         for f in sorted(files, key=str.lower)
@@ -169,6 +247,7 @@ def category_card(
         f'<span class="cat-icon">{icon}</span>'
         f'<span class="cat-name">{html.escape(cat_display)}</span>'
         f'<span class="badge-sm">{count}</span></button>'
+        f'<p class="category-desc">{blurb}</p>'
         f'<div class="category-body collapsed" id="{section_id}">{items}</div></article>'
     )
 
@@ -189,14 +268,37 @@ def column_section(
         files = categories[cat]
         total += len(files)
         path_prefix = path_root if cat == "root" else f"{path_root}/{cat}"
-        cards.append(category_card(prefix, cat, files, path_prefix))
+        cards.append(category_card(top_key, prefix, cat, files, path_prefix))
     inner = "".join(cards)
+    blurb = html.escape(COLUMN_BLURBS[top_key])
+    copy_label = {"client": "Client", "both": "Core", "server": "Server"}[top_key]
     section = (
-        f'<div class="column-section">'
+        f'<div class="column-section" data-env="{top_key}">'
+        f'<div class="column-head">'
         f'<h2 class="section-title">{emoji} {title} '
-        f'<span class="badge-count">{total}</span></h2>{inner}</div>'
+        f'<span class="badge-count">{total}</span></h2>'
+        f'<button type="button" class="copy-env tool-btn" data-copy-env="{top_key}">'
+        f"Copiar {copy_label}</button></div>"
+        f'<p class="column-desc">{blurb}</p>{inner}</div>'
     )
     return section, total
+
+
+def export_payload(tree: dict[str, dict[str, list[str]]]) -> dict:
+    client = tree.get("client", {})
+    return {
+        "client": {
+            k: v
+            for k, v in client.items()
+            if k not in CLIENT_ASSET_FOLDERS
+        },
+        "both": tree.get("both", {}),
+        "server": tree.get("server", {}),
+        "assets": {
+            "rec": client.get("rec", []),
+            "sha": client.get("sha", []),
+        },
+    }
 
 
 def asset_grid(folder_key: str, files: list[str], icon: str) -> str:
@@ -229,11 +331,18 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
     sha_files = client.get("sha", [])
     asset_count = len(rp_files) + len(sha_files)
 
+    payload = export_payload(tree)
+    data_json = json.dumps(payload, ensure_ascii=False)
+
     rp_section = ""
     if rp_files:
         rp_section = f"""
-        <div class="asset-section">
-            <h3 class="panel-title">🖼️ Resource Packs ({len(rp_files)})</h3>
+        <div class="asset-section" data-asset-section="rec">
+            <div class="asset-head">
+                <h3 class="panel-title">🖼️ Resource Packs ({len(rp_files)})</h3>
+                <button type="button" class="tool-btn copy-env" data-copy-env="assets-rec">Copiar lista</button>
+            </div>
+            <p class="column-desc">{html.escape(ASSET_BLURBS["rec"])}</p>
             <div class="asset-grid">
 {asset_grid("client/rec", rp_files, "🖼️")}
             </div>
@@ -242,8 +351,12 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
     sha_section = ""
     if sha_files:
         sha_section = f"""
-        <div class="asset-section">
-            <h3 class="panel-title">🌈 Shader Packs ({len(sha_files)})</h3>
+        <div class="asset-section" data-asset-section="sha">
+            <div class="asset-head">
+                <h3 class="panel-title">🌈 Shader Packs ({len(sha_files)})</h3>
+                <button type="button" class="tool-btn copy-env" data-copy-env="assets-sha">Copiar lista</button>
+            </div>
+            <p class="column-desc">{html.escape(ASSET_BLURBS["sha"])}</p>
             <div class="asset-grid">
 {asset_grid("client/sha", sha_files, "🌈")}
             </div>
@@ -255,7 +368,7 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netherious IV — Modlist</title>
-    <link rel="icon" type="image/x-icon" href="netherious.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Outfit:wght@360;500;640&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {{
@@ -295,11 +408,18 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
             gap: 2rem;
             align-items: center;
         }}
-        .hero img {{
-            width: 100%;
-            max-width: 280px;
-            image-rendering: pixelated;
+        .hero-logo {{
+            display: block;
+            width: min(100%, 320px);
             filter: drop-shadow(0 16px 28px rgba(61, 23, 40, 0.7));
+        }}
+        .hero-logo img {{
+            width: 100%;
+            height: auto;
+            display: block;
+        }}
+        @media (prefers-color-scheme: dark) {{
+            .hero-logo {{ filter: drop-shadow(0 18px 32px rgba(0, 0, 0, 0.65)); }}
         }}
         .eyebrow {{
             display: inline-flex;
@@ -328,6 +448,28 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
         }}
         h1 span {{ color: var(--velvet-glow); font-style: italic; font-weight: 500; }}
         .lede {{ color: var(--almond-dim); max-width: 38rem; font-size: 1.05rem; }}
+        .guide {{
+            margin: 0 0 1.2rem;
+            background: rgba(20, 18, 24, 0.72);
+            border: 1px solid var(--ink-line);
+            border-radius: 18px;
+            padding: 0.85rem 1rem;
+        }}
+        .guide summary {{
+            cursor: pointer;
+            font-weight: 640;
+            color: var(--hearth);
+            list-style: none;
+        }}
+        .guide summary::-webkit-details-marker {{ display: none; }}
+        .guide-body {{
+            margin-top: 0.75rem;
+            color: var(--almond-dim);
+            font-size: 0.92rem;
+            display: grid;
+            gap: 0.55rem;
+        }}
+        .guide-body strong {{ color: var(--almond); font-weight: 640; }}
         .stats-bar {{ display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.4rem; }}
         .stat-pill {{
             background: rgba(20, 18, 24, 0.8);
@@ -422,16 +564,42 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
             padding: 1rem;
             box-shadow: var(--shadow);
         }}
+        .column-head {{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            margin: 0.2rem 0.3rem 0.55rem;
+        }}
         .section-title {{
             display: flex;
             align-items: center;
-            justify-content: space-between;
             gap: 0.8rem;
             font-family: 'Fraunces', serif;
             font-size: 1.55rem;
             font-weight: 500;
-            margin: 0.2rem 0.3rem 1rem;
             color: var(--almond);
+        }}
+        .column-desc, .category-desc {{
+            color: var(--almond-dim);
+            font-size: 0.84rem;
+            line-height: 1.45;
+            margin: 0 0.85rem 0.75rem;
+        }}
+        .category-desc {{
+            margin-top: -0.15rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid rgba(243, 230, 214, 0.06);
+        }}
+        .copy-env {{ font-size: 0.82rem; padding: 0.5rem 0.75rem; white-space: nowrap; }}
+        .asset-head {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.35rem;
         }}
         .badge-count {{
             font-family: 'Outfit', sans-serif;
@@ -545,10 +713,27 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
             color: var(--almond-dim);
         }}
         .footer-note {{ color: var(--almond-dim); font-size: 0.82rem; padding-bottom: 2rem; }}
+        .toast {{
+            position: fixed;
+            left: 50%;
+            bottom: 1.25rem;
+            transform: translateX(-50%) translateY(120%);
+            background: var(--velvet-deep);
+            color: var(--almond);
+            border: 1px solid var(--velvet-glow);
+            border-radius: 999px;
+            padding: 0.65rem 1.1rem;
+            font-size: 0.88rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.22s ease;
+            z-index: 40;
+            pointer-events: none;
+        }}
+        .toast.visible {{ transform: translateX(-50%) translateY(0); }}
 
         @media (max-width: 1080px) {{
             .hero {{ grid-template-columns: 1fr; text-align: left; }}
-            .hero img {{ max-width: 180px; }}
+            .hero-logo {{ max-width: 220px; }}
             .grid-layout {{ grid-template-columns: 1fr; }}
         }}
     </style>
@@ -556,11 +741,14 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
 <body>
     <div class="wrap">
         <header class="hero">
-            <img src="netherious.png" alt="Netherious">
+            <picture class="hero-logo">
+                <source srcset="Season4dark.png" media="(prefers-color-scheme: dark)">
+                <img src="Season4.png" alt="Netherious IV">
+            </picture>
             <div>
                 <p class="eyebrow">Modlist · NeoForge 1.21.1</p>
                 <h1>Netherious <span>IV</span></h1>
-                <p class="lede">Lista viva del pack. Busca un mod, abre una categoría o salta directo a client, core o server.</p>
+                <p class="lede">Lista viva del pack. Cada categoría incluye una nota sobre qué hace. Copia o descarga el árbol completo cuando lo necesites.</p>
                 <div class="stats-bar">
                     <div class="stat-pill"><b>{count_client}</b> Client</div>
                     <div class="stat-pill"><b>{count_both}</b> Core</div>
@@ -570,11 +758,23 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
             </div>
         </header>
 
+        <details class="guide">
+            <summary>¿Cómo leer client, core y utilidades?</summary>
+            <div class="guide-body">
+                <p><strong>Client</strong> — Solo tu PC: shaders, menús, EMI/mapa y optimización gráfica. No hace falta subirlos al servidor.</p>
+                <p><strong>Core (both)</strong> — Gameplay compartido. La subcarpeta <strong>core</strong> son librerías (APIs), no mods de contenido.</p>
+                <p><strong>qol-cli</strong> (client) — Overlays y comodidad visual local. <strong>Utilidad &amp; QoL</strong> (core) — Reglas compartidas en cliente y servidor. <strong>util</strong> — Bloques, mobs y contenido vanilla+ en ambos lados.</p>
+                <p><strong>Server</strong> — Estructuras, dificultad y optimización que solo corre en el host.</p>
+            </div>
+        </details>
+
         <div class="toolbar">
             <div class="toolbar-inner">
                 <input id="mod-search" class="search" type="search" placeholder="Buscar mod, pack o categoría" autocomplete="off" aria-label="Buscar en el modlist">
                 <button type="button" class="tool-btn" id="expand-all">Abrir todo</button>
                 <button type="button" class="tool-btn" id="collapse-all">Cerrar todo</button>
+                <button type="button" class="tool-btn copy-env" data-copy-env="all">Copiar todo</button>
+                <a class="tool-btn" href="modlist_source.txt" download="netherious-iv-modlist-tree.txt">Descargar tree .txt</a>
                 <a class="jump" href="#col-client">Client</a>
                 <a class="jump" href="#col-core">Core</a>
                 <a class="jump" href="#col-server">Server</a>
@@ -594,9 +794,80 @@ def build_html(tree: dict[str, dict[str, list[str]]]) -> str:
 {rp_section}
 {sha_section}
         </div>
-        <p class="footer-note">Netherious IV · paleta Obsidian Ink, Velvet Curfew y Almond Hearth.</p>
+        <p class="footer-note">Netherious IV · Obsidian Ink, Velvet Curfew y Almond Hearth.</p>
     </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script type="application/json" id="modlist-data">{data_json}</script>
     <script>
+        const modlistData = JSON.parse(document.getElementById('modlist-data').textContent);
+        const toast = document.getElementById('toast');
+        let toastTimer;
+        function showToast(message) {{
+            toast.textContent = message;
+            toast.classList.add('visible');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+        }}
+        function sortCats(categories) {{
+            return Object.keys(categories).sort((a, b) => {{
+                if (a === 'root') return 1;
+                if (b === 'root') return -1;
+                return a.localeCompare(b, 'es', {{ sensitivity: 'base' }});
+            }});
+        }}
+        function appendCategory(lines, cat, files, isLastCategory) {{
+            const branch = isLastCategory ? '\\\\---' : '+---';
+            const label = cat === 'root' ? 'misc' : cat;
+            lines.push(`|   ${{branch}}${{label}}`);
+            const sorted = [...files].sort((a, b) => a.localeCompare(b, 'es', {{ sensitivity: 'base' }}));
+            sorted.forEach((file) => {{
+                lines.push(isLastCategory ? `|           ${{file}}` : `|   |       ${{file}}`);
+            }});
+        }}
+        function treeFromCategories(rootName, categories) {{
+            const lines = [`+---${{rootName}}`, ''];
+            const cats = sortCats(categories);
+            cats.forEach((cat, index) => appendCategory(lines, cat, categories[cat], index === cats.length - 1));
+            return lines.join('\\n');
+        }}
+        function buildExport(env) {{
+            if (env === 'all') {{
+                const parts = [
+                    treeFromCategories('client', {{ ...modlistData.client, rec: modlistData.assets.rec, sha: modlistData.assets.sha }}),
+                    '',
+                    treeFromCategories('both', modlistData.both),
+                    '',
+                    treeFromCategories('server', modlistData.server),
+                ];
+                return parts.join('\\n');
+            }}
+            if (env === 'assets-rec') return treeFromCategories('client', {{ rec: modlistData.assets.rec }});
+            if (env === 'assets-sha') return treeFromCategories('client', {{ sha: modlistData.assets.sha }});
+            if (env === 'assets') {{
+                return [
+                    treeFromCategories('client', {{ rec: modlistData.assets.rec }}),
+                    '',
+                    treeFromCategories('client', {{ sha: modlistData.assets.sha }}),
+                ].join('\\n');
+            }}
+            const key = env === 'both' ? 'both' : env;
+            const root = env === 'both' ? 'both' : env;
+            return treeFromCategories(root, modlistData[key]);
+        }}
+        async function copyEnv(env) {{
+            const text = buildExport(env);
+            try {{
+                await navigator.clipboard.writeText(text);
+                const labels = {{ client: 'Client', both: 'Core', server: 'Server', all: 'Pack completo', assets: 'Assets', 'assets-rec': 'Resource packs', 'assets-sha': 'Shader packs' }};
+                showToast('Copiado: ' + (labels[env] || env));
+            }} catch (err) {{
+                showToast('No se pudo copiar al portapapeles');
+            }}
+        }}
+        document.querySelectorAll('.copy-env').forEach((btn) => {{
+            btn.addEventListener('click', () => copyEnv(btn.dataset.copyEnv));
+        }});
+
         const search = document.getElementById('mod-search');
         const meta = document.getElementById('search-meta');
         const empty = document.getElementById('empty-state');
