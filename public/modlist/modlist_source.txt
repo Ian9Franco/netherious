@@ -1,0 +1,532 @@
+Listado de rutas de carpetas para el volumen Disco solido
+El número de serie del volumen es BC21-2399
+D:.
+|   modlist.txt
+|   
++---both
+|   +---combat
+|   |       bettercombat-neoforge-2.4.0+1.21.1.jar
+|   |       better_mob_combat_reimagined-1.1.16.jar
+|   |       cataclysm_compat_1.21.1-1.0.2.jar
+|   |       
+|   +---core
+|   |       architectury-13.0.11-neoforge.jar
+|   |       cloth-config-15.0.140-neoforge.jar
+|   |       coroutil-neoforge-1.21.0-1.3.8.jar
+|   |       curios-neoforge-9.5.1+1.21.1.jar
+|   |       fragmentum-5.1.1+1.21.1-neoforge.jar
+|   |       geckolib-neoforge-1.21.1-4.9.3.jar
+|   |       knightlib-neoforge-1.21.1-2.0.4.jar
+|   |       kotlinforforge-5.12.0-all.jar
+|   |       midnightlib-neoforge-1.9.3+1.21.1.jar
+|   |       moonlight-1.21.1-3.7.0-neoforge.jar
+|   |       OctoLib-NEOFORGE-0.6.2+1.21.jar
+|   |       owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar
+|   |       puzzleslib-v21.1.62-mc1.21.1+neoforge.jar
+|   |       resourcefullib-neoforge-1.21-3.0.12.jar
+|   |       yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar
+|   |       YungsApi-1.21.1-NeoForge-5.1.9.jar
+|   |       Zeta-1.1-40.jar
+|   |       
+|   +---create basics
+|   |       cmparallelpipes-neoforge-2.0.2.jar
+|   |       contraption-lights-neoforge-1.21.1-1.5.3.jar
+|   |       contraption_lights_compat-2.5.0.jar
+|   |       Create Encased-1.21.1-1.9.0-ht3.jar
+|   |       create-1.21.1-6.0.10.jar
+|   |       create-enchantment-industry-2.5.4.jar
+|   |       CreateDragonsPlus-1.11.9.jar
+|   |       createliquidfuel-3.0.0-1.21.1.jar
+|   |       createnuclear-2.0.0-neoforge.jar
+|   |       createprism-1.2.4.jar
+|   |       createsmokestacks-1.2.0.jar
+|   |       createthreadedtrains-neoforge-1.21.1-1.0.0.jar
+|   |       create_bb-1.0.8-1.21.1.jar
+|   |       create_connected-1.3.3-mc1.21.1.jar
+|   |       create_hypertube-0.6.0-NEOFORGE.jar
+|   |       create_jetpack-forge-5.2.1.jar
+|   |       create_jetpack_curios-1.2.0-neoforge-1.21.1.jar
+|   |       create_petro_deposits-1.0.0.jar
+|   |       Design-n-Decor-1.21.1-2.2b.jar
+|   |       electroenergetics-1.21.1-1.1.2.jar
+|   |       electroextras-1.0.1a.jar
+|   |       petrochem-neoforge-1.21.1-1.3.3.jar
+|   |       powergrid-mc1.21.1-0.6.2.jar
+|   |       protection_pixel-2.2.1-neoforge-1.21.1.jar
+|   |       steampowered-1.21.1-3.2.1.jar
+|   |       
+|   +---create dependiente
+|   |       create-integrated-farming-1.4.3.jar
+|   |       create_ratatouille-1.21.1-1.4.0.jar
+|   |       
+|   +---Dungeons _ Mazmorras
+|   |       amendments-1.21-2.1.10-neoforge.jar
+|   |       ancient_remnants-1.0.2.2-neoforge.jar
+|   |       dungeons_content_two-1.0.2-alpha-neoforge-1.21.1.jar
+|   |       FarmersDelight-1.21.1-1.3.4.jar
+|   |       golemdungeons-2.0.9.jar
+|   |       IMM v1.3.2-1.21.1.jar
+|   |       integrated_api-neoforge-1.21.1-1.8.2.jar
+|   |       integrated_cataclysm-1.0.6+1.21.1-neoforge.jar
+|   |       integrated_patches v1.2.0-1.21.1.jar
+|   |       integrated_stronghold-1.1.4+1.21.1-neoforge.jar
+|   |       ISS-1.21.1.jar
+|   |       l2library-3.0.8.jar
+|   |       modulargolems-3.1.43.jar
+|   |       netherdungeons-1.1.0-snapshot5.jar
+|   |       olympusmythology-neoforge-1.21.1-1.0.9.jar
+|   |       Quark-4.1-486.jar
+|   |       supplementaries-1.21.1-3.9.9-neoforge.jar
+|   |       takesapillage-neoforge-1.0.13+mc1.21.1.jar
+|   |       
+|   +---fauna-pasivos
+|   |       apple_cows-1.0.1+1.21.1-neoforge.jar
+|   |       CNB-1.21.1-neoforge-1.7.17.jar
+|   |       companions-neoforge-1.21.1-1.3.6.jar
+|   |       envelope-neoforge-1.21.1-0.7.5.jar
+|   |       golemoverhaul-neoforge-1.21.1-1.1.1.jar
+|   |       hapi-neoforge-1.21.1-1.1.2.jar
+|   |       lithostitched-1.8.0-neoforge-21.1.jar
+|   |       mythika-neoforge-1.21.1-1.2.1.jar
+|   |       naturalist-2.0.5-neoforge-1.21.1.jar
+|   |       primal-1.1.6+1.21.jar
+|   |       resourcefulconfig-neoforge-1.21-3.0.11.jar
+|   |       Sinew-1.21.1-1.2.14.jar
+|   |       spawn-4.0.8-1.21.1.jar
+|   |       teallib-1.3.teal.jar
+|   |       Unusual-Prehistory-2-1.21.1-2.0.0-beta3.jar
+|   |       villager_retaliation-neoforge-1.21.1-1.0.0-beta.13-hotfix.1.jar
+|   |       wab-1.21.1-1.3.2.jar
+|   |       
+|   +---food
+|   |       kaleidoscopecookery-1.6.0-neoforge+mc1.21.1.jar
+|   |       kaleidoscopecookery_automation-1.0.2.jar
+|   |       kaleidoscopetavern-1.2.0-neoforge+mc1.21.1.jar
+|   |       kaleidoscope_contraption-1.0.4.jar
+|   |       kaleidoscope_end-1.0.14-neoforge+mc1.21.1.jar
+|   |       kaleidoscope_grilling-1.1.1-neoforge1.21.1.jar
+|   |       kaleidoscope_nether-1.1.4-neoforge+mc1.21.1.jar
+|   |       kaleidoscope_world_liquor-1.1.9-neoforge+1.21.1-fix.jar
+|   |       neoforge-dungeonsdelight-1.21.1-1.5.1.jar
+|   |       neoforge-runiclib-1.21.1-5.0.7.jar
+|   |       
+|   +---herrmaientas
+|   |       archers-neoforge-3.1.3+1.21.1.jar
+|   |       armory-neoforge-1.5.2+1.21.1.jar
+|   |       armor_model_api-neoforge-1.1.0+1.21.1.jar
+|   |       arsenal-neoforge-1.5.0+1.21.1.jar
+|   |       bundle-api-neoforge-1.1.0.jar
+|   |       jewelry-neoforge-2.5.1+1.21.1.jar
+|   |       just-hammers-neoforge-21.1.4.jar
+|   |       knightquest-neoforge-1.21.1-1.9.3.jar
+|   |       modular_backpacks-0.2.12.jar
+|   |       player-animation-lib-forge-2.0.4+1.21.1.jar
+|   |       ranged_weapon_api-neoforge-3.0.0+1.21.1.jar
+|   |       relics-neoforge-1.4.0+1.21.1.jar
+|   |       runes-neoforge-1.3.2+1.21.1.jar
+|   |       spell_engine-neoforge-1.10.9+1.21.1.jar
+|   |       spell_power-neoforge-1.6.0+1.21.1.jar
+|   |       tempad-1.21.1-3.0.4-all.jar
+|   |       tempadtomap-0.1.0+neoforge-1.21.1.jar
+|   |       
+|   +---jefes
+|   |       aquamirae-neoforge-1.21.1-7.2.10.jar
+|   |       block_factorys_bosses-2.1.2-neo-1.21.1.jar
+|   |       cinematiccataclysm-1.0.1-1.21.1.jar
+|   |       cultofazazelneoforge-1.1.4.12.jar
+|   |       fdbosses-3.1.0.3-1.21.1.jar
+|   |       fdlib-1.0.9-1.21.1.jar
+|   |       gtbcs_cataclysmic_uis-1.0.3+1.21.1.jar
+|   |       legendary_monsters-2.2.3 MC 1.21.1.jar
+|   |       lionfishapi-3.1.jar
+|   |       L_Ender's Cataclysm 1.21.1-3.33.jar
+|   |       mowziesmobs-1.21.1-1.8.2.jar
+|   |       oddities-1.0.0-neoforge-1.21.1.jar
+|   |       wither_spawn_animation-1.6.2-neoforge-1.21.1.jar
+|   |       
+|   +---mecanicas
+|   |       ancient_remnants-1.4.2+1.21.1-neoforge.jar
+|   |       critical_strike-neoforge-1.0.4+1.21.1.jar
+|   |       legendaryshrines-neo-1.21.1-1.0.3.jar
+|   |       nomendubium-neoforge-1.21.1-1.0.6.jar
+|   |       orevolution-1.21.1-6.0.0-beta.jar
+|   |       seamlessores-neoforge-1.21.1-4.2.0.jar
+|   |       smarttrades-neoforge-1.21.1-1.0.2.jar
+|   |       starcatcher-3.3.4-NEOFORGE-1.21.1.jar
+|   |       sweety_archaeology-1.1.0-neoforge-1.21.1.jar
+|   |       thunderhead-neoforge-1.2.0.jar
+|   |       toxony-0.10.7.jar
+|   |       
+|   +---mobs-enemigos
+|   |       Arda's Sculks 1.4.3.5_1 [NEOFORGE] [1.21.1].jar
+|   |       CerbonsAPI-NeoForge-1.21-1.3.0.jar
+|   |       creaturefeature-1.2.3.3.jar
+|   |       dangerous_mobs-0.2.3-neoforge-1.21.1fix.jar
+|   |       EternalNether-v21.1.3-1.21.1-NeoForge.jar
+|   |       fangs_n_claws-1.2.4.jar
+|   |       illagerblabber-1.21.1-NeoForge-1.1.0.jar
+|   |       immersive_pillagers-neoforge-0.1.5+1.21.1.jar
+|   |       incision-1.0.12-neoforge-1.21.1.jar
+|   |       kingsandmonsters1.2.2.jar
+|   |       MOTS-NeoForge-1.21.1-1.3.0.jar
+|   |       Opposing-Force-1.21.1-3.0.0-beta6.jar
+|   |       Patchouli-1.21.1-93-NEOFORGE.jar
+|   |       raidsenhanced-1.0.2-1.21.1.jar
+|   |       Spider-Eggs-And-Breeding-1.21.1-NeoForge-1.0.43.jar
+|   |       undead_unleashed-2.0.6-hotfix-neoforge-1.21.1.jar
+|   |       variantsandventures-neoforge-1.0.28+mc1.21.1.jar
+|   |       
+|   +---Mundo
+|   |       bclib-21.0.26.jar
+|   |       BetterEnd-21.0.35.jar
+|   |       BetterNether-21.0.27.jar
+|   |       bf_biomes-1.1.0-neoforge-1.21.1.jar
+|   |       blueprint-1.21.1-8.2.0.jar
+|   |       ConfluenceOtherworld-1.2.4-260226.jar
+|   |       confluence_lootr-1.0.0.jar
+|   |       eternalstarlight-0.9.1+1.21.1+neoforge.jar
+|   |       extractrooms2.1.1.jar
+|   |       Galosphere-1.21.1-1.5.5-NeoForge.jar
+|   |       illagerstructures-neoforge-1.21.1-0.1.2.jar
+|   |       lootr-neoforge-1.21.1-1.11.38.127.jar
+|   |       milkywaylib1.0.2.jar
+|   |       nomansland-1.5.12.jar
+|   |       phantasm-1.0.3.jar
+|   |       spelunkers_charm-5.0.6.jar
+|   |       structure_pool_api-neoforge-1.2.1+1.21.1.jar
+|   |       TerraBlender-neoforge-1.21.1-4.1.0.8.jar
+|   |       the_beyond-0.0.5-InDev.jar
+|   |       the_wasteland_reworked-0.6.0-neoforge-1.21.1.jar
+|   |       village_taverns-neoforge-1.3.0+1.21.1.jar
+|   |       worldweaver-21.0.25.jar
+|   |       wunderlib-21.0.10.jar
+|   |       YungsCaveBiomes-1.21.1-NeoForge-3.1.1.jar
+|   |       
+|   +---rendimiento
+|   |       Better Item Despawn - Neoforge-1.21.1-1.1.0.jar
+|   |       c2me-neoforge-mc1.21.1-0.4.0-alpha.0.122.jar
+|   |       Clumps-neoforge-1.21.1-19.0.0.1.jar
+|   |       entityculling-neoforge-1.11.2-mc1.21.1.jar
+|   |       ferritecore-7.0.3-neoforge.jar
+|   |       lithium-neoforge-0.15.4+mc1.21.1.jar
+|   |       memguard-1.0.4.jar
+|   |       modernfix-neoforge-5.27.24+mc1.21.1.jar
+|   |       Not Enough Recipe Book-NEOFORGE-0.4.3+1.21.jar
+|   |       nowheel-2.1.1+1.21.1neoforge.jar
+|   |       pathfinder-1.1.0.jar
+|   |       redirected-neoforge-1.0.0-1.21.1.jar
+|   |       txnilib-neoforge-1.0.24-1.21.1.jar
+|   |       
+|   +---sable
+|   |       aeroconnectedfluidvessel-1.0.0.jar
+|   |       climbable_ropes-2.1.4.jar
+|   |       compactgearbox-1.0.2.jar
+|   |       cosmonautics-26.08.307.jar
+|   |       cosmonauticsdeepair-1.0.2.jar
+|   |       create-aeronautics-bundled-1.21.1-1.3.2.jar
+|   |       createornithopterglider-1.2.0-1.21.1.jar
+|   |       createpropulsion-1.1.5 (1).jar
+|   |       createpropulsion-1.1.5.jar
+|   |       create_aeronautics_automated_logistics-0.6.2.jar
+|   |       create_aeronautics_toolgun-0.3.6.jar
+|   |       create_aeronautics_transmission_linkage-0.2.8.jar
+|   |       create_generators-1.2.5-neoforge-1.21.1.jar
+|   |       create_grappling_hooks-1.2.0.jar
+|   |       create_simulated_thrusters-1.21.1-NeoForge-1.0.1.jar
+|   |       create_submarine-3.3.0.jar
+|   |       modellers_dream-1.1.1.jar
+|   |       oritechsablecompat-0.1.9-RELEASE.jar
+|   |       pipesnphysics-3.2.1.jar
+|   |       portable_engine_liquid_fuel-2.0.0-neoforge-1.21.1.jar
+|   |       rocketnautics_addon-1.0.0.jar
+|   |       sable-neoforge-1.21.1-2.0.6.jar
+|   |       SableCollapsingCaves-1.21.1-NeoForge-1.0.jar
+|   |       sablecollisiondamage-1.0.8.jar
+|   |       sablejade-1.3.0.jar
+|   |       sablephysicscompat-1.3.0.jar
+|   |       sable_player_ragdoll-1.21.1-0.7.5.jar
+|   |       Slag-n-Embers-1.21.1-1.2b.jar
+|   |       stabilized-1.0.2.jar
+|   |       submarinefix-1.0.1.jar
+|   |       treephysics-neoforge-1.21.1-2.4.jar
+|   |       true_impact-0.5.7-delta.jar
+|   |       
+|   +---tecnologia
+|   |       athena-neoforge-1.21.1-4.0.6.jar
+|   |       belts-neoforge-0.2.2.jar
+|   |       Cyberspace 5.0.2 (NF1.21.1).jar
+|   |       drones-neoforge-1.1.0.jar
+|   |       oritech-neoforge-1.21.1-1.2.12.jar
+|   |       oritechsablecompat-0.1.9-RELEASE.jar
+|   |       
+|   +---util
+|   |       balm-neoforge-1.21.1-21.0.66.jar
+|   |       Cardiac-NEOFORGE-0.5.3.4+1.21.jar
+|   |       comforts-neoforge-9.0.5+1.21.1.jar
+|   |       curiouschests-1.1.1-neoforge-1.21.1.jar
+|   |       kmdtravel_neoforge_1.21.1-0.3.0.jar
+|   |       letsdo-alpinewhispers-neoforge-1.0.3.jar
+|   |       letsdo-furniture-neoforge-1.1.6.jar
+|   |       realmrpg_balloons-1.0.0-neoforge-1.21.1.jar
+|   |       sleepy_hollows-neoforge-1.1.0.jar
+|   |       smallships-neoforge-1.21.1-2.0.0-b2.1.jar
+|   |       trashslot-neoforge-1.21.1-21.1.11.jar
+|   |       
+|   \---Utilidad _ QoL
+|           automodpack-mc1.21.1-neoforge-4.0.6.jar
+|           Clavis-NEOFORGE-0.2.13+1.21.1.jar
+|           EasyAnvils-v21.1.0-1.21.1-NeoForge.jar
+|           EasyMagic-v21.1.4-1.21.1-NeoForge.jar
+|           Enchantment-Amendment-1.21.1-1.0.0.jar
+|           fieldguide-1.20.3+1.21.1-neoforge.jar
+|           ingeniumapi-1.0.2-NEOFORGE-MC-1.21.1.jar
+|           lodged-3.0.0.jar
+|           midnightthoughts-1.5.7+neoforge.1.21.1.jar
+|           secondwind-neoforge-1.21.1-1.1.2.jar
+|           toucanlib-neoforge-1.21.1-0.5.0.jar
+|           VisualWorkbench-v21.1.2-1.21.1-NeoForge.jar
+|           watut-neoforge-1.21.0-1.2.7.jar
+|           yagm-1.21.1-0.1.3-NEOFORGE.jar
+|           
++---client
+|   +---animaciones
+|   |       bathymetry-1.0.4+1.21.1+neoforge.jar
+|   |       cloth-config-15.0.140-neoforge.jar
+|   |       enchanted_fishing_line-1.0.0-neoforge-1.21.1.jar
+|   |       focus-neoforge-1.21.1-1.0.0-beta.2.jar
+|   |       MossyLib-1.6.0+1.21.1+neoforge.jar
+|   |       owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar
+|   |       PlayerAnimationLibNeoforge-1.1.6+mc.1.21.1.jar
+|   |       puddleflood-1.1.6+1.21.1-neoforge.jar
+|   |       punchy-2.8d-neoforge-1.21.1.jar
+|   |       SmoothPlayerAnimations_Neoforge_1.21.1_1.1.0.jar
+|   |       yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar
+|   |       
+|   +---menu
+|   |       drippyloadingscreen_neoforge_3.1.5_MC_1.21.1.jar
+|   |       fancymenu_neoforge_3.9.14_MC_1.21.1.jar
+|   |       konkrete_neoforge_1.9.9_MC_1.21.jar
+|   |       melody_neoforge_1.0.10_MC_1.21.jar
+|   |       
+|   +---particulas
+|   |       architectury-13.0.11-neoforge.jar
+|   |       atmospherics-2.6.5-mc-1.21.1.jar
+|   |       Auroras-1.21-1.6.2.jar
+|   |       cave_dust_rethinking-3.4.0+1.21.1-neoforge.jar
+|   |       custom-glow-enchantment-outline-neoforge-1.21.1-1.2.0.jar
+|   |       forgified-fabric-api-0.116.15+2.3.5+1.21.1.jar
+|   |       OctoLib-NEOFORGE-0.6.2+1.21.jar
+|   |       particular-1.21.1-NeoForge-1.5.7.jar
+|   |       Perception-NEOFORGE-0.2.1+1.21.1.jar
+|   |       puddleflood-1.1.6+1.21.1-neoforge.jar
+|   |       simpleblood-1.21.1-1.0.4.jar
+|   |       softimprints-neoforge-1.21.1-2.8.0.jar
+|   |       windy-1.1.1+1.21-neoforge.jar
+|   |       
+|   +---qol-cli
+|   |       blocks_previewer-2.1.1+1.21.1-neoforge.jar
+|   |       cloth-config-15.0.140-neoforge.jar
+|   |       craft_config-1.1.12+1.21.1-neoforge.jar
+|   |       crampedness-1.21.1-neoforge-1.1.2.jar
+|   |       dungeons_iso-neoforge-3.6.1+1.21.1.jar
+|   |       EnchantmentInsights-v21.1.5-mc1.21.1-NeoForge.jar
+|   |       HoveringHotbar-v21.1.1-mc1.21.1-NeoForge.jar
+|   |       LeaveMyBarsAlone-v21.1.2-1.21.1-NeoForge.jar
+|   |       oracle_index-neoforge-1.4.0.jar
+|   |       OverflowingBars-v21.1.1-1.21.1-NeoForge.jar
+|   |       owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar
+|   |       reactivemusic-neoforge-1.3.5+1.21.1.jar
+|   |       respawnrecap-neoforge-1.2.0-1.21.1.jar
+|   |       StylishEffects-v21.1.3-1.21.1-NeoForge.jar
+|   |       
+|   +---rec
+|   |       Benigamer's enhanced visuals 1.9.1.zip
+|   |       Dandelion X + Bushy Leaves v1.5.zip
+|   |       Default-Dark-Mode-1.20-2023.7.0.zip
+|   |       Doc's Whimscape Additions - Even More Delight.zip
+|   |       Doc's Whimscape Additions - Whimsical Charm.zip
+|   |       FA+All_Extensions-v1.8.1.zip
+|   |       FA+Details-v2.2.1.zip
+|   |       FA+Player-v1.1.zip
+|   |       FA+Spiders-v2.2.zip
+|   |       Fresh End Crystal X Punchy.zip
+|   |       FreshAnimations_v1.10.4.zip
+|   |       Hellay's Redone Enderman X Fresh Animations - v1.1.zip
+|   |       Just 3D Potions 1.21 Backport.zip
+|   |       LowOnFire v26.2§8.zip
+|   |       McAlive_Grass_v1.1.zip
+|   |       McAlive_LeafyLeaves(height).zip
+|   |       McAlive_Leaves.zip
+|   |       Musgo 1.21.1 Below.zip
+|   |       Nature X - 12.2 [1.21.1].zip
+|   |       ProgrammerArtFix-26.0.zip
+|   |       Punchy Fix Swimming.zip
+|   |       sunbathing-v1.11.zip
+|   |       Universal Bushy Leaves.zip
+|   |       Visual Effects+.zip
+|   |       Whimscape  X Fresh Animations Spiders.zip
+|   |       Whimscape Better Containers.zip
+|   |       Whimscape Better Eating and Drinking Animations.zip
+|   |       WhimScape Emissive Path 1.20.2-1.21.11.zip
+|   |       Whimscape Variated Villagers [FA].zip
+|   |       Whimscape Variated Villagers.zip
+|   |       Whimscape X Easy Anvils.zip
+|   |       Whimscape X Easy Magic.zip
+|   |       Whimscape X FA+Player.zip
+|   |       Whimscape x VBB.zip
+|   |       Whimscape-x-Create-1.21.1_r12.zip
+|   |       Whimscape_1.20.2-1.21.11_r6.zip
+|   |       Whimscape_Leaves_1.20-26.3_r1.zip
+|   |       Whimscape_x_FreshAnimations_1.20-1.21.11_r3.zip
+|   |       Whimscape_x_Overflowing_Bars_1.21.zip
+|   |       [1.6] Enhanced Boss Bars.zip
+|   |       
+|   +---rendimiento
+|   |       bettercombat-punchy-fix-1.0.1.jar
+|   |       createbetterfps-1.21.1-1.1.5.jar
+|   |       emf_compat_better_combat_1.21.1_2.0.0.jar
+|   |       emf_compat_core_1.21.1_2.0.0.jar
+|   |       emf_compat_create_1.21.1_2.0.0.jar
+|   |       emf_compat_quark_1.21.1_1.1.0.jar
+|   |       emf_compat_supplementaries_1.21.1_1.1.0.jar
+|   |       emf_compat_watut_1.21.1_1.0.0.jar
+|   |       entityculling-neoforge-1.11.2-mc1.21.1.jar
+|   |       entity_model_features-3.3.10-1.21-neoforge.jar
+|   |       entity_texture_features-7.2.4-1.21-neoforge.jar
+|   |       flerovium-neoforge-1.21.1-1.1.2-all.jar
+|   |       fzzy_config-0.7.7+1.21+neoforge.jar
+|   |       ImmediatelyFast-NeoForge-1.6.14+1.21.1.jar
+|   |       iris-neoforge-1.8.14-beta.1+mc1.21.1.jar
+|   |       kotlinforforge-5.12.0-all.jar
+|   |       particle_core-0.3.3+1.21+neoforge.jar
+|   |       sodium-neoforge-0.8.12+mc1.21.1.jar
+|   |       
+|   +---sha
+|   |       Bliss_v2.1.2_(Chocapic13_Shaders_edit).zip
+|   |       BSL_v10.1.3.zip
+|   |       ComplementaryReimagined_r5.8.1.zip
+|   |       ComplementaryReimagined_r5.9.3.zip
+|   |       ComplementaryUnbound_r5.8.1.zip
+|   |       ComplementaryUnbound_r5.9.3.zip
+|   |       MakeUp-UltraFast-9.5a.zip
+|   |       Pastel-Shaders-Universal-v1.200.zip
+|   |       photon_v1.3b.zip
+|   |       Solas Shader V3.7b.zip
+|   |       
+|   \---UX
+|           appleskin-neoforge-mc1.21-3.0.9.jar
+|           architectury-13.0.11-neoforge.jar
+|           emi-1.1.24+1.21.1+neoforge.jar
+|           fragmentum-5.1.1+1.21.1-neoforge.jar
+|           immersiveoverlays-1.8.5+1.21.1-neoforge.jar
+|           Jade-1.21.1-NeoForge-15.10.6.jar
+|           journeymap-neoforge-1.21.1-6.0.9.jar
+|           loot_journal-neoforge-1.21.1-6.2.2.jar
+|           MouseTweaks-neoforge-mc1.21-2.26.1.jar
+|           OctoLib-NEOFORGE-0.6.2+1.21.jar
+|           PlayerAnimationLibNeoforge-1.1.6+mc.1.21.1.jar
+|           
++---no
+|   |   aaa_particles-neoforge-1.21.1-2.2.3.jar
+|   |   animalia-neoforge-1.21.1-1.0.3.jar
+|   |   archaion-1.21.1-1.4.4.jar
+|   |   armor_model_api-neoforge-1.1.0+1.21.1.jar
+|   |   azimuth-1.4.10.jar
+|   |   azimuth-1.4.9.jar
+|   |   azurelib-neo-26.3-4.0.7.jar
+|   |   betterinventory-1.1.4.jar
+|   |   bits_n_bobs-2.3.5.jar
+|   |   caverns_and_chasms-1.21.1-3.0.1.jar
+|   |   CEE-Dye-Depot-1.21.1-1.0.0.jar
+|   |   createbionics-2.5.0.jar
+|   |   create_linear_motion_simulated-0.2.1.jar
+|   |   creaturecorner-neoforge-1.21.1-1.11.jar
+|   |   DnDesires-1.21.1-2.3a-BETA.jar
+|   |   furnitury-4.0.0.jar
+|   |   hackersandslashers-2.0-beta2.5.jar
+|   |   hybrid_aquatic-neoforge-1.21.1-1.7.3.jar
+|   |   incrementalmining-1.21.1-1.13.jar
+|   |   interactic-0.2.2+1.21.1.jar
+|   |   letsdo-bloomingnature-neoforge-1.1.11.jar
+|   |   letsdo-lilis_lucky_lures-neoforge-1.1.5.jar
+|   |   letsdo-lilis_pottery-neoforge-1.0.3.jar
+|   |   libraryferret-neoforge-1.21.1-4.0.0.jar
+|   |   modestmining-1.21.1-1.4.5.jar
+|   |   MoogsBountifulStructures-1.21-1.0.10.jar
+|   |   MoogsGlowUp-neoforge-1.21.1-1.2.2.jar
+|   |   punchy_puppies-2.0.1-neoforge-1.21.1.jar
+|   |   railwaysuntold-1.21.1-neoforge-1.2.2.jar
+|   |   reanimal-0.6.0.jar
+|   |   SeaLife-v21.1.0-mc1.21.1-NeoForge.jar
+|   |   shield_api-neoforge-2.2.0.jar
+|   |   sound-physics-remastered-neoforge-1.21.1-1.5.1.jar
+|   |   stacksizetweaks-neoforge-0.3.4+1.21.jar
+|   |   stormiespiders-neoforge-1.21.1-3.3.2.jar
+|   |   struts-1.3.1.jar
+|   |   ThirstWasReclaimed-1.21.1-3.0.6.jar
+|   |   thirst_was_upgraded-0.0.4-1.21.1.jar
+|   |   travelersbackpack-neoforge-1.21.1-10.1.39.jar
+|   |   trial_guardians-neoforge-2.0.0+1.21.1.jar
+|   |   wunderlib-21.0.10.jar
+|   |   
+|   +---libs_otras
+|   \---poke
+|           CobbleBadges-neoforge-4.0.0+Beta-1+1.21.1.jar
+|           Cobblemon-neoforge-1.8.1+1.21.1.jar
+|           cobblemon_industries-neoforge-1.5.0.jar
+|           cobblemore_lib-neoforge-1.2.10.jar
+|           integrated_cobblemon-1.2.1+1.21.1-neoforge.jar
+|           pokebadges-neoforge-2.0.0.jar
+|           rctapi-neoforge-1.21.1-0.16.1-beta.jar
+|           rctmod-neoforge-1.21.1-0.19.2-beta.jar
+|           
+\---server
+    |   QuarkCompat1.0.zip
+    |   
+    +---Dungeons _ Mazmorras
+    |       cataclysmfortresses-1.21.1-NeoForge.jar
+    |       dungeon_difficulty-neoforge-3.9.1+1.21.1.jar
+    |       Epic Jungle Temples v1.0.2.jar
+    |       Epic Witch Huts v1.3.1.jar
+    |       epic-structures-dungeons-1.2.5.jar
+    |       epic-structures-igloo-1.0.5.jar
+    |       epic-structures-villages-2.0.0.jar
+    |       gazebo-neoforge-2.2.0+1.21.1.jar
+    |       HellishTrials-neoforge-1.0.5.jar
+    |       katters-structures-only-dungeon-2.1.jar
+    |       MoogsEndStructures-universal-1.21-2.1.1.jar
+    |       MoogsMineshaftsReimagined-universal-1.21-1.1.0.jar
+    |       MoogsNetherStructures-universal-1.21-3.1.1.jar
+    |       MoogsOceanStructures-universal-1.21-1.1.1.jar
+    |       MoogsStructureLib-neoforge-1.21.1-3.4.2.jar
+    |       MoogsTemplesReimagined-universal-1.21-2.0.4.jar
+    |       structure_pool_api-neoforge-1.2.1+1.21.1.jar
+    |       
+    +---mecanica
+    |       cutter-v.1.1.0.jar
+    |       dynamic-torches-5.3.jar
+    |       edf-remastered-5.0.2.jar
+    |       enderdragondestroysendisland-2.2.2+mc1.21-neoforge.jar
+    |       hostile_tactics-neoforge-1.21.1-0.10.1.jar
+    |       keepsomemoddedinventory-1.5.jar
+    |       ly-fishing-expansion-1.3.2.jar
+    |       wither-ascension-5.0.jar
+    |       
+    +---mundo
+    |       ClimateRivers-v21.1.3-1.21.1-NeoForge.jar
+    |       Geophilic v3.7.mod.jar
+    |       sparsestructures-neoforge-1.21.1-3.0.jar
+    |       YungsBetterCaves-1.21.1-NeoForge-3.1.6.jar
+    |       YungsBetterEndIsland-1.21.1-NeoForge-3.1.2.jar
+    |       YungsBetterNetherFortresses-1.21.1-NeoForge-3.1.5.jar
+    |       
+    \---rendimiento
+            alternate_current-mc1.21-1.9.0.jar
+            c2me-neoforge-opts-accel-opencl-mc1.21.1-0.4.0-alpha.0.122.jar
+            getittogetherdrops-neoforge-1.21.5-1.4.jar
+            Ksyxis-1.4.5.jar
+            noisium-neoforge-2.7.0+mc1.21-1.21.1.jar
+            servercore-neoforge-1.5.19+1.21.1.jar
+            structure_layout_optimizer-neoforge-1.0.12.jar
+            structure_pool_api-neoforge-1.2.1+1.21.1.jar
+            
