@@ -6,7 +6,7 @@ Resource packs y shaders van dentro de client, en sus carpetas.
 client: 119 mods
 both: 372
 server: 53
-resource packs: 109
+resource packs: 100
 shaders: 11
 Datapacknetherious: 2
 
@@ -155,7 +155,6 @@ Datapacknetherious: 2
 |   |       Create DG Sound Replacement  - 1.1.zip
 |   |       Create Styled Ad Astra NASA Workbench.zip
 |   |       Creepingly Creeper V2.0.zip
-|   |       CrOv + FrAn [V1.2.2].zip
 |   |       cubic-sun-moon-v1.8.5.zip
 |   |       Doc's Whimscape Additions - Even More Delight.zip
 |   |       Doc's Whimscape Additions - Whimsical Charm.zip
@@ -179,12 +178,9 @@ Datapacknetherious: 2
 |   |       FA+Spiders-v2.2.zip
 |   |       FA-Player-Compats-1.1-mc1.21.1.zip
 |   |       Fabulous Old 3D.zip
-|   |       Fire_Rekindled.zip
-|   |       Fluid Tank  Vessel Recolour [Dark].zip
 |   |       Fresh End Crystal X Punchy.zip
 |   |       FreshAnimations_v1.10.4.zip
 |   |       Fyoncle's 3D Trims.zip
-|   |       GOOD_SOUNDS_for_diesel_generators.zip
 |   |       Hellay's Redone Enderman X Fresh Animations - v1.1.zip
 |   |       HyperPunchy-v2.5+.zip
 |   |       Icon Journey 1.1.zip
@@ -192,7 +188,6 @@ Datapacknetherious: 2
 |   |       Kaleidoscope 3D Drinks.zip
 |   |       LowOnFire v26.2§8.zip
 |   |       Mayview x Whimscape 1.0.0 + BetterEnd.zip
-|   |       MC_Dungeons_Crit 1.21 - 1.21.1.zip
 |   |       Militech.zip
 |   |       Mizuno's x [Let's Do] Vinery.zip
 |   |       Mizuno's x Farmer's Delight 1.5.zip
@@ -221,7 +216,6 @@ Datapacknetherious: 2
 |   |       sunbathing-v1.11.zip
 |   |       TerralithIncendiumNullscapeBiomesNames_2.0.0.zip
 |   |       VillagerRetaliationXFreshAnimation_v1.1.0.zip
-|   |       Visual Effects+.zip
 |   |       Whimscape  X Fresh Animations Spiders.zip
 |   |       Whimscape Better Containers.zip
 |   |       Whimscape Better Eating and Drinking Animations.zip
@@ -230,13 +224,11 @@ Datapacknetherious: 2
 |   |       Whimscape Variated Villagers [FA].zip
 |   |       Whimscape Variated Villagers.zip
 |   |       Whimscape x Curios.zip
-|   |       Whimscape X Detail Armor Bar 1.6.zip
 |   |       Whimscape X Easy Anvils.zip
 |   |       Whimscape X Easy Magic.zip
 |   |       Whimscape x Exploration v2.1.zip
 |   |       Whimscape X FA+Player.zip
 |   |       Whimscape x RPG Series.zip
-|   |       Whimscape X Simple Grass Flowers 1.0.zip
 |   |       Whimscape x Sophisticated_2.0.zip
 |   |       Whimscape x VBB.zip
 |   |       whimscape-mods.zip
@@ -250,7 +242,6 @@ Datapacknetherious: 2
 |   |       §5Untitled §6Punchies §fv1.1.zip
 |   |       §8§lDark GUI Experience+§0.zip
 |   |       §a§lVocal Villagers §r§71.4.zip
-|   |       §e[NeoForge]EatAnimationsMoreCompat.zip
 |   |       §r§f§lKaleidoscope Tavern VE v1.2.0.zip
 |   |
 |   \---sha
