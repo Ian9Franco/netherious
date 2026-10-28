@@ -3,11 +3,11 @@ Actualizado 2026-10-28 desde client/, both/, server/ y Datapacknetherious/.
 La categoría es la carpeta. asignar/ (sin clasificar) y no/ (retirados) no entran.
 Resource packs y shaders van dentro de client, en sus carpetas.
 
-client: 120 mods
+client: 119 mods
 both: 372
 server: 53
-resource packs: 112
-shaders: 10
+resource packs: 109
+shaders: 11
 Datapacknetherious: 2
 
 +---client
@@ -23,7 +23,6 @@ Datapacknetherious: 2
 |   |       fragmentum-5.4.0+1.21.1-neoforge.jar
 |   |       fzzy_config-0.7.7+1.21+neoforge.jar
 |   |       journeymap-neoforge-1.21.1-6.0.9.jar
-|   |       kaleidoscopecookery-1.6.0-neoforge+mc1.21.1.jar
 |   |       kotlinforforge-5.12.0-all.jar
 |   |       lithium-neoforge-0.15.4+mc1.21.1.jar
 |   |       lootr-neoforge-1.21.1-1.11.38.127.jar
@@ -33,7 +32,6 @@ Datapacknetherious: 2
 |   |       Quark-4.1-486.jar
 |   |       sable-neoforge-1.21.1-2.0.6.jar
 |   |       supplementaries-1.21.1-3.9.9-neoforge.jar
-|   |       watut-neoforge-1.21.0-1.2.7.jar
 |   |       yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar
 |   |       YungsApi-1.21.1-NeoForge-5.1.9.jar
 |   |       Zeta-1.1-40.jar
@@ -77,6 +75,7 @@ Datapacknetherious: 2
 |   |       cave_dust_rethinking-3.4.0+1.21.1-neoforge.jar
 |   |       cirrus-neoforge-1.21.1-1.4.1.jar
 |   |       coolrain-1.21.1-NeoForge-1.0.2.jar
+|   |       explosiveenhancement-neoforge-1.21.1-1.2.0.jar
 |   |       forgified-fabric-api-0.116.15+2.3.5+1.21.1.jar
 |   |       NaturalWaters-v21.1.0-mc1.21.1-NeoForge.jar
 |   |       particlerain-4.0.2+1.21.1-neoforge.jar
@@ -126,11 +125,11 @@ Datapacknetherious: 2
 |   |       bettercombat-punchy-fix-1.0.1.jar
 |   |       createbetterfps-1.21.1-1.1.5.jar
 |   |       emf_compat_better_combat_1.21.1_2.0.0.jar
+|   |       emf_compat_core_1.21.1_2.0.0.jar
 |   |       emf_compat_core_neoforge_1.21.1_2.3.0.jar
 |   |       emf_compat_create_1.21.1_2.0.0.jar
 |   |       emf_compat_quark_1.21.1_1.1.0.jar
 |   |       emf_compat_supplementaries_1.21.1_1.1.0.jar
-|   |       enhancedblockentities-0.13.2+1.21-neoforge.jar
 |   |       entity_model_features-3.3.10-1.21-neoforge.jar
 |   |       entity_texture_features-7.2.4-1.21-neoforge.jar
 |   |       entityculling-neoforge-1.11.3-mc1.21.1.jar
@@ -150,11 +149,14 @@ Datapacknetherious: 2
 |   |       Arky's Oritech [v1.0] [1.21.1 - 26.1.2].zip
 |   |       Assorted Allays x FA - V.12.0.zip
 |   |       Cataclysm Reimagined v1.3.5 for NeoForge.zip
+|   |       CDG Recolour Dark [Updated to Create 6.0 CDG].zip
+|   |       CDG Recolour Light [Updated to Create 6.0 CDG].zip
 |   |       ColdTom's backpack.zip
+|   |       Create DG Sound Replacement  - 1.1.zip
+|   |       Create Styled Ad Astra NASA Workbench.zip
 |   |       Creepingly Creeper V2.0.zip
 |   |       CrOv + FrAn [V1.2.2].zip
 |   |       cubic-sun-moon-v1.8.5.zip
-|   |       Default-Dark-Mode-1.20-2023.7.0.zip
 |   |       Doc's Whimscape Additions - Even More Delight.zip
 |   |       Doc's Whimscape Additions - Whimsical Charm.zip
 |   |       Enchanting Table Magic Circle v.2.5 (1.20.5 - 1.21.8).zip
@@ -172,17 +174,17 @@ Datapacknetherious: 2
 |   |       Excalibur_SmallShips_1.1_1.21.1.zip
 |   |       Excalibur_Takes_a_Pillage_v1.2.zip
 |   |       ExcaliburXSweety_archaeology_v1.21.1.zip
-|   |       FA+All_Extensions-v1.8.1.zip
-|   |       FA+Details-v2.2.1.zip
 |   |       FA+Emissive-v1.6.zip
 |   |       FA+Player-v1.1.zip
 |   |       FA+Spiders-v2.2.zip
 |   |       FA-Player-Compats-1.1-mc1.21.1.zip
 |   |       Fabulous Old 3D.zip
 |   |       Fire_Rekindled.zip
+|   |       Fluid Tank  Vessel Recolour [Dark].zip
 |   |       Fresh End Crystal X Punchy.zip
 |   |       FreshAnimations_v1.10.4.zip
 |   |       Fyoncle's 3D Trims.zip
+|   |       GOOD_SOUNDS_for_diesel_generators.zip
 |   |       Hellay's Redone Enderman X Fresh Animations - v1.1.zip
 |   |       HyperPunchy-v2.5+.zip
 |   |       Icon Journey 1.1.zip
@@ -191,7 +193,6 @@ Datapacknetherious: 2
 |   |       LowOnFire v26.2§8.zip
 |   |       Mayview x Whimscape 1.0.0 + BetterEnd.zip
 |   |       MC_Dungeons_Crit 1.21 - 1.21.1.zip
-|   |       McAlive_Grass_v1.1.zip
 |   |       Militech.zip
 |   |       Mizuno's x [Let's Do] Vinery.zip
 |   |       Mizuno's x Farmer's Delight 1.5.zip
@@ -202,9 +203,7 @@ Datapacknetherious: 2
 |   |       Monster Can Resourcepack v1.3.1.zip
 |   |       More_Piglins_FA_v1.2.1.zip
 |   |       MoveThoseHands!-1.2.3.zip
-|   |       Musgo 1.21.1 Below.zip
 |   |       OritechLab1.6.zip
-|   |       Overhauled Mobs Vanillised §0[v0.1].zip
 |   |       Particles Remastered! (2.0v).zip
 |   |       Punched Better, Fresher 3D books.zip
 |   |       Punchy Fix Swimming.zip
@@ -221,7 +220,6 @@ Datapacknetherious: 2
 |   |       Stylus's Bow Retexture.zip
 |   |       sunbathing-v1.11.zip
 |   |       TerralithIncendiumNullscapeBiomesNames_2.0.0.zip
-|   |       Universal Bushy Leaves.zip
 |   |       VillagerRetaliationXFreshAnimation_v1.1.0.zip
 |   |       Visual Effects+.zip
 |   |       Whimscape  X Fresh Animations Spiders.zip
@@ -243,10 +241,8 @@ Datapacknetherious: 2
 |   |       Whimscape x VBB.zip
 |   |       whimscape-mods.zip
 |   |       Whimscape-x-Create-1.21.1_r12.zip
-|   |       Whimscape_1.20.2-1.21.11_r6.zip
 |   |       Whimscape_1.20.2-1.21.11_r7.zip
 |   |       Whimscape_Leaves_1.20-26.3_r1.zip
-|   |       Whimscape_x_FreshAnimations_1.20-1.21.11_r3.zip
 |   |       Whimscape_x_FreshAnimations_1.20-1.21.11_r4.zip
 |   |       Whimscape_x_Overflowing_Bars_1.21.zip
 |   |       wiggly fa tails.zip
@@ -260,6 +256,7 @@ Datapacknetherious: 2
 |   \---sha
 |           Bliss_v2.1.2_(Chocapic13_Shaders_edit).zip
 |           BSL_v10.1.3.zip
+|           BSL_v10.1.8.zip
 |           ComplementaryReimagined_r5.8.1.zip
 |           ComplementaryReimagined_r5.9.3.zip
 |           ComplementaryUnbound_r5.8.1.zip
