@@ -1,11 +1,11 @@
 Netherious IV - modlist
-Actualizado 2026-10-28 desde client/, both/, server/ y Datapacknetherious/.
+Actualizado 2026-11-03 desde el log del servidor (both y servidor). Cliente, resource packs, shaders y datapacks sin cambios.
 La categoría es la carpeta. asignar/ (sin clasificar) y no/ (retirados) no entran.
 Resource packs y shaders van dentro de client, en sus carpetas.
 
 client: 119 mods
-both: 372
-server: 53
+both: 375
+server: 54
 resource packs: 100
 shaders: 11
 Datapacknetherious: 2
@@ -272,6 +272,7 @@ Datapacknetherious: 2
 |   |       moonlight-1.21.1-3.7.0-neoforge.jar
 |   |       OctoLib-NEOFORGE-0.6.2+1.21.jar
 |   |       owo-lib-neoforge-0.12.15.5-beta.1+1.21.jar
+|   |       polymorph-neoforge-1.2.0+1.21.1.jar
 |   |       puzzleslib-v21.1.62-mc1.21.1+neoforge.jar
 |   |       resourcefullib-neoforge-1.21-3.0.12.jar
 |   |       yet_another_config_lib_v3-3.8.2+1.21.1-neoforge.jar
@@ -285,33 +286,36 @@ Datapacknetherious: 2
 |   |
 |   +---create basics
 |   |       azimuth-1.4.10.jar
+|   |       betterbelts-0.3.0.jar
+|   |       bettermechanicalarms-1.0.1.jar
 |   |       bits_n_bobs-2.3.5.jar
 |   |       cbc_ballistic_computer-1.2.0.jar
 |   |       cbc_equally_opposite-0.1.3.jar
+|   |       ckbd-1.4.4.jar
 |   |       cmparallelpipes-neoforge-2.0.2.jar
-|   |       cmverticaladditions-neoforge-1.0.0.jar
 |   |       contraption-lights-neoforge-1.21.1-1.5.3.jar
 |   |       contraption_lights_compat-2.5.0.jar
 |   |       copycats-3.0.9+mc.1.21.1-neoforge.jar
 |   |       create-1.21.1-6.0.10.jar
-|   |       create-cats-dont-care-1.0.0+1.21.1+neoforge.jar
 |   |       create-enchantment-industry-2.5.4.jar
-|   |       create-integrated-farming-1.4.3.jar
+|   |       create-new-age-1.2.0+neoforge-mc1.21.1.jar
 |   |       create-vault-statistics-1.0.0.jar
 |   |       create_aero_radar-0.1.1-1.21.1.jar
 |   |       create_bb-1.0.8-1.21.1.jar
-|   |       create_better_belt-neoforge-1.21.1-0.1.4.jar
 |   |       create_connected-1.3.3-mc1.21.1.jar
 |   |       create_hypertube-0.6.0-NEOFORGE.jar
 |   |       create_jetpack-forge-5.2.1.jar
 |   |       create_jetpack_curios-1.2.0-neoforge-1.21.1.jar
 |   |       create_multiplanar_crafters-mc1.21.1-0.4.18.jar
+|   |       create_pattern_schematics-2.0.10.jar
 |   |       create_petro_deposits-1.1.0.jar
 |   |       create_radar-5.0.2-1.21.1.jar
 |   |       create_ratatouille-1.21.1-1.4.0.jar
+|   |       create_schematicannon_autostonecutting-1.1.1.jar
 |   |       create_walking_steel-1.0.0.jar
 |   |       createappliedkinetics-1.5.4-1.21.1.jar
 |   |       createbigcannons-5.11.7+mc.1.21.1.jar
+|   |       createdeco-2.1.3.jar
 |   |       createdieselgenerators-1.21.1-1.3.15.jar
 |   |       CreateDragonsPlus-1.11.9.jar
 |   |       createnetherindustry-0.2.3.jar
@@ -319,27 +323,28 @@ Datapacknetherious: 2
 |   |       createprism-1.2.4.jar
 |   |       createsmokestacks-1.2.0.jar
 |   |       createthreadedtrains-neoforge-1.21.1-1.0.0.jar
+|   |       CreateTranscontinental-neoforge-0.2.0-beta1+1.21.1.jar
 |   |       crh-1.5.4.jar
 |   |       Design-n-Decor-1.21.1-2.2b.jar
 |   |       dnd_aero_compat-1.0.0.jar
-|   |       electroenergetics-1.21.1-1.1.4.jar
-|   |       electroextras-1.0.1a.jar
 |   |       endless_gravity-1.3.1.jar
 |   |       fluid_be_gone-1.0.1.jar
 |   |       fluidlogistics-1.3.2-mc1.21.1.jar
+|   |       frostworks-1.0.0-neoforge-1.21.1.jar
 |   |       octo-arms-1.6.0+mc1.21.1.jar
 |   |       petrochem-neoforge-1.21.1-1.3.3.jar
 |   |       powergrid-mc1.21.1-0.6.2.jar
 |   |       protection_pixel-2.2.1-neoforge-1.21.1.jar
-|   |       radar-waterline-neoforge-1.21.1-1.0.0.jar
+|   |       radar-waterline-neoforge-1.21.1-1.0.2.jar
 |   |       ritchiesprojectilelib-2.1.2+mc.1.21.1-neoforge.jar
+|   |       sable-chain-conveyors-1.21.1.jar
+|   |       schematicannon_substitutes-1.2.0.jar
 |   |       sereneslicecompat-0.4.3.jar
 |   |       shield_generators-1.4.0.jar
 |   |       sliceanddice-4.3.4-neoforge.jar
 |   |       struts-1.3.1.jar
 |   |       supermartijn642configlib-1.1.8-neoforge-mc1.21.jar
 |   |       supermartijn642corelib-1.1.25-neoforge-mc1.21.jar
-|   |       toolworks-1.21.1-0.1.0.jar
 |   |       Trackwright-1.0.0+neoforge-mc1.21.1.jar
 |   |       verticalchainconveyors-1.21.1-1.3.0.jar
 |   |       westernpump-0.0.12.jar
@@ -348,7 +353,6 @@ Datapacknetherious: 2
 |   |       aeroconnectedfluidvessel-1.0.0.jar
 |   |       aeronautical_diesel-1.1.0.jar
 |   |       aeronautics_blast_physics-0.1.0.jar
-|   |       aeronauticsdiscovery-2.2.0.jar
 |   |       aerowarptics-1.3.0.jar
 |   |       aeroweather-1.6.4.jar
 |   |       aeroworks-1.5.0.jar
@@ -357,12 +361,13 @@ Datapacknetherious: 2
 |   |       compactgearbox-1.0.2.jar
 |   |       copycat_roller-2.0.jar
 |   |       cosmonautics-26.08.307.jar
+|   |       cosmonauticsdeepair-1.0.2.jar
 |   |       cosmowarp-1.1.0.jar
 |   |       create-aeronautics-bundled-1.21.1-1.3.2.jar
-|   |       create-deep-diving-1.21.1-1.0.0-beta.jar
+|   |       create-deep-diving-1.21.1-1.0.0-rc.1.jar
 |   |       create_aeronautics_automated_logistics-0.6.2.jar
-|   |       create_aeronautics_transmission_linkage-0.2.8.jar
-|   |       create_assembly_animation-2.0.0.jar
+|   |       create_aeronautics_transmission_linkage-0.2.9.jar
+|   |       create_assembly_animation-2.1.0.jar
 |   |       create_grappling_hooks-1.2.0.jar
 |   |       create_submarine-3.4.5.jar
 |   |       Create_Warnautics-1.1+mc.1.21.1.jar
@@ -374,17 +379,15 @@ Datapacknetherious: 2
 |   |       docking_connectors_plus-2.1.1.jar
 |   |       linearbearing-1.3.5.jar
 |   |       linearbearingsfix-1.0.3.jar
+|   |       LivingWind-NeoForge-1.21.1-v1.3.7.jar
 |   |       magneutica-1.1.0.jar
 |   |       modellers_dream-1.1.1.jar
 |   |       oritechsablecompat-0.2.0-RELEASE.jar
-|   |       petrochem-pnp-compat-1.1.2-neo.jar
-|   |       pipesnphysics-3.2.1.jar
 |   |       portable_engine_liquid_fuel-2.0.0-neoforge-1.21.1.jar
 |   |       propulsed-0.1.1.jar
 |   |       realistic_aerodynamics-0.1.3.jar
 |   |       sable-neoforge-1.21.1-2.0.6.jar
 |   |       Sable_AeroDynamic-1.21.1-1.0.0.jar
-|   |       SableCollapsingCaves-1.21.1-NeoForge-1.0.jar
 |   |       sablecollisiondamage-1.0.8.jar
 |   |       sabledramaticimpact-1.0.0.jar
 |   |       sablephysicscompat-1.3.0.jar
@@ -419,18 +422,19 @@ Datapacknetherious: 2
 |   |       echoes-0.5-NEOFORGE-1.21.1.jar
 |   |       ElysiumAPI-1.21.1-2.0.1.jar
 |   |       eternalstarlight-0.9.1+1.21.1+neoforge.jar
-|   |       extractrooms-2.2.0.jar
+|   |       extractrooms-2.3.0.jar
 |   |       Galosphere-1.21.1-1.5.5-NeoForge.jar
 |   |       illagerstructures-neoforge-1.21.1-0.1.2.jar
 |   |       Jadens-Nether-Expansion-2.4.1.jar
 |   |       lodestone-1.21.1-1.8.2.jar
 |   |       lootr-neoforge-1.21.1-1.11.38.127.jar
-|   |       milkywaylib-1.0.3.jar
+|   |       milkywaylib-1.1.0.jar
 |   |       netherdungeons-1.1.0-snapshot5.jar
 |   |       netherexotics-1.3.0.jar
 |   |       nomansland-1.5.12.jar
 |   |       Oh-The-Biomes-Weve-Gone-NeoForge-2.6.2.jar
 |   |       phantasm-1.0.3.jar
+|   |       silent_caves-neoforge-1.21.1-1.1.0.jar
 |   |       spelunkers_charm-5.0.6.jar
 |   |       spelunkery-1.21.1-0.4.4-neoforge.jar
 |   |       structure_pool_api-neoforge-1.2.1+1.21.1.jar
@@ -489,7 +493,6 @@ Datapacknetherious: 2
 |   |       EternalNether-v21.1.3-1.21.1-NeoForge.jar
 |   |       fangs_n_claws-1.2.5.jar
 |   |       fightsfrights-1.2.0-neoforge-1.21.1.jar
-|   |       goat_man-neoforge-1.21.1-3.1.jar
 |   |       hostileharmony-neoforge-1.21.1-1.1.0.jar
 |   |       illagerblabber-1.21.1-NeoForge-1.1.0.jar
 |   |       IllagerInvasion-v21.1.6-1.21.1-NeoForge.jar
@@ -505,18 +508,19 @@ Datapacknetherious: 2
 |   |
 |   +---fauna-pasivos
 |   |       blueprint-1.21.1-8.2.0.jar
-|   |       cats-dont-care-1.0.1+1.21.1+neoforge.jar
 |   |       CNB-1.21.1-neoforge-1.7.17.jar
 |   |       companions-neoforge-1.21.1-1.3.6.jar
 |   |       cropcritters-neoforge-1.21.1-1.5.0.jar
 |   |       envelope-neoforge-1.21.1-0.8.1.jar
 |   |       golemoverhaul-neoforge-1.21.1-1.1.1.jar
 |   |       hapi-neoforge-1.21.1-1.1.2.jar
+|   |       hedges_bestiary-1.1.3-neo.jar
 |   |       horsecombatcontrols-1.21.0-1.0.5.jar
 |   |       icys-better-horses-2.1.7-neo-1.21.1.jar
 |   |       lithostitched-1.8.0-neoforge-21.1.jar
 |   |       mythika-neoforge-1.21.1-1.2.1.jar
 |   |       naturalist-2.0.5-neoforge-1.21.1.jar
+|   |       neolithic-1.0.1-1.21.1.jar
 |   |       nomendubium-neoforge-1.21.1-1.0.6.jar
 |   |       nowaitvillagerscream-1.0.6.jar
 |   |       primal-1.1.6+1.21.jar
@@ -524,6 +528,7 @@ Datapacknetherious: 2
 |   |       resourcefulconfig-neoforge-1.21-3.0.11.jar
 |   |       Sinew-1.21.1-1.3.0.jar
 |   |       spawn-4.0.8-1.21.1.jar
+|   |       spooky-companions-neoforge-1.21.1-1.0.1-java.2.jar
 |   |       teallib-1.3.teal.jar
 |   |       Unusual-Prehistory-2-1.21.1-2.0.0-beta3.jar
 |   |       VehicleUpgrade-v21.1.0-mc1.21.1-NeoForge.jar
@@ -605,21 +610,23 @@ Datapacknetherious: 2
 |   +---util
 |   |       balm-neoforge-1.21.1-21.0.66.jar
 |   |       Cardiac-NEOFORGE-0.5.3.4+1.21.jar
+|   |       chipped-neoforge-1.21.1-4.0.2.jar
 |   |       comforts-neoforge-9.0.5+1.21.1.jar
 |   |       curiouschests-1.1.1-neoforge-1.21.1.jar
 |   |       letsdo-alpinewhispers-neoforge-1.0.3.jar
 |   |       letsdo-furniture-neoforge-1.1.10.jar
 |   |       maestro-neoforge-1.21.1-4.0.1.jar
 |   |       music_disc_maker-3.1.2+neoforge-1.21.1.jar
-|   |       realmrpg_balloons-1.0.0-neoforge-1.21.1.jar
 |   |       rechiseled-1.2.6-neoforge-mc1.21.jar
+|   |       rechiseled_chipped-2.0-1.21.1.jar
 |   |       rechiseledae-1.0.1-neoforge-mc1.21.1.jar
-|   |       sleepy_hollows-neoforge-1.1.0.jar
+|   |       sleepy_hollows-neoforge-1.1.2.jar
 |   |       smallships-neoforge-1.21.1-2.0.0-b2.1.jar
 |   |       sophisticatedbackpacks-1.21.1-3.26.9.2195.jar
 |   |       sophisticatedcore-1.21.1-1.5.7.2381.jar
 |   |       Stagecoach-neoforge-1.21.1-1.2.1.jar
 |   |       trashslot-neoforge-1.21.1-21.1.11.jar
+|   |       unusual_furniture-2.0.2+1.21.1-neoforge.jar
 |   |       Utilidad _ QoL/baguettelib-1.21.1-NeoForge-2.0.7.jar
 |   |       Utilidad _ QoL/Clavis-NEOFORGE-0.2.13+1.21.1.jar
 |   |       Utilidad _ QoL/corpse-neoforge-1.21.1-1.1.13.jar
@@ -628,7 +635,6 @@ Datapacknetherious: 2
 |   |       Utilidad _ QoL/EasyMagic-v21.1.4-1.21.1-NeoForge.jar
 |   |       Utilidad _ QoL/Enchantment-Amendment-1.21.1-1.0.0.jar
 |   |       Utilidad _ QoL/exposure-neoforge-1.21.1-1.9.19.jar
-|   |       Utilidad _ QoL/exposure-space-neoforge-1.4.0.jar
 |   |       Utilidad _ QoL/fieldguide-1.20.3+1.21.1-neoforge.jar
 |   |       Utilidad _ QoL/ingeniumapi-1.0.2-NEOFORGE-MC-1.21.1.jar
 |   |       Utilidad _ QoL/jmsharedmaps-1.7.1-1.21.1-neoforge.jar
@@ -645,7 +651,6 @@ Datapacknetherious: 2
 |   |       Utilidad _ QoL/vistaallthetapes - 1.2.0 - neoforge - 1.21.1.jar
 |   |       Utilidad _ QoL/VisualWorkbench-v21.1.2-1.21.1-NeoForge.jar
 |   |       Utilidad _ QoL/weaponmaster_ydm-1.21.1-neoforge-4.2.7.jar
-|   |       Wayfinder-NeoForge-1.2.7-mc1.21.1.jar
 |   |
 |   \---rendimiento
 |           Better Item Despawn - Neoforge-1.21.1-1.1.0.jar
@@ -657,8 +662,6 @@ Datapacknetherious: 2
 |           modernfix-neoforge-5.27.26+mc1.21.1.jar
 |           Not Enough Recipe Book-NEOFORGE-0.4.3+1.21.jar
 |           pathfinder-1.1.0.jar
-|           redirected-neoforge-1.0.0-1.21.1.jar
-|           txnilib-neoforge-1.0.24-1.21.1.jar
 
 +---server
 |   +---datapacks
@@ -698,8 +701,8 @@ Datapacknetherious: 2
 |   |       create-renewable-brass-1.0.2.jar
 |   |       dynamic-torches-5.3.jar
 |   |       edf-remastered-5.0.2.jar
+|   |       enderdragondestroysendisland-2.2.2+mc1.21-neoforge.jar
 |   |       hostile_tactics-neoforge-1.21.1-0.10.1.jar
-|   |       ly-fishing-expansion-1.3.2.jar
 |   |       MCT-Blast-Plaster-1.21.1-2.0.0-b190-release.jar
 |   |       RespawningAnimals-v21.1.2-1.21.1-NeoForge.jar
 |   |       sleep-v3.3.2.jar
@@ -709,6 +712,7 @@ Datapacknetherious: 2
 |   +---mundo
 |   |       ClimateRivers-v21.1.3-1.21.1-NeoForge.jar
 |   |       Geophilic v3.7.mod.jar
+|   |       grassidium-neoforge-1.2.0+1.21.1.jar
 |   |       Incendium_1.21.x_v5.4.4.jar
 |   |       Oh-The-Trees-Youll-Grow-neoforge-1.21.1-5.3.4.jar
 |   |       YungsBetterCaves-1.21.1-NeoForge-3.1.6.jar
