@@ -7,7 +7,7 @@ Los nombres van sin .jar ni .zip.
 client: 109 mods
 both: 375
 server: 56
-resource packs: 105
+resource packs: 89
 shaders: 11
 Datapacknetherious: 2
 +---client
@@ -142,18 +142,16 @@ Datapacknetherious: 2
 |   |       Ad Astra 3D
 |   |       Arky's Oritech [v1.0] [1.21.1 - 26.1.2]
 |   |       Assorted Allays x FA - V.12.0
-|   |       Cataclysm Reimagined v1.3.5 for NeoForge
-|   |       CDG Recolour Dark [Updated to Create 6.0 CDG]
 |   |       CDG Recolour Light [Updated to Create 6.0 CDG]
 |   |       ColdTom's backpack
 |   |       Connected Dungeons Terracotta 1.0
 |   |       Create DG Sound Replacement  - 1.1
 |   |       Create Styled Ad Astra NASA Workbench
+|   |       create-re-aged-1.20.1
 |   |       Creepingly Creeper V2.0
 |   |       cubic-sun-moon-v1.8.5
 |   |       Doc's Whimscape Additions - Even More Delight
 |   |       Doc's Whimscape Additions - Whimsical Charm
-|   |       Enchanting Table Magic Circle v.2.5 (1.20.5 - 1.21.8)
 |   |       EnderEyes_26.3_v3.1
 |   |       Excalibur Advanced Netherite Support 1.20.1
 |   |       Excalibur Aquamirae Support 1.0
@@ -162,16 +160,13 @@ Datapacknetherious: 2
 |   |       Excalibur Eternal Nether 1.0
 |   |       Excalibur Illager Invasion 1.3
 |   |       Excalibur Mowzie's Mobs 1.2
-|   |       Excalibur Treasure Balloons 1.0
 |   |       Excalibur_FieldGuide_1.21.1_v1
 |   |       Excalibur_Lootr_v1.1
 |   |       Excalibur_SmallShips_1.1_1.21.1
 |   |       Excalibur_Takes_a_Pillage_v1.2
 |   |       ExcaliburXSweety_archaeology_v1.21.1
 |   |       FA+Emissive-v1.6
-|   |       FA+Player-v1.1
 |   |       FA+Spiders-v2.2
-|   |       FA-Player-Compats-1.1-mc1.21.1
 |   |       Fabulous Old 3D
 |   |       Fluid & Foolish 1.0-hotfix
 |   |       Fresh End Crystal X Punchy
@@ -186,11 +181,6 @@ Datapacknetherious: 2
 |   |       LowOnFire v26.2§8
 |   |       Mayview x Whimscape 1.0.0 + BetterEnd
 |   |       Militech
-|   |       Mizuno's x [Let's Do] Vinery
-|   |       Mizuno's x Farmer's Delight 1.5
-|   |       Mizuno's x Lets Do Furniture
-|   |       Mizuno's x Letsdo Bakery 1.1
-|   |       Mizuno's x Letsdo Farm and Charm 1.1
 |   |       Modded Swords x Punchy! 1.21.1 v1.3.2
 |   |       Monster Can Resourcepack v1.3.1
 |   |       More_Piglins_FA_v1.2.1
@@ -199,12 +189,9 @@ Datapacknetherious: 2
 |   |       OritechLab1.6
 |   |       Particles Remastered! (2.0v)
 |   |       Punched Better, Fresher 3D books
-|   |       Punchy Fix Swimming
 |   |       Punchy refined
 |   |       Ray's Better Sugarcanezip v1.6.4
 |   |       ReApplied
-|   |       Recolored Ad Astra Mars and Venus
-|   |       reimagined_incendium_textures-v1.1
 |   |       RPG_Series_Icons-1.4.0+1.21.1
 |   |       Simple Grass Flowers v2.0.0
 |   |       SimplySwordsWhimscape_v1.1
@@ -212,7 +199,6 @@ Datapacknetherious: 2
 |   |       SPBR-Kaleidoscope Cookery1.1.0
 |   |       Stylus's Bow Retexture
 |   |       sunbathing-v1.11
-|   |       TerralithIncendiumNullscapeBiomesNames_2.0.0
 |   |       VillagerRetaliationXFreshAnimation_v1.1.0
 |   |       Whimscape  X Fresh Animations Spiders
 |   |       Whimscape Better Containers
@@ -225,7 +211,6 @@ Datapacknetherious: 2
 |   |       Whimscape X Easy Anvils
 |   |       Whimscape X Easy Magic
 |   |       Whimscape x Exploration v2.1
-|   |       Whimscape X FA+Player
 |   |       Whimscape x RPG Series
 |   |       Whimscape x Sophisticated_2.0
 |   |       Whimscape x VBB
@@ -239,7 +224,6 @@ Datapacknetherious: 2
 |   |       §2p1kl's 3D Items§r§0
 |   |       §5Untitled §6Punchies §fv1.1
 |   |       §6§lPunchy - Shubba Totem §7
-|   |       §8§lDark GUI Experience+§0
 |   |       §a§lVocal Villagers §r§71.4
 |   |       §r§f§lKaleidoscope Tavern VE v1.2.0
 |   |
